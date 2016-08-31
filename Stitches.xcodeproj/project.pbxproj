@@ -10,11 +10,15 @@
 		02ADCD101D7749610088AFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD0F1D7749610088AFFD /* main.m */; };
 		02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD121D7749610088AFFD /* AppDelegate.m */; };
 		02ADCD161D7749610088AFFD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* ViewController.m */; };
-		02ADCD191D7749610088AFFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD171D7749610088AFFD /* Main.storyboard */; };
 		02ADCD1B1D7749610088AFFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD1A1D7749610088AFFD /* Assets.xcassets */; };
 		02ADCD1E1D7749610088AFFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD1C1D7749610088AFFD /* LaunchScreen.storyboard */; };
 		02ADCD291D7749610088AFFD /* StitchesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD281D7749610088AFFD /* StitchesTests.m */; };
 		02ADCD341D7749610088AFFD /* StitchesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD331D7749610088AFFD /* StitchesUITests.m */; };
+		02ADCD431D774F360088AFFD /* baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD421D774F360088AFFD /* baseball.png */; };
+		02ADCD451D774F510088AFFD /* statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD441D774F510088AFFD /* statistics.png */; };
+		02ADCD471D774F890088AFFD /* standings.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD461D774F890088AFFD /* standings.png */; };
+		02ADCD491D774F9B0088AFFD /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD481D774F9B0088AFFD /* news.png */; };
+		02ADCD4B1D774FA50088AFFD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD4A1D774FA50088AFFD /* settings.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +45,6 @@
 		02ADCD121D7749610088AFFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		02ADCD141D7749610088AFFD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		02ADCD151D7749610088AFFD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		02ADCD181D7749610088AFFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02ADCD1A1D7749610088AFFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02ADCD1D1D7749610088AFFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02ADCD1F1D7749610088AFFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +54,11 @@
 		02ADCD2F1D7749610088AFFD /* StitchesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StitchesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ADCD331D7749610088AFFD /* StitchesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StitchesUITests.m; sourceTree = "<group>"; };
 		02ADCD351D7749610088AFFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02ADCD421D774F360088AFFD /* baseball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseball.png; sourceTree = "<group>"; };
+		02ADCD441D774F510088AFFD /* statistics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statistics.png; sourceTree = "<group>"; };
+		02ADCD461D774F890088AFFD /* standings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = standings.png; sourceTree = "<group>"; };
+		02ADCD481D774F9B0088AFFD /* news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news.png; sourceTree = "<group>"; };
+		02ADCD4A1D774FA50088AFFD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +109,11 @@
 		02ADCD0D1D7749610088AFFD /* Stitches */ = {
 			isa = PBXGroup;
 			children = (
+				02ADCD411D774EDC0088AFFD /* Images */,
 				02ADCD111D7749610088AFFD /* AppDelegate.h */,
 				02ADCD121D7749610088AFFD /* AppDelegate.m */,
 				02ADCD141D7749610088AFFD /* ViewController.h */,
 				02ADCD151D7749610088AFFD /* ViewController.m */,
-				02ADCD171D7749610088AFFD /* Main.storyboard */,
 				02ADCD1A1D7749610088AFFD /* Assets.xcassets */,
 				02ADCD1C1D7749610088AFFD /* LaunchScreen.storyboard */,
 				02ADCD1F1D7749610088AFFD /* Info.plist */,
@@ -138,6 +146,18 @@
 				02ADCD351D7749610088AFFD /* Info.plist */,
 			);
 			path = StitchesUITests;
+			sourceTree = "<group>";
+		};
+		02ADCD411D774EDC0088AFFD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				02ADCD4A1D774FA50088AFFD /* settings.png */,
+				02ADCD461D774F890088AFFD /* standings.png */,
+				02ADCD421D774F360088AFFD /* baseball.png */,
+				02ADCD441D774F510088AFFD /* statistics.png */,
+				02ADCD481D774F9B0088AFFD /* news.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,9 +263,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02ADCD431D774F360088AFFD /* baseball.png in Resources */,
+				02ADCD4B1D774FA50088AFFD /* settings.png in Resources */,
+				02ADCD471D774F890088AFFD /* standings.png in Resources */,
+				02ADCD491D774F9B0088AFFD /* news.png in Resources */,
 				02ADCD1E1D7749610088AFFD /* LaunchScreen.storyboard in Resources */,
 				02ADCD1B1D7749610088AFFD /* Assets.xcassets in Resources */,
-				02ADCD191D7749610088AFFD /* Main.storyboard in Resources */,
+				02ADCD451D774F510088AFFD /* statistics.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,14 +332,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		02ADCD171D7749610088AFFD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				02ADCD181D7749610088AFFD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		02ADCD1C1D7749610088AFFD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

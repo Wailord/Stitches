@@ -15,8 +15,62 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    // set up our initial window
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    // show the window
+    [self.window makeKeyAndVisible];
+    
+    _tabController = [[UITabBarController alloc] init];
+    
+    // the scoreboard view, which will have a list of games
+    _scoreboardViewController = [[UIViewController alloc] init];
+    _scoreboardViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
+                                                                        image:[UIImage imageNamed:@"baseball.png"]
+                                                                          tag:0];
+    
+    // the standings view, which will show the current MLB standings
+    _standingsViewController = [[UIViewController alloc] init];
+    _standingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Standings"
+                                                                        image:[UIImage imageNamed:@"standings.png"]
+                                                                          tag:0];
+    
+    // the statistics view, which will show various leaderboards
+    _statisticsViewController = [[UIViewController alloc] init];
+    _statisticsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Stats"
+                                                                        image:[UIImage imageNamed:@"statistics.png"]
+                                                                          tag:0];
+    
+    // the news view, which will show news from around the league
+    _newsViewController = [[UIViewController alloc] init];
+    _newsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"News"
+                                                                        image:[UIImage imageNamed:@"news.png"]
+                                                                          tag:0];
+                                      
+    // the settings view, which will let users modify various TBD app setitngs
+    _settingsViewController = [[UIViewController alloc] init];
+    _settingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Settings"
+                                                                        image:[UIImage imageNamed:@"settings.png"]
+                                                                          tag:0];
+                                      
+    // the collection of viewcontrollers housed within the tabs
+    _tabbedViewControllers = [[NSArray alloc] initWithObjects:
+                              _scoreboardViewController,
+                              _standingsViewController,
+                              _statisticsViewController,
+                              _newsViewController,
+                              _settingsViewController,
+                              nil];
+    
+    // let the tab controller know what view controllers to house
+    _tabController.viewControllers = _tabbedViewControllers;
+    
+    // create a view controller for the window to default to
+    self.window.rootViewController= _tabController;
+    
     return YES;
 }
 

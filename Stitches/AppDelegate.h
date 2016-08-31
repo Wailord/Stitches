@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    UITabBarController *_tabController;
+    UIViewController *_scoreboardViewController;
+    UIViewController *_standingsViewController;
+    UIViewController *_statisticsViewController;
+    UIViewController *_newsViewController;
+    UIViewController *_settingsViewController;
+    NSArray *_tabbedViewControllers;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
