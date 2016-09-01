@@ -82,7 +82,9 @@
     [self.contentView addSubview:_statusLabel];
     
     // set the layout
-    NSDictionary *views = NSDictionaryOfVariableBindings(_homeLogo,_homeNameLabel,_homeScoreLabel,_awayLogo,_awayNameLabel,_awayScoreLabel,_statusLabel);
+    NSDictionary *views = NSDictionaryOfVariableBindings(_homeLogo,_homeNameLabel,_homeScoreLabel,
+                                                         _awayLogo,_awayNameLabel,_awayScoreLabel,
+                                                         _statusLabel);
     
     // home team row
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_homeNameLabel]-10-[_homeScoreLabel]"

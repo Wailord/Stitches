@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// currently supported game statuses
 typedef enum STGameStatus : NSUInteger {
     NoStatus,
     Preview,

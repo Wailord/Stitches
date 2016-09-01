@@ -30,7 +30,6 @@
 - (id)delegate;
 - (void)setDelegate:(id)newDelegate;
 - (void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day;
-- (void)parserDidStartDocument:(NSXMLParser *)parser;
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict;
 
 @end

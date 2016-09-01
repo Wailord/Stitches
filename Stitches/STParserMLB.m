@@ -20,30 +20,32 @@
 }
 
 -(void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day{
+    // if our month or date is less than ten, make sure the string prepends a zero (so each is always two characters)
     NSString *monthS = (month < 10) ? [NSString stringWithFormat:@"0%ld", (long)month] : [NSString stringWithFormat:@"%ld", (long)month];
     NSString *dateS = (day < 10) ? [NSString stringWithFormat:@"0%ld", (long)day] : [NSString stringWithFormat:@"%ld", (long)day];
     
+    // build the URL we're going to use to get current MLB scoreboard info
     NSString *xmlPath = [NSString stringWithFormat:@"http://gd2.mlb.com/components/game/mlb/year_%ld/month_%@/day_%@/miniscoreboard.xml",
                          (long)year,
                          monthS,
                          dateS];
-    NSLog(@"using XMLpath = %@", xmlPath);
     NSURL *url = [[NSURL alloc] initWithString:xmlPath];
-    _parser = [[NSXMLParser alloc]initWithContentsOfURL:url];
+
+    // set up and start up the XML parser
+    _parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     [_parser setDelegate:self];
     [_parser parse];
 }
 
-- (void)parserDidStartDocument:(NSXMLParser *)parser {
-    NSLog(@"Started parsing.");
-}
-
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+    
+    // once we find some games, initialize our mutable array of games
     if([elementName isEqualToString:@"games"]) {
         _summaryList = [[NSMutableArray alloc] init];
     }
     else if([elementName isEqualToString:@"game"])
     {
+        // check to see if the game has a status that is currently supported
         bool validGame = false;
         STGameStatus status = NoStatus;
         if([[attributeDict objectForKey:@"status"] isEqualToString:@"In Progress"]) {
@@ -59,18 +61,24 @@
             validGame = true;
         }
         
+        // so long as we support the game status, we can init and start building a new game summary
         if(validGame) {
             _summary = [[STGameSummary alloc] init];
             _summary.status = status;
+            
+            // get the current score
             _summary.awayScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];
             _summary.homeScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_runs"] integerValue]];
             
+            // get the teams playing
             _summary.homeTeam = [attributeDict objectForKey:@"home_name_abbrev"];
             _summary.awayTeam = [attributeDict objectForKey:@"away_name_abbrev"];
             
+            // get the inning info
             _summary.inning = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"inning"] integerValue]];
             _summary.topOfInning = [[attributeDict objectForKey:@"top_of_inning"] isEqualToString:@"Y"];
         
+            // start setting up time info; we need to check both the time zone and am/pm
             NSString *timeZone = [attributeDict objectForKey:@"time_zone"];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"YYYY/MM/dd hh:mm"];
@@ -84,13 +92,17 @@
                 [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"CDT"]];
             }
             
+            // with the time zone set up, we can build the date
             NSDate *dte = [dateFormat dateFromString:[attributeDict objectForKey:@"time_date"]];
+            
+            // if MLB says the time was in PM, we need to add twelve hours to the time
             if([[attributeDict objectForKey:@"ampm"] isEqualToString:@"PM"]) {
                 // add twelve hours for PM
                 NSTimeInterval twelveHours = 12 * 60 * 60;
                 dte = [dte dateByAddingTimeInterval:twelveHours];
             }
             
+            // assign the start time after building the date
             _summary.startTime = dte;
         }
     }
