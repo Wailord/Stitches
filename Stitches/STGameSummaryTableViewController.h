@@ -12,4 +12,6 @@
 
 @property NSArray *gameSummaries;
 
+-(void)parseGames;
+
 @end
