@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026600FA1D786F7F0022C79D /* STGameSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600F91D786F7F0022C79D /* STGameSummary.m */; };
 		02ADCD101D7749610088AFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD0F1D7749610088AFFD /* main.m */; };
 		02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD121D7749610088AFFD /* AppDelegate.m */; };
 		02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		026600F81D786F7F0022C79D /* STGameSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGameSummary.h; sourceTree = "<group>"; };
+		026600F91D786F7F0022C79D /* STGameSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGameSummary.m; sourceTree = "<group>"; };
 		02ADCD0B1D7749610088AFFD /* Stitches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stitches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ADCD0F1D7749610088AFFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02ADCD111D7749610088AFFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 		026600F51D786EAD0022C79D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				026600F81D786F7F0022C79D /* STGameSummary.h */,
+				026600F91D786F7F0022C79D /* STGameSummary.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */,
+				026600FA1D786F7F0022C79D /* STGameSummary.m in Sources */,
 				02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */,
 				02ADCD101D7749610088AFFD /* main.m in Sources */,
 			);
