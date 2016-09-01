@@ -36,14 +36,12 @@
     _awayNameLabel = [[UILabel alloc] init];
     _awayNameLabel.translatesAutoresizingMaskIntoConstraints = false;
     _awayNameLabel.text = awayT;
-    [_awayNameLabel setFont:[UIFont systemFontOfSize:16.0f]];
     [self.contentView addSubview:_awayNameLabel];
     
     // score
     _awayScoreLabel = [[UILabel alloc] init];
     _awayScoreLabel.translatesAutoresizingMaskIntoConstraints = false;
     _awayScoreLabel.text = [NSString stringWithFormat:@"%@", awayS];
-    [_awayScoreLabel setFont:[UIFont systemFontOfSize:16.0f]];
     [self.contentView addSubview:_awayScoreLabel];
     
     // HOME TEAM
@@ -56,14 +54,12 @@
     _homeNameLabel = [[UILabel alloc] init];
     _homeNameLabel.translatesAutoresizingMaskIntoConstraints = false;
     _homeNameLabel.text = homeT;
-    [_homeNameLabel setFont:[UIFont systemFontOfSize:16.0f]];
     [self.contentView addSubview:_homeNameLabel];
     
     // score
     _homeScoreLabel = [[UILabel alloc] init];
     _homeScoreLabel.translatesAutoresizingMaskIntoConstraints = false;
     _homeScoreLabel.text = [NSString stringWithFormat:@"%@", homeS];
-    [_homeScoreLabel setFont:[UIFont systemFontOfSize:16.0f]];
     [self.contentView addSubview:_homeScoreLabel];
     
     // GAME STATUS INFO
@@ -84,19 +80,26 @@
     }
     _statusLabel = [[UILabel alloc] init];
     _statusLabel.text = statusText;
+    _statusLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.contentView addSubview:_statusLabel];
     
     // set the layout
     NSDictionary *views = NSDictionaryOfVariableBindings(_homeLogo,_homeNameLabel,_homeScoreLabel,_awayLogo,_awayNameLabel,_awayScoreLabel,_statusLabel);
     
     // home team row
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_homeNameLabel][_homeScoreLabel]-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_homeNameLabel]-10-[_homeScoreLabel]"
+                                                                 options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
+                                                                 metrics:nil
+                                                                   views:views]];
+    
+    // status label row
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_statusLabel]-20-|"
                                                                  options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                  metrics:nil
                                                                    views:views]];
     
     // away team row
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayNameLabel][_awayScoreLabel]-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayNameLabel]-10-[_awayScoreLabel]"
                                                                  options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                  metrics:nil
                                                                    views:views]];
