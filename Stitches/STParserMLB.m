@@ -19,9 +19,16 @@
     delegate = newDelegate;
 }
 
--(void)parseGameSummariesForDate:(NSDate*)date {
-    NSLog(@"Setting up parser");
-    NSURL *url = [[NSURL alloc]initWithString:@"http://gd2.mlb.com/components/game/mlb/year_2016/month_09/day_01/miniscoreboard.xml"];
+-(void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day{
+    NSString *monthS = (month < 10) ? [NSString stringWithFormat:@"0%ld", (long)month] : [NSString stringWithFormat:@"%ld", (long)month];
+    NSString *dateS = (day < 10) ? [NSString stringWithFormat:@"0%ld", (long)day] : [NSString stringWithFormat:@"%ld", (long)day];
+    
+    NSString *xmlPath = [NSString stringWithFormat:@"http://gd2.mlb.com/components/game/mlb/year_%ld/month_%@/day_%@/miniscoreboard.xml",
+                         (long)year,
+                         monthS,
+                         dateS];
+    NSLog(@"using XMLpath = %@", xmlPath);
+    NSURL *url = [[NSURL alloc] initWithString:xmlPath];
     _parser = [[NSXMLParser alloc]initWithContentsOfURL:url];
     [_parser setDelegate:self];
     [_parser parse];

@@ -35,7 +35,12 @@
 }
 
 - (void)parseGames {
-    [_parser parseGameSummariesForDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+    NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSInteger year = [gregorian component:NSCalendarUnitYear fromDate:NSDate.date];
+    NSInteger month = [gregorian component:NSCalendarUnitMonth fromDate:NSDate.date];
+    NSInteger day = [gregorian component:NSCalendarUnitDay fromDate:NSDate.date];
+    
+    [_parser parseGameSummariesForYear:year andMonth:month andDay:day];
 }
 
 - (void)didReceiveMemoryWarning {
