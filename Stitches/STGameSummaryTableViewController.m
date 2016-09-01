@@ -19,23 +19,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Today's Games";
+    _gameSummaries = [[NSMutableArray alloc] init];
     
+    _parser = [[STParserMLB alloc] init];
+    [_parser setDelegate:self];
     [self parseGames];
     
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
 }
 
+- (void)parsedGameSummary:(STGameSummary *)summary {
+    [self.gameSummaries addObject:summary];
+    [self.tableView reloadData];
+}
+
 - (void)parseGames {
-    STGameSummary *dummyGame = [[STGameSummary alloc] init];
-    [dummyGame setInning:[NSNumber numberWithInt:1]];
-    [dummyGame setAwayTeam:@"MIL"];
-    [dummyGame setAwayScore:[NSNumber numberWithInt:2]];
-    [dummyGame setHomeTeam:@"CHI"];
-    [dummyGame setHomeScore:[NSNumber numberWithInt:4]];
-    [dummyGame setTopOfInning:false];
-    
-    _gameSummaries = [[NSArray alloc] initWithObjects:dummyGame, nil];
+    [_parser parseGameSummariesForDate:[NSDate dateWithTimeIntervalSinceNow:0]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,7 +63,8 @@
                                                      homeTeamName:game.homeTeam
                                                         homeScore:game.homeScore
                                                      awayTeamName:game.awayTeam
-                                                        awayScore:game.awayScore];
+                                                        awayScore:game.awayScore
+                                                           status:game.status];
     }
     else {
         cell.inning = game.inning;

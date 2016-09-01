@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Constants.h"
 
 @interface STGameSummary : NSObject {
     NSString *awayTeam;
@@ -15,6 +16,7 @@
     NSNumber *homeScore;
     NSNumber *inning;
     BOOL topOfInning;
+    STGameStatus status;
 }
 
 @property NSString *awayTeam;
@@ -24,5 +26,7 @@
 
 @property NSNumber *inning;
 @property BOOL topOfInning;
+
+@property STGameStatus status;
 
 @end

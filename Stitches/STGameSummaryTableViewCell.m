@@ -16,7 +16,13 @@
 @synthesize awayName;
 @synthesize inning;
 
-- (id)initWithInning:(NSNumber*)inn isTopOfInning:(BOOL)top homeTeamName:(NSString*)homeT homeScore:(NSNumber*)homeS awayTeamName:(NSString*)awayT awayScore:(NSNumber*)awayS {
+- (id)initWithInning:(NSNumber*)inn
+       isTopOfInning:(BOOL)top
+        homeTeamName:(NSString*)homeT
+           homeScore:(NSNumber*)homeS
+        awayTeamName:(NSString*)awayT
+           awayScore:(NSNumber*)awayS
+              status:(STGameStatus)gameStatus {
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -51,13 +57,20 @@
     
     // INNING INFO
     NSMutableString *inningText = [[NSMutableString alloc] initWithCapacity:6];
-    if(top) {
+    if(gameStatus == Preview) {
+        [inningText appendString:@"Pre-Game"];
+    }
+    else if(gameStatus == Final) {
+        [inningText appendString:@"Final"];
+    }
+    else if(top) {
         [inningText appendString:@"Top "];
+        [inningText appendString:[NSString stringWithFormat:@"%@", inn]];
     }
     else {
         [inningText appendString:@"Bot "];
+        [inningText appendString:[NSString stringWithFormat:@"%@", inn]];
     }
-    [inningText appendString:[NSString stringWithFormat:@"%@", inn]];
     _inningLabel = [[UILabel alloc] initWithFrame:CGRectMake(140.0f,14.0f,100.0f,20.f)];
     _inningLabel.text = inningText;
     

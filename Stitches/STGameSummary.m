@@ -16,6 +16,7 @@
 @synthesize awayTeam;
 @synthesize topOfInning;
 @synthesize inning;
+@synthesize status;
 
 -(NSString *)description
 {
