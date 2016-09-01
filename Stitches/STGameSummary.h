@@ -9,16 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Constants.h"
 
-@interface STGameSummary : NSObject {
-    NSString *awayTeam;
-    NSNumber *awayScore;
-    NSString *homeTeam;
-    NSNumber *homeScore;
-    NSNumber *inning;
-    BOOL topOfInning;
-    STGameStatus status;
-    NSDate *startTime;
-}
+@interface STGameSummary : NSObject
 
 @property NSString *awayTeam;
 @property NSNumber *awayScore;

@@ -10,12 +10,6 @@
 
 @implementation STGameSummaryTableViewCell
 
-@synthesize homeScore;
-@synthesize homeName;
-@synthesize awayScore;
-@synthesize awayName;
-@synthesize inning;
-
 - (id)initWithGame:(STGameSummary*)game{
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
     self.selectionStyle = UITableViewCellSelectionStyleNone;

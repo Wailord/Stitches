@@ -10,15 +10,6 @@
 
 @implementation STGameSummary
 
-@synthesize homeScore;
-@synthesize homeTeam;
-@synthesize awayScore;
-@synthesize awayTeam;
-@synthesize topOfInning;
-@synthesize inning;
-@synthesize status;
-@synthesize startTime;
-
 -(NSString *)description
 {
     return [NSString stringWithFormat:@"%@ (%@) @ %@ (%@)",
