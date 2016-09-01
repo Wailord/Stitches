@@ -17,7 +17,7 @@
     UILabel *_homeNameLabel;
     UILabel *_awayScoreLabel;
     UILabel *_awayNameLabel;
-    UILabel *_inningLabel;
+    UILabel *_statusLabel;
 }
 
 @property NSNumber *homeScore;
