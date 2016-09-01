@@ -9,13 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    // tabs
     UITabBarController *_tabController;
-    UIViewController *_scoreboardViewController;
+    UINavigationController *_scoreboardNavigationController;
     UIViewController *_standingsViewController;
     UIViewController *_statisticsViewController;
     UIViewController *_newsViewController;
     UIViewController *_settingsViewController;
     NSArray *_tabbedViewControllers;
+    
+    // individual views, to be moved into subclasses
+    UITableViewController *_scoreboardTableViewController;
 }
 
 @property (strong, nonatomic) UIWindow *window;

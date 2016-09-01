@@ -26,11 +26,18 @@
     
     _tabController = [[UITabBarController alloc] init];
     
-    // the scoreboard view, which will have a list of games
-    _scoreboardViewController = [[UIViewController alloc] init];
-    _scoreboardViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
+    // the scoreboard nav controller, which will have a tableview
+    _scoreboardNavigationController = [[UINavigationController alloc] init];
+    _scoreboardNavigationController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
                                                                         image:[UIImage imageNamed:@"baseball.png"]
                                                                           tag:0];
+    _scoreboardTableViewController = [[UITableViewController alloc] init];
+    _scoreboardTableViewController.title = @"Today's Games";
+    
+    [_scoreboardNavigationController pushViewController:_scoreboardTableViewController
+                                               animated:false];
+    _scoreboardNavigationController.title = @"Scores";
+    
     
     // the standings view, which will show the current MLB standings
     _standingsViewController = [[UIViewController alloc] init];
@@ -58,7 +65,7 @@
                                       
     // the collection of viewcontrollers housed within the tabs
     _tabbedViewControllers = [[NSArray alloc] initWithObjects:
-                              _scoreboardViewController,
+                              _scoreboardNavigationController,
                               _standingsViewController,
                               _statisticsViewController,
                               _newsViewController,
