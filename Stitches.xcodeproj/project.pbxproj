@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		02ADCD101D7749610088AFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD0F1D7749610088AFFD /* main.m */; };
 		02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD121D7749610088AFFD /* AppDelegate.m */; };
-		02ADCD161D7749610088AFFD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* ViewController.m */; };
+		02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */; };
 		02ADCD1B1D7749610088AFFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD1A1D7749610088AFFD /* Assets.xcassets */; };
 		02ADCD1E1D7749610088AFFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD1C1D7749610088AFFD /* LaunchScreen.storyboard */; };
 		02ADCD291D7749610088AFFD /* StitchesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD281D7749610088AFFD /* StitchesTests.m */; };
@@ -43,8 +43,8 @@
 		02ADCD0F1D7749610088AFFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02ADCD111D7749610088AFFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		02ADCD121D7749610088AFFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		02ADCD141D7749610088AFFD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		02ADCD151D7749610088AFFD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		02ADCD141D7749610088AFFD /* STScoreboardNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STScoreboardNavigationController.h; sourceTree = "<group>"; };
+		02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STScoreboardNavigationController.m; sourceTree = "<group>"; };
 		02ADCD1A1D7749610088AFFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02ADCD1D1D7749610088AFFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02ADCD1F1D7749610088AFFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +86,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		026600F51D786EAD0022C79D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		026600F61D786EB50022C79D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		026600F71D786EBB0022C79D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				02ADCD141D7749610088AFFD /* STScoreboardNavigationController.h */,
+				02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		02ADCD021D7749610088AFFD = {
 			isa = PBXGroup;
 			children = (
@@ -109,11 +132,12 @@
 		02ADCD0D1D7749610088AFFD /* Stitches */ = {
 			isa = PBXGroup;
 			children = (
+				026600F71D786EBB0022C79D /* Controllers */,
+				026600F61D786EB50022C79D /* Views */,
+				026600F51D786EAD0022C79D /* Models */,
 				02ADCD411D774EDC0088AFFD /* Images */,
 				02ADCD111D7749610088AFFD /* AppDelegate.h */,
 				02ADCD121D7749610088AFFD /* AppDelegate.m */,
-				02ADCD141D7749610088AFFD /* ViewController.h */,
-				02ADCD151D7749610088AFFD /* ViewController.m */,
 				02ADCD1A1D7749610088AFFD /* Assets.xcassets */,
 				02ADCD1C1D7749610088AFFD /* LaunchScreen.storyboard */,
 				02ADCD1F1D7749610088AFFD /* Info.plist */,
@@ -294,7 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02ADCD161D7749610088AFFD /* ViewController.m in Sources */,
+				02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */,
 				02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */,
 				02ADCD101D7749610088AFFD /* main.m in Sources */,
 			);
@@ -514,6 +538,7 @@
 				02ADCD3A1D7749610088AFFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02ADCD3B1D7749610088AFFD /* Build configuration list for PBXNativeTarget "StitchesTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +547,7 @@
 				02ADCD3D1D7749610088AFFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02ADCD3E1D7749610088AFFD /* Build configuration list for PBXNativeTarget "StitchesUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +556,7 @@
 				02ADCD401D7749610088AFFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

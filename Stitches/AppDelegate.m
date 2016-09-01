@@ -27,17 +27,7 @@
     _tabController = [[UITabBarController alloc] init];
     
     // the scoreboard nav controller, which will have a tableview
-    _scoreboardNavigationController = [[UINavigationController alloc] init];
-    _scoreboardNavigationController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
-                                                                        image:[UIImage imageNamed:@"baseball.png"]
-                                                                          tag:0];
-    _scoreboardTableViewController = [[UITableViewController alloc] init];
-    _scoreboardTableViewController.title = @"Today's Games";
-    
-    [_scoreboardNavigationController pushViewController:_scoreboardTableViewController
-                                               animated:false];
-    _scoreboardNavigationController.title = @"Scores";
-    
+    _scoreboardNavigationController = [[STScoreboardNavigationController alloc] init];
     
     // the standings view, which will show the current MLB standings
     _standingsViewController = [[UIViewController alloc] init];
