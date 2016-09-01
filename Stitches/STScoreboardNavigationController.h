@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "STGameSummaryTableViewController.h"
 
 @interface STScoreboardNavigationController : UINavigationController {
-    UITableViewController *_scoreboardTableViewController;
+    STGameSummaryTableViewController *_gameSummaryTableViewController;
 }
 
 

@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface STGameSummary : NSObject
+@interface STGameSummary : NSObject {
+    NSString *awayTeam;
+    NSNumber *awayScore;
+    NSString *homeTeam;
+    NSNumber *homeScore;
+    NSNumber *inning;
+    BOOL topOfInning;
+}
 
 @property NSString *awayTeam;
 @property NSNumber *awayScore;

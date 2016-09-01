@@ -19,12 +19,10 @@
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
                                                     image:[UIImage imageNamed:@"baseball.png"]
                                                       tag:0];
-    _scoreboardTableViewController = [[UITableViewController alloc] init];
-    _scoreboardTableViewController.title = @"Today's Games";
+    _gameSummaryTableViewController = [[STGameSummaryTableViewController alloc] init];
     
-    [self pushViewController:_scoreboardTableViewController
+    [self pushViewController:_gameSummaryTableViewController
                     animated:false];
-    self.title = @"Scores";
 }
 
 - (void)didReceiveMemoryWarning {

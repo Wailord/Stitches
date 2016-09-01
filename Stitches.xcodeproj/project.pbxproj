@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		026600FA1D786F7F0022C79D /* STGameSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600F91D786F7F0022C79D /* STGameSummary.m */; };
+		026600FD1D7870F60022C79D /* STGameSummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600FC1D7870F60022C79D /* STGameSummaryTableViewController.m */; };
 		02ADCD101D7749610088AFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD0F1D7749610088AFFD /* main.m */; };
 		02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD121D7749610088AFFD /* AppDelegate.m */; };
 		02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		026600F81D786F7F0022C79D /* STGameSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGameSummary.h; sourceTree = "<group>"; };
 		026600F91D786F7F0022C79D /* STGameSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGameSummary.m; sourceTree = "<group>"; };
+		026600FB1D7870F60022C79D /* STGameSummaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGameSummaryTableViewController.h; sourceTree = "<group>"; };
+		026600FC1D7870F60022C79D /* STGameSummaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGameSummaryTableViewController.m; sourceTree = "<group>"; };
 		02ADCD0B1D7749610088AFFD /* Stitches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stitches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ADCD0F1D7749610088AFFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02ADCD111D7749610088AFFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 			children = (
 				02ADCD141D7749610088AFFD /* STScoreboardNavigationController.h */,
 				02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */,
+				026600FB1D7870F60022C79D /* STGameSummaryTableViewController.h */,
+				026600FC1D7870F60022C79D /* STGameSummaryTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				026600FA1D786F7F0022C79D /* STGameSummary.m in Sources */,
 				02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */,
 				02ADCD101D7749610088AFFD /* main.m in Sources */,
+				026600FD1D7870F60022C79D /* STGameSummaryTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
