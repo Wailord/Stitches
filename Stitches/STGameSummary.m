@@ -17,6 +17,7 @@
 @synthesize topOfInning;
 @synthesize inning;
 @synthesize status;
+@synthesize startTime;
 
 -(NSString *)description
 {

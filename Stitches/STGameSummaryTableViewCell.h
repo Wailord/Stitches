@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Constants.h"
+#import "STGameSummary.h"
 
 @interface STGameSummaryTableViewCell : UITableViewCell {
     @private
@@ -26,9 +27,6 @@
 @property NSString *awayName;
 @property NSNumber *inning;
 
-- (id)initWithInning:(NSNumber*)inning isTopOfInning:(BOOL)top
-        homeTeamName:(NSString*)homeT homeScore:(NSNumber*)homeS
-        awayTeamName:(NSString*)awayT awayScore:(NSNumber*)awayS
-              status:(STGameStatus)gameStatus;
+- (id)initWithGame:(STGameSummary *)game;
 
 @end

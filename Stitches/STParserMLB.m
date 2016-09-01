@@ -69,7 +69,29 @@
             _summary.awayTeam = [attributeDict objectForKey:@"away_name_abbrev"];
             
             _summary.inning = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"inning"] integerValue]];
-            _summary.topOfInning = [[[attributeDict objectForKey:@"top_of_inning"] stringValue] isEqualToString:@"Y"];
+            _summary.topOfInning = [[attributeDict objectForKey:@"top_of_inning"] isEqualToString:@"Y"];
+        
+            NSString *timeZone = [attributeDict objectForKey:@"time_zone"];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"YYYY/MM/dd hh:mm"];
+            if([timeZone isEqualToString:@"ET"]) {
+                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EDT"]];
+            }
+            else if([timeZone isEqualToString:@"PT"]) {
+                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
+            }
+            else if([timeZone isEqualToString:@"CT"]) {
+                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"CDT"]];
+            }
+            
+            NSDate *dte = [dateFormat dateFromString:[attributeDict objectForKey:@"time_date"]];
+            if([[attributeDict objectForKey:@"ampm"] isEqualToString:@"PM"]) {
+                // add twelve hours for PM
+                NSTimeInterval twelveHours = 12 * 60 * 60;
+                dte = [dte dateByAddingTimeInterval:twelveHours];
+            }
+            
+            _summary.startTime = dte;
         }
     }
 }

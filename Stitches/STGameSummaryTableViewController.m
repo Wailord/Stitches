@@ -63,13 +63,7 @@
     STGameSummary *game = self.gameSummaries[indexPath.row];
     
     if(cell == nil) {
-        cell = [[STGameSummaryTableViewCell alloc] initWithInning:game.inning
-                                                    isTopOfInning:game.topOfInning
-                                                     homeTeamName:game.homeTeam
-                                                        homeScore:game.homeScore
-                                                     awayTeamName:game.awayTeam
-                                                        awayScore:game.awayScore
-                                                           status:game.status];
+        cell = [[STGameSummaryTableViewCell alloc] initWithGame:(STGameSummary *)game];
     }
     else {
         cell.inning = game.inning;

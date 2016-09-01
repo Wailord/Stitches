@@ -17,6 +17,7 @@
     NSNumber *inning;
     BOOL topOfInning;
     STGameStatus status;
+    NSDate *startTime;
 }
 
 @property NSString *awayTeam;
@@ -28,5 +29,6 @@
 @property BOOL topOfInning;
 
 @property STGameStatus status;
+@property NSDate *startTime;
 
 @end

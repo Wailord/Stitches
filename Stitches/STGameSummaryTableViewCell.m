@@ -16,13 +16,7 @@
 @synthesize awayName;
 @synthesize inning;
 
-- (id)initWithInning:(NSNumber*)inn
-       isTopOfInning:(BOOL)top
-        homeTeamName:(NSString*)homeT
-           homeScore:(NSNumber*)homeS
-        awayTeamName:(NSString*)awayT
-           awayScore:(NSNumber*)awayS
-              status:(STGameStatus)gameStatus {
+- (id)initWithGame:(STGameSummary*)game{
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -35,13 +29,13 @@
     // name
     _awayNameLabel = [[UILabel alloc] init];
     _awayNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-    _awayNameLabel.text = awayT;
+    _awayNameLabel.text = [game awayTeam];
     [self.contentView addSubview:_awayNameLabel];
     
     // score
     _awayScoreLabel = [[UILabel alloc] init];
     _awayScoreLabel.translatesAutoresizingMaskIntoConstraints = false;
-    _awayScoreLabel.text = [NSString stringWithFormat:@"%@", awayS];
+    _awayScoreLabel.text = [NSString stringWithFormat:@"%@", [game awayScore]];
     [self.contentView addSubview:_awayScoreLabel];
     
     // HOME TEAM
@@ -53,30 +47,40 @@
     // name
     _homeNameLabel = [[UILabel alloc] init];
     _homeNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-    _homeNameLabel.text = homeT;
+    _homeNameLabel.text = [game homeTeam];
     [self.contentView addSubview:_homeNameLabel];
     
     // score
     _homeScoreLabel = [[UILabel alloc] init];
     _homeScoreLabel.translatesAutoresizingMaskIntoConstraints = false;
-    _homeScoreLabel.text = [NSString stringWithFormat:@"%@", homeS];
+    _homeScoreLabel.text = [NSString stringWithFormat:@"%@", [game homeScore]];
     [self.contentView addSubview:_homeScoreLabel];
     
     // GAME STATUS INFO
+    NSDateFormatter *formatter = nil;
     NSMutableString *statusText = [[NSMutableString alloc] initWithCapacity:6];
-    if(gameStatus == Preview) {
-        [statusText appendString:@"Pre-Game"];
-    }
-    else if(gameStatus == Final) {
+    switch([game status]) {
+        case Preview:
+            formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"h:mm a"];
+            [statusText appendString:[formatter stringFromDate:[game startTime]]];
+            break;
+        case Final:
         [statusText appendString:@"Final"];
-    }
-    else if(top) {
+            break;
+        case InProgress:
+            if([game topOfInning]) {
         [statusText appendString:@"Top "];
-        [statusText appendString:[NSString stringWithFormat:@"%@", inn]];
-    }
-    else {
+        [statusText appendString:[NSString stringWithFormat:@"%@", [game inning]]];
+            }
+            else {
         [statusText appendString:@"Bot "];
-        [statusText appendString:[NSString stringWithFormat:@"%@", inn]];
+        [statusText appendString:[NSString stringWithFormat:@"%@", [game inning]]];
+                break;
+            }
+        case NoStatus:
+            [statusText appendString:@"Bugged!"];
+            break;
     }
     _statusLabel = [[UILabel alloc] init];
     _statusLabel.text = statusText;
