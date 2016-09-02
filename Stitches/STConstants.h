@@ -16,6 +16,8 @@ typedef enum STGameStatus : NSUInteger {
     Final
 } STGameStatus;
 
-@interface Constants : NSObject
+@interface STConstants : NSObject
+
++(NSDictionary*)teamDict;
 
 @end

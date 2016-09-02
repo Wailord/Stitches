@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Constants.h"
+#import "STConstants.h"
 #import "STGameSummary.h"
 
 @interface STGameSummaryTableViewCell : UITableViewCell {

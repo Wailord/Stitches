@@ -18,12 +18,12 @@
     // logo
     _awayLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"baseball.png"]];
     _awayLogo.translatesAutoresizingMaskIntoConstraints = false;
-    //[self.contentView addSubview:_awayLogo];
+    [self.contentView addSubview:_awayLogo];
     
     // name
     _awayNameLabel = [[UILabel alloc] init];
     _awayNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-    _awayNameLabel.text = [game awayTeam];
+    _awayNameLabel.text = [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", [game awayTeamID]]];
     [self.contentView addSubview:_awayNameLabel];
     
     // score
@@ -36,12 +36,12 @@
     // logo
     _homeLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"standings.png"]];
     _homeLogo.translatesAutoresizingMaskIntoConstraints = false;
-    //[self.contentView addSubview:_homeLogo];
+    [self.contentView addSubview:_homeLogo];
     
     // name
     _homeNameLabel = [[UILabel alloc] init];
     _homeNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-    _homeNameLabel.text = [game homeTeam];
+    _homeNameLabel.text = [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", [game homeTeamID]]];
     [self.contentView addSubview:_homeNameLabel];
     
     // score
@@ -86,22 +86,18 @@
                                                          _awayLogo,_awayNameLabel,_awayScoreLabel,
                                                          _statusLabel);
     
-    // center the status label in the tableviewcell
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:_statusLabel
-                                     attribute:NSLayoutAttributeCenterY
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self.contentView
-                                     attribute:NSLayoutAttributeCenterY
-                                    multiplier:1
-                                      constant:0]];
-    
+    // team logo should be aligned to the left of the tableviewcell
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayLogo(22)]"
+                                                                 options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
+                                                                 metrics:nil
+                                                                   views:views]];
     // team names should be aligned to the left of the tableviewcell
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayNameLabel]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-44-[_awayNameLabel]"
                                                                  options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                  metrics:nil
                                                                    views:views]];
     // team scores should be aligned off of the left of the tableviewcell
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-100-[_awayScoreLabel]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-140-[_awayScoreLabel]"
                                                                  options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                  metrics:nil
                                                                    views:views]];
@@ -110,16 +106,29 @@
                                                                  options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                  metrics:nil
                                                                    views:views]];
+    // team logos should be stacked
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayLogo(22)][_homeLogo(22)]"
+                                                                 options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
+                                                                 metrics:nil
+                                                                   views:views]];
     // team names should be stacked
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_homeNameLabel][_awayNameLabel]|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_homeNameLabel][_awayNameLabel]"
                                                                  options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                  metrics:nil
                                                                    views:views]];
     // team scores should be stacked
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayScoreLabel][_homeScoreLabel]|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayScoreLabel][_homeScoreLabel]"
                                                                  options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                  metrics:nil
                                                                    views:views]];
+    // center the status label in the tableviewcell
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_statusLabel
+                                                     attribute:NSLayoutAttributeCenterY
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self.contentView
+                                                     attribute:NSLayoutAttributeCenterY
+                                                    multiplier:1
+                                                      constant:0]];
     return self;
 }
 

@@ -9,7 +9,6 @@
 #import "STGameSummaryTableViewController.h"
 #import "STGameSummary.h"
 #import "STGameSummaryTableViewCell.h"
-
 @interface STGameSummaryTableViewController ()
 
 @end
@@ -67,9 +66,10 @@
     }
     else {
         cell.inning = game.inning;
-        cell.homeName = game.homeTeam;
+        cell.homeName = [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", [game homeTeamID]]];
+        NSLog(@"%@", [game homeTeamID]);
         cell.homeScore = game.homeScore;
-        cell.awayName = game.awayTeam;
+        cell.awayName = [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", [game awayTeamID]]];
         cell.awayScore = game.awayScore;
     }
         

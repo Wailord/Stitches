@@ -7,15 +7,16 @@
 //
 
 #import "STGameSummary.h"
+#import "STConstants.h"
 
 @implementation STGameSummary
 
 -(NSString *)description
 {
     return [NSString stringWithFormat:@"%@ (%@) @ %@ (%@)",
-            self.awayTeam,
+            [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", self.awayTeamID]],
             self.awayScore,
-            self.homeTeam,
+            [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", self.homeTeamID]],
             self.homeScore];
 }
 
