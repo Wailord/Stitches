@@ -12,7 +12,8 @@
 
 - (id)initWithGame:(STGameSummary*)game{
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    self.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     // AWAY TEAM
     // logo

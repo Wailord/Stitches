@@ -39,7 +39,7 @@
     NSInteger month = [gregorian component:NSCalendarUnitMonth fromDate:NSDate.date];
     NSInteger day = [gregorian component:NSCalendarUnitDay fromDate:NSDate.date];
     
-    [_parser parseGameSummariesForYear:year andMonth:month-1 andDay:day];
+    [_parser parseGameSummariesForYear:year andMonth:month andDay:day];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +54,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _gameSummaries.count;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Tapped on %@", _gameSummaries[indexPath.row]);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
