@@ -111,7 +111,6 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     if([elementName isEqualToString:@"game"] && _summary != nil) {
         [_summaryList addObject:_summary];
-        NSLog(@"Added a game: %@",_summary);
         if(delegate) {
             [delegate parsedGameSummary:_summary];
         }

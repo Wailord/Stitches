@@ -59,6 +59,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Tapped on %@", _gameSummaries[indexPath.row]);
+    UIViewController *gameInfo = [[UIViewController alloc] init];
+    gameInfo.view.backgroundColor = [UIColor whiteColor];
+    UILabel *basicInfo = [[UILabel alloc] initWithFrame:CGRectMake(10,64,300,20)];
+    basicInfo.text = [_gameSummaries[indexPath.row] description];
+    [gameInfo.view addSubview:basicInfo];
+    [self.navigationController pushViewController:gameInfo animated:true];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
