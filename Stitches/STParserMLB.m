@@ -34,7 +34,7 @@
     // set up and start up the XML parser
     _parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     [_parser setDelegate:self];
-    [_parser parse];
+    [_parser performSelectorInBackground:@selector(parse) withObject:nil];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
