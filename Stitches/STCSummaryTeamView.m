@@ -6,10 +6,10 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STCTeamScoreView.h"
+#import "STCSummaryTeamView.h"
 #import "STCGlobals.h"
 
-@implementation STCTeamScoreView
+@implementation STCSummaryTeamView
 
 -(instancetype)initWithTeamID:(NSString *)teamID andScore:(NSNumber *)score {
     self = [super init];

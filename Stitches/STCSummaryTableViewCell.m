@@ -7,11 +7,11 @@
 //
 
 #import "STCSummaryTableViewCell.h"
-#import "STCTeamScoreView.h"
+#import "STCSummaryTeamView.h"
 
 @implementation STCSummaryTableViewCell {
-    STCTeamScoreView *_awayTeamView;
-    STCTeamScoreView *_homeTeamView;
+    STCSummaryTeamView *_awayTeamView;
+    STCSummaryTeamView *_homeTeamView;
     UILabel *_statusLabel;
 }
 
@@ -27,11 +27,11 @@
             self.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         
-        _awayTeamView = [[STCTeamScoreView alloc] initWithTeamID:[game awayTeamID] andScore:[game awayScore]];
+        _awayTeamView = [[STCSummaryTeamView alloc] initWithTeamID:[game awayTeamID] andScore:[game awayScore]];
         _awayTeamView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_awayTeamView];
         
-        _homeTeamView = [[STCTeamScoreView alloc] initWithTeamID:[game homeTeamID] andScore:[game homeScore]];
+        _homeTeamView = [[STCSummaryTeamView alloc] initWithTeamID:[game homeTeamID] andScore:[game homeScore]];
         _homeTeamView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_homeTeamView];
         
