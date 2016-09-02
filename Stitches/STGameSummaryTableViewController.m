@@ -39,7 +39,7 @@
     NSInteger month = [gregorian component:NSCalendarUnitMonth fromDate:NSDate.date];
     NSInteger day = [gregorian component:NSCalendarUnitDay fromDate:NSDate.date];
     
-    [_parser parseGameSummariesForYear:year andMonth:month andDay:day];
+    [_parser parseGameSummariesForYear:year andMonth:month-1 andDay:day];
 }
 
 - (void)didReceiveMemoryWarning {

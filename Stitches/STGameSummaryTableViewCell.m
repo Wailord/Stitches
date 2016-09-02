@@ -112,7 +112,7 @@
                                                                  metrics:nil
                                                                    views:views]];
     // team names should be stacked
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_homeNameLabel][_awayNameLabel]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayNameLabel][_homeNameLabel]"
                                                                  options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                  metrics:nil
                                                                    views:views]];
