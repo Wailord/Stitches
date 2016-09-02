@@ -8,11 +8,9 @@
 
 #import "STScoreboardNavigationController.h"
 
-@interface STScoreboardNavigationController ()
-
-@end
-
-@implementation STScoreboardNavigationController
+@implementation STScoreboardNavigationController {
+    STGameSummaryTableViewController *_gameSummaryTableViewController;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,9 +23,9 @@
                     animated:false];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
 
 @end

@@ -11,11 +11,9 @@
 #import "STGameSummaryTableViewCell.h"
 #import "STGamePreviewViewController.h"
 
-@interface STGameSummaryTableViewController ()
-
-@end
-
-@implementation STGameSummaryTableViewController
+@implementation STGameSummaryTableViewController {
+    STParserMLB *_parser;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,6 +24,7 @@
     [_parser setSummaryDelegate:self];
     [self parseGames];
     
+    self.tableView.rowHeight = 84;
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
 }

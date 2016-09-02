@@ -8,22 +8,12 @@
 
 #import "STParserMLB.h"
 
-@implementation STParserMLB
-
-@synthesize summaryDelegate, previewDelegate;
-
-- (id)summaryDelegate {
-    return summaryDelegate;
-}
-- (void)setSummaryDelegate:(id)newSummaryDelegate {
-    summaryDelegate = newSummaryDelegate;
-}
-
-- (id)previewDelegate {
-    return previewDelegate;
-}
-- (void)setPreviewDelegate:(id)newPreviewDelegate {
-    previewDelegate = newPreviewDelegate;
+@implementation STParserMLB {
+    NSXMLParser *_summaryParser;
+    NSXMLParser *_previewParser;
+    NSMutableArray *_summaryList;
+    STGameSummary *_summary;
+    STGamePreview *_preview;
 }
 
 -(void)parsePreviewWithGameID:(NSString *)gameID {
@@ -80,7 +70,7 @@
         {
             // check to see if the game has a status that is currently supported
             bool validGame = false;
-            STGameStatus status = NoStatus;
+            enum STGameStatus status = NoStatus;
             if([[attributeDict objectForKey:@"status"] isEqualToString:@"In Progress"]) {
                 status = InProgress;
                 validGame = true;
@@ -167,21 +157,21 @@
     if(parser == _summaryParser) {
         if([elementName isEqualToString:@"game"] && _summary != nil) {
             [_summaryList addObject:_summary];
-            if(summaryDelegate) {
-                [summaryDelegate parsedGameSummary:_summary];
+            if(_summaryDelegate) {
+                [_summaryDelegate parsedGameSummary:_summary];
             }
             _summary = nil;
         }
         else if([elementName isEqualToString:@"games"]) {
-            if(summaryDelegate) {
-                [summaryDelegate parsedAllGameSummaries];
+            if(_summaryDelegate) {
+                [_summaryDelegate parsedAllGameSummaries];
             }
         }
     }
     else if(parser == _previewParser) {
         if([elementName isEqualToString:@"game"] && _preview != nil) {
-            if(previewDelegate) {
-                [previewDelegate parsedGamePreview:_preview];
+            if(_previewDelegate) {
+                [_previewDelegate parsedGamePreview:_preview];
             }
             _preview = nil;
         }

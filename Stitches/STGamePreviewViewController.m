@@ -9,41 +9,37 @@
 #import "STGamePreviewViewController.h"
 #import "STParserMLB.h"
 
-@interface STGamePreviewViewController () {
-@private
+@implementation STGamePreviewViewController {
     STParserMLB *_previewParser;
     STGamePreview *_game;
     UILabel *_awayProbablePitcher;
     UILabel *_homeProbablePitcher;
+    NSString *_gameID;
 }
 
-@end
-
-@implementation STGamePreviewViewController
-
-- (id)initWithGameID:(NSString*)gameID {
+- (instancetype)initWithGameID:(NSString*)gameID {
     self = [super init];
-    
-    // download game ID
-    _game = [[STGamePreview alloc] init];
-    
-    _previewParser = [[STParserMLB alloc] init];
-    [_previewParser setPreviewDelegate:self];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:TRUE];
-    [_previewParser parsePreviewWithGameID:gameID];
-    
+    if (self) {
+        _gameID = gameID;
+    }
     return self;
 }
 
 - (void)parsedGamePreview:(STGamePreview *)preview {
     NSLog(@"Parsed a preview: %@", preview);
-    _homeProbablePitcher.text = preview.homeProbablePitcher;
-    _awayProbablePitcher.text = preview.awayProbablePitcher;
+    _homeProbablePitcher.text = [preview homeProbablePitcher];
+    _awayProbablePitcher.text = [preview awayProbablePitcher];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:FALSE];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _game = [[STGamePreview alloc] init];
+    
+    _previewParser = [[STParserMLB alloc] init];
+    [_previewParser setPreviewDelegate:self];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:TRUE];
     
     // ignore navbar
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
@@ -63,7 +59,6 @@
     [self.view addSubview:homePP];
     
     _homeProbablePitcher = [[UILabel alloc] init];
-    _homeProbablePitcher.text = @"test";
     _homeProbablePitcher.translatesAutoresizingMaskIntoConstraints = false;
     [self.view addSubview:_homeProbablePitcher];
     
@@ -77,6 +72,9 @@
                                                                       options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                       metrics:nil
                                                                         views:views]];
+        
+    [_previewParser parsePreviewWithGameID:_gameID];
+
 }
 
 - (void)didReceiveMemoryWarning {

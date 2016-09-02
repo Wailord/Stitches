@@ -10,18 +10,9 @@
 #import "STConstants.h"
 #import "STGameSummary.h"
 
-@interface STGameSummaryTableViewCell : UITableViewCell {
-    @private
-    UIImageView *_awayLogo;
-    UIImageView *_homeLogo;
-    UILabel *_homeScoreLabel;
-    UILabel *_homeNameLabel;
-    UILabel *_awayScoreLabel;
-    UILabel *_awayNameLabel;
-    UILabel *_statusLabel;
-}
+@interface STGameSummaryTableViewCell : UITableViewCell;
 
-@property NSNumber *homeScore;
+@property (nonatomic) NSNumber *homeScore;
 @property NSString *homeName;
 @property NSNumber *awayScore;
 @property NSString *awayName;

@@ -22,23 +22,12 @@
 @end
 
 @interface STParserMLB : NSObject <NSXMLParserDelegate>
-{
-    NSXMLParser *_summaryParser;
-    NSXMLParser *_previewParser;
-    NSMutableArray *_summaryList;
-    STGameSummary *_summary;
-    STGamePreview *_preview;
-}
 
-@property id summaryDelegate;
-@property id previewDelegate;
+@property (nonatomic, weak) id<STParserMLBGameSummaryDelegate> summaryDelegate;
+@property (nonatomic, weak) id<STParserMLBGamePreviewDelegate> previewDelegate;
 
-- (id)summaryDelegate;
-- (void)setSummaryDelegate:(id)newSummaryDelegate;
-- (id)previewDelegate;
-- (void)setPreviewDelegate:(id)newPreviewDelegate;
 - (void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day;
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict;
--(void)parsePreviewWithGameID:(NSString *)gameID;
+- (void)parsePreviewWithGameID:(NSString *)gameID;
 
 @end

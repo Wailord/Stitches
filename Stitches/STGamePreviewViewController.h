@@ -11,6 +11,6 @@
 
 @interface STGamePreviewViewController : UIViewController <STParserMLBGamePreviewDelegate>
 
-- (id)initWithGameID:(NSString*)gameID;
+- (instancetype)initWithGameID:(NSString*)gameID;
 
 @end

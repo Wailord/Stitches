@@ -9,11 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "STParserMLB.h"
 
-@interface STGameSummaryTableViewController : UITableViewController <UITableViewDelegate,UITableViewDataSource,STParserMLBGameSummaryDelegate>
-{
-    @private
-    STParserMLB *_parser;
-}
+@interface STGameSummaryTableViewController : UITableViewController <STParserMLBGameSummaryDelegate>
 
 @property NSMutableArray *gameSummaries;
 

@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 // currently supported game statuses
-typedef enum STGameStatus : NSUInteger {
+typedef NS_ENUM(NSInteger, STGameStatus) {
     NoStatus,
     Preview,
     InProgress,
     Final
-} STGameStatus;
+};
 
 @interface STConstants : NSObject
 

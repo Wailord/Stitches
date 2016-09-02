@@ -20,7 +20,7 @@
 @property NSNumber *inning;
 @property BOOL topOfInning;
 
-@property STGameStatus status;
+@property enum STGameStatus status;
 @property NSDate *startTime;
 
 @end
