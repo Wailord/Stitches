@@ -8,15 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "STGameSummary.h"
+#import "STGamePreview.h"
 
 @protocol STParserMLBGameSummaryDelegate
 @required
 -(void)parsedGameSummary:(STGameSummary *)summary;
+-(void)parsedAllGameSummaries;
 @end
 
 @protocol STParserMLBGamePreviewDelegate
 @required
--(void)parsedGamePreview:(STGameSummary *)preview;
+-(void)parsedGamePreview:(STGamePreview *)preview;
 @end
 
 @interface STParserMLB : NSObject <NSXMLParserDelegate>
@@ -25,7 +27,7 @@
     NSXMLParser *_previewParser;
     NSMutableArray *_summaryList;
     STGameSummary *_summary;
-    STGameSummary *_preview;
+    STGamePreview *_preview;
 }
 
 @property id summaryDelegate;

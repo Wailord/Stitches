@@ -35,12 +35,17 @@
     [self.tableView reloadData];
 }
 
+- (void)parsedAllGameSummaries {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:FALSE];
+}
+
 - (void)parseGames {
     NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSInteger year = [gregorian component:NSCalendarUnitYear fromDate:NSDate.date];
     NSInteger month = [gregorian component:NSCalendarUnitMonth fromDate:NSDate.date];
     NSInteger day = [gregorian component:NSCalendarUnitDay fromDate:NSDate.date];
     
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:TRUE];
     [_parser parseGameSummariesForYear:year andMonth:month andDay:day];
 }
 
@@ -77,7 +82,6 @@
     else {
         cell.inning = game.inning;
         cell.homeName = [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", [game homeTeamID]]];
-        NSLog(@"%@", [game homeTeamID]);
         cell.homeScore = game.homeScore;
         cell.awayName = [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", [game awayTeamID]]];
         cell.awayScore = game.awayScore;

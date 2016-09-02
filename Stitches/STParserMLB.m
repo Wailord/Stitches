@@ -145,8 +145,17 @@
     }
     else if(parser == _previewParser) {
         if([elementName isEqualToString:@"game"]) {
-            _preview = [[STGameSummary alloc] init];
-            
+            _preview = [[STGamePreview alloc] init];
+        }
+        else if([elementName isEqualToString:@"home_probable_pitcher"]) {
+            NSString *firstName = [attributeDict objectForKey:@"first_name"];
+            NSString *lastName = [attributeDict objectForKey:@"last_name"];
+            _preview.homeProbablePitcher = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+        }
+        else if([elementName isEqualToString:@"away_probable_pitcher"]) {
+            NSString *firstName = [attributeDict objectForKey:@"first_name"];
+            NSString *lastName = [attributeDict objectForKey:@"last_name"];
+            _preview.awayProbablePitcher = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         }
     }
     else {
@@ -162,6 +171,19 @@
                 [summaryDelegate parsedGameSummary:_summary];
             }
             _summary = nil;
+        }
+        else if([elementName isEqualToString:@"games"]) {
+            if(summaryDelegate) {
+                [summaryDelegate parsedAllGameSummaries];
+            }
+        }
+    }
+    else if(parser == _previewParser) {
+        if([elementName isEqualToString:@"game"] && _preview != nil) {
+            if(previewDelegate) {
+                [previewDelegate parsedGamePreview:_preview];
+            }
+            _preview = nil;
         }
     }
 }

@@ -12,7 +12,9 @@
 @interface STGamePreviewViewController () {
 @private
     STParserMLB *_previewParser;
-    STGameSummary *_game;
+    STGamePreview *_game;
+    UILabel *_awayProbablePitcher;
+    UILabel *_homeProbablePitcher;
 }
 
 @end
@@ -23,22 +25,58 @@
     self = [super init];
     
     // download game ID
-    _game = [[STGameSummary alloc] init];
+    _game = [[STGamePreview alloc] init];
     
     _previewParser = [[STParserMLB alloc] init];
     [_previewParser setPreviewDelegate:self];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:TRUE];
     [_previewParser parsePreviewWithGameID:gameID];
     
     return self;
 }
 
-- (void)parsedGamePreview:(STGameSummary *)preview {
-    NSLog(@"Parsed a preview");
+- (void)parsedGamePreview:(STGamePreview *)preview {
+    NSLog(@"Parsed a preview: %@", preview);
+    _homeProbablePitcher.text = preview.homeProbablePitcher;
+    _awayProbablePitcher.text = preview.awayProbablePitcher;
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:FALSE];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // ignore navbar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *awayPP = [[UILabel alloc] init];
+    awayPP.text = @"Away Probable Pitcher";
+    awayPP.translatesAutoresizingMaskIntoConstraints = false;
+    [self.view addSubview:awayPP];
+    
+    UILabel *homePP = [[UILabel alloc] init];
+    homePP.text = @"Home Probable Pitcher";
+    homePP.translatesAutoresizingMaskIntoConstraints = false;
+    [self.view addSubview:homePP];
+    
+    _homeProbablePitcher = [[UILabel alloc] init];
+    _homeProbablePitcher.text = @"test";
+    _homeProbablePitcher.translatesAutoresizingMaskIntoConstraints = false;
+    [self.view addSubview:_homeProbablePitcher];
+    
+    _awayProbablePitcher = [[UILabel alloc] init];
+    _awayProbablePitcher.translatesAutoresizingMaskIntoConstraints = false;
+    [self.view addSubview:_awayProbablePitcher];
+    
+    NSDictionary *views = NSDictionaryOfVariableBindings(awayPP, homePP, _awayProbablePitcher, _homeProbablePitcher);
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[awayPP][_awayProbablePitcher][homePP][_homeProbablePitcher]"
+                                                                      options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
+                                                                      metrics:nil
+                                                                        views:views]];
 }
 
 - (void)didReceiveMemoryWarning {
