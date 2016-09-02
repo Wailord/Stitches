@@ -16,7 +16,7 @@
     
     // AWAY TEAM
     // logo
-    _awayLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"baseball.png"]];
+    _awayLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [game awayTeamID]]]];
     _awayLogo.translatesAutoresizingMaskIntoConstraints = false;
     [self.contentView addSubview:_awayLogo];
     
@@ -34,7 +34,7 @@
     
     // HOME TEAM
     // logo
-    _homeLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"standings.png"]];
+    _homeLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [game homeTeamID]]]];
     _homeLogo.translatesAutoresizingMaskIntoConstraints = false;
     [self.contentView addSubview:_homeLogo];
     
@@ -87,7 +87,7 @@
                                                          _statusLabel);
     
     // team logo should be aligned to the left of the tableviewcell
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayLogo(22)]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayLogo(20)]"
                                                                  options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                  metrics:nil
                                                                    views:views]];
@@ -107,7 +107,7 @@
                                                                  metrics:nil
                                                                    views:views]];
     // team logos should be stacked
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayLogo(22)][_homeLogo(22)]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayLogo(20)][_homeLogo(20)]"
                                                                  options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                  metrics:nil
                                                                    views:views]];
