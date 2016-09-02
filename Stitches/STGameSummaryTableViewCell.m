@@ -12,9 +12,15 @@
 
 - (id)initWithGame:(STGameSummary*)game{
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    self.selectionStyle = UITableViewCellSelectionStyleBlue;
     
+    if([game status] == Preview) {
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        self.selectionStyle = UITableViewCellSelectionStyleBlue;
+    }
+    else {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+        
     // AWAY TEAM
     // logo
     _awayLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [game awayTeamID]]]];

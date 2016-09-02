@@ -11,6 +11,7 @@
 
 @interface STGameSummary : NSObject
 
+@property NSString *gameID;
 @property NSNumber *awayTeamID;
 @property NSNumber *awayScore;
 @property NSNumber *homeTeamID;

@@ -10,13 +10,46 @@
 
 @implementation STParserMLB
 
-@synthesize delegate;
+@synthesize summaryDelegate, previewDelegate;
 
-- (id)delegate {
-    return delegate;
+- (id)summaryDelegate {
+    return summaryDelegate;
 }
-- (void)setDelegate:(id)newDelegate {
-    delegate = newDelegate;
+- (void)setSummaryDelegate:(id)newSummaryDelegate {
+    summaryDelegate = newSummaryDelegate;
+}
+
+- (id)previewDelegate {
+    return previewDelegate;
+}
+- (void)setPreviewDelegate:(id)newPreviewDelegate {
+    previewDelegate = newPreviewDelegate;
+}
+
+-(void)parsePreviewWithGameID:(NSString *)gameID {
+    NSArray *components = [gameID componentsSeparatedByString:@"/"];
+    NSString *year = components[0];
+    NSString *month = components[1];
+    NSString *date = components[2];
+    NSMutableString *gID = [[NSMutableString alloc] initWithString:components[3]];
+    [gID replaceOccurrencesOfString:@"-"
+                         withString:@"_"
+                            options:NSLiteralSearch
+                              range:NSMakeRange(0,[components[3] length])];
+    NSString *xmlPath = [NSString stringWithFormat:@"http://gd2.mlb.com/components/game/mlb/year_%@/month_%@/day_%@/gid_%@_%@_%@_%@/linescore.xml",
+                         year,
+                         month,
+                         date,
+                         year,
+                         month,
+                         date,
+                         gID];
+    NSURL *url = [[NSURL alloc] initWithString:xmlPath];
+    
+    // set up and start up the XML parser
+    _previewParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    [_previewParser setDelegate:self];
+    [_previewParser parse];
 }
 
 -(void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day{
@@ -30,91 +63,106 @@
                          monthS,
                          dateS];
     NSURL *url = [[NSURL alloc] initWithString:xmlPath];
-
+    
     // set up and start up the XML parser
-    _parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    [_parser setDelegate:self];
-    [_parser parse];
+    _summaryParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    [_summaryParser setDelegate:self];
+    [_summaryParser parse];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
-    
-    // once we find some games, initialize our mutable array of games
-    if([elementName isEqualToString:@"games"]) {
-        _summaryList = [[NSMutableArray alloc] init];
+    if(parser == _summaryParser) {
+        // once we find some games, initialize our mutable array of games
+        if([elementName isEqualToString:@"games"]) {
+            _summaryList = [[NSMutableArray alloc] init];
+        }
+        else if([elementName isEqualToString:@"game"])
+        {
+            // check to see if the game has a status that is currently supported
+            bool validGame = false;
+            STGameStatus status = NoStatus;
+            if([[attributeDict objectForKey:@"status"] isEqualToString:@"In Progress"]) {
+                status = InProgress;
+                validGame = true;
+            }
+            else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Preview"]) {
+                status = Preview;
+                validGame = true;
+            }
+            else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Final"]) {
+                status = Final;
+                validGame = true;
+            }
+            
+            // so long as we support the game status, we can init and start building a new game summary
+            if(validGame) {
+                _summary = [[STGameSummary alloc] init];
+                _summary.status = status;
+                
+                // get the game id
+                _summary.gameID = [attributeDict objectForKey:@"id"];
+                
+                // get the current score
+                _summary.awayScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];
+                _summary.homeScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_runs"] integerValue]];
+                
+                // get the teams playing
+                _summary.homeTeamID = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_id"] integerValue]];
+                _summary.awayTeamID = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_id"] integerValue]];
+                
+                // get the inning info
+                _summary.inning = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"inning"] integerValue]];
+                _summary.topOfInning = [[attributeDict objectForKey:@"top_of_inning"] isEqualToString:@"Y"];
+                
+                // start setting up time info; we need to check both the time zone and am/pm
+                NSString *timeZone = [attributeDict objectForKey:@"time_zone"];
+                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+                [dateFormat setDateFormat:@"YYYY/MM/dd hh:mm"];
+                if([timeZone isEqualToString:@"ET"]) {
+                    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EDT"]];
+                }
+                else if([timeZone isEqualToString:@"PT"]) {
+                    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
+                }
+                else if([timeZone isEqualToString:@"CT"]) {
+                    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"CDT"]];
+                }
+                
+                // with the time zone set up, we can build the date
+                NSDate *dte = [dateFormat dateFromString:[attributeDict objectForKey:@"time_date"]];
+                
+                // if MLB says the time was in PM, we need to add twelve hours to the time
+                if([[attributeDict objectForKey:@"ampm"] isEqualToString:@"PM"]) {
+                    // add twelve hours for PM
+                    NSTimeInterval twelveHours = 12 * 60 * 60;
+                    dte = [dte dateByAddingTimeInterval:twelveHours];
+                }
+                
+                // assign the start time after building the date
+                _summary.startTime = dte;
+            }
+        }
     }
-    else if([elementName isEqualToString:@"game"])
-    {
-        // check to see if the game has a status that is currently supported
-        bool validGame = false;
-        STGameStatus status = NoStatus;
-        if([[attributeDict objectForKey:@"status"] isEqualToString:@"In Progress"]) {
-            status = InProgress;
-            validGame = true;
+    else if(parser == _previewParser) {
+        if([elementName isEqualToString:@"game"]) {
+            _preview = [[STGameSummary alloc] init];
+            
         }
-        else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Preview"]) {
-            status = Preview;
-            validGame = true;
-        }
-        else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Final"]) {
-            status = Final;
-            validGame = true;
-        }
-        
-        // so long as we support the game status, we can init and start building a new game summary
-        if(validGame) {
-            _summary = [[STGameSummary alloc] init];
-            _summary.status = status;
-            
-            // get the current score
-            _summary.awayScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];
-            _summary.homeScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_runs"] integerValue]];
-            
-            // get the teams playing
-            _summary.homeTeamID = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_id"] integerValue]];
-            _summary.awayTeamID = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_id"] integerValue]];
-            
-            // get the inning info
-            _summary.inning = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"inning"] integerValue]];
-            _summary.topOfInning = [[attributeDict objectForKey:@"top_of_inning"] isEqualToString:@"Y"];
-        
-            // start setting up time info; we need to check both the time zone and am/pm
-            NSString *timeZone = [attributeDict objectForKey:@"time_zone"];
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"YYYY/MM/dd hh:mm"];
-            if([timeZone isEqualToString:@"ET"]) {
-                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EDT"]];
-            }
-            else if([timeZone isEqualToString:@"PT"]) {
-                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
-            }
-            else if([timeZone isEqualToString:@"CT"]) {
-                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"CDT"]];
-            }
-            
-            // with the time zone set up, we can build the date
-            NSDate *dte = [dateFormat dateFromString:[attributeDict objectForKey:@"time_date"]];
-            
-            // if MLB says the time was in PM, we need to add twelve hours to the time
-            if([[attributeDict objectForKey:@"ampm"] isEqualToString:@"PM"]) {
-                // add twelve hours for PM
-                NSTimeInterval twelveHours = 12 * 60 * 60;
-                dte = [dte dateByAddingTimeInterval:twelveHours];
-            }
-            
-            // assign the start time after building the date
-            _summary.startTime = dte;
-        }
+    }
+    else {
+        NSLog(@"ERROR: An unidentified parser is parsing");
     }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    if([elementName isEqualToString:@"game"] && _summary != nil) {
-        [_summaryList addObject:_summary];
-        if(delegate) {
-            [delegate parsedGameSummary:_summary];
+    if(parser == _summaryParser) {
+        if([elementName isEqualToString:@"game"] && _summary != nil) {
+            [_summaryList addObject:_summary];
+            if(summaryDelegate) {
+                [summaryDelegate parsedGameSummary:_summary];
+            }
+            _summary = nil;
         }
-        _summary = nil;
     }
 }
 @end

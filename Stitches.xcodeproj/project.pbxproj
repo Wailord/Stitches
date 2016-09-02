@@ -44,6 +44,7 @@
 		02838E741D79D8330092A87F /* 158.png in Resources */ = {isa = PBXBuildFile; fileRef = 02838E541D79D8330092A87F /* 158.png */; };
 		02838E751D79D8330092A87F /* 159.png in Resources */ = {isa = PBXBuildFile; fileRef = 02838E551D79D8330092A87F /* 159.png */; };
 		02838E761D79D8330092A87F /* 160.png in Resources */ = {isa = PBXBuildFile; fileRef = 02838E561D79D8330092A87F /* 160.png */; };
+		02838E791D79ED620092A87F /* STGamePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E781D79ED620092A87F /* STGamePreviewViewController.m */; };
 		02ADCD101D7749610088AFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD0F1D7749610088AFFD /* main.m */; };
 		02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD121D7749610088AFFD /* AppDelegate.m */; };
 		02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */; };
@@ -118,6 +119,8 @@
 		02838E541D79D8330092A87F /* 158.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 158.png; sourceTree = "<group>"; };
 		02838E551D79D8330092A87F /* 159.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 159.png; sourceTree = "<group>"; };
 		02838E561D79D8330092A87F /* 160.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 160.png; sourceTree = "<group>"; };
+		02838E771D79ED620092A87F /* STGamePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGamePreviewViewController.h; sourceTree = "<group>"; };
+		02838E781D79ED620092A87F /* STGamePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGamePreviewViewController.m; sourceTree = "<group>"; };
 		02ADCD0B1D7749610088AFFD /* Stitches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stitches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ADCD0F1D7749610088AFFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02ADCD111D7749610088AFFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */,
 				026600FB1D7870F60022C79D /* STGameSummaryTableViewController.h */,
 				026600FC1D7870F60022C79D /* STGameSummaryTableViewController.m */,
+				02838E771D79ED620092A87F /* STGamePreviewViewController.h */,
+				02838E781D79ED620092A87F /* STGamePreviewViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02838E791D79ED620092A87F /* STGamePreviewViewController.m in Sources */,
 				02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */,
 				026600FA1D786F7F0022C79D /* STGameSummary.m in Sources */,
 				0210E7761D78A10B0078DEB2 /* STParserMLB.m in Sources */,

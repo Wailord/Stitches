@@ -9,27 +9,34 @@
 #import <Foundation/Foundation.h>
 #import "STGameSummary.h"
 
-@protocol STParserMLBDelegate
-@optional
-
-#pragma Home Delegate
-
+@protocol STParserMLBGameSummaryDelegate
+@required
 -(void)parsedGameSummary:(STGameSummary *)summary;
+@end
 
+@protocol STParserMLBGamePreviewDelegate
+@required
+-(void)parsedGamePreview:(STGameSummary *)preview;
 @end
 
 @interface STParserMLB : NSObject <NSXMLParserDelegate>
 {
-    NSXMLParser *_parser;
+    NSXMLParser *_summaryParser;
+    NSXMLParser *_previewParser;
     NSMutableArray *_summaryList;
     STGameSummary *_summary;
+    STGameSummary *_preview;
 }
 
-@property id delegate;
+@property id summaryDelegate;
+@property id previewDelegate;
 
-- (id)delegate;
-- (void)setDelegate:(id)newDelegate;
+- (id)summaryDelegate;
+- (void)setSummaryDelegate:(id)newSummaryDelegate;
+- (id)previewDelegate;
+- (void)setPreviewDelegate:(id)newPreviewDelegate;
 - (void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day;
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict;
+-(void)parsePreviewWithGameID:(NSString *)gameID;
 
 @end
