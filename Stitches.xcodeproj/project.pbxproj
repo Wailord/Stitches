@@ -55,7 +55,7 @@
 		02ADCD291D7749610088AFFD /* StitchesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD281D7749610088AFFD /* StitchesTests.m */; };
 		02ADCD341D7749610088AFFD /* StitchesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD331D7749610088AFFD /* StitchesUITests.m */; };
 		02ADCD431D774F360088AFFD /* baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD421D774F360088AFFD /* baseball.png */; };
-		02ADCD451D774F510088AFFD /* statistics.png in Resources */ =e {isa = PBXBuildFile; fileRef = 02ADCD441D774F510088AFFD /* statistics.png */; };
+		02ADCD451D774F510088AFFD /* statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD441D774F510088AFFD /* statistics.png */; };
 		02ADCD471D774F890088AFFD /* standings.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD461D774F890088AFFD /* standings.png */; };
 		02ADCD491D774F9B0088AFFD /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD481D774F9B0088AFFD /* news.png */; };
 		02ADCD4B1D774FA50088AFFD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD4A1D774FA50088AFFD /* settings.png */; };
