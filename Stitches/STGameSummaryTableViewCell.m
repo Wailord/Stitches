@@ -86,31 +86,36 @@
                                                          _awayLogo,_awayNameLabel,_awayScoreLabel,
                                                          _statusLabel);
     
-    // home team row
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_homeNameLabel]-10-[_homeScoreLabel]"
+    // center the status label in the tableviewcell
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_statusLabel
+                                     attribute:NSLayoutAttributeCenterY
+                                     relatedBy:NSLayoutRelationEqual
+                                        toItem:self.contentView
+                                     attribute:NSLayoutAttributeCenterY
+                                    multiplier:1
+                                      constant:0]];
+    
+    // team names should be aligned to the left of the tableviewcell
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayNameLabel]"
                                                                  options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                  metrics:nil
                                                                    views:views]];
-    
-    // status label row
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_statusLabel]-20-|"
+    // team scores should be aligned off of the left of the tableviewcell
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-100-[_awayScoreLabel]"
                                                                  options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                  metrics:nil
                                                                    views:views]];
-    
-    // away team row
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayNameLabel]-10-[_awayScoreLabel]"
+    // align the status label to the left of the tableviewcell (so numbers line up)
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_statusLabel]-30-|"
                                                                  options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                  metrics:nil
                                                                    views:views]];
-    
-    // team name column
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayNameLabel][_homeNameLabel]|"
+    // team names should be stacked
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_homeNameLabel][_awayNameLabel]|"
                                                                  options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                  metrics:nil
                                                                    views:views]];
-    
-    // team score column
+    // team scores should be stacked
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayScoreLabel][_homeScoreLabel]|"
                                                                  options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
                                                                  metrics:nil
