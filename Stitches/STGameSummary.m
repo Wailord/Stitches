@@ -14,9 +14,9 @@
 -(NSString *)description
 {
     return [NSString stringWithFormat:@"%@ (%@) @ %@ (%@)",
-            [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", self.awayTeamID]],
+            [[[STConstants teamDict] objectForKey:self.awayTeamID] abbreviation],
             self.awayScore,
-            [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", self.homeTeamID]],
+            [[[STConstants teamDict] objectForKey:self.homeTeamID] abbreviation],
             self.homeScore];
 }
 

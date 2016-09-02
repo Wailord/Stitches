@@ -46,6 +46,7 @@
 		02838E761D79D8330092A87F /* 160.png in Resources */ = {isa = PBXBuildFile; fileRef = 02838E561D79D8330092A87F /* 160.png */; };
 		02838E791D79ED620092A87F /* STGamePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E781D79ED620092A87F /* STGamePreviewViewController.m */; };
 		02838E7C1D79FA230092A87F /* STGamePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E7B1D79FA230092A87F /* STGamePreview.m */; };
+		02838E7F1D7A1A9D0092A87F /* STMLBTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E7E1D7A1A9D0092A87F /* STMLBTeam.m */; };
 		02ADCD101D7749610088AFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD0F1D7749610088AFFD /* main.m */; };
 		02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD121D7749610088AFFD /* AppDelegate.m */; };
 		02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */; };
@@ -54,7 +55,7 @@
 		02ADCD291D7749610088AFFD /* StitchesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD281D7749610088AFFD /* StitchesTests.m */; };
 		02ADCD341D7749610088AFFD /* StitchesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD331D7749610088AFFD /* StitchesUITests.m */; };
 		02ADCD431D774F360088AFFD /* baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD421D774F360088AFFD /* baseball.png */; };
-		02ADCD451D774F510088AFFD /* statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD441D774F510088AFFD /* statistics.png */; };
+		02ADCD451D774F510088AFFD /* statistics.png in Resources */ =e {isa = PBXBuildFile; fileRef = 02ADCD441D774F510088AFFD /* statistics.png */; };
 		02ADCD471D774F890088AFFD /* standings.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD461D774F890088AFFD /* standings.png */; };
 		02ADCD491D774F9B0088AFFD /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD481D774F9B0088AFFD /* news.png */; };
 		02ADCD4B1D774FA50088AFFD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD4A1D774FA50088AFFD /* settings.png */; };
@@ -124,6 +125,8 @@
 		02838E781D79ED620092A87F /* STGamePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGamePreviewViewController.m; sourceTree = "<group>"; };
 		02838E7A1D79FA230092A87F /* STGamePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGamePreview.h; sourceTree = "<group>"; };
 		02838E7B1D79FA230092A87F /* STGamePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGamePreview.m; sourceTree = "<group>"; };
+		02838E7D1D7A1A9D0092A87F /* STMLBTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMLBTeam.h; sourceTree = "<group>"; };
+		02838E7E1D7A1A9D0092A87F /* STMLBTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMLBTeam.m; sourceTree = "<group>"; };
 		02ADCD0B1D7749610088AFFD /* Stitches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stitches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ADCD0F1D7749610088AFFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02ADCD111D7749610088AFFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				026600F91D786F7F0022C79D /* STGameSummary.m */,
 				02838E7A1D79FA230092A87F /* STGamePreview.h */,
 				02838E7B1D79FA230092A87F /* STGamePreview.m */,
+				02838E7D1D7A1A9D0092A87F /* STMLBTeam.h */,
+				02838E7E1D7A1A9D0092A87F /* STMLBTeam.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 			files = (
 				02838E791D79ED620092A87F /* STGamePreviewViewController.m in Sources */,
 				02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */,
+				02838E7F1D7A1A9D0092A87F /* STMLBTeam.m in Sources */,
 				026600FA1D786F7F0022C79D /* STGameSummary.m in Sources */,
 				0210E7761D78A10B0078DEB2 /* STParserMLB.m in Sources */,
 				0210E7791D78B59A0078DEB2 /* STConstants.m in Sources */,

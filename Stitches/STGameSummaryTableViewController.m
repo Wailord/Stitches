@@ -80,9 +80,9 @@
     }
     else {
         cell.inning = game.inning;
-        cell.homeName = [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", [game homeTeamID]]];
+        cell.homeName = [[[STConstants teamDict] objectForKey:[game homeTeamID]] abbreviation];
         cell.homeScore = game.homeScore;
-        cell.awayName = [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", [game awayTeamID]]];
+        cell.awayName = [[[STConstants teamDict] objectForKey:[game awayTeamID]] abbreviation];
         cell.awayScore = game.awayScore;
     }
         

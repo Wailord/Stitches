@@ -39,7 +39,7 @@
         // name
         _awayNameLabel = [[UILabel alloc] init];
         _awayNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-        _awayNameLabel.text = [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", [game awayTeamID]]];
+        _awayNameLabel.text = [[[STConstants teamDict] objectForKey:[game awayTeamID]] abbreviation];
         [self.contentView addSubview:_awayNameLabel];
         
         // score
@@ -57,7 +57,7 @@
         // name
         _homeNameLabel = [[UILabel alloc] init];
         _homeNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-        _homeNameLabel.text = [[STConstants teamDict] valueForKeyPath:[NSString stringWithFormat:@"%@.abbrev", [game homeTeamID]]];
+        _homeNameLabel.text = [[[STConstants teamDict] objectForKey:[game homeTeamID]] abbreviation];
         [self.contentView addSubview:_homeNameLabel];
         
         // score

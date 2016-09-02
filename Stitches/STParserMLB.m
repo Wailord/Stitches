@@ -97,8 +97,8 @@
                 _summary.homeScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_runs"] integerValue]];
                 
                 // get the teams playing
-                _summary.homeTeamID = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_id"] integerValue]];
-                _summary.awayTeamID = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_id"] integerValue]];
+                _summary.homeTeamID = [attributeDict objectForKey:@"home_team_id"];
+                _summary.awayTeamID = [attributeDict objectForKey:@"away_team_id"];
                 
                 // get the inning info
                 _summary.inning = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"inning"] integerValue]];
