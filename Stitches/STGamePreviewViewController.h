@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STParserMLB.h"
+#import "STGamePreviewParser.h"
 
 @interface STGamePreviewViewController : UIViewController <STParserMLBGamePreviewDelegate>
 

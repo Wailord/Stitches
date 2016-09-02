@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STParserMLB.h"
+#import "STGameSummaryParser.h"
 
 @interface STGameSummaryTableViewController : UITableViewController <STParserMLBGameSummaryDelegate>
 

@@ -7,10 +7,10 @@
 //
 
 #import "STGamePreviewViewController.h"
-#import "STParserMLB.h"
+#import "STGamePreviewParser.h"
 
 @implementation STGamePreviewViewController {
-    STParserMLB *_previewParser;
+    STGamePreviewParser *_previewParser;
     STGamePreview *_game;
     UILabel *_awayProbablePitcher;
     UILabel *_homeProbablePitcher;
@@ -37,8 +37,8 @@
     
     _game = [[STGamePreview alloc] init];
     
-    _previewParser = [[STParserMLB alloc] init];
-    [_previewParser setPreviewDelegate:self];
+    _previewParser = [[STGamePreviewParser alloc] init];
+    [_previewParser setDelegate:self];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:TRUE];
     
     // ignore navbar

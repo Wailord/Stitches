@@ -12,7 +12,7 @@
 #import "STGamePreviewViewController.h"
 
 @implementation STGameSummaryTableViewController {
-    STParserMLB *_parser;
+    STGameSummaryParser *_parser;
 }
 
 - (void)viewDidLoad {
@@ -20,8 +20,8 @@
     self.navigationItem.title = @"Today's Games";
     _gameSummaries = [[NSMutableArray alloc] init];
     
-    _parser = [[STParserMLB alloc] init];
-    [_parser setSummaryDelegate:self];
+    _parser = [[STGameSummaryParser alloc] init];
+    [_parser setDelegate:self];
     [self parseGames];
     
     self.tableView.rowHeight = 84;
@@ -34,18 +34,17 @@
     [self.tableView reloadData];
 }
 
-- (void)parsedAllGameSummaries {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:FALSE];
-}
-
 - (void)parseGames {
     NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSInteger year = [gregorian component:NSCalendarUnitYear fromDate:NSDate.date];
     NSInteger month = [gregorian component:NSCalendarUnitMonth fromDate:NSDate.date];
     NSInteger day = [gregorian component:NSCalendarUnitDay fromDate:NSDate.date];
     
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:TRUE];
     [_parser parseGameSummariesForYear:year andMonth:month andDay:day];
+}
+
+- (void)parsedAllGameSummaries {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:FALSE];
 }
 
 - (void)didReceiveMemoryWarning {

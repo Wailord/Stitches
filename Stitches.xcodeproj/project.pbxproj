@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0210E7761D78A10B0078DEB2 /* STParserMLB.m in Sources */ = {isa = PBXBuildFile; fileRef = 0210E7751D78A10B0078DEB2 /* STParserMLB.m */; };
+		0210E7761D78A10B0078DEB2 /* STGamePreviewParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0210E7751D78A10B0078DEB2 /* STGamePreviewParser.m */; };
 		0210E7791D78B59A0078DEB2 /* STConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0210E7781D78B59A0078DEB2 /* STConstants.m */; };
+		022C65BE1D7A220900A9C5D5 /* STGameSummaryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C65BD1D7A220900A9C5D5 /* STGameSummaryParser.m */; };
 		026600FA1D786F7F0022C79D /* STGameSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600F91D786F7F0022C79D /* STGameSummary.m */; };
 		026600FD1D7870F60022C79D /* STGameSummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600FC1D7870F60022C79D /* STGameSummaryTableViewController.m */; };
 		026601031D78804B0022C79D /* STGameSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 026601021D78804B0022C79D /* STGameSummaryTableViewCell.m */; };
@@ -79,10 +80,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0210E7741D78A10B0078DEB2 /* STParserMLB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STParserMLB.h; sourceTree = "<group>"; };
-		0210E7751D78A10B0078DEB2 /* STParserMLB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STParserMLB.m; sourceTree = "<group>"; };
+		0210E7741D78A10B0078DEB2 /* STGamePreviewParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGamePreviewParser.h; sourceTree = "<group>"; };
+		0210E7751D78A10B0078DEB2 /* STGamePreviewParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGamePreviewParser.m; sourceTree = "<group>"; };
 		0210E7771D78B59A0078DEB2 /* STConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STConstants.h; sourceTree = "<group>"; };
 		0210E7781D78B59A0078DEB2 /* STConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STConstants.m; sourceTree = "<group>"; };
+		022C65BC1D7A220900A9C5D5 /* STGameSummaryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGameSummaryParser.h; sourceTree = "<group>"; };
+		022C65BD1D7A220900A9C5D5 /* STGameSummaryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGameSummaryParser.m; sourceTree = "<group>"; };
 		026600F81D786F7F0022C79D /* STGameSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGameSummary.h; sourceTree = "<group>"; };
 		026600F91D786F7F0022C79D /* STGameSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGameSummary.m; sourceTree = "<group>"; };
 		026600FB1D7870F60022C79D /* STGameSummaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGameSummaryTableViewController.h; sourceTree = "<group>"; };
@@ -177,10 +180,12 @@
 		0210E7731D78A0F40078DEB2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				0210E7741D78A10B0078DEB2 /* STParserMLB.h */,
-				0210E7751D78A10B0078DEB2 /* STParserMLB.m */,
+				0210E7741D78A10B0078DEB2 /* STGamePreviewParser.h */,
+				0210E7751D78A10B0078DEB2 /* STGamePreviewParser.m */,
 				0210E7771D78B59A0078DEB2 /* STConstants.h */,
 				0210E7781D78B59A0078DEB2 /* STConstants.m */,
+				022C65BC1D7A220900A9C5D5 /* STGameSummaryParser.h */,
+				022C65BD1D7A220900A9C5D5 /* STGameSummaryParser.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -514,10 +519,11 @@
 				02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */,
 				02838E7F1D7A1A9D0092A87F /* STMLBTeam.m in Sources */,
 				026600FA1D786F7F0022C79D /* STGameSummary.m in Sources */,
-				0210E7761D78A10B0078DEB2 /* STParserMLB.m in Sources */,
+				0210E7761D78A10B0078DEB2 /* STGamePreviewParser.m in Sources */,
 				0210E7791D78B59A0078DEB2 /* STConstants.m in Sources */,
 				02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */,
 				02ADCD101D7749610088AFFD /* main.m in Sources */,
+				022C65BE1D7A220900A9C5D5 /* STGameSummaryParser.m in Sources */,
 				026600FD1D7870F60022C79D /* STGameSummaryTableViewController.m in Sources */,
 				026601031D78804B0022C79D /* STGameSummaryTableViewCell.m in Sources */,
 				02838E7C1D79FA230092A87F /* STGamePreview.m in Sources */,
