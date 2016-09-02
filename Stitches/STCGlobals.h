@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STMLBTeam.h"
+#import "STCTeam.h"
 
 // currently supported game statuses
 typedef NS_ENUM(NSInteger, STGameStatus) {
@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, STGameStatus) {
     Final
 };
 
-@interface STConstants : NSObject
+@interface STCGlobals : NSObject
 
 +(NSDictionary*)teamDict;
 

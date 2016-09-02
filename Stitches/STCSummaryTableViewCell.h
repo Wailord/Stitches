@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STConstants.h"
-#import "STGameSummary.h"
+#import "STCGlobals.h"
+#import "STCSummary.h"
 
-@interface STGameSummaryTableViewCell : UITableViewCell;
+@interface STCSummaryTableViewCell : UITableViewCell;
 
 @property (nonatomic) NSNumber *homeScore;
 @property NSString *homeName;
@@ -18,6 +18,6 @@
 @property NSString *awayName;
 @property NSNumber *inning;
 
-- (id)initWithGame:(STGameSummary *)game;
+- (id)initWithGame:(STCSummary *)game;
 
 @end

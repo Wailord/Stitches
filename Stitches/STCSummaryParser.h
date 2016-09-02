@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STGameSummary.h"
+#import "STCSummary.h"
 
 @protocol STParserMLBGameSummaryDelegate
 @required
--(void)parsedGameSummary:(STGameSummary *)summary;
+-(void)parsedGameSummary:(STCSummary *)summary;
 -(void)parsedAllGameSummaries;
 @end
 
-@interface STGameSummaryParser : NSObject<NSXMLParserDelegate>
+@interface STCSummaryParser : NSObject<NSXMLParserDelegate>
 @property (nonatomic, weak) id<STParserMLBGameSummaryDelegate> delegate;
 
 - (void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day;

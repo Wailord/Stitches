@@ -6,11 +6,11 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STGamePreviewParser.h"
+#import "STCPreviewParser.h"
 
-@implementation STGamePreviewParser {
+@implementation STCPreviewParser {
     NSXMLParser *_previewParser;
-    STGamePreview *_preview;
+    STCPreview *_preview;
 }
 
 -(void)parsePreviewWithGameID:(NSString *)gameID {
@@ -41,7 +41,7 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     if([elementName isEqualToString:@"game"]) {
-        _preview = [[STGamePreview alloc] init];
+        _preview = [[STCPreview alloc] init];
     }
     else if([elementName isEqualToString:@"home_probable_pitcher"]) {
         NSString *firstName = [attributeDict objectForKey:@"first_name"];

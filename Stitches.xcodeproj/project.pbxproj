@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0210E7761D78A10B0078DEB2 /* STGamePreviewParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0210E7751D78A10B0078DEB2 /* STGamePreviewParser.m */; };
-		0210E7791D78B59A0078DEB2 /* STConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0210E7781D78B59A0078DEB2 /* STConstants.m */; };
-		022C65BE1D7A220900A9C5D5 /* STGameSummaryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C65BD1D7A220900A9C5D5 /* STGameSummaryParser.m */; };
-		026600FA1D786F7F0022C79D /* STGameSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600F91D786F7F0022C79D /* STGameSummary.m */; };
-		026600FD1D7870F60022C79D /* STGameSummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600FC1D7870F60022C79D /* STGameSummaryTableViewController.m */; };
-		026601031D78804B0022C79D /* STGameSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 026601021D78804B0022C79D /* STGameSummaryTableViewCell.m */; };
+		0210E7761D78A10B0078DEB2 /* STCPreviewParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0210E7751D78A10B0078DEB2 /* STCPreviewParser.m */; };
+		0210E7791D78B59A0078DEB2 /* STCGlobals.m in Sources */ = {isa = PBXBuildFile; fileRef = 0210E7781D78B59A0078DEB2 /* STCGlobals.m */; };
+		022C65BE1D7A220900A9C5D5 /* STCSummaryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C65BD1D7A220900A9C5D5 /* STCSummaryParser.m */; };
+		026600FA1D786F7F0022C79D /* STCSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600F91D786F7F0022C79D /* STCSummary.m */; };
+		026600FD1D7870F60022C79D /* STCSummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600FC1D7870F60022C79D /* STCSummariesTableViewController.m */; };
+		026601031D78804B0022C79D /* STCSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 026601021D78804B0022C79D /* STCSummaryTableViewCell.m */; };
 		02838E571D79D8330092A87F /* 108.png in Resources */ = {isa = PBXBuildFile; fileRef = 02838E371D79D8330092A87F /* 108.png */; };
 		02838E581D79D8330092A87F /* 109.png in Resources */ = {isa = PBXBuildFile; fileRef = 02838E381D79D8330092A87F /* 109.png */; };
 		02838E591D79D8330092A87F /* 110.png in Resources */ = {isa = PBXBuildFile; fileRef = 02838E391D79D8330092A87F /* 110.png */; };
@@ -45,12 +45,12 @@
 		02838E741D79D8330092A87F /* 158.png in Resources */ = {isa = PBXBuildFile; fileRef = 02838E541D79D8330092A87F /* 158.png */; };
 		02838E751D79D8330092A87F /* 159.png in Resources */ = {isa = PBXBuildFile; fileRef = 02838E551D79D8330092A87F /* 159.png */; };
 		02838E761D79D8330092A87F /* 160.png in Resources */ = {isa = PBXBuildFile; fileRef = 02838E561D79D8330092A87F /* 160.png */; };
-		02838E791D79ED620092A87F /* STGamePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E781D79ED620092A87F /* STGamePreviewViewController.m */; };
-		02838E7C1D79FA230092A87F /* STGamePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E7B1D79FA230092A87F /* STGamePreview.m */; };
-		02838E7F1D7A1A9D0092A87F /* STMLBTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E7E1D7A1A9D0092A87F /* STMLBTeam.m */; };
+		02838E791D79ED620092A87F /* STCPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E781D79ED620092A87F /* STCPreviewViewController.m */; };
+		02838E7C1D79FA230092A87F /* STCPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E7B1D79FA230092A87F /* STCPreview.m */; };
+		02838E7F1D7A1A9D0092A87F /* STCTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E7E1D7A1A9D0092A87F /* STCTeam.m */; };
 		02ADCD101D7749610088AFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD0F1D7749610088AFFD /* main.m */; };
 		02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD121D7749610088AFFD /* AppDelegate.m */; };
-		02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */; };
+		02ADCD161D7749610088AFFD /* STCScoresNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* STCScoresNavigationController.m */; };
 		02ADCD1B1D7749610088AFFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD1A1D7749610088AFFD /* Assets.xcassets */; };
 		02ADCD1E1D7749610088AFFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD1C1D7749610088AFFD /* LaunchScreen.storyboard */; };
 		02ADCD291D7749610088AFFD /* StitchesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD281D7749610088AFFD /* StitchesTests.m */; };
@@ -80,18 +80,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0210E7741D78A10B0078DEB2 /* STGamePreviewParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGamePreviewParser.h; sourceTree = "<group>"; };
-		0210E7751D78A10B0078DEB2 /* STGamePreviewParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGamePreviewParser.m; sourceTree = "<group>"; };
-		0210E7771D78B59A0078DEB2 /* STConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STConstants.h; sourceTree = "<group>"; };
-		0210E7781D78B59A0078DEB2 /* STConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STConstants.m; sourceTree = "<group>"; };
-		022C65BC1D7A220900A9C5D5 /* STGameSummaryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGameSummaryParser.h; sourceTree = "<group>"; };
-		022C65BD1D7A220900A9C5D5 /* STGameSummaryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGameSummaryParser.m; sourceTree = "<group>"; };
-		026600F81D786F7F0022C79D /* STGameSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGameSummary.h; sourceTree = "<group>"; };
-		026600F91D786F7F0022C79D /* STGameSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGameSummary.m; sourceTree = "<group>"; };
-		026600FB1D7870F60022C79D /* STGameSummaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGameSummaryTableViewController.h; sourceTree = "<group>"; };
-		026600FC1D7870F60022C79D /* STGameSummaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGameSummaryTableViewController.m; sourceTree = "<group>"; };
-		026601011D78804B0022C79D /* STGameSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGameSummaryTableViewCell.h; sourceTree = "<group>"; };
-		026601021D78804B0022C79D /* STGameSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGameSummaryTableViewCell.m; sourceTree = "<group>"; };
+		0210E7741D78A10B0078DEB2 /* STCPreviewParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPreviewParser.h; sourceTree = "<group>"; };
+		0210E7751D78A10B0078DEB2 /* STCPreviewParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewParser.m; sourceTree = "<group>"; };
+		0210E7771D78B59A0078DEB2 /* STCGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCGlobals.h; sourceTree = "<group>"; };
+		0210E7781D78B59A0078DEB2 /* STCGlobals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCGlobals.m; sourceTree = "<group>"; };
+		022C65BC1D7A220900A9C5D5 /* STCSummaryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummaryParser.h; sourceTree = "<group>"; };
+		022C65BD1D7A220900A9C5D5 /* STCSummaryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummaryParser.m; sourceTree = "<group>"; };
+		026600F81D786F7F0022C79D /* STCSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummary.h; sourceTree = "<group>"; };
+		026600F91D786F7F0022C79D /* STCSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummary.m; sourceTree = "<group>"; };
+		026600FB1D7870F60022C79D /* STCSummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummariesTableViewController.h; sourceTree = "<group>"; };
+		026600FC1D7870F60022C79D /* STCSummariesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummariesTableViewController.m; sourceTree = "<group>"; };
+		026601011D78804B0022C79D /* STCSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummaryTableViewCell.h; sourceTree = "<group>"; };
+		026601021D78804B0022C79D /* STCSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummaryTableViewCell.m; sourceTree = "<group>"; };
 		02838E371D79D8330092A87F /* 108.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 108.png; sourceTree = "<group>"; };
 		02838E381D79D8330092A87F /* 109.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 109.png; sourceTree = "<group>"; };
 		02838E391D79D8330092A87F /* 110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 110.png; sourceTree = "<group>"; };
@@ -124,18 +124,18 @@
 		02838E541D79D8330092A87F /* 158.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 158.png; sourceTree = "<group>"; };
 		02838E551D79D8330092A87F /* 159.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 159.png; sourceTree = "<group>"; };
 		02838E561D79D8330092A87F /* 160.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 160.png; sourceTree = "<group>"; };
-		02838E771D79ED620092A87F /* STGamePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGamePreviewViewController.h; sourceTree = "<group>"; };
-		02838E781D79ED620092A87F /* STGamePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGamePreviewViewController.m; sourceTree = "<group>"; };
-		02838E7A1D79FA230092A87F /* STGamePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STGamePreview.h; sourceTree = "<group>"; };
-		02838E7B1D79FA230092A87F /* STGamePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STGamePreview.m; sourceTree = "<group>"; };
-		02838E7D1D7A1A9D0092A87F /* STMLBTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMLBTeam.h; sourceTree = "<group>"; };
-		02838E7E1D7A1A9D0092A87F /* STMLBTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMLBTeam.m; sourceTree = "<group>"; };
+		02838E771D79ED620092A87F /* STCPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPreviewViewController.h; sourceTree = "<group>"; };
+		02838E781D79ED620092A87F /* STCPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewViewController.m; sourceTree = "<group>"; };
+		02838E7A1D79FA230092A87F /* STCPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPreview.h; sourceTree = "<group>"; };
+		02838E7B1D79FA230092A87F /* STCPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreview.m; sourceTree = "<group>"; };
+		02838E7D1D7A1A9D0092A87F /* STCTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCTeam.h; sourceTree = "<group>"; };
+		02838E7E1D7A1A9D0092A87F /* STCTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCTeam.m; sourceTree = "<group>"; };
 		02ADCD0B1D7749610088AFFD /* Stitches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stitches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ADCD0F1D7749610088AFFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02ADCD111D7749610088AFFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		02ADCD121D7749610088AFFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		02ADCD141D7749610088AFFD /* STScoreboardNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STScoreboardNavigationController.h; sourceTree = "<group>"; };
-		02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STScoreboardNavigationController.m; sourceTree = "<group>"; };
+		02ADCD141D7749610088AFFD /* STCScoresNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STCScoresNavigationController.h; sourceTree = "<group>"; };
+		02ADCD151D7749610088AFFD /* STCScoresNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STCScoresNavigationController.m; sourceTree = "<group>"; };
 		02ADCD1A1D7749610088AFFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02ADCD1D1D7749610088AFFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02ADCD1F1D7749610088AFFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,12 +180,12 @@
 		0210E7731D78A0F40078DEB2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				0210E7741D78A10B0078DEB2 /* STGamePreviewParser.h */,
-				0210E7751D78A10B0078DEB2 /* STGamePreviewParser.m */,
-				0210E7771D78B59A0078DEB2 /* STConstants.h */,
-				0210E7781D78B59A0078DEB2 /* STConstants.m */,
-				022C65BC1D7A220900A9C5D5 /* STGameSummaryParser.h */,
-				022C65BD1D7A220900A9C5D5 /* STGameSummaryParser.m */,
+				0210E7741D78A10B0078DEB2 /* STCPreviewParser.h */,
+				0210E7751D78A10B0078DEB2 /* STCPreviewParser.m */,
+				0210E7771D78B59A0078DEB2 /* STCGlobals.h */,
+				0210E7781D78B59A0078DEB2 /* STCGlobals.m */,
+				022C65BC1D7A220900A9C5D5 /* STCSummaryParser.h */,
+				022C65BD1D7A220900A9C5D5 /* STCSummaryParser.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -193,12 +193,12 @@
 		026600F51D786EAD0022C79D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				026600F81D786F7F0022C79D /* STGameSummary.h */,
-				026600F91D786F7F0022C79D /* STGameSummary.m */,
-				02838E7A1D79FA230092A87F /* STGamePreview.h */,
-				02838E7B1D79FA230092A87F /* STGamePreview.m */,
-				02838E7D1D7A1A9D0092A87F /* STMLBTeam.h */,
-				02838E7E1D7A1A9D0092A87F /* STMLBTeam.m */,
+				026600F81D786F7F0022C79D /* STCSummary.h */,
+				026600F91D786F7F0022C79D /* STCSummary.m */,
+				02838E7A1D79FA230092A87F /* STCPreview.h */,
+				02838E7B1D79FA230092A87F /* STCPreview.m */,
+				02838E7D1D7A1A9D0092A87F /* STCTeam.h */,
+				02838E7E1D7A1A9D0092A87F /* STCTeam.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -206,8 +206,8 @@
 		026600F61D786EB50022C79D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				026601011D78804B0022C79D /* STGameSummaryTableViewCell.h */,
-				026601021D78804B0022C79D /* STGameSummaryTableViewCell.m */,
+				026601011D78804B0022C79D /* STCSummaryTableViewCell.h */,
+				026601021D78804B0022C79D /* STCSummaryTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -215,12 +215,12 @@
 		026600F71D786EBB0022C79D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				02ADCD141D7749610088AFFD /* STScoreboardNavigationController.h */,
-				02ADCD151D7749610088AFFD /* STScoreboardNavigationController.m */,
-				026600FB1D7870F60022C79D /* STGameSummaryTableViewController.h */,
-				026600FC1D7870F60022C79D /* STGameSummaryTableViewController.m */,
-				02838E771D79ED620092A87F /* STGamePreviewViewController.h */,
-				02838E781D79ED620092A87F /* STGamePreviewViewController.m */,
+				02ADCD141D7749610088AFFD /* STCScoresNavigationController.h */,
+				02ADCD151D7749610088AFFD /* STCScoresNavigationController.m */,
+				026600FB1D7870F60022C79D /* STCSummariesTableViewController.h */,
+				026600FC1D7870F60022C79D /* STCSummariesTableViewController.m */,
+				02838E771D79ED620092A87F /* STCPreviewViewController.h */,
+				02838E781D79ED620092A87F /* STCPreviewViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -515,18 +515,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02838E791D79ED620092A87F /* STGamePreviewViewController.m in Sources */,
-				02ADCD161D7749610088AFFD /* STScoreboardNavigationController.m in Sources */,
-				02838E7F1D7A1A9D0092A87F /* STMLBTeam.m in Sources */,
-				026600FA1D786F7F0022C79D /* STGameSummary.m in Sources */,
-				0210E7761D78A10B0078DEB2 /* STGamePreviewParser.m in Sources */,
-				0210E7791D78B59A0078DEB2 /* STConstants.m in Sources */,
+				02838E791D79ED620092A87F /* STCPreviewViewController.m in Sources */,
+				02ADCD161D7749610088AFFD /* STCScoresNavigationController.m in Sources */,
+				02838E7F1D7A1A9D0092A87F /* STCTeam.m in Sources */,
+				026600FA1D786F7F0022C79D /* STCSummary.m in Sources */,
+				0210E7761D78A10B0078DEB2 /* STCPreviewParser.m in Sources */,
+				0210E7791D78B59A0078DEB2 /* STCGlobals.m in Sources */,
 				02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */,
 				02ADCD101D7749610088AFFD /* main.m in Sources */,
-				022C65BE1D7A220900A9C5D5 /* STGameSummaryParser.m in Sources */,
-				026600FD1D7870F60022C79D /* STGameSummaryTableViewController.m in Sources */,
-				026601031D78804B0022C79D /* STGameSummaryTableViewCell.m in Sources */,
-				02838E7C1D79FA230092A87F /* STGamePreview.m in Sources */,
+				022C65BE1D7A220900A9C5D5 /* STCSummaryParser.m in Sources */,
+				026600FD1D7870F60022C79D /* STCSummariesTableViewController.m in Sources */,
+				026601031D78804B0022C79D /* STCSummaryTableViewCell.m in Sources */,
+				02838E7C1D79FA230092A87F /* STCPreview.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

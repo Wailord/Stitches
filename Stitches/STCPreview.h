@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface STGamePreview : NSObject
+@interface STCPreview : NSObject
 
 @property NSString *awayProbablePitcher;
 @property NSString *homeProbablePitcher;

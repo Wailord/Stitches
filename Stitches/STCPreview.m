@@ -6,9 +6,9 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STGamePreview.h"
+#import "STCPreview.h"
 
-@implementation STGamePreview
+@implementation STCPreview
 
 -(NSString *)description {
     return [NSString stringWithFormat:@"AWAY PROBABLE: %@; HOME PROBABLE: %@", self.awayProbablePitcher, self.homeProbablePitcher];

@@ -6,10 +6,10 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STScoreboardNavigationController.h"
+#import "STCScoresNavigationController.h"
 
-@implementation STScoreboardNavigationController {
-    STGameSummaryTableViewController *_gameSummaryTableViewController;
+@implementation STCScoresNavigationController {
+    STCSummariesTableViewController *_gameSummaryTableViewController;
 }
 
 - (void)viewDidLoad {
@@ -17,7 +17,7 @@
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
                                                     image:[UIImage imageNamed:@"baseball.png"]
                                                       tag:0];
-    _gameSummaryTableViewController = [[STGameSummaryTableViewController alloc] init];
+    _gameSummaryTableViewController = [[STCSummariesTableViewController alloc] init];
     
     [self pushViewController:_gameSummaryTableViewController
                     animated:false];

@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STConstants.h"
+#import "STCGlobals.h"
 
-@interface STGameSummary : NSObject
+@interface STCSummary : NSObject
 
 @property NSString *gameID;
 @property NSString *awayTeamID;

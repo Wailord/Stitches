@@ -27,7 +27,7 @@
     _tabController = [[UITabBarController alloc] init];
     
     // the scoreboard nav controller, which will have a tableview
-    _scoreboardNavigationController = [[STScoreboardNavigationController alloc] init];
+    _scoreboardNavigationController = [[STCScoresNavigationController alloc] init];
     
     // the standings view, which will show the current MLB standings
     _standingsViewController = [[UIViewController alloc] init];

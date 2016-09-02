@@ -6,17 +6,17 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STGameSummary.h"
-#import "STConstants.h"
+#import "STCSummary.h"
+#import "STCGlobals.h"
 
-@implementation STGameSummary
+@implementation STCSummary
 
 -(NSString *)description
 {
     return [NSString stringWithFormat:@"%@ (%@) @ %@ (%@)",
-            [[[STConstants teamDict] objectForKey:self.awayTeamID] abbreviation],
+            [[[STCGlobals teamDict] objectForKey:self.awayTeamID] abbreviation],
             self.awayScore,
-            [[[STConstants teamDict] objectForKey:self.homeTeamID] abbreviation],
+            [[[STCGlobals teamDict] objectForKey:self.homeTeamID] abbreviation],
             self.homeScore];
 }
 

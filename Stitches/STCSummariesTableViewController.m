@@ -6,13 +6,13 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STGameSummaryTableViewController.h"
-#import "STGameSummary.h"
-#import "STGameSummaryTableViewCell.h"
-#import "STGamePreviewViewController.h"
+#import "STCSummariesTableViewController.h"
+#import "STCSummary.h"
+#import "STCSummaryTableViewCell.h"
+#import "STCPreviewViewController.h"
 
-@implementation STGameSummaryTableViewController {
-    STGameSummaryParser *_parser;
+@implementation STCSummariesTableViewController {
+    STCSummaryParser *_parser;
 }
 
 - (void)viewDidLoad {
@@ -20,7 +20,7 @@
     self.navigationItem.title = @"Today's Games";
     _gameSummaries = [[NSMutableArray alloc] init];
     
-    _parser = [[STGameSummaryParser alloc] init];
+    _parser = [[STCSummaryParser alloc] init];
     [_parser setDelegate:self];
     [self parseGames];
     
@@ -29,7 +29,7 @@
     [self.tableView setDelegate:self];
 }
 
-- (void)parsedGameSummary:(STGameSummary *)summary {
+- (void)parsedGameSummary:(STCSummary *)summary {
     [self.gameSummaries addObject:summary];
     [self.tableView reloadData];
 }
@@ -64,24 +64,24 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if([_gameSummaries[indexPath.row] status] == Preview) {
-        STGamePreviewViewController *gameInfo = [[STGamePreviewViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
+        STCPreviewViewController *gameInfo = [[STGamePreviewViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
         [self.navigationController pushViewController:gameInfo animated:true];
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    STGameSummaryTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"summary"];
+    STCSummaryTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"summary"];
     
-    STGameSummary *game = self.gameSummaries[indexPath.row];
+    STCSummary *game = self.gameSummaries[indexPath.row];
     
     if(cell == nil) {
-        cell = [[STGameSummaryTableViewCell alloc] initWithGame:(STGameSummary *)game];
+        cell = [[STCSummaryTableViewCell alloc] initWithGame:(STCSummary *)game];
     }
     else {
         cell.inning = game.inning;
-        cell.homeName = [[[STConstants teamDict] objectForKey:[game homeTeamID]] abbreviation];
+        cell.homeName = [[[STCGlobals teamDict] objectForKey:[game homeTeamID]] abbreviation];
         cell.homeScore = game.homeScore;
-        cell.awayName = [[[STConstants teamDict] objectForKey:[game awayTeamID]] abbreviation];
+        cell.awayName = [[[STCGlobals teamDict] objectForKey:[game awayTeamID]] abbreviation];
         cell.awayScore = game.awayScore;
     }
         

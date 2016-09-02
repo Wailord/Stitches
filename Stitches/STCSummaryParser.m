@@ -6,12 +6,12 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STGameSummaryParser.h"
+#import "STCSummaryParser.h"
 
-@implementation STGameSummaryParser {
+@implementation STCSummaryParser {
     NSXMLParser *_parser;
     NSMutableArray *_summaryList;
-    STGameSummary *_summary;
+    STCSummary *_summary;
 }
 
 -(void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day{
@@ -57,7 +57,7 @@
         
         // so long as we support the game status, we can init and start building a new game summary
         if(validGame) {
-            _summary = [[STGameSummary alloc] init];
+            _summary = [[STCSummary alloc] init];
             _summary.status = status;
             
             // get the game id

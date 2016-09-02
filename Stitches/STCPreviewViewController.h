@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STGamePreviewParser.h"
+#import "STCPreviewParser.h"
 
-@interface STGamePreviewViewController : UIViewController <STParserMLBGamePreviewDelegate>
+@interface STCPreviewViewController : UIViewController <STCPreviewParserDelegate>
 
 - (instancetype)initWithGameID:(NSString*)gameID;
 

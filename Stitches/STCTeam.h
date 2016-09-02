@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface STMLBTeam : NSObject
+@interface STCTeam : NSObject
 
 @property NSString *code;
 @property NSString *fileCode;

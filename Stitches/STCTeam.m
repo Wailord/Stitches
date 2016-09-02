@@ -6,9 +6,9 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STMLBTeam.h"
+#import "STCTeam.h"
 
-@implementation STMLBTeam
+@implementation STCTeam
 
 - (instancetype)initWithCode:(NSString *)code andFileCode:(NSString *)fileCode andAbbreviation:(NSString *)abbreviation andName:(NSString *)name andFullName:(NSString *)fullName andBriefName:(NSString *)briefName {
     self = [super init];

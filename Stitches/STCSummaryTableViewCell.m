@@ -6,9 +6,9 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STGameSummaryTableViewCell.h"
+#import "STCSummaryTableViewCell.h"
 
-@implementation STGameSummaryTableViewCell {
+@implementation STCSummaryTableViewCell {
     UIImageView *_awayLogoImageView;
     UIImageView *_homeLogoImageView;
     UILabel *_homeScoreLabel;
@@ -18,7 +18,7 @@
     UILabel *_statusLabel;
 }
 
-- (instancetype)initWithGame:(STGameSummary*)game{
+- (instancetype)initWithGame:(STCSummary*)game{
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
     
     if(self) {
@@ -39,7 +39,7 @@
         // name
         _awayNameLabel = [[UILabel alloc] init];
         _awayNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-        _awayNameLabel.text = [[[STConstants teamDict] objectForKey:[game awayTeamID]] abbreviation];
+        _awayNameLabel.text = [[[STCGlobals teamDict] objectForKey:[game awayTeamID]] abbreviation];
         [self.contentView addSubview:_awayNameLabel];
         
         // score
@@ -57,7 +57,7 @@
         // name
         _homeNameLabel = [[UILabel alloc] init];
         _homeNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-        _homeNameLabel.text = [[[STConstants teamDict] objectForKey:[game homeTeamID]] abbreviation];
+        _homeNameLabel.text = [[[STCGlobals teamDict] objectForKey:[game homeTeamID]] abbreviation];
         [self.contentView addSubview:_homeNameLabel];
         
         // score

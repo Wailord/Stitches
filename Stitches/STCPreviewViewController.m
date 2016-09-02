@@ -6,12 +6,12 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STGamePreviewViewController.h"
-#import "STGamePreviewParser.h"
+#import "STCPreviewViewController.h"
+#import "STCPreviewParser.h"
 
-@implementation STGamePreviewViewController {
-    STGamePreviewParser *_previewParser;
-    STGamePreview *_game;
+@implementation STCPreviewViewController {
+    STCPreviewParser *_previewParser;
+    STCPreview *_game;
     UILabel *_awayProbablePitcher;
     UILabel *_homeProbablePitcher;
     NSString *_gameID;
@@ -25,7 +25,7 @@
     return self;
 }
 
-- (void)parsedGamePreview:(STGamePreview *)preview {
+- (void)parsedGamePreview:(STCPreview *)preview {
     NSLog(@"Parsed a preview: %@", preview);
     _homeProbablePitcher.text = [preview homeProbablePitcher];
     _awayProbablePitcher.text = [preview awayProbablePitcher];
@@ -35,9 +35,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _game = [[STGamePreview alloc] init];
+    _game = [[STCPreview alloc] init];
     
-    _previewParser = [[STGamePreviewParser alloc] init];
+    _previewParser = [[STCPreviewParser alloc] init];
     [_previewParser setDelegate:self];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:TRUE];
     
