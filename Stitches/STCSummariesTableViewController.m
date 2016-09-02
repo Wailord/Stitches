@@ -64,7 +64,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if([_gameSummaries[indexPath.row] status] == Preview) {
-        STCPreviewViewController *gameInfo = [[STGamePreviewViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
+        STCPreviewViewController *gameInfo = [[STCPreviewViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
         [self.navigationController pushViewController:gameInfo animated:true];
     }
 }
