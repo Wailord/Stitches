@@ -42,6 +42,8 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     if([elementName isEqualToString:@"game"]) {
         _preview = [[STCPreview alloc] init];
+        _preview.awayTeamID = [attributeDict objectForKey:@"away_team_id"];
+        _preview.homeTeamID = [attributeDict objectForKey:@"home_team_id"];
     }
     else if([elementName isEqualToString:@"home_probable_pitcher"]) {
         NSString *firstName = [attributeDict objectForKey:@"first_name"];

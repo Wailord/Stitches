@@ -10,7 +10,9 @@
 
 @interface STCPreview : NSObject
 
+@property NSString *awayTeamID;
 @property NSString *awayProbablePitcher;
+@property NSString *homeTeamID;
 @property NSString *homeProbablePitcher;
 
 @end

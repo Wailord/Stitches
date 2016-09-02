@@ -21,6 +21,7 @@
     self = [super init];
     if (self) {
         _gameID = gameID;
+        self.navigationItem.title = @"Game Preview";
     }
     return self;
 }

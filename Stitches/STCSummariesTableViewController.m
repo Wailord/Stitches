@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Today's Games";
+    self.navigationItem.title = @"Today";
     _gameSummaries = [[NSMutableArray alloc] init];
     
     _parser = [[STCSummaryParser alloc] init];
