@@ -46,7 +46,7 @@
             status = InProgress;
             validGame = true;
         }
-        else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Preview"]) {
+        else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Preview"] || [[attributeDict objectForKey:@"status"] isEqualToString:@"Pre-Game"]) {
             status = Preview;
             validGame = true;
         }
@@ -62,6 +62,8 @@
             
             // get the game id
             _summary.gameID = [attributeDict objectForKey:@"id"];
+            
+            NSLog(@"Game ID: %@", _summary.gameID);
             
             // get the current score
             _summary.awayScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];

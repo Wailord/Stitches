@@ -27,17 +27,43 @@
 }
 
 - (void)parsedGamePreview:(STCPreview *)preview {
+    // away team logo and info
     [_awayPreviewView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[preview awayTeamID]]]];
     [_awayPreviewView.teamInfoLabel setText:[[[STCGlobals teamDict] objectForKey:[preview awayTeamID]] fullName]];
     
+    // away pitcher name and ERA
     NSString *awayFullName = [NSString stringWithFormat:@"%@ %@", preview.awayProbablePitcher.firstName, preview.awayProbablePitcher.lastName];
     [_awayPreviewView.pitcherNameLabel setText:awayFullName];
-      
+    [_awayPreviewView.pitcherERALabel setText:preview.awayProbablePitcher.era];
+    
+    // away pitcher win-loss
+    NSString *awayPitcherRecord = [NSString stringWithFormat:@"%@-%@", preview.awayProbablePitcher.wins, preview.awayProbablePitcher.losses];
+    [_awayPreviewView.pitcherRecordLabel setText:awayPitcherRecord];
+    
+    // away pitcher picture
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL:
+                          [NSURL URLWithString:
+                           [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/68_%@.png", preview.awayProbablePitcher.playerID]]];
+    _awayPreviewView.pitcherImageView.image = [UIImage imageWithData: imageData];
+    
+    // home team logo and info
     [_homePreviewView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[preview homeTeamID]]]];
     [_homePreviewView.teamInfoLabel setText:[[[STCGlobals teamDict] objectForKey:[preview homeTeamID]] fullName]];
     
+    // home team pitcher name and ERA
     NSString *homeFullName = [NSString stringWithFormat:@"%@ %@", preview.homeProbablePitcher.firstName, preview.homeProbablePitcher.lastName];
     [_homePreviewView.pitcherNameLabel setText:homeFullName];
+    [_homePreviewView.pitcherERALabel setText:preview.homeProbablePitcher.era];
+    
+    // home pitcher win-loss
+    NSString *homePitcherRecord = [NSString stringWithFormat:@"%@-%@", preview.homeProbablePitcher.wins, preview.homeProbablePitcher.losses];
+    [_homePreviewView.pitcherRecordLabel setText:homePitcherRecord];
+    
+    // home pitcher picture
+    imageData = [[NSData alloc] initWithContentsOfURL:
+                          [NSURL URLWithString:
+                           [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/68_%@.png", preview.homeProbablePitcher.playerID]]];
+    _awayPreviewView.pitcherImageView.image = [UIImage imageWithData: imageData];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:FALSE];
 }
@@ -66,10 +92,10 @@
     
     NSDictionary *views = NSDictionaryOfVariableBindings(_awayPreviewView, _homePreviewView);
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_awayPreviewView]-10-[_homePreviewView]-|"
-                                                                 options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
-                                                                 metrics:nil
-                                                                   views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_awayPreviewView][_homePreviewView]-20-|"
+                                                                      options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
+                                                                      metrics:nil
+                                                                        views:views]];
     
     [_previewParser parsePreviewWithGameID:_gameID];
     

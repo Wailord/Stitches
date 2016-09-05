@@ -13,35 +13,38 @@
 -(instancetype)init {
     self = [super init];
     if(self) {
-        // dummy stuff for now
+        // team logo[[attributeDict objectForKey:@"status"] isEqualToString:@"Preview"]
         _teamLogoView = [[UIImageView alloc] init];
         _teamLogoView.translatesAutoresizingMaskIntoConstraints = false;
         [self addSubview:_teamLogoView];
         
+        // gray background
         _pitcherCardBackgroundView = [[UIView alloc] init];
         _pitcherCardBackgroundView.backgroundColor = [UIColor redColor];
         _pitcherCardBackgroundView.translatesAutoresizingMaskIntoConstraints = false;
         [self addSubview:_pitcherCardBackgroundView];
         
+        // team name/record
         _teamInfoLabel = [[UILabel alloc] init];
-        _teamInfoLabel.text = @"Team Name";
         _teamInfoLabel.translatesAutoresizingMaskIntoConstraints = false;
         [self addSubview:_teamInfoLabel];
         
+        // pitcher win-loss
         _pitcherRecordLabel = [[UILabel alloc] init];
         _pitcherRecordLabel.translatesAutoresizingMaskIntoConstraints = false;
-        _pitcherRecordLabel.text = @"22-7";
         [_pitcherCardBackgroundView addSubview:_pitcherRecordLabel];
         
+        // pitcher era
         _pitcherERALabel = [[UILabel alloc] init];
         _pitcherERALabel.translatesAutoresizingMaskIntoConstraints = false;
-        _pitcherERALabel.text = @"3.93 ERA";
         [_pitcherCardBackgroundView addSubview:_pitcherERALabel];
         
+        // pitcher headshot
         _pitcherImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stats.png"]];
         _pitcherImageView.translatesAutoresizingMaskIntoConstraints = false;
         [_pitcherCardBackgroundView addSubview:_pitcherImageView];
         
+        // pitcher name
         _pitcherNameLabel = [[UILabel alloc] init];
         _pitcherNameLabel.translatesAutoresizingMaskIntoConstraints = false;
         [_pitcherCardBackgroundView addSubview:_pitcherNameLabel];
@@ -51,20 +54,21 @@
                                                              _pitcherImageView, _teamInfoLabel,
                                                              _pitcherNameLabel);
         
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:_pitcherCardBackgroundView
+                                     attribute:NSLayoutAttributeCenterX
+                                     relatedBy:NSLayoutRelationEqual
+                                        toItem:self
+                                     attribute:NSLayoutAttributeCenterX
+                                    multiplier:1.f constant:0.f]];
+        
         // stuff above the gray square
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_teamLogoView(60)]-20-[_teamInfoLabel]"
                                                                      options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                      metrics:nil
                                                                        views:views]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_teamLogoView(60)]-[_pitcherCardBackgroundView]|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_teamLogoView(60)]-[_pitcherCardBackgroundView(30)]|"
                                                                      options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
-                                                                     metrics:nil
-                                                                       views:views]];
-        
-        
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_pitcherCardBackgroundView]-|"
-                                                                     options:0
                                                                      metrics:nil
                                                                        views:views]];
         
@@ -74,7 +78,7 @@
                                                                      metrics:nil
                                                                        views:views]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_pitcherRecordLabel]-20-[_pitcherERALabel]"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_pitcherImageView]-20-[_pitcherNameLabel]-20-[_pitcherERALabel]"
                                                                      options:NSLayoutFormatAlignAllRight| NSLayoutFormatAlignAllLeft
                                                                      metrics:nil
                                                                        views:views]];

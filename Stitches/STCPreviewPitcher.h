@@ -10,6 +10,7 @@
 
 @interface STCPreviewPitcher : NSObject
 
+@property NSNumber *playerID;
 @property NSString *firstName;
 @property NSString *lastName;
 @property NSString *number;

@@ -52,6 +52,8 @@
         _previewPitcher.firstName = firstName;
         _previewPitcher.lastName = lastName;
         
+        _previewPitcher.playerID = [attributeDict objectForKey:@"id"];
+        
         NSString *playerNumber = [attributeDict objectForKey:@"number"];
         NSString *playerERA = [attributeDict objectForKey:@"era"];
         NSString *wins = [attributeDict objectForKey:@"wins"];
