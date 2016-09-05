@@ -25,7 +25,7 @@
     [self.window makeKeyAndVisible];
     
     _tabController = [[UITabBarController alloc] init];
-    
+
     // the scoreboard nav controller, which will have a tableview
     _scoreboardNavigationController = [[STCScoresNavigationController alloc] init];
     
@@ -67,6 +67,7 @@
     
     // create a view controller for the window to default to
     self.window.rootViewController= _tabController;
+    _tabController.selectedIndex = 0;
     
     return YES;
 }

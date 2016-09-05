@@ -45,15 +45,30 @@
         _preview.awayTeamID = [attributeDict objectForKey:@"away_team_id"];
         _preview.homeTeamID = [attributeDict objectForKey:@"home_team_id"];
     }
-    else if([elementName isEqualToString:@"home_probable_pitcher"]) {
+    else if([elementName isEqualToString:@"home_probable_pitcher"] || [elementName isEqualToString:@"away_probable_pitcher"]) {
+        STCPreviewPitcher *_previewPitcher = [[STCPreviewPitcher alloc] init];
         NSString *firstName = [attributeDict objectForKey:@"first_name"];
         NSString *lastName = [attributeDict objectForKey:@"last_name"];
-        _preview.homeProbablePitcher = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-    }
-    else if([elementName isEqualToString:@"away_probable_pitcher"]) {
-        NSString *firstName = [attributeDict objectForKey:@"first_name"];
-        NSString *lastName = [attributeDict objectForKey:@"last_name"];
-        _preview.awayProbablePitcher = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+        _previewPitcher.firstName = firstName;
+        _previewPitcher.lastName = lastName;
+        
+        NSString *playerNumber = [attributeDict objectForKey:@"number"];
+        NSString *playerERA = [attributeDict objectForKey:@"era"];
+        NSString *wins = [attributeDict objectForKey:@"wins"];
+        NSString *losses = [attributeDict objectForKey:@"losses"];
+        NSString *throwingHand = [attributeDict objectForKey:@"throwinghand"];
+        _previewPitcher.number = playerNumber;
+        _previewPitcher.era = playerERA;
+        _previewPitcher.wins = wins;
+        _previewPitcher.losses = losses;
+        _previewPitcher.throwingHand = throwingHand;
+        
+        if([elementName isEqualToString:@"away_probable_pitcher"]) {
+            _preview.awayProbablePitcher = _previewPitcher;
+        }
+        else {
+            _preview.homeProbablePitcher = _previewPitcher;
+        }
     }
 }
 

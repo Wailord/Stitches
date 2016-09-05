@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "STCPreviewParser.h"
+#import "STCGlobals.h"
 
 @interface STCPreviewViewController : UIViewController <STCPreviewParserDelegate>
 

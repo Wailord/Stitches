@@ -10,4 +10,12 @@
 
 @interface STCPreviewView : UIView
 
+@property UIImageView *teamLogoView;
+@property UILabel *teamInfoLabel;
+@property UIView *pitcherCardBackgroundView;
+@property UIImageView *pitcherImageView;
+@property UILabel *pitcherNameLabel;
+@property UILabel *pitcherRecordLabel;
+@property UILabel *pitcherERALabel;
+
 @end

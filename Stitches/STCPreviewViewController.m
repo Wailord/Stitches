@@ -8,12 +8,12 @@
 
 #import "STCPreviewViewController.h"
 #import "STCPreviewParser.h"
+#import "STCPreviewView.h"
 
 @implementation STCPreviewViewController {
     STCPreviewParser *_previewParser;
-    STCPreview *_game;
-    UILabel *_awayProbablePitcher;
-    UILabel *_homeProbablePitcher;
+    STCPreviewView *_awayPreviewView;
+    STCPreviewView *_homePreviewView;
     NSString *_gameID;
 }
 
@@ -27,16 +27,23 @@
 }
 
 - (void)parsedGamePreview:(STCPreview *)preview {
-    NSLog(@"Parsed a preview: %@", preview);
-    _homeProbablePitcher.text = [preview homeProbablePitcher];
-    _awayProbablePitcher.text = [preview awayProbablePitcher];
+    [_awayPreviewView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[preview awayTeamID]]]];
+    [_awayPreviewView.teamInfoLabel setText:[[[STCGlobals teamDict] objectForKey:[preview awayTeamID]] fullName]];
+    
+    NSString *awayFullName = [NSString stringWithFormat:@"%@ %@", preview.awayProbablePitcher.firstName, preview.awayProbablePitcher.lastName];
+    [_awayPreviewView.pitcherNameLabel setText:awayFullName];
+      
+    [_homePreviewView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[preview homeTeamID]]]];
+    [_homePreviewView.teamInfoLabel setText:[[[STCGlobals teamDict] objectForKey:[preview homeTeamID]] fullName]];
+    
+    NSString *homeFullName = [NSString stringWithFormat:@"%@ %@", preview.homeProbablePitcher.firstName, preview.homeProbablePitcher.lastName];
+    [_homePreviewView.pitcherNameLabel setText:homeFullName];
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:FALSE];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _game = [[STCPreview alloc] init];
     
     _previewParser = [[STCPreviewParser alloc] init];
     [_previewParser setDelegate:self];
@@ -49,33 +56,23 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UILabel *awayPP = [[UILabel alloc] init];
-    awayPP.text = @"Away Probable Pitcher";
-    awayPP.translatesAutoresizingMaskIntoConstraints = false;
-    [self.view addSubview:awayPP];
+    _awayPreviewView = [[STCPreviewView alloc] init];
+    _awayPreviewView.translatesAutoresizingMaskIntoConstraints = FALSE;
+    [self.view addSubview:_awayPreviewView];
     
-    UILabel *homePP = [[UILabel alloc] init];
-    homePP.text = @"Home Probable Pitcher";
-    homePP.translatesAutoresizingMaskIntoConstraints = false;
-    [self.view addSubview:homePP];
+    _homePreviewView = [[STCPreviewView alloc] init];
+    _homePreviewView.translatesAutoresizingMaskIntoConstraints = FALSE;
+    [self.view addSubview:_homePreviewView];
     
-    _homeProbablePitcher = [[UILabel alloc] init];
-    _homeProbablePitcher.translatesAutoresizingMaskIntoConstraints = false;
-    [self.view addSubview:_homeProbablePitcher];
+    NSDictionary *views = NSDictionaryOfVariableBindings(_awayPreviewView, _homePreviewView);
     
-    _awayProbablePitcher = [[UILabel alloc] init];
-    _awayProbablePitcher.translatesAutoresizingMaskIntoConstraints = false;
-    [self.view addSubview:_awayProbablePitcher];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_awayPreviewView]-10-[_homePreviewView]-|"
+                                                                 options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
+                                                                 metrics:nil
+                                                                   views:views]];
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(awayPP, homePP, _awayProbablePitcher, _homeProbablePitcher);
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[awayPP][_awayProbablePitcher][homePP][_homeProbablePitcher]"
-                                                                      options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
-                                                                      metrics:nil
-                                                                        views:views]];
-        
     [_previewParser parsePreviewWithGameID:_gameID];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {

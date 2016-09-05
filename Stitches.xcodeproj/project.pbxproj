@@ -62,6 +62,7 @@
 		02ADCD471D774F890088AFFD /* standings.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD461D774F890088AFFD /* standings.png */; };
 		02ADCD491D774F9B0088AFFD /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD481D774F9B0088AFFD /* news.png */; };
 		02ADCD4B1D774FA50088AFFD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD4A1D774FA50088AFFD /* settings.png */; };
+		02F15C971D7DDE5E00F2A978 /* STCPreviewPitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F15C961D7DDE5E00F2A978 /* STCPreviewPitcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,8 @@
 		02ADCD461D774F890088AFFD /* standings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = standings.png; sourceTree = "<group>"; };
 		02ADCD481D774F9B0088AFFD /* news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news.png; sourceTree = "<group>"; };
 		02ADCD4A1D774FA50088AFFD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		02F15C951D7DDE5E00F2A978 /* STCPreviewPitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPreviewPitcher.h; sourceTree = "<group>"; };
+		02F15C961D7DDE5E00F2A978 /* STCPreviewPitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewPitcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,10 +276,8 @@
 		026600F51D786EAD0022C79D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				026600F81D786F7F0022C79D /* STCSummary.h */,
-				026600F91D786F7F0022C79D /* STCSummary.m */,
-				02838E7A1D79FA230092A87F /* STCPreview.h */,
-				02838E7B1D79FA230092A87F /* STCPreview.m */,
+				02F15C991D7DDF2C00F2A978 /* Game Summaries */,
+				02F15C981D7DDF2300F2A978 /* Game Previews */,
 				02838E7D1D7A1A9D0092A87F /* STCTeam.h */,
 				02838E7E1D7A1A9D0092A87F /* STCTeam.m */,
 			);
@@ -421,6 +422,26 @@
 				02838E351D79D8110092A87F /* tab_icons */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		02F15C981D7DDF2300F2A978 /* Game Previews */ = {
+			isa = PBXGroup;
+			children = (
+				02F15C951D7DDE5E00F2A978 /* STCPreviewPitcher.h */,
+				02F15C961D7DDE5E00F2A978 /* STCPreviewPitcher.m */,
+				02838E7A1D79FA230092A87F /* STCPreview.h */,
+				02838E7B1D79FA230092A87F /* STCPreview.m */,
+			);
+			name = "Game Previews";
+			sourceTree = "<group>";
+		};
+		02F15C991D7DDF2C00F2A978 /* Game Summaries */ = {
+			isa = PBXGroup;
+			children = (
+				026600F81D786F7F0022C79D /* STCSummary.h */,
+				026600F91D786F7F0022C79D /* STCSummary.m */,
+			);
+			name = "Game Summaries";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -594,6 +615,7 @@
 				022C65C41D7A30B600A9C5D5 /* STCPreviewView.m in Sources */,
 				02838E7F1D7A1A9D0092A87F /* STCTeam.m in Sources */,
 				026600FA1D786F7F0022C79D /* STCSummary.m in Sources */,
+				02F15C971D7DDE5E00F2A978 /* STCPreviewPitcher.m in Sources */,
 				0210E7761D78A10B0078DEB2 /* STCPreviewParser.m in Sources */,
 				0210E7791D78B59A0078DEB2 /* STCGlobals.m in Sources */,
 				02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */,

@@ -17,6 +17,7 @@
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
                                                     image:[UIImage imageNamed:@"baseball.png"]
                                                       tag:0];
+    
     _gameSummaryTableViewController = [[STCSummariesTableViewController alloc] init];
     
     [self pushViewController:_gameSummaryTableViewController
