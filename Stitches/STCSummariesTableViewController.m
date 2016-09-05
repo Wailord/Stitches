@@ -31,7 +31,7 @@
 
 - (void)parsedGameSummary:(STCSummary *)summary {
     [self.gameSummaries addObject:summary];
-    NSLog(@"Parsed game summary: %@", summary);
+    //NSLog(@"Parsed game summary: %@", summary);
     [self.tableView reloadData];
 }
 

@@ -63,7 +63,7 @@
             // get the game id
             _summary.gameID = [attributeDict objectForKey:@"id"];
             
-            NSLog(@"Game ID: %@", _summary.gameID);
+            //NSLog(@"Game ID: %@", _summary.gameID);
             
             // get the current score
             _summary.awayScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];
