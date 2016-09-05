@@ -63,7 +63,7 @@
     imageData = [[NSData alloc] initWithContentsOfURL:
                           [NSURL URLWithString:
                            [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/68_%@.png", preview.homeProbablePitcher.playerID]]];
-    _awayPreviewView.pitcherImageView.image = [UIImage imageWithData: imageData];
+    _homePreviewView.pitcherImageView.image = [UIImage imageWithData: imageData];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:FALSE];
 }
