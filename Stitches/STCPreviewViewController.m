@@ -92,8 +92,24 @@
     
     NSDictionary *views = NSDictionaryOfVariableBindings(_awayPreviewView, _homePreviewView);
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_awayPreviewView][_homePreviewView]-20-|"
-                                                                      options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_awayPreviewView]"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                        views:views]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_homePreviewView]-|"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                        views:views]];
+    
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayPreviewView]-|"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                        views:views]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_homePreviewView]-|"
+                                                                      options:0
                                                                       metrics:nil
                                                                         views:views]];
     

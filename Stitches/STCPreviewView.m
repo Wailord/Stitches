@@ -62,25 +62,31 @@
                                     multiplier:1.f constant:0.f]];
         
         // stuff above the gray square
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_teamLogoView(60)]-20-[_teamInfoLabel]"
-                                                                     options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_teamLogoView(60)]-20-[_teamInfoLabel]|"
+                                                                     options:NSLayoutFormatAlignAllBottom
                                                                      metrics:nil
                                                                        views:views]];
         
+        // stuff above the gray square
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_pitcherCardBackgroundView]-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+        
+        
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_teamLogoView(60)]-[_pitcherCardBackgroundView]|"
-                                                                     options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
+                                                                     options:NSLayoutFormatAlignAllLeft
                                                                      metrics:nil
                                                                        views:views]];
         
         // stuff within the gray square
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_pitcherNameLabel]-20-[_pitcherRecordLabel]"
-                                                                     options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_pitcherNameLabel]-20-[_pitcherRecordLabel]|"
+                                                                     options:NSLayoutFormatAlignAllTop
                                                                      metrics:nil
                                                                        views:views]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_pitcherImageView]-20-[_pitcherNameLabel]-20-[_pitcherERALabel]"
-                                                                     options:NSLayoutFormatAlignAllRight| NSLayoutFormatAlignAllLeft
-                                                                     metrics:nil
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_pitcherImageView]-20-[_pitcherNameLabel]-20-[_pitcherERALabel]|"
+                                                                     options:NSLayoutFormatAlignAllLeft                                                                     metrics:nil
                                                                        views:views]];
     }
     
