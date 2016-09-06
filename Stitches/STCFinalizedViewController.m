@@ -6,15 +6,15 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STCFinalViewController.h"
+#import "STCFinalizedViewController.h"
 
-@interface STCFinalViewController () {
+@interface STCFinalizedViewController () {
     NSString *_gameID;
 }
 
 @end
 
-@implementation STCFinalViewController
+@implementation STCFinalizedViewController
 
 - (instancetype)initWithGameID:(NSString*)gameID {
     self = [super init];

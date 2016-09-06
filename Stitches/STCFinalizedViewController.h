@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STCFinalViewController : UIViewController
+@interface STCFinalizedViewController : UIViewController
 
 - (instancetype)initWithGameID:(NSString*)gameID;
 

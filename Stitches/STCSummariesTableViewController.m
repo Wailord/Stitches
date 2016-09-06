@@ -8,7 +8,7 @@
 
 #import "STCSummariesTableViewController.h"
 #import "STCSummary.h"
-#import "STCFinalViewController.h"
+#import "STCFinalizedViewController.h"
 #import "STCSummaryTableViewCell.h"
 #import "STCPreviewViewController.h"
 
@@ -66,7 +66,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     STCPreviewViewController *preview = nil;
-    STCFinalViewController *final = nil;
+    STCFinalizedViewController *final = nil;
     switch([_gameSummaries[indexPath.row] status])
     {
         case STCPreviewStatus:
@@ -74,7 +74,7 @@
             [self.navigationController pushViewController:preview animated:true];
             break;
         case STCFinalStatus:
-            final = [[STCFinalViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
+            final = [[STCFinalizedViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
             [self.navigationController pushViewController:final animated:true];
             break;
         default:
