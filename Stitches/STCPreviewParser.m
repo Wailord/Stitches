@@ -42,8 +42,8 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     if([elementName isEqualToString:@"game"]) {
         _preview = [[STCPreview alloc] init];
-        _preview.awayTeamID = [attributeDict objectForKey:@"away_team_id"];
-        _preview.homeTeamID = [attributeDict objectForKey:@"home_team_id"];
+        _preview.awayTeam.teamID = [attributeDict objectForKey:@"away_team_id"];
+        _preview.homeTeam.teamID = [attributeDict objectForKey:@"home_team_id"];
     }
     else if([elementName isEqualToString:@"home_probable_pitcher"] || [elementName isEqualToString:@"away_probable_pitcher"]) {
         STCPreviewPitcher *_previewPitcher = [[STCPreviewPitcher alloc] init];
@@ -66,10 +66,10 @@
         _previewPitcher.throwingHand = throwingHand;
         
         if([elementName isEqualToString:@"away_probable_pitcher"]) {
-            _preview.awayProbablePitcher = _previewPitcher;
+            _preview.awayTeam.probablePitcher = _previewPitcher;
         }
         else {
-            _preview.homeProbablePitcher = _previewPitcher;
+            _preview.homeTeam.probablePitcher = _previewPitcher;
         }
     }
 }
@@ -77,6 +77,7 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     if([elementName isEqualToString:@"game"] && _preview != nil) {
         if(_delegate) {
+            NSLog(@"%@", _preview);
             [_delegate parsedGamePreview:_preview];
         }
         _preview = nil;

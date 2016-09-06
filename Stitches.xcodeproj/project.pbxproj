@@ -16,6 +16,7 @@
 		025957B81D7F3A91006AB246 /* STCTeamRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957B71D7F3A91006AB246 /* STCTeamRecord.m */; };
 		025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957BA1D7F3B44006AB246 /* STCFinalizedTeam.m */; };
 		025957BF1D7F3E0F006AB246 /* STCFinalizedTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */; };
+		025957C21D7F52B2006AB246 /* STCPreviewTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957C11D7F52B2006AB246 /* STCPreviewTeam.m */; };
 		026600FA1D786F7F0022C79D /* STCSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600F91D786F7F0022C79D /* STCSummary.m */; };
 		026600FD1D7870F60022C79D /* STCSummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600FC1D7870F60022C79D /* STCSummariesTableViewController.m */; };
 		026601031D78804B0022C79D /* STCSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 026601021D78804B0022C79D /* STCSummaryTableViewCell.m */; };
@@ -111,6 +112,8 @@
 		025957BA1D7F3B44006AB246 /* STCFinalizedTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCFinalizedTeam.m; sourceTree = "<group>"; };
 		025957BD1D7F3E0F006AB246 /* STCFinalizedTeamView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCFinalizedTeamView.h; sourceTree = "<group>"; };
 		025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCFinalizedTeamView.m; sourceTree = "<group>"; };
+		025957C01D7F52B2006AB246 /* STCPreviewTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPreviewTeam.h; sourceTree = "<group>"; };
+		025957C11D7F52B2006AB246 /* STCPreviewTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewTeam.m; sourceTree = "<group>"; };
 		026600F81D786F7F0022C79D /* STCSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummary.h; sourceTree = "<group>"; };
 		026600F91D786F7F0022C79D /* STCSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummary.m; sourceTree = "<group>"; };
 		026600FB1D7870F60022C79D /* STCSummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummariesTableViewController.h; sourceTree = "<group>"; };
@@ -507,6 +510,8 @@
 				02F15C961D7DDE5E00F2A978 /* STCPreviewPitcher.m */,
 				02838E7A1D79FA230092A87F /* STCPreview.h */,
 				02838E7B1D79FA230092A87F /* STCPreview.m */,
+				025957C01D7F52B2006AB246 /* STCPreviewTeam.h */,
+				025957C11D7F52B2006AB246 /* STCPreviewTeam.m */,
 			);
 			name = "Game Previews";
 			sourceTree = "<group>";
@@ -689,6 +694,7 @@
 				02838E791D79ED620092A87F /* STCPreviewViewController.m in Sources */,
 				02ADCD161D7749610088AFFD /* STCScoresNavigationController.m in Sources */,
 				022C65C41D7A30B600A9C5D5 /* STCPreviewTeamView.m in Sources */,
+				025957C21D7F52B2006AB246 /* STCPreviewTeam.m in Sources */,
 				025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */,
 				02DF27361D7F1D720059E200 /* STCFinalizedParser.m in Sources */,
 				02838E7F1D7A1A9D0092A87F /* STCTeam.m in Sources */,

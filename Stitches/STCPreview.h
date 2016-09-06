@@ -8,12 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "STCPreviewPitcher.h"
+#import "STCPreviewTeam.h"
 
 @interface STCPreview : NSObject
 
-@property NSString *awayTeamID;
-@property STCPreviewPitcher *awayProbablePitcher;
-@property NSString *homeTeamID;
-@property STCPreviewPitcher *homeProbablePitcher;
+@property STCPreviewTeam *awayTeam;
+@property STCPreviewTeam *homeTeam;
 
 @end
