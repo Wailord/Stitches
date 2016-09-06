@@ -31,6 +31,10 @@
 
 - (void)parsedFinalizedGame:(STCFinalizedGame *)final {
     NSLog(@"Parsed finalized game: %@", final);
+    _awayTeamView.teamRecordLabel.text = [STCGlobals getBriefNameForTeamID:final.awayTeam.teamID];
+    _homeTeamView.teamRecordLabel.text = [STCGlobals getBriefNameForTeamID:final.homeTeam.teamID];
+    _awayTeamView.runsScoredLabel.text = [NSString stringWithFormat:@"%@", final.awayTeam.runsScored];
+    _homeTeamView.runsScoredLabel.text = [NSString stringWithFormat:@"%@", final.homeTeam.runsScored];
 }
 
 - (void)viewDidLoad {

@@ -10,8 +10,8 @@
 
 @interface STCFinalizedTeamView : UIView
 
-@property UIImageView *teamLogo;
-@property UILabel *teamRecord;
-@property UILabel *runsScored;
+@property UIImageView *teamLogoImageView;
+@property UILabel *runsScoredLabel;
+@property UILabel *teamRecordLabel;
 
 @end

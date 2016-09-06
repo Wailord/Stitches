@@ -123,8 +123,7 @@
                                                                       options:0
                                                                       metrics:nil
                                                                         views:views]];
-    
-    
+
     [self.view addConstraint:[NSLayoutConstraint
                               constraintWithItem:_versusLabel
                               attribute:NSLayoutAttributeCenterY

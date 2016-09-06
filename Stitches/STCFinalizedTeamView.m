@@ -13,13 +13,27 @@
 - (instancetype)init {
     self = [super init];
     if(self) {
-        _runsScored = [[UILabel alloc] init];
-        _runsScored.text = @"5";
-        [self addSubview:_runsScored];
+        _runsScoredLabel = [[UILabel alloc] init];
+        _runsScoredLabel.text = @"5";
+        _runsScoredLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:_runsScoredLabel];
         
-        _teamRecord = [[UILabel alloc] init];
-        _teamRecord.text = @"RECORD HERE";
-        [self addSubview:_teamRecord];
+        _teamRecordLabel = [[UILabel alloc] init];
+        _teamRecordLabel.text = @"RECORD HERE";
+        _teamRecordLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:_teamRecordLabel];
+        
+        NSDictionary *views = NSDictionaryOfVariableBindings(_runsScoredLabel, _teamRecordLabel);
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_runsScoredLabel]-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_teamRecordLabel]-[_runsScoredLabel]-|"
+                                                                     options:NSLayoutFormatAlignAllLeft | NSLayoutFormatAlignAllRight
+                                                                     metrics:nil
+                                                                       views:views]];
     }
     
     return self;
