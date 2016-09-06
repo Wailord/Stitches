@@ -8,12 +8,12 @@
 
 #import "STCPreviewViewController.h"
 #import "STCPreviewParser.h"
-#import "STCPreviewView.h"
+#import "STCPreviewTeamView.h"
 
 @implementation STCPreviewViewController {
     STCPreviewParser *_previewParser;
-    STCPreviewView *_awayPreviewView;
-    STCPreviewView *_homePreviewView;
+    STCPreviewTeamView *_awayPreviewView;
+    STCPreviewTeamView *_homePreviewView;
     NSString *_gameID;
 }
 
@@ -81,11 +81,11 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
-    _awayPreviewView = [[STCPreviewView alloc] init];
+    _awayPreviewView = [[STCPreviewTeamView alloc] init];
     _awayPreviewView.translatesAutoresizingMaskIntoConstraints = FALSE;
     [self.view addSubview:_awayPreviewView];
     
-    _homePreviewView = [[STCPreviewView alloc] init];
+    _homePreviewView = [[STCPreviewTeamView alloc] init];
     _homePreviewView.translatesAutoresizingMaskIntoConstraints = FALSE;
     [self.view addSubview:_homePreviewView];
     

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STCPreviewView : UIView
+@interface STCPreviewTeamView : UIView
 
 @property UIImageView *teamLogoView;
 @property UILabel *teamInfoLabel;

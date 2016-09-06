@@ -11,7 +11,7 @@
 		0210E7791D78B59A0078DEB2 /* STCGlobals.m in Sources */ = {isa = PBXBuildFile; fileRef = 0210E7781D78B59A0078DEB2 /* STCGlobals.m */; };
 		022C65BE1D7A220900A9C5D5 /* STCSummaryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C65BD1D7A220900A9C5D5 /* STCSummaryParser.m */; };
 		022C65C11D7A264900A9C5D5 /* STCSummaryTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C65C01D7A264900A9C5D5 /* STCSummaryTeamView.m */; };
-		022C65C41D7A30B600A9C5D5 /* STCPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C65C31D7A30B600A9C5D5 /* STCPreviewView.m */; };
+		022C65C41D7A30B600A9C5D5 /* STCPreviewTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C65C31D7A30B600A9C5D5 /* STCPreviewTeamView.m */; };
 		025957B41D7F2B2E006AB246 /* STCInning.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957B31D7F2B2E006AB246 /* STCInning.m */; };
 		025957B81D7F3A91006AB246 /* STCTeamRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957B71D7F3A91006AB246 /* STCTeamRecord.m */; };
 		025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957BA1D7F3B44006AB246 /* STCFinalizedTeam.m */; };
@@ -100,8 +100,8 @@
 		022C65BD1D7A220900A9C5D5 /* STCSummaryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummaryParser.m; sourceTree = "<group>"; };
 		022C65BF1D7A264900A9C5D5 /* STCSummaryTeamView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummaryTeamView.h; sourceTree = "<group>"; };
 		022C65C01D7A264900A9C5D5 /* STCSummaryTeamView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummaryTeamView.m; sourceTree = "<group>"; };
-		022C65C21D7A30B600A9C5D5 /* STCPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPreviewView.h; sourceTree = "<group>"; };
-		022C65C31D7A30B600A9C5D5 /* STCPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewView.m; sourceTree = "<group>"; };
+		022C65C21D7A30B600A9C5D5 /* STCPreviewTeamView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPreviewTeamView.h; sourceTree = "<group>"; };
+		022C65C31D7A30B600A9C5D5 /* STCPreviewTeamView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewTeamView.m; sourceTree = "<group>"; };
 		025957B21D7F2B2E006AB246 /* STCInning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCInning.h; sourceTree = "<group>"; };
 		025957B31D7F2B2E006AB246 /* STCInning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCInning.m; sourceTree = "<group>"; };
 		025957B61D7F3A91006AB246 /* STCTeamRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCTeamRecord.h; sourceTree = "<group>"; };
@@ -273,6 +273,7 @@
 		022C65CB1D7A315200A9C5D5 /* Scores */ = {
 			isa = PBXGroup;
 			children = (
+				025957BC1D7F3DB4006AB246 /* Game Finals */,
 				022C65CD1D7A316A00A9C5D5 /* Game Summaries */,
 				022C65CC1D7A316400A9C5D5 /* Game Previews */,
 			);
@@ -282,8 +283,8 @@
 		022C65CC1D7A316400A9C5D5 /* Game Previews */ = {
 			isa = PBXGroup;
 			children = (
-				022C65C21D7A30B600A9C5D5 /* STCPreviewView.h */,
-				022C65C31D7A30B600A9C5D5 /* STCPreviewView.m */,
+				022C65C21D7A30B600A9C5D5 /* STCPreviewTeamView.h */,
+				022C65C31D7A30B600A9C5D5 /* STCPreviewTeamView.m */,
 			);
 			name = "Game Previews";
 			sourceTree = "<group>";
@@ -297,6 +298,13 @@
 				022C65C01D7A264900A9C5D5 /* STCSummaryTeamView.m */,
 			);
 			name = "Game Summaries";
+			sourceTree = "<group>";
+		};
+		025957BC1D7F3DB4006AB246 /* Game Finals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Game Finals";
 			sourceTree = "<group>";
 		};
 		026600F51D786EAD0022C79D /* Models */ = {
@@ -675,7 +683,7 @@
 			files = (
 				02838E791D79ED620092A87F /* STCPreviewViewController.m in Sources */,
 				02ADCD161D7749610088AFFD /* STCScoresNavigationController.m in Sources */,
-				022C65C41D7A30B600A9C5D5 /* STCPreviewView.m in Sources */,
+				022C65C41D7A30B600A9C5D5 /* STCPreviewTeamView.m in Sources */,
 				025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */,
 				02DF27361D7F1D720059E200 /* STCFinalizedParser.m in Sources */,
 				02838E7F1D7A1A9D0092A87F /* STCTeam.m in Sources */,

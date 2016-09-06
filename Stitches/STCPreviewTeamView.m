@@ -6,9 +6,9 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STCPreviewView.h"
+#import "STCPreviewTeamView.h"
 
-@implementation STCPreviewView
+@implementation STCPreviewTeamView
 
 -(instancetype)init {
     self = [super init];
