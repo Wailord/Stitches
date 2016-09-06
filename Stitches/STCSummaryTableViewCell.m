@@ -19,7 +19,7 @@
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
     
     if(self) {
-        if(game.status == STCPreviewStatus) {
+        if(game.status == STCPreviewStatus || game.status == STCFinalStatus) {
             self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             self.selectionStyle = UITableViewCellSelectionStyleBlue;
         }

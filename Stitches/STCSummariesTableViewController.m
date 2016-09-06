@@ -8,6 +8,7 @@
 
 #import "STCSummariesTableViewController.h"
 #import "STCSummary.h"
+#import "STCFinalViewController.h"
 #import "STCSummaryTableViewCell.h"
 #import "STCPreviewViewController.h"
 
@@ -64,9 +65,21 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if([_gameSummaries[indexPath.row] status] == STCPreviewStatus) {
-        STCPreviewViewController *gameInfo = [[STCPreviewViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
-        [self.navigationController pushViewController:gameInfo animated:true];
+    STCPreviewViewController *preview = nil;
+    STCFinalViewController *final = nil;
+    switch([_gameSummaries[indexPath.row] status])
+    {
+        case STCPreviewStatus:
+            preview = [[STCPreviewViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
+            [self.navigationController pushViewController:preview animated:true];
+            break;
+        case STCFinalStatus:
+            final = [[STCFinalViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
+            [self.navigationController pushViewController:final animated:true];
+            break;
+        default:
+            NSLog(@"Tapped an unsupported row.");
+            break;
     }
 }
 
