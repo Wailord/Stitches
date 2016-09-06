@@ -55,7 +55,7 @@
 		02ADCD161D7749610088AFFD /* STCScoresNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* STCScoresNavigationController.m */; };
 		02ADCD1B1D7749610088AFFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD1A1D7749610088AFFD /* Assets.xcassets */; };
 		02ADCD1E1D7749610088AFFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD1C1D7749610088AFFD /* LaunchScreen.storyboard */; };
-		02ADCD291D7749610088AFFD /* StitchesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD281D7749610088AFFD /* StitchesTests.m */; };
+		02ADCD291D7749610088AFFD /* StitchesSummaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD281D7749610088AFFD /* StitchesSummaryTests.m */; };
 		02ADCD341D7749610088AFFD /* StitchesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD331D7749610088AFFD /* StitchesUITests.m */; };
 		02ADCD431D774F360088AFFD /* baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD421D774F360088AFFD /* baseball.png */; };
 		02ADCD451D774F510088AFFD /* statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD441D774F510088AFFD /* statistics.png */; };
@@ -63,6 +63,7 @@
 		02ADCD491D774F9B0088AFFD /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD481D774F9B0088AFFD /* news.png */; };
 		02ADCD4B1D774FA50088AFFD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 02ADCD4A1D774FA50088AFFD /* settings.png */; };
 		02F15C971D7DDE5E00F2A978 /* STCPreviewPitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F15C961D7DDE5E00F2A978 /* STCPreviewPitcher.m */; };
+		02F15C9D1D7EFAB600F2A978 /* StitchesPreviewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F15C9C1D7EFAB600F2A978 /* StitchesPreviewTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,7 +148,7 @@
 		02ADCD1D1D7749610088AFFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02ADCD1F1D7749610088AFFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02ADCD241D7749610088AFFD /* StitchesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StitchesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		02ADCD281D7749610088AFFD /* StitchesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StitchesTests.m; sourceTree = "<group>"; };
+		02ADCD281D7749610088AFFD /* StitchesSummaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StitchesSummaryTests.m; sourceTree = "<group>"; };
 		02ADCD2A1D7749610088AFFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02ADCD2F1D7749610088AFFD /* StitchesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StitchesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ADCD331D7749610088AFFD /* StitchesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StitchesUITests.m; sourceTree = "<group>"; };
@@ -159,6 +160,7 @@
 		02ADCD4A1D774FA50088AFFD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		02F15C951D7DDE5E00F2A978 /* STCPreviewPitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPreviewPitcher.h; sourceTree = "<group>"; };
 		02F15C961D7DDE5E00F2A978 /* STCPreviewPitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewPitcher.m; sourceTree = "<group>"; };
+		02F15C9C1D7EFAB600F2A978 /* StitchesPreviewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StitchesPreviewTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,8 +402,9 @@
 		02ADCD271D7749610088AFFD /* StitchesTests */ = {
 			isa = PBXGroup;
 			children = (
-				02ADCD281D7749610088AFFD /* StitchesTests.m */,
+				02ADCD281D7749610088AFFD /* StitchesSummaryTests.m */,
 				02ADCD2A1D7749610088AFFD /* Info.plist */,
+				02F15C9C1D7EFAB600F2A978 /* StitchesPreviewTests.m */,
 			);
 			path = StitchesTests;
 			sourceTree = "<group>";
@@ -632,7 +635,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02ADCD291D7749610088AFFD /* StitchesTests.m in Sources */,
+				02ADCD291D7749610088AFFD /* StitchesSummaryTests.m in Sources */,
+				02F15C9D1D7EFAB600F2A978 /* StitchesPreviewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

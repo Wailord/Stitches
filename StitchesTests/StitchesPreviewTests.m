@@ -1,18 +1,18 @@
 //
-//  StitchesTests.m
-//  StitchesTests
+//  StitchesPreviewTests.m
+//  Stitches
 //
-//  Created by Ryan Fox on 8/31/16.
+//  Created by Ryan Fox on 9/6/16.
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface StitchesTests : XCTestCase
+@interface StitchesPreviewTests : XCTestCase
 
 @end
 
-@implementation StitchesTests
+@implementation StitchesPreviewTests
 
 - (void)setUp {
     [super setUp];

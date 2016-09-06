@@ -41,17 +41,17 @@
     {
         // check to see if the game has a status that is currently supported
         bool validGame = false;
-        enum STGameStatus status = NoStatus;
+        enum STCGameStatus status = STCNoStatus;
         if([[attributeDict objectForKey:@"status"] isEqualToString:@"In Progress"]) {
-            status = InProgress;
+            status = STCInProgressStatus;
             validGame = true;
         }
         else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Preview"] || [[attributeDict objectForKey:@"status"] isEqualToString:@"Pre-Game"]) {
-            status = Preview;
+            status = STCPreviewStatus;
             validGame = true;
         }
         else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Final"]) {
-            status = Final;
+            status = STCFinalStatus;
             validGame = true;
         }
         

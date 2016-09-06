@@ -19,7 +19,7 @@
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
     
     if(self) {
-        if(game.status == Preview) {
+        if(game.status == STCPreviewStatus) {
             self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             self.selectionStyle = UITableViewCellSelectionStyleBlue;
         }
@@ -50,15 +50,15 @@
         NSDateFormatter *formatter = nil;
         NSMutableString *statusText = [[NSMutableString alloc] initWithCapacity:6];
         switch([game status]) {
-            case Preview:
+            case STCPreviewStatus:
                 formatter = [[NSDateFormatter alloc] init];
                 [formatter setDateFormat:@"h:mm a"];
                 [statusText appendString:[formatter stringFromDate:[game startTime]]];
                 break;
-            case Final:
+            case STCFinalStatus:
                 [statusText appendString:@"Final"];
                 break;
-            case InProgress:
+            case STCInProgressStatus:
                 if([game topOfInning]) {
                     [statusText appendString:@"Top "];
                     [statusText appendString:[NSString stringWithFormat:@"%@", [game inning]]];
@@ -68,7 +68,7 @@
                     [statusText appendString:[NSString stringWithFormat:@"%@", [game inning]]];
                     break;
                 }
-            case NoStatus:
+            case STCNoStatus:
                 [statusText appendString:@"Bugged!"];
                 break;
         }

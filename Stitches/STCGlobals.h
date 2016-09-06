@@ -10,11 +10,11 @@
 #import "STCTeam.h"
 
 // currently supported game statuses
-typedef NS_ENUM(NSInteger, STGameStatus) {
-    NoStatus,
-    Preview,
-    InProgress,
-    Final
+typedef NS_ENUM(NSInteger, STCGameStatus) {
+    STCNoStatus,
+    STCPreviewStatus,
+    STCInProgressStatus,
+    STCFinalStatus
 };
 
 @interface STCGlobals : NSObject
