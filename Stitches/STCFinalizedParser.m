@@ -44,10 +44,30 @@
     if([elementName isEqualToString:@"game"]) {
         NSLog(@"Started parsing a finalized game.");
         _game = [[STCFinalizedGame alloc] init];
-        _game.awayTeamID = @"138";
-        _game.awayTeamScore = [NSNumber numberWithInt:2];;
-        _game.homeTeamID = @"141";
-        _game.homeTeamScore = [NSNumber numberWithInt:4];
+        _game.awayTeamID = [attributeDict objectForKey:@"away_team_id"];
+        _game.awayTeamScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];
+        _game.homeTeamID = [attributeDict objectForKey:@"home_team_id"];;
+        _game.homeTeamScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_runs"] integerValue]];
+    }
+    else if([elementName isEqualToString:@"linescore"]) {
+        STCInning *newestInning = [[STCInning alloc] init];
+        newestInning.number = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"inning"] integerValue]];
+        
+        if([[attributeDict objectForKey:@"away_inning_runs"] isEqualToString:@""]) {
+            newestInning.awayTeamScore = nil;
+        }
+        else {
+            newestInning.awayTeamScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_inning_runs"] integerValue]];
+        }
+        
+        if([[attributeDict objectForKey:@"home_inning_runs"] isEqualToString: @""]) {
+            newestInning.homeTeamScore = nil;
+        }
+        else {
+            newestInning.homeTeamScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_inning_runs"] integerValue]];
+        }
+        
+        [_game.innings addObject:newestInning];
     }
 }
 

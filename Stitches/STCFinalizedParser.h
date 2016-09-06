@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "STCFinalizedGame.h"
+#import "STCInning.h"
 
 @protocol STCFinalizedParserDelegate
 @required

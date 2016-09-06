@@ -1,5 +1,5 @@
 //
-//  STCFinalizedGame.h
+//  Inning.h
 //  Stitches
 //
 //  Created by Ryan Fox on 9/6/16.
@@ -7,15 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STCGlobals.h"
-#import "STCInning.h"
 
-@interface STCFinalizedGame : NSObject
+@interface STCInning : NSObject
 
-@property NSString *awayTeamID;
-@property NSString *homeTeamID;
+@property NSNumber *number;
 @property NSNumber *awayTeamScore;
 @property NSNumber *homeTeamScore;
-@property NSMutableArray *innings;
 
 @end
