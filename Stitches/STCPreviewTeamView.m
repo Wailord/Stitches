@@ -80,12 +80,12 @@
                                                                        views:views]];
         
         // stuff within the gray square
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_pitcherImageView]-[_pitcherNameLabel]-[_pitcherRecordLabel]|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_pitcherImageView]-[_pitcherNameLabel]-(>=8)-[_pitcherRecordLabel]-[_pitcherERALabel]-|"
                                                                      options:NSLayoutFormatAlignAllTop
                                                                      metrics:nil
                                                                        views:views]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_pitcherImageView]-[_pitcherERALabel]|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_pitcherImageView]-|"
                                                                      options:NSLayoutFormatAlignAllLeft                                                                     metrics:nil
                                                                        views:views]];
     }
