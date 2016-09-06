@@ -50,6 +50,8 @@
 		02838E791D79ED620092A87F /* STCPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E781D79ED620092A87F /* STCPreviewViewController.m */; };
 		02838E7C1D79FA230092A87F /* STCPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E7B1D79FA230092A87F /* STCPreview.m */; };
 		02838E7F1D7A1A9D0092A87F /* STCTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E7E1D7A1A9D0092A87F /* STCTeam.m */; };
+		028AEBD81D7F08CA00F5620C /* StitchesInProgressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 028AEBD71D7F08CA00F5620C /* StitchesInProgressTests.m */; };
+		028AEBDA1D7F08D900F5620C /* StitchesFinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 028AEBD91D7F08D900F5620C /* StitchesFinalTests.m */; };
 		02ADCD101D7749610088AFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD0F1D7749610088AFFD /* main.m */; };
 		02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD121D7749610088AFFD /* AppDelegate.m */; };
 		02ADCD161D7749610088AFFD /* STCScoresNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* STCScoresNavigationController.m */; };
@@ -138,6 +140,8 @@
 		02838E7B1D79FA230092A87F /* STCPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreview.m; sourceTree = "<group>"; };
 		02838E7D1D7A1A9D0092A87F /* STCTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCTeam.h; sourceTree = "<group>"; };
 		02838E7E1D7A1A9D0092A87F /* STCTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCTeam.m; sourceTree = "<group>"; };
+		028AEBD71D7F08CA00F5620C /* StitchesInProgressTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StitchesInProgressTests.m; sourceTree = "<group>"; };
+		028AEBD91D7F08D900F5620C /* StitchesFinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StitchesFinalTests.m; sourceTree = "<group>"; };
 		02ADCD0B1D7749610088AFFD /* Stitches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stitches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ADCD0F1D7749610088AFFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02ADCD111D7749610088AFFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -402,6 +406,8 @@
 		02ADCD271D7749610088AFFD /* StitchesTests */ = {
 			isa = PBXGroup;
 			children = (
+				028AEBD91D7F08D900F5620C /* StitchesFinalTests.m */,
+				028AEBD71D7F08CA00F5620C /* StitchesInProgressTests.m */,
 				02ADCD281D7749610088AFFD /* StitchesSummaryTests.m */,
 				02ADCD2A1D7749610088AFFD /* Info.plist */,
 				02F15C9C1D7EFAB600F2A978 /* StitchesPreviewTests.m */,
@@ -635,8 +641,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				028AEBD81D7F08CA00F5620C /* StitchesInProgressTests.m in Sources */,
 				02ADCD291D7749610088AFFD /* StitchesSummaryTests.m in Sources */,
 				02F15C9D1D7EFAB600F2A978 /* StitchesPreviewTests.m in Sources */,
+				028AEBDA1D7F08D900F5620C /* StitchesFinalTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
