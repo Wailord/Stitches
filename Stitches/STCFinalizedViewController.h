@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "STCFinalizedParser.h"
+#import "STCFinalizedTeamView.h"
 
 @interface STCFinalizedViewController : UIViewController<STCFinalizedParserDelegate>
 

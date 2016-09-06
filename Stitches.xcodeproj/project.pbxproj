@@ -15,6 +15,7 @@
 		025957B41D7F2B2E006AB246 /* STCInning.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957B31D7F2B2E006AB246 /* STCInning.m */; };
 		025957B81D7F3A91006AB246 /* STCTeamRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957B71D7F3A91006AB246 /* STCTeamRecord.m */; };
 		025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957BA1D7F3B44006AB246 /* STCFinalizedTeam.m */; };
+		025957BF1D7F3E0F006AB246 /* STCFinalizedTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */; };
 		026600FA1D786F7F0022C79D /* STCSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600F91D786F7F0022C79D /* STCSummary.m */; };
 		026600FD1D7870F60022C79D /* STCSummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600FC1D7870F60022C79D /* STCSummariesTableViewController.m */; };
 		026601031D78804B0022C79D /* STCSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 026601021D78804B0022C79D /* STCSummaryTableViewCell.m */; };
@@ -108,6 +109,8 @@
 		025957B71D7F3A91006AB246 /* STCTeamRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCTeamRecord.m; sourceTree = "<group>"; };
 		025957B91D7F3B44006AB246 /* STCFinalizedTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCFinalizedTeam.h; sourceTree = "<group>"; };
 		025957BA1D7F3B44006AB246 /* STCFinalizedTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCFinalizedTeam.m; sourceTree = "<group>"; };
+		025957BD1D7F3E0F006AB246 /* STCFinalizedTeamView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCFinalizedTeamView.h; sourceTree = "<group>"; };
+		025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCFinalizedTeamView.m; sourceTree = "<group>"; };
 		026600F81D786F7F0022C79D /* STCSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummary.h; sourceTree = "<group>"; };
 		026600F91D786F7F0022C79D /* STCSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummary.m; sourceTree = "<group>"; };
 		026600FB1D7870F60022C79D /* STCSummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummariesTableViewController.h; sourceTree = "<group>"; };
@@ -303,6 +306,8 @@
 		025957BC1D7F3DB4006AB246 /* Game Finals */ = {
 			isa = PBXGroup;
 			children = (
+				025957BD1D7F3E0F006AB246 /* STCFinalizedTeamView.h */,
+				025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */,
 			);
 			name = "Game Finals";
 			sourceTree = "<group>";
@@ -696,6 +701,7 @@
 				0210E7791D78B59A0078DEB2 /* STCGlobals.m in Sources */,
 				02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */,
 				02ADCD101D7749610088AFFD /* main.m in Sources */,
+				025957BF1D7F3E0F006AB246 /* STCFinalizedTeamView.m in Sources */,
 				025957B81D7F3A91006AB246 /* STCTeamRecord.m in Sources */,
 				022C65BE1D7A220900A9C5D5 /* STCSummaryParser.m in Sources */,
 				022C65C11D7A264900A9C5D5 /* STCSummaryTeamView.m in Sources */,
