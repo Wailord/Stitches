@@ -36,6 +36,10 @@
     _summaryList = [[NSMutableArray alloc] init];
 }
 
+-(void)tearDown {
+    [super tearDown];
+}
+
 - (void)testParsingDateInPast {
     [_summaryParser parseGameSummariesForYear:2016 andMonth:5 andDay:4];
     
