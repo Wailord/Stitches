@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "STCFinalizedGame.h"
 #import "STCInning.h"
+#import "STCTeamRecord.h"
 
 @protocol STCFinalizedParserDelegate
 @required

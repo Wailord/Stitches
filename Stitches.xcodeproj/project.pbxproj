@@ -13,6 +13,8 @@
 		022C65C11D7A264900A9C5D5 /* STCSummaryTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C65C01D7A264900A9C5D5 /* STCSummaryTeamView.m */; };
 		022C65C41D7A30B600A9C5D5 /* STCPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C65C31D7A30B600A9C5D5 /* STCPreviewView.m */; };
 		025957B41D7F2B2E006AB246 /* STCInning.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957B31D7F2B2E006AB246 /* STCInning.m */; };
+		025957B81D7F3A91006AB246 /* STCTeamRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957B71D7F3A91006AB246 /* STCTeamRecord.m */; };
+		025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957BA1D7F3B44006AB246 /* STCFinalizedTeam.m */; };
 		026600FA1D786F7F0022C79D /* STCSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600F91D786F7F0022C79D /* STCSummary.m */; };
 		026600FD1D7870F60022C79D /* STCSummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600FC1D7870F60022C79D /* STCSummariesTableViewController.m */; };
 		026601031D78804B0022C79D /* STCSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 026601021D78804B0022C79D /* STCSummaryTableViewCell.m */; };
@@ -102,6 +104,10 @@
 		022C65C31D7A30B600A9C5D5 /* STCPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewView.m; sourceTree = "<group>"; };
 		025957B21D7F2B2E006AB246 /* STCInning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCInning.h; sourceTree = "<group>"; };
 		025957B31D7F2B2E006AB246 /* STCInning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCInning.m; sourceTree = "<group>"; };
+		025957B61D7F3A91006AB246 /* STCTeamRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCTeamRecord.h; sourceTree = "<group>"; };
+		025957B71D7F3A91006AB246 /* STCTeamRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCTeamRecord.m; sourceTree = "<group>"; };
+		025957B91D7F3B44006AB246 /* STCFinalizedTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCFinalizedTeam.h; sourceTree = "<group>"; };
+		025957BA1D7F3B44006AB246 /* STCFinalizedTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCFinalizedTeam.m; sourceTree = "<group>"; };
 		026600F81D786F7F0022C79D /* STCSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummary.h; sourceTree = "<group>"; };
 		026600F91D786F7F0022C79D /* STCSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummary.m; sourceTree = "<group>"; };
 		026600FB1D7870F60022C79D /* STCSummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummariesTableViewController.h; sourceTree = "<group>"; };
@@ -303,6 +309,8 @@
 				02838E7E1D7A1A9D0092A87F /* STCTeam.m */,
 				025957B21D7F2B2E006AB246 /* STCInning.h */,
 				025957B31D7F2B2E006AB246 /* STCInning.m */,
+				025957B61D7F3A91006AB246 /* STCTeamRecord.h */,
+				025957B71D7F3A91006AB246 /* STCTeamRecord.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -473,6 +481,8 @@
 			children = (
 				02DF27381D7F1DED0059E200 /* STCFinalizedGame.h */,
 				02DF27391D7F1DED0059E200 /* STCFinalizedGame.m */,
+				025957B91D7F3B44006AB246 /* STCFinalizedTeam.h */,
+				025957BA1D7F3B44006AB246 /* STCFinalizedTeam.m */,
 			);
 			name = "Game Finals";
 			sourceTree = "<group>";
@@ -666,6 +676,7 @@
 				02838E791D79ED620092A87F /* STCPreviewViewController.m in Sources */,
 				02ADCD161D7749610088AFFD /* STCScoresNavigationController.m in Sources */,
 				022C65C41D7A30B600A9C5D5 /* STCPreviewView.m in Sources */,
+				025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */,
 				02DF27361D7F1D720059E200 /* STCFinalizedParser.m in Sources */,
 				02838E7F1D7A1A9D0092A87F /* STCTeam.m in Sources */,
 				02DF273A1D7F1DED0059E200 /* STCFinalizedGame.m in Sources */,
@@ -677,6 +688,7 @@
 				0210E7791D78B59A0078DEB2 /* STCGlobals.m in Sources */,
 				02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */,
 				02ADCD101D7749610088AFFD /* main.m in Sources */,
+				025957B81D7F3A91006AB246 /* STCTeamRecord.m in Sources */,
 				022C65BE1D7A220900A9C5D5 /* STCSummaryParser.m in Sources */,
 				022C65C11D7A264900A9C5D5 /* STCSummaryTeamView.m in Sources */,
 				026600FD1D7870F60022C79D /* STCSummariesTableViewController.m in Sources */,

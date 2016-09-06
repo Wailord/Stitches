@@ -7,15 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STCGlobals.h"
+#import "STCFinalizedTeam.h"
 #import "STCInning.h"
+#import "STCGlobals.h"
 
 @interface STCFinalizedGame : NSObject
 
-@property NSString *awayTeamID;
-@property NSString *homeTeamID;
-@property NSNumber *awayTeamScore;
-@property NSNumber *homeTeamScore;
+@property STCFinalizedTeam *awayTeam;
+@property STCFinalizedTeam *homeTeam;
 @property NSMutableArray *innings;
 @property bool awayTeamWon;
 
