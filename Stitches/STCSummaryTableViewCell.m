@@ -65,6 +65,9 @@
                 break;
             case STCFinalizedStatus:
                 [statusText appendString:@"Final"];
+                if(![[game inning]  isEqual: @(9)]) {
+                    [statusText appendString:[NSString stringWithFormat:@" (%@)", [game inning]]];
+                }
                 break;
             case STCInProgressStatus:
                 if([game topOfInning]) {

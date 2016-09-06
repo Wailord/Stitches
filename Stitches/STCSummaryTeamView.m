@@ -23,7 +23,7 @@
         // name
         _teamNameLabel = [[UILabel alloc] init];
         _teamNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-        _teamNameLabel.text = [[[STCGlobals teamDict] objectForKey:teamID] abbreviation];
+        _teamNameLabel.text = [STCGlobals getBriefNameForTeamID:teamID];
         [self addSubview:_teamNameLabel];
         
         // score

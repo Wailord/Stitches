@@ -93,9 +93,9 @@
     }
     else {
         cell.inning = game.inning;
-        cell.homeName = [[[STCGlobals teamDict] objectForKey:[game homeTeamID]] abbreviation];
+        cell.homeName = [STCGlobals getAbbreviationForTeamID:[game homeTeamID]];
         cell.homeScore = game.homeScore;
-        cell.awayName = [[[STCGlobals teamDict] objectForKey:[game awayTeamID]] abbreviation];
+        cell.awayName = [STCGlobals getAbbreviationForTeamID:[game awayTeamID]];
         cell.awayScore = game.awayScore;
     }
         

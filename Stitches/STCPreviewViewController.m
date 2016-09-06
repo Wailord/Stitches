@@ -30,7 +30,7 @@
 - (void)parsedGamePreview:(STCPreview *)preview {
     // away team logo and info
     [_awayPreviewView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[preview awayTeamID]]]];
-    [_awayPreviewView.teamInfoLabel setText:[[[STCGlobals teamDict] objectForKey:[preview awayTeamID]] fullName]];
+    [_awayPreviewView.teamInfoLabel setText:[STCGlobals getFullNameForTeamID:[preview awayTeamID]]];
     
     // away pitcher name and ERA
     NSString *awayFullName = [NSString stringWithFormat:@"%@ %@", preview.awayProbablePitcher.firstName, preview.awayProbablePitcher.lastName];
@@ -49,7 +49,7 @@
     
     // home team logo and info
     [_homePreviewView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[preview homeTeamID]]]];
-    [_homePreviewView.teamInfoLabel setText:[[[STCGlobals teamDict] objectForKey:[preview homeTeamID]] fullName]];
+    [_homePreviewView.teamInfoLabel setText:[STCGlobals getFullNameForTeamID:[preview homeTeamID]]];
     
     // home team pitcher name and ERA
     NSString *homeFullName = [NSString stringWithFormat:@"%@ %@", preview.homeProbablePitcher.firstName, preview.homeProbablePitcher.lastName];

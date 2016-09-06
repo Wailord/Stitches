@@ -23,10 +23,10 @@
 
 - (NSString *)description {
     NSMutableString *desc = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"%@ (%@) [%@] vs. %@ (%@) [%@]",
-                                                                     [[[STCGlobals teamDict] objectForKey:_awayTeam.teamID] abbreviation],
+                                                                     [STCGlobals getAbbreviationForTeamID:_awayTeam.teamID],
                                                                      _awayTeam.teamRecord,
                                                                      _awayTeam.runsScored,
-                                                                     [[[STCGlobals teamDict] objectForKey:_homeTeam.teamID] abbreviation],
+                                                                     [STCGlobals getAbbreviationForTeamID:_awayTeam.teamID],
                                                                      _homeTeam.teamRecord,
                                                                      _homeTeam.runsScored]];
     [desc appendString:@"\nInnings:"];

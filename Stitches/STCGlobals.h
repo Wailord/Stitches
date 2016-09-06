@@ -19,6 +19,8 @@ typedef NS_ENUM(NSInteger, STCGameStatus) {
 
 @interface STCGlobals : NSObject
 
-+(NSDictionary*)teamDict;
++(NSString *)getAbbreviationForTeamID:(NSString *)teamID;
++(NSString *)getFullNameForTeamID:(NSString *)teamID;
++(NSString *)getBriefNameForTeamID:(NSString *)teamID;
 
 @end

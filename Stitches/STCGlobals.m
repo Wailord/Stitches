@@ -10,6 +10,18 @@
 
 @implementation STCGlobals
 
++(NSString *)getAbbreviationForTeamID:(NSString *)teamID {
+    return [[[self teamDict] objectForKey:teamID] abbreviation];
+}
+
++(NSString *)getFullNameForTeamID:(NSString *)teamID {
+    return [[[self teamDict] objectForKey:teamID] fullName];
+}
+
++(NSString *)getBriefNameForTeamID:(NSString *)teamID {
+    return [[[self teamDict] objectForKey:teamID] briefName];
+}
+
 +(NSDictionary*)teamDict {
     static NSDictionary *inst = nil;
     static dispatch_once_t onceToken;

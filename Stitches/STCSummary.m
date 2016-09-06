@@ -14,9 +14,9 @@
 -(NSString *)description
 {
     return [NSString stringWithFormat:@"%@ (%@) @ %@ (%@)",
-            [[[STCGlobals teamDict] objectForKey:self.awayTeamID] abbreviation],
+            [STCGlobals getAbbreviationForTeamID:_awayTeamID],
             self.awayScore,
-            [[[STCGlobals teamDict] objectForKey:self.homeTeamID] abbreviation],
+            [STCGlobals getAbbreviationForTeamID:_homeTeamID],
             self.homeScore];
 }
 
