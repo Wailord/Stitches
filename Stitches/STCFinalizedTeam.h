@@ -13,6 +13,8 @@
 
 @property NSString *teamID;
 @property NSNumber *runsScored;
+@property NSNumber *hits;
+@property NSNumber *errors;
 @property STCTeamRecord *teamRecord;
 
 @end
