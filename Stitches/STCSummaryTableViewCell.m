@@ -19,10 +19,10 @@
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
     
     if(self) {
-        bool awayTeamWon = (game.status == STCFinalStatus) && (game.awayScore > game.homeScore);
-        bool homeTeamWon = (game.status == STCFinalStatus) && (game.awayScore < game.homeScore);
+        bool awayTeamWon = (game.status == STCFinalizedStatus) && (game.awayScore > game.homeScore);
+        bool homeTeamWon = (game.status == STCFinalizedStatus) && (game.awayScore < game.homeScore);
         
-        if(game.status == STCPreviewStatus || game.status == STCFinalStatus) {
+        if(game.status == STCPreviewStatus || game.status == STCFinalizedStatus) {
             self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             self.selectionStyle = UITableViewCellSelectionStyleBlue;
         }
@@ -63,7 +63,7 @@
                 [formatter setDateFormat:@"h:mm a"];
                 [statusText appendString:[formatter stringFromDate:[game startTime]]];
                 break;
-            case STCFinalStatus:
+            case STCFinalizedStatus:
                 [statusText appendString:@"Final"];
                 break;
             case STCInProgressStatus:

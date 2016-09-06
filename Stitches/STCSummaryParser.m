@@ -51,7 +51,7 @@
             validGame = true;
         }
         else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Final"]) {
-            status = STCFinalStatus;
+            status = STCFinalizedStatus;
             validGame = true;
         }
         

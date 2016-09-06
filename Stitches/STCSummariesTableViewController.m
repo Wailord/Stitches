@@ -73,7 +73,7 @@
             preview = [[STCPreviewViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
             [self.navigationController pushViewController:preview animated:true];
             break;
-        case STCFinalStatus:
+        case STCFinalizedStatus:
             final = [[STCFinalizedViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
             [self.navigationController pushViewController:final animated:true];
             break;

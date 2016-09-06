@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, STCGameStatus) {
     STCNoStatus,
     STCPreviewStatus,
     STCInProgressStatus,
-    STCFinalStatus
+    STCFinalizedStatus
 };
 
 @interface STCGlobals : NSObject
