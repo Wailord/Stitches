@@ -17,5 +17,6 @@
 @property NSNumber *awayTeamScore;
 @property NSNumber *homeTeamScore;
 @property NSMutableArray *innings;
+@property bool awayTeamWon;
 
 @end

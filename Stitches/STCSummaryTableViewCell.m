@@ -19,6 +19,9 @@
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
     
     if(self) {
+        bool awayTeamWon = (game.status == STCFinalStatus) && (game.awayScore > game.homeScore);
+        bool homeTeamWon = (game.status == STCFinalStatus) && (game.awayScore < game.homeScore);
+        
         if(game.status == STCPreviewStatus || game.status == STCFinalStatus) {
             self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             self.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -27,11 +30,16 @@
             self.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         
-        _awayTeamView = [[STCSummaryTeamView alloc] initWithTeamID:[game awayTeamID] andScore:[game awayScore]];
+        _awayTeamView = [[STCSummaryTeamView alloc] initWithTeamID:[game awayTeamID]
+                                                          andScore:[game awayScore]
+                                                            andWon:awayTeamWon];
+        
         _awayTeamView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_awayTeamView];
         
-        _homeTeamView = [[STCSummaryTeamView alloc] initWithTeamID:[game homeTeamID] andScore:[game homeScore]];
+        _homeTeamView = [[STCSummaryTeamView alloc] initWithTeamID:[game homeTeamID]
+                                                          andScore:[game homeScore]
+                                                            andWon:homeTeamWon];
         _homeTeamView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_homeTeamView];
         

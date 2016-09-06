@@ -14,6 +14,6 @@
 @property UILabel *teamNameLabel;
 @property UILabel *teamScoreLabel;
 
--(instancetype)initWithTeamID:(NSString *)teamID andScore:(NSNumber *)score;
+-(instancetype)initWithTeamID:(NSString *)teamID andScore:(NSNumber *)score andWon:(bool)won;
 
 @end

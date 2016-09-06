@@ -48,6 +48,7 @@
         _game.awayTeamScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];
         _game.homeTeamID = [attributeDict objectForKey:@"home_team_id"];;
         _game.homeTeamScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_runs"] integerValue]];
+        _game.awayTeamWon = (_game.awayTeamScore > _game.homeTeamScore);
     }
     else if([elementName isEqualToString:@"linescore"]) {
         STCInning *newestInning = [[STCInning alloc] init];

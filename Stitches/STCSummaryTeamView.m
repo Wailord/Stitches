@@ -11,7 +11,7 @@
 
 @implementation STCSummaryTeamView
 
--(instancetype)initWithTeamID:(NSString *)teamID andScore:(NSNumber *)score {
+-(instancetype)initWithTeamID:(NSString *)teamID andScore:(NSNumber *)score andWon:(bool)won {
     self = [super init];
     if(self) {
         // AWAY TEAM
@@ -30,6 +30,12 @@
         _teamScoreLabel = [[UILabel alloc] init];
         _teamScoreLabel.translatesAutoresizingMaskIntoConstraints = false;
         _teamScoreLabel.text = [NSString stringWithFormat:@"%@", score];
+        
+        if(won) {
+            _teamScoreLabel.font = [UIFont boldSystemFontOfSize:16];
+            _teamNameLabel.font = [UIFont boldSystemFontOfSize:16];
+        }
+        
         [self addSubview:_teamScoreLabel];
         
         NSDictionary *views = NSDictionaryOfVariableBindings(_teamLogoImageView, _teamNameLabel, _teamScoreLabel);
