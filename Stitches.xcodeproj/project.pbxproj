@@ -234,9 +234,9 @@
 		022C65C81D7A311F00A9C5D5 /* Scores */ = {
 			isa = PBXGroup;
 			children = (
-				02DF272F1D7F1A740059E200 /* Game Finals */,
 				02ADCD141D7749610088AFFD /* STCScoresNavigationController.h */,
 				02ADCD151D7749610088AFFD /* STCScoresNavigationController.m */,
+				02DF272F1D7F1A740059E200 /* Game Finals */,
 				022C65CA1D7A314100A9C5D5 /* Game Summaries */,
 				022C65C91D7A313200A9C5D5 /* Game Previews */,
 			);

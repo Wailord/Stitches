@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "STCFinalizedParser.h"
 
-@interface STCFinalizedViewController : UIViewController
+@interface STCFinalizedViewController : UIViewController<STCFinalizedParserDelegate>
 
 - (instancetype)initWithGameID:(NSString*)gameID;
 

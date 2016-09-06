@@ -10,6 +10,7 @@
 
 @implementation STCFinalizedParser {
     NSXMLParser *_parser;
+    STCFinalizedGame *_game;
 }
 
 -(void)parseFinalizedGameWithID:(NSString *)gameID {
@@ -40,7 +41,22 @@
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
-    
+    if([elementName isEqualToString:@"game"]) {
+        NSLog(@"Started parsing a finalized game.");
+        _game = [[STCFinalizedGame alloc] init];
+        _game.awayTeamID = @"138";
+        _game.awayTeamScore = [NSNumber numberWithInt:2];;
+        _game.homeTeamID = @"141";
+        _game.homeTeamScore = [NSNumber numberWithInt:4];
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    if([elementName isEqualToString:@"game"]) {
+        if(_delegate) {
+            [_delegate parsedFinalizedGame:_game];
+        }
+    }
 }
 
 @end

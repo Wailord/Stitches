@@ -10,4 +10,12 @@
 
 @implementation STCFinalizedGame
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ (%@) vs. %@ (%@)",
+            [[[STCGlobals teamDict] objectForKey:_awayTeamID] abbreviation],
+            _awayTeamScore,
+            [[[STCGlobals teamDict] objectForKey:_homeTeamID] abbreviation],
+            _homeTeamScore];
+}
+
 @end

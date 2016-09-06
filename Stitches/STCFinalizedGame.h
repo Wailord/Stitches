@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "STCGlobals.h"
 
 @interface STCFinalizedGame : NSObject
+
+@property NSString *awayTeamID;
+@property NSString *homeTeamID;
+@property NSNumber *awayTeamScore;
+@property NSNumber *homeTeamScore;
 
 @end

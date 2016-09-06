@@ -10,6 +10,7 @@
 
 @interface STCFinalizedViewController () {
     NSString *_gameID;
+    STCFinalizedParser *_parser;
 }
 
 @end
@@ -20,13 +21,21 @@
     self = [super init];
     if (self) {
         _gameID = gameID;
+        self.view.backgroundColor = [UIColor whiteColor];
         self.navigationItem.title = @"Final";
     }
     return self;
 }
 
+- (void)parsedFinalizedGame:(STCFinalizedGame *)final {
+    NSLog(@"Parsed finalized game: %@", final);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _parser = [[STCFinalizedParser alloc] init];
+    _parser.delegate = self;
+    [_parser parseFinalizedGameWithID:_gameID];
 }
 
 @end

@@ -21,6 +21,7 @@
     self = [super init];
     if (self) {
         _gameID = gameID;
+        self.view.backgroundColor = [UIColor whiteColor];
         self.navigationItem.title = @"Game Preview";
     }
     return self;
@@ -79,8 +80,6 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-    
-    self.view.backgroundColor = [UIColor whiteColor];
     
     _awayPreviewView = [[STCPreviewView alloc] init];
     _awayPreviewView.translatesAutoresizingMaskIntoConstraints = FALSE;
