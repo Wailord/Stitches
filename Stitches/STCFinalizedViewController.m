@@ -14,6 +14,10 @@
     STCFinalizedTeamView *_awayTeamView;
     STCFinalizedTeamView *_homeTeamView;
     STCLinescoreView *_linescoreView;
+    
+    UILabel *_winningPitcherLabel;
+    UILabel *_losingPitcherLabel;
+    UILabel *_savingPitcherLabel;
 }
 
 @end
@@ -57,6 +61,13 @@
         [[[_linescoreView homeInningLabels] objectAtIndex:x]
          setText:(inn.homeTeamScore ? [NSString stringWithFormat:@"%@", inn.homeTeamScore] : @"x")];
     }
+    
+    _winningPitcherLabel.text = [NSString stringWithFormat:@"WP: %@", final.winningPitcher];
+    _losingPitcherLabel.text = [NSString stringWithFormat:@"LP: %@", final.losingPitcher];
+    
+    if(final.savingPitcher) {
+        _savingPitcherLabel.text = [NSString stringWithFormat:@"SV: %@", final.savingPitcher];
+    }
 }
 
 - (void)viewDidLoad {
@@ -66,6 +77,16 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
+    
+    _winningPitcherLabel = [[UILabel alloc] init];
+    _winningPitcherLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:_winningPitcherLabel];
+    _losingPitcherLabel = [[UILabel alloc] init];
+    _losingPitcherLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:_losingPitcherLabel];
+    _savingPitcherLabel = [[UILabel alloc] init];
+    _savingPitcherLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:_savingPitcherLabel];
     
     // set up the UI elements
     _awayTeamView = [[STCFinalizedTeamView alloc] init];
@@ -80,7 +101,8 @@
     _linescoreView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:_linescoreView];
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(_awayTeamView, _homeTeamView,_linescoreView);
+    NSDictionary *views = NSDictionaryOfVariableBindings(_awayTeamView, _homeTeamView,_linescoreView,
+                                                         _winningPitcherLabel, _losingPitcherLabel, _savingPitcherLabel);
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayTeamView]"
                                                                       options:0
@@ -92,8 +114,8 @@
                                                                       metrics:nil
                                                                         views:views]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[_linescoreView]"
-                                                                      options:0
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_awayTeamView]-50-[_winningPitcherLabel]-15-[_losingPitcherLabel]-15-[_savingPitcherLabel]-15-[_linescoreView]"
+                                                                      options:NSLayoutFormatAlignAllLeft
                                                                       metrics:nil
                                                                         views:views]];
     

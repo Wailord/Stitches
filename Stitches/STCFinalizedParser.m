@@ -108,7 +108,7 @@
             _game.losingPitcher = pitcher;
         }
     }
-    else if([elementName isEqualToString:@"save_pitcher"]) {
+    else if([elementName isEqualToString:@"save_pitcher"] && ![[attributeDict objectForKey:@"id"] isEqualToString:@""]) {
         STCSavePitcher *pitcher = [[STCSavePitcher alloc] init];
         pitcher.playerID = [attributeDict objectForKey:@"id"];
         pitcher.firstName = [attributeDict objectForKey:@"first_name"];

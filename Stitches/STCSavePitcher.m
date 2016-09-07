@@ -10,4 +10,8 @@
 
 @implementation STCSavePitcher
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ %@ (%@ SV, %@ ERA)", [self firstName], [self lastName], [self saves], [self era]];
+}
+
 @end

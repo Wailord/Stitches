@@ -331,13 +331,10 @@
 		026600F51D786EAD0022C79D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				02A9E0E11D805921005B72CB /* Players */,
 				02DF27371D7F1DCE0059E200 /* Game Finals */,
 				02F15C991D7DDF2C00F2A978 /* Game Summaries */,
 				02F15C981D7DDF2300F2A978 /* Game Previews */,
-				02F15C951D7DDE5E00F2A978 /* STCPitcher.h */,
-				02F15C961D7DDE5E00F2A978 /* STCPitcher.m */,
-				02A9E0DE1D8056EA005B72CB /* STCSavePitcher.h */,
-				02A9E0DF1D8056EA005B72CB /* STCSavePitcher.m */,
 				02838E7D1D7A1A9D0092A87F /* STCTeam.h */,
 				02838E7E1D7A1A9D0092A87F /* STCTeam.m */,
 				025957B21D7F2B2E006AB246 /* STCInning.h */,
@@ -413,6 +410,17 @@
 				02838E561D79D8330092A87F /* 160.png */,
 			);
 			name = logos;
+			sourceTree = "<group>";
+		};
+		02A9E0E11D805921005B72CB /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				02F15C951D7DDE5E00F2A978 /* STCPitcher.h */,
+				02F15C961D7DDE5E00F2A978 /* STCPitcher.m */,
+				02A9E0DE1D8056EA005B72CB /* STCSavePitcher.h */,
+				02A9E0DF1D8056EA005B72CB /* STCSavePitcher.m */,
+			);
+			name = Players;
 			sourceTree = "<group>";
 		};
 		02ADCD021D7749610088AFFD = {
