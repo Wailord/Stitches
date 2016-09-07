@@ -12,6 +12,9 @@
     STCLinescoreInningLabel *_hitsLabel;
     STCLinescoreInningLabel *_scoreLabel;
     STCLinescoreInningLabel *_errorsLabel;
+    STCLinescoreInningLabel *_awayTeamLabel;
+    STCLinescoreInningLabel *_homeTeamLabel;
+    STCLinescoreInningLabel *_dummyTeamLabel;
 }
 
 - (instancetype)init {
@@ -24,6 +27,22 @@
         _titleInningLabels = [[NSMutableArray alloc] initWithCapacity:9];
         _awayInningLabels = [[NSMutableArray alloc] initWithCapacity:9];
         _homeInningLabels = [[NSMutableArray alloc] initWithCapacity:9];
+        
+        // create the team labels and the blank dummy label above
+        _dummyTeamLabel = [[STCLinescoreInningLabel alloc] init];
+        _dummyTeamLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+        [views setObject:_dummyTeamLabel forKey:@"_dummyTeamLabel"];
+        [self addSubview:_dummyTeamLabel];
+        
+        _awayTeamLabel = [[STCLinescoreInningLabel alloc] init];
+        _awayTeamLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+        [views setObject:_awayTeamLabel forKey:@"_awayTeamLabel"];
+        [self addSubview:_awayTeamLabel];
+        
+        _homeTeamLabel = [[STCLinescoreInningLabel alloc] init];
+        _homeTeamLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+        [views setObject:_homeTeamLabel forKey:@"_homeTeamLabel"];
+        [self addSubview:_homeTeamLabel];
         
         // create the constant RHE labels
         _scoreLabel = [[STCLinescoreInningLabel alloc] init];
@@ -87,22 +106,22 @@
             [self addSubview:labelToAdd];
         }
         
-        NSDictionary *metrics = @{@"height" : @(30)};
+        NSDictionary *metrics = @{@"width" : @(30)};
         
         [self addConstraints:[NSLayoutConstraint
-                              constraintsWithVisualFormat:@"H:|-[titleView0(height)]-0-[titleView1(height)]-0-[titleView2(height)]-0-[titleView3(height)]-0-[titleView4(height)]-0-[titleView5(height)]-0-[titleView6(height)]-0-[titleView7(height)]-0-[titleView8(height)]-0-[_scoreLabel(height)]-0-[_hitsLabel(height)]-0-[_errorsLabel(height)]-|"
+                              constraintsWithVisualFormat:@"H:|-[_dummyTeamLabel(width)]-0-[titleView0(width)]-0-[titleView1(width)]-0-[titleView2(width)]-0-[titleView3(width)]-0-[titleView4(width)]-0-[titleView5(width)]-0-[titleView6(width)]-0-[titleView7(width)]-0-[titleView8(width)]-0-[_scoreLabel(width)]-0-[_hitsLabel(width)]-0-[_errorsLabel(width)]-|"
                               options:NSLayoutFormatAlignAllTop
                               metrics:metrics
                               views:views]];
         
         [self addConstraints:[NSLayoutConstraint
-                              constraintsWithVisualFormat:@"H:|-[awayInningView0(height)]-0-[awayInningView1(height)]-0-[awayInningView2(height)]-0-[awayInningView3(height)]-0-[awayInningView4(height)]-0-[awayInningView5(height)]-0-[awayInningView6(height)]-0-[awayInningView7(height)]-0-[awayInningView8(height)]-0-[_awayScoreLabel(height)]-0-[_awayHitsLabel(height)]-0-[_awayErrorsLabel(height)]-|"
+                              constraintsWithVisualFormat:@"H:|-[_awayTeamLabel(width)]-0-[awayInningView0(width)]-0-[awayInningView1(width)]-0-[awayInningView2(width)]-0-[awayInningView3(width)]-0-[awayInningView4(width)]-0-[awayInningView5(width)]-0-[awayInningView6(width)]-0-[awayInningView7(width)]-0-[awayInningView8(width)]-0-[_awayScoreLabel(width)]-0-[_awayHitsLabel(width)]-0-[_awayErrorsLabel(width)]-|"
                               options:NSLayoutFormatAlignAllTop
                               metrics:metrics
                               views:views]];
         
         [self addConstraints:[NSLayoutConstraint
-                              constraintsWithVisualFormat:@"H:|-[homeInningView0(height)]-0-[homeInningView1(height)]-0-[homeInningView2(height)]-0-[homeInningView3(height)]-0-[homeInningView4(height)]-0-[homeInningView5(height)]-0-[homeInningView6(height)]-0-[homeInningView7(height)]-0-[homeInningView8(height)]-0-[_homeScoreLabel(height)]-0-[_homeHitsLabel(height)]-0-[_homeErrorsLabel(height)]-|"
+                              constraintsWithVisualFormat:@"H:|-[_homeTeamLabel(width)]-0-[homeInningView0(width)]-0-[homeInningView1(width)]-0-[homeInningView2(width)]-0-[homeInningView3(width)]-0-[homeInningView4(width)]-0-[homeInningView5(width)]-0-[homeInningView6(width)]-0-[homeInningView7(width)]-0-[homeInningView8(width)]-0-[_homeScoreLabel(width)]-0-[_homeHitsLabel(width)]-0-[_homeErrorsLabel(width)]-|"
                               options:NSLayoutFormatAlignAllTop
                               metrics:metrics
                               views:views]];

@@ -44,15 +44,16 @@
     _linescoreView.homeErrorsLabel.text = [NSString stringWithFormat:@"%@", final.homeTeam.errors];
     
     for(int x = 0; x < [final.innings count]; x++) {
-        STCLinescoreInningLabel *inn = [[_linescoreView titleInningLabels] objectAtIndex:x];
-        inn.font = [UIFont boldSystemFontOfSize:18.0f];
-        [inn setText:[NSString stringWithFormat:@"%@", [[final.innings objectAtIndex:x] number]]];
+        STCInning *inn = [final.innings objectAtIndex:x];
+        STCLinescoreInningLabel *innLabel = [[_linescoreView titleInningLabels] objectAtIndex:x];
+        innLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+        [innLabel setText:[NSString stringWithFormat:@"%@", inn.number]];
         
         [[[_linescoreView awayInningLabels] objectAtIndex:x]
-         setText:[NSString stringWithFormat:@"%@", [[final.innings objectAtIndex:x] awayTeamScore]]];
+         setText:(inn.awayTeamScore ? [NSString stringWithFormat:@"%@", inn.awayTeamScore] : @"-")];
         
         [[[_linescoreView homeInningLabels] objectAtIndex:x]
-         setText:[NSString stringWithFormat:@"%@", [[final.innings objectAtIndex:x] homeTeamScore]]];
+         setText:(inn.homeTeamScore ? [NSString stringWithFormat:@"%@", inn.homeTeamScore] : @"-")];
     }
 }
 
