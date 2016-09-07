@@ -8,7 +8,7 @@
 
 #import "STCScoresPageViewController.h"
 
-@interface STCScoresPageViewController () {
+@interface STCScoresPageViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate> {
     NSArray *_scoreDays;
     NSDateFormatter *_formatter;
     NSCalendar *_gregorian;
@@ -34,9 +34,12 @@
     [_oneDayAfter setDay:1];
     
     self.dataSource = self;
+    self.delegate = self;
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
                                                     image:[UIImage imageNamed:@"baseball.png"]
                                                       tag:0];
+    
+    self.navigationItem.title = [_formatter stringFromDate:[NSDate date]];
     
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -46,12 +49,21 @@
     NSDateComponents *components = [gregorian components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
                                                 fromDate:[NSDate date]];
     
-    _scoresTableViewController = [[STCSummariesTableViewController alloc] initWithDateComponents:components];
+    _currentScoresTableViewController = [[STCSummariesTableViewController alloc] initWithDateComponents:components];
     
-    [self setViewControllers:@[_scoresTableViewController]
+    [self setViewControllers:@[_currentScoresTableViewController]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:YES
                   completion:^(BOOL finished) { }];
+}
+
+#pragma mark - UIPageViewControllerDelegate
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
+    
+    NSDateComponents *currentDateComponents = ((STCSummariesTableViewController *)([self.viewControllers firstObject])).scoreboardDate;
+    NSDate *currentDate = [[NSCalendar currentCalendar] dateFromComponents:currentDateComponents];
+    
+    self.navigationItem.title = [_formatter stringFromDate:currentDate];
 }
 
 #pragma mark - UIPageViewControllerDataSource
@@ -59,7 +71,7 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(STCSummariesTableViewController *)viewController {
     NSDate *currentlyDisplayedDate = nil;
     
-    if(viewController == nil) {
+    if(!viewController) {
         currentlyDisplayedDate = [NSDate date];
     }
     else {
@@ -74,9 +86,7 @@
                                             components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                             fromDate:newDateToShow];
     
-    self.navigationItem.title = [_formatter stringFromDate:newDateToShow];
-    
-    NSLog(@"Current date: %@, New Date: %@", currentlyDisplayedDate, newDateToShow);
+    NSLog(@"ADVANCING ONE DAY: Current date: %@, New Date: %@", currentlyDisplayedDate, newDateToShow);
     
     return [[STCSummariesTableViewController alloc] initWithDateComponents:tomorrowComponents];
 }
@@ -84,7 +94,7 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(STCSummariesTableViewController *)viewController {
     NSDate *currentlyDisplayedDate = nil;
     
-    if(viewController == nil) {
+    if(!viewController) {
         currentlyDisplayedDate = [NSDate date];
     }
     else {
@@ -99,9 +109,7 @@
                                             components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                             fromDate:newDateToShow];
     
-    self.navigationItem.title = [_formatter stringFromDate:newDateToShow];
-    
-    NSLog(@"Current date: %@, New Date: %@", currentlyDisplayedDate, newDateToShow);
+    NSLog(@"GOING BACK ONE DAY: Current date: %@, New Date: %@", currentlyDisplayedDate, newDateToShow);
     
     return [[STCSummariesTableViewController alloc] initWithDateComponents:yesterdayComponents];
 }

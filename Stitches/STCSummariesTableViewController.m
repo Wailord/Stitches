@@ -27,6 +27,8 @@
     self.tableView.rowHeight = 84;
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
+    
+    self.navigationItem.title = _scoreboardDate.description;
 }
 
 - (instancetype)initWithDateComponents:(NSDateComponents *)components {

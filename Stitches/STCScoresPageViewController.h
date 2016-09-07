@@ -10,8 +10,8 @@
 #import "STCScoresNavigationController.h"
 #import "STCSummariesTableViewController.h"
 
-@interface STCScoresPageViewController : UIPageViewController<UIPageViewControllerDataSource>
+@interface STCScoresPageViewController : UIPageViewController
 
-@property STCSummariesTableViewController *scoresTableViewController;
+@property STCSummariesTableViewController *currentScoresTableViewController;
 
 @end
