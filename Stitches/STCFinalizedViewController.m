@@ -37,8 +37,10 @@
 - (void)parsedFinalizedGame:(STCFinalizedGame *)final {
     NSLog(@"Parsed finalized game: %@", final);
     // team names/records
-    _awayTeamView.teamInfoLabel.text = [STCGlobals getBriefNameForTeamID:final.awayTeam.teamID];
-    _homeTeamView.teamInfoLabel.text = [STCGlobals getBriefNameForTeamID:final.homeTeam.teamID];
+    _awayTeamView.teamNameLabel.text = [STCGlobals getBriefNameForTeamID:final.awayTeam.teamID];
+    _homeTeamView.teamNameLabel.text = [STCGlobals getBriefNameForTeamID:final.homeTeam.teamID];
+    _awayTeamView.teamInfoLabel.text = [final.awayTeam.teamRecord description];
+    _homeTeamView.teamInfoLabel.text = [final.homeTeam.teamRecord description];
     
     // runs scored
     _awayTeamView.runsScoredLabel.text = [NSString stringWithFormat:@"%@", final.awayTeam.runsScored];
@@ -119,7 +121,7 @@
     NSDictionary *views = NSDictionaryOfVariableBindings(_awayTeamView, _homeTeamView,_linescoreView,
                                                          _winningPitcherLabel, _losingPitcherLabel, _savingPitcherLabel);
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayTeamView]-(>=20)-[_homeTeamView]-|"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_awayTeamView]-(>=20)-[_homeTeamView]-|"
                                                                       options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                       metrics:nil
                                                                         views:views]];
@@ -139,7 +141,7 @@
                                                                       metrics:nil
                                                                         views:views]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_awayTeamView]-10-[_winningPitcherLabel]-15-[_losingPitcherLabel]-15-[_savingPitcherLabel]-15-[_linescoreView]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_awayTeamView]-(<=30)-[_winningPitcherLabel]-[_losingPitcherLabel]-[_savingPitcherLabel]-[_linescoreView]-|"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:views]];
