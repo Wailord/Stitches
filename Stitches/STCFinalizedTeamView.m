@@ -52,12 +52,12 @@
                                                                      metrics:nil
                                                                        views:views]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_teamLogoImageView(80)]-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_teamLogoImageView(120)]-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:views]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_teamLogoImageView(80)]-[_teamNameLabel]-[_teamInfoLabel]-[_runsScoredLabel]-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_teamLogoImageView(120)]-[_teamNameLabel]-[_teamInfoLabel]-[_runsScoredLabel]-|"
                                                                      options:NSLayoutFormatAlignAllCenterX
                                                                      metrics:nil
                                                                        views:views]];
