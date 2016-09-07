@@ -95,32 +95,30 @@
             [self addSubview:labelToAdd];
         }
         
-        NSDictionary *metrics = @{@"width" : @(30), @"teamWidth": @(50)};
-        
         [self addConstraints:[NSLayoutConstraint
                               constraintsWithVisualFormat:
-                              @"H:|-[_dummyTeamLabel(teamWidth)]-0-[titleView0(width)]-0-[titleView1(width)]-0-[titleView2(width)]-0-[titleView3(width)]-0-[titleView4(width)]-0-[titleView5(width)]-0-[titleView6(width)]-0-[titleView7(width)]-0-[titleView8(width)]-0-[_scoreLabel(width)]-0-[_hitsLabel(width)]-0-[_errorsLabel(width)]"
-                              options:NSLayoutFormatAlignAllTop
-                              metrics:metrics
+                              @"H:|-[_dummyTeamLabel(50)]-0-[titleView0]-0-[titleView1(==titleView0)]-0-[titleView2(==titleView0)]-0-[titleView3(==titleView0)]-0-[titleView4(==titleView0)]-0-[titleView5(==titleView0)]-0-[titleView6(==titleView0)]-0-[titleView7(==titleView0)]-0-[titleView8(==titleView0)]-0-[_scoreLabel(==titleView0)]-0-[_hitsLabel(==titleView0)]-0-[_errorsLabel(==titleView0)]-|"
+                              options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
+                              metrics:nil
                               views:views]];
         
         [self addConstraints:[NSLayoutConstraint
                               constraintsWithVisualFormat:
-                              @"H:|-[_awayTeamLabel(teamWidth)]-0-[awayInningView0(width)]-0-[awayInningView1(width)]-0-[awayInningView2(width)]-0-[awayInningView3(width)]-0-[awayInningView4(width)]-0-[awayInningView5(width)]-0-[awayInningView6(width)]-0-[awayInningView7(width)]-0-[awayInningView8(width)]-0-[_awayScoreLabel(width)]-0-[_awayHitsLabel(width)]-0-[_awayErrorsLabel(width)]"
+                              @"H:|-[_awayTeamLabel]-0-[awayInningView0]-0-[awayInningView1(==awayInningView0)]-0-[awayInningView2(==awayInningView0)]-0-[awayInningView3(==awayInningView0)]-0-[awayInningView4(==awayInningView0)]-0-[awayInningView5(==awayInningView0)]-0-[awayInningView6(==awayInningView0)]-0-[awayInningView7(==awayInningView0)]-0-[awayInningView8(==awayInningView0)]-0-[_awayScoreLabel(==awayInningView0)]-0-[_awayHitsLabel(==awayInningView0)]-0-[_awayErrorsLabel(==awayInningView0)]-|"
                               options:NSLayoutFormatAlignAllTop
-                              metrics:metrics
+                              metrics:nil
                               views:views]];
         
         [self addConstraints:[NSLayoutConstraint
                               constraintsWithVisualFormat:
-                              @"H:|-[_homeTeamLabel(teamWidth)]-0-[homeInningView0(width)]-0-[homeInningView1(width)]-0-[homeInningView2(width)]-0-[homeInningView3(width)]-0-[homeInningView4(width)]-0-[homeInningView5(width)]-0-[homeInningView6(width)]-0-[homeInningView7(width)]-0-[homeInningView8(width)]-0-[_homeScoreLabel(width)]-0-[_homeHitsLabel(width)]-0-[_homeErrorsLabel(width)]"
+                              @"H:|-[_homeTeamLabel]-0-[homeInningView0(homeInningView0)]-0-[homeInningView1(homeInningView0)]-0-[homeInningView2(homeInningView0)]-0-[homeInningView3(homeInningView0)]-0-[homeInningView4(homeInningView0)]-0-[homeInningView5(homeInningView0)]-0-[homeInningView6(homeInningView0)]-0-[homeInningView7(homeInningView0)]-0-[homeInningView8(homeInningView0)]-0-[_homeScoreLabel(homeInningView0)]-0-[_homeHitsLabel(homeInningView0)]-0-[_homeErrorsLabel(homeInningView0)]-|"
                               options:NSLayoutFormatAlignAllTop
-                              metrics:metrics
+                              metrics:nil
                               views:views]];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[titleView0]-0-[awayInningView0]-0-[homeInningView0]"
                                                                      options:NSLayoutFormatAlignAllLeft
-                                                                     metrics:metrics
+                                                                     metrics:nil
                                                                        views:views]];
     }
     

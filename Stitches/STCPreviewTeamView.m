@@ -20,7 +20,8 @@
         
         // gray background
         _pitcherCardBackgroundView = [[UIView alloc] init];
-        _pitcherCardBackgroundView.backgroundColor = [UIColor lightGrayColor];
+        _pitcherCardBackgroundView.layer.borderColor = [UIColor blackColor].CGColor;
+        _pitcherCardBackgroundView.layer.borderWidth = 1.0;
         _pitcherCardBackgroundView.translatesAutoresizingMaskIntoConstraints = false;
         [self addSubview:_pitcherCardBackgroundView];
         
