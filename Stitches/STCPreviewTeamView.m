@@ -13,7 +13,7 @@
 -(instancetype)init {
     self = [super init];
     if(self) {
-        // team logo[[attributeDict objectForKey:@"status"] isEqualToString:@"Preview"]
+        // team logo
         _teamLogoView = [[UIImageView alloc] init];
         _teamLogoView.translatesAutoresizingMaskIntoConstraints = false;
         [self addSubview:_teamLogoView];

@@ -113,7 +113,6 @@
                                                                       metrics:nil
                                                                         views:views]];
     
-    
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayPreviewTeamView]-|"
                                                                       options:0
                                                                       metrics:nil
@@ -135,10 +134,6 @@
     
     [_previewParser parsePreviewWithGameID:_gameID];
     
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 @end

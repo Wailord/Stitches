@@ -17,6 +17,8 @@
 		025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957BA1D7F3B44006AB246 /* STCFinalizedTeam.m */; };
 		025957BF1D7F3E0F006AB246 /* STCFinalizedTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */; };
 		025957C21D7F52B2006AB246 /* STCPreviewTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957C11D7F52B2006AB246 /* STCPreviewTeam.m */; };
+		025957C51D7FA96C006AB246 /* STCLinescoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957C41D7FA96C006AB246 /* STCLinescoreView.m */; };
+		025957C81D7FBB34006AB246 /* STCLinescoreInningLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957C71D7FBB34006AB246 /* STCLinescoreInningLabel.m */; };
 		026600FA1D786F7F0022C79D /* STCSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600F91D786F7F0022C79D /* STCSummary.m */; };
 		026600FD1D7870F60022C79D /* STCSummariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600FC1D7870F60022C79D /* STCSummariesTableViewController.m */; };
 		026601031D78804B0022C79D /* STCSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 026601021D78804B0022C79D /* STCSummaryTableViewCell.m */; };
@@ -114,6 +116,10 @@
 		025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCFinalizedTeamView.m; sourceTree = "<group>"; };
 		025957C01D7F52B2006AB246 /* STCPreviewTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPreviewTeam.h; sourceTree = "<group>"; };
 		025957C11D7F52B2006AB246 /* STCPreviewTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewTeam.m; sourceTree = "<group>"; };
+		025957C31D7FA96C006AB246 /* STCLinescoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCLinescoreView.h; sourceTree = "<group>"; };
+		025957C41D7FA96C006AB246 /* STCLinescoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCLinescoreView.m; sourceTree = "<group>"; };
+		025957C61D7FBB34006AB246 /* STCLinescoreInningLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCLinescoreInningLabel.h; sourceTree = "<group>"; };
+		025957C71D7FBB34006AB246 /* STCLinescoreInningLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCLinescoreInningLabel.m; sourceTree = "<group>"; };
 		026600F81D786F7F0022C79D /* STCSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummary.h; sourceTree = "<group>"; };
 		026600F91D786F7F0022C79D /* STCSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummary.m; sourceTree = "<group>"; };
 		026600FB1D7870F60022C79D /* STCSummariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummariesTableViewController.h; sourceTree = "<group>"; };
@@ -311,6 +317,10 @@
 			children = (
 				025957BD1D7F3E0F006AB246 /* STCFinalizedTeamView.h */,
 				025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */,
+				025957C31D7FA96C006AB246 /* STCLinescoreView.h */,
+				025957C41D7FA96C006AB246 /* STCLinescoreView.m */,
+				025957C61D7FBB34006AB246 /* STCLinescoreInningLabel.h */,
+				025957C71D7FBB34006AB246 /* STCLinescoreInningLabel.m */,
 			);
 			name = "Game Finals";
 			sourceTree = "<group>";
@@ -698,6 +708,7 @@
 				025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */,
 				02DF27361D7F1D720059E200 /* STCFinalizedParser.m in Sources */,
 				02838E7F1D7A1A9D0092A87F /* STCTeam.m in Sources */,
+				025957C81D7FBB34006AB246 /* STCLinescoreInningLabel.m in Sources */,
 				02DF273A1D7F1DED0059E200 /* STCFinalizedGame.m in Sources */,
 				026600FA1D786F7F0022C79D /* STCSummary.m in Sources */,
 				025957B41D7F2B2E006AB246 /* STCInning.m in Sources */,
@@ -713,6 +724,7 @@
 				022C65C11D7A264900A9C5D5 /* STCSummaryTeamView.m in Sources */,
 				026600FD1D7870F60022C79D /* STCSummariesTableViewController.m in Sources */,
 				026601031D78804B0022C79D /* STCSummaryTableViewCell.m in Sources */,
+				025957C51D7FA96C006AB246 /* STCLinescoreView.m in Sources */,
 				02838E7C1D79FA230092A87F /* STCPreview.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

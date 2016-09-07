@@ -48,8 +48,8 @@
     XCTAssertTrue([[[_summaryList objectAtIndex:0] gameID] isEqualToString:@"2016/05/04/chnmlb-pitmlb-1"], @"Failed to correctly parse the game ID for the summary.");
     XCTAssertTrue([[[_summaryList objectAtIndex:0] awayTeamID] isEqualToString: @"112"], @"Failed to correctly parse the away team's ID for the summary.");
     XCTAssertTrue([[[_summaryList objectAtIndex:0] homeTeamID] isEqualToString:@"134"], @"Failed to correctly parse the home team's ID for the summary.");
-    XCTAssertEqual([[_summaryList objectAtIndex:0] awayScore], [NSNumber numberWithInteger:6], @"Failed to correctly parse the away team's score for the summary.");
-    XCTAssertEqual([[_summaryList objectAtIndex:0] homeScore], [NSNumber numberWithInteger:2], @"Failed to correctly parse the home team's score for the summary.");
+    XCTAssertEqual([[_summaryList objectAtIndex:0] awayScoreLabel], [NSNumber numberWithInteger:6], @"Failed to correctly parse the away team's score for the summary.");
+    XCTAssertEqual([[_summaryList objectAtIndex:0] homeScoreLabel], [NSNumber numberWithInteger:2], @"Failed to correctly parse the home team's score for the summary.");
     XCTAssertEqual([[_summaryList objectAtIndex:0] status], STCFinalStatus, @"Failed to correctly parse the game status for the summary.");
 }
 
