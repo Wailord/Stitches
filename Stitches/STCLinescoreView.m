@@ -57,7 +57,7 @@
         [views setObject:_awayHitsLabel forKey:@"_awayHitsLabel"];
         [self addSubview:_awayHitsLabel];
         
-        _awayScoreLabel = [[STCLinescoreInningLabel alloc] init];
+        _awayScoreLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"0" andFontSize:17.0f];
         [views setObject:_awayScoreLabel forKey:@"_awayScoreLabel"];
         [self addSubview:_awayScoreLabel];
         
@@ -69,7 +69,7 @@
         [views setObject:_homeHitsLabel forKey:@"_homeHitsLabel"];
         [self addSubview:_homeHitsLabel];
         
-        _homeScoreLabel = [[STCLinescoreInningLabel alloc] init];
+        _homeScoreLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"0" andFontSize:17.0f];
         [views setObject:_homeScoreLabel forKey:@"_homeScoreLabel"];
         [self addSubview:_homeScoreLabel];
         
@@ -95,7 +95,7 @@
             [self addSubview:labelToAdd];
         }
         
-        NSDictionary *metrics = @{@"width" : @(30), @"teamWidth": @(60)};
+        NSDictionary *metrics = @{@"width" : @(30), @"teamWidth": @(50)};
         
         [self addConstraints:[NSLayoutConstraint
                               constraintsWithVisualFormat:

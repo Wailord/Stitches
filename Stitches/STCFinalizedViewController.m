@@ -52,10 +52,10 @@
         [innLabel setText:[NSString stringWithFormat:@"%@", inn.number]];
         
         [[[_linescoreView awayInningLabels] objectAtIndex:x]
-         setText:(inn.awayTeamScore ? [NSString stringWithFormat:@"%@", inn.awayTeamScore] : @"-")];
+         setText:(inn.awayTeamScore ? [NSString stringWithFormat:@"%@", inn.awayTeamScore] : @"x")];
         
         [[[_linescoreView homeInningLabels] objectAtIndex:x]
-         setText:(inn.homeTeamScore ? [NSString stringWithFormat:@"%@", inn.homeTeamScore] : @"-")];
+         setText:(inn.homeTeamScore ? [NSString stringWithFormat:@"%@", inn.homeTeamScore] : @"x")];
     }
 }
 
