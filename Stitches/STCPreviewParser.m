@@ -44,6 +44,10 @@
         _preview = [[STCPreview alloc] init];
         _preview.awayTeam.teamID = [attributeDict objectForKey:@"away_team_id"];
         _preview.homeTeam.teamID = [attributeDict objectForKey:@"home_team_id"];
+        _preview.awayTeam.teamRecord.wins = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_win"] integerValue]];
+        _preview.awayTeam.teamRecord.losses = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_loss"] integerValue]];
+        _preview.homeTeam.teamRecord.wins = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_win"] integerValue]];
+        _preview.homeTeam.teamRecord.losses = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_loss"] integerValue]];
     }
     else if([elementName isEqualToString:@"home_probable_pitcher"] || [elementName isEqualToString:@"away_probable_pitcher"]) {
         STCPitcher *_previewPitcher = [[STCPitcher alloc] init];

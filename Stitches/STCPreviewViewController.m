@@ -31,14 +31,16 @@
 - (void)parsedGamePreview:(STCPreview *)preview {
     // away team logo and info
     [_awayPreviewTeamView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[[preview awayTeam] teamID]]]];
-    [_awayPreviewTeamView.teamInfoLabel setText:[STCGlobals getFullNameForTeamID:[[preview awayTeam] teamID]]];
+    [_awayPreviewTeamView.teamNameLabel setText:[STCGlobals getFullNameForTeamID:[[preview awayTeam] teamID]]];
+    _awayPreviewTeamView.teamRecordLabel.text = [NSString stringWithFormat:@"(%@)", preview.awayTeam.teamRecord];
     
     // away pitcher name and ERA
     NSString *awayFullName = [NSString stringWithFormat:@"%@ %@",
                               [[[preview awayTeam] probablePitcher] firstName],
                               [[[preview awayTeam] probablePitcher] lastName]];
     [_awayPreviewTeamView.pitcherNameLabel setText:awayFullName];
-    [_awayPreviewTeamView.pitcherERALabel setText:[NSString stringWithFormat:@"%@ ERA", [[[preview awayTeam] probablePitcher] era]]];
+    [_awayPreviewTeamView.pitcherERALabel setText:[NSString stringWithFormat:@"%@ ERA",
+                                                   [[[preview awayTeam] probablePitcher] era]]];
     
     // away pitcher win-loss
     NSString *awayPitcherRecord = [NSString stringWithFormat:@"%@-%@",
@@ -54,7 +56,8 @@
     
     // home team logo and info
     [_homePreviewTeamView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[[preview homeTeam] teamID]]]];
-    [_homePreviewTeamView.teamInfoLabel setText:[STCGlobals getFullNameForTeamID:[[preview homeTeam] teamID]]];
+    [_homePreviewTeamView.teamNameLabel setText:[STCGlobals getFullNameForTeamID:[[preview homeTeam] teamID]]];
+    _homePreviewTeamView.teamRecordLabel.text = [NSString stringWithFormat:@"(%@)", preview.homeTeam.teamRecord];
     
     // home team pitcher name and ERA
     NSString *homeFullName = [NSString stringWithFormat:@"%@ %@",
@@ -108,7 +111,7 @@
     
     NSDictionary *views = NSDictionaryOfVariableBindings(_awayPreviewTeamView, _versusLabel, _homePreviewTeamView);
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayPreviewTeamView]-(>=1)-[_versusLabel]-(>=1)-[_homePreviewTeamView]-|"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayPreviewTeamView]-[_versusLabel]-[_homePreviewTeamView]-(>=1)-|"
                                                                       options:NSLayoutFormatAlignAllCenterX
                                                                       metrics:nil
                                                                         views:views]];
@@ -122,15 +125,6 @@
                                                                       options:0
                                                                       metrics:nil
                                                                         views:views]];
-
-    [self.view addConstraint:[NSLayoutConstraint
-                              constraintWithItem:_versusLabel
-                              attribute:NSLayoutAttributeCenterY
-                              relatedBy:NSLayoutRelationEqual
-                              toItem:self.view
-                              attribute:NSLayoutAttributeCenterY
-                              multiplier:1
-                              constant:0]];
     
     [_previewParser parsePreviewWithGameID:_gameID];
     
