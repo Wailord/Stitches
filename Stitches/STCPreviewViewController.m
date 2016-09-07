@@ -29,6 +29,7 @@
 }
 
 - (void)parsedGamePreview:(STCPreview *)preview {
+    NSLog(@"PreviewViewController responding to parsed game. Setting up view.");
     // away team logo and info
     [_awayPreviewTeamView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[[preview awayTeam] teamID]]]];
     [_awayPreviewTeamView.teamNameLabel setText:[STCGlobals getFullNameForTeamID:[[preview awayTeam] teamID]]];
@@ -48,11 +49,13 @@
                                    [[[preview awayTeam] probablePitcher] losses]];
     [_awayPreviewTeamView.pitcherRecordLabel setText:awayPitcherRecord];
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     // away pitcher picture
     NSData * imageData = [[NSData alloc] initWithContentsOfURL:
                           [NSURL URLWithString:
                            [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/74_%@.png", [[[preview awayTeam] probablePitcher] playerID]]]];
     _awayPreviewTeamView.pitcherImageView.image = [UIImage imageWithData: imageData];
+    });
     
     // home team logo and info
     [_homePreviewTeamView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[[preview homeTeam] teamID]]]];
@@ -74,13 +77,16 @@
     [_homePreviewTeamView.pitcherRecordLabel setText:homePitcherRecord];
     
     // home pitcher picture
-    imageData = [[NSData alloc] initWithContentsOfURL:
-                          [NSURL URLWithString:
-                           [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/68_%@.png",
-                            [[[preview homeTeam] probablePitcher] playerID]]]];
-    _homePreviewTeamView.pitcherImageView.image = [UIImage imageWithData: imageData];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        // away pitcher picture
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL:
+                              [NSURL URLWithString:
+                               [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/74_%@.png", [[[preview homeTeam] probablePitcher] playerID]]]];
+        _homePreviewTeamView.pitcherImageView.image = [UIImage imageWithData: imageData];
+    });
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    NSLog(@"PreviewViewController finished responding to parsed game. Done setting up view.");
 }
 
 - (void)viewDidLoad {

@@ -14,6 +14,7 @@
 }
 
 -(void)parsePreviewWithGameID:(NSString *)gameID {
+    NSLog(@"Began parsing game preview.");
     NSArray *components = [gameID componentsSeparatedByString:@"/"];
     NSString *year = components[0];
     NSString *month = components[1];
@@ -41,6 +42,7 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     if([elementName isEqualToString:@"game"]) {
+        NSLog(@"Started parsing preview game.");
         _preview = [[STCPreview alloc] init];
         _preview.awayTeam.teamID = [attributeDict objectForKey:@"away_team_id"];
         _preview.homeTeam.teamID = [attributeDict objectForKey:@"home_team_id"];
@@ -50,6 +52,7 @@
         _preview.homeTeam.teamRecord.losses = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_loss"] integerValue]];
     }
     else if([elementName isEqualToString:@"home_probable_pitcher"] || [elementName isEqualToString:@"away_probable_pitcher"]) {
+        NSLog(@"Started parsing a probable pitcher.");
         STCPitcher *_previewPitcher = [[STCPitcher alloc] init];
         NSString *firstName = [attributeDict objectForKey:@"first_name"];
         NSString *lastName = [attributeDict objectForKey:@"last_name"];
@@ -82,6 +85,7 @@
     if([elementName isEqualToString:@"game"] && _preview != nil) {
         if(_delegate) {
             NSLog(@"%@", _preview);
+            NSLog(@"Done parsing preview.");
             [_delegate parsedGamePreview:_preview];
         }
         _preview = nil;

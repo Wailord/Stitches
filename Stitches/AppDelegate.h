@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "STCScoresNavigationController.h"
+#import "STCScoresPageViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     // tabs
     UITabBarController *_tabController;
-    STCScoresNavigationController *_scoreboardNavigationController;
+    STCScoresPageViewController *_scoreboardPageViewController;
     UIViewController *_standingsViewController;
     UIViewController *_statisticsViewController;
     UIViewController *_newsViewController;

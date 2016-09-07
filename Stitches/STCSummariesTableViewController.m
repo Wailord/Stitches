@@ -14,11 +14,19 @@
 
 @implementation STCSummariesTableViewController {
     STCSummaryParser *_parser;
+    NSDateComponents *_dateComponents;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Today";
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"EEEE, MMMM d";
+    
+    NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *scoreboardDate = [gregorian dateFromComponents:_dateComponents];
+    
+    self.navigationItem.title = [formatter stringFromDate:scoreboardDate];
     _gameSummaries = [[NSMutableArray alloc] init];
     
     _parser = [[STCSummaryParser alloc] init];
@@ -30,6 +38,15 @@
     [self.tableView setDelegate:self];
 }
 
+- (instancetype)initWithDateComponents:(NSDateComponents *)components {
+    self = [super init];
+    if(self) {
+        _dateComponents = components;
+    }
+    
+    return self;
+}
+
 - (void)parsedGameSummary:(STCSummary *)summary {
     [self.gameSummaries addObject:summary];
     //NSLog(@"Parsed game summary: %@", summary);
@@ -37,12 +54,7 @@
 }
 
 - (void)parseGames {
-    NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    NSInteger year = [gregorian component:NSCalendarUnitYear fromDate:NSDate.date];
-    NSInteger month = [gregorian component:NSCalendarUnitMonth fromDate:NSDate.date];
-    NSInteger day = [gregorian component:NSCalendarUnitDay fromDate:NSDate.date];
-    
-    [_parser parseGameSummariesForYear:year andMonth:month andDay:day];
+    [_parser parseGameSummariesForYear:_dateComponents.year andMonth:_dateComponents.month andDay:_dateComponents.day];
 }
 
 - (void)parsedAllGameSummaries {

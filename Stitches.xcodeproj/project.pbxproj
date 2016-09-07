@@ -60,6 +60,7 @@
 		028AEBD81D7F08CA00F5620C /* StitchesInProgressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 028AEBD71D7F08CA00F5620C /* StitchesInProgressTests.m */; };
 		028AEBDA1D7F08D900F5620C /* StitchesFinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 028AEBD91D7F08D900F5620C /* StitchesFinalTests.m */; };
 		02A9E0E01D8056EA005B72CB /* STCSavePitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A9E0DF1D8056EA005B72CB /* STCSavePitcher.m */; };
+		02A9E0E41D808110005B72CB /* STCScoresPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A9E0E31D808110005B72CB /* STCScoresPageViewController.m */; };
 		02ADCD101D7749610088AFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD0F1D7749610088AFFD /* main.m */; };
 		02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD121D7749610088AFFD /* AppDelegate.m */; };
 		02ADCD161D7749610088AFFD /* STCScoresNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ADCD151D7749610088AFFD /* STCScoresNavigationController.m */; };
@@ -169,6 +170,8 @@
 		028AEBD91D7F08D900F5620C /* StitchesFinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StitchesFinalTests.m; sourceTree = "<group>"; };
 		02A9E0DE1D8056EA005B72CB /* STCSavePitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSavePitcher.h; sourceTree = "<group>"; };
 		02A9E0DF1D8056EA005B72CB /* STCSavePitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSavePitcher.m; sourceTree = "<group>"; };
+		02A9E0E21D808110005B72CB /* STCScoresPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCScoresPageViewController.h; sourceTree = "<group>"; };
+		02A9E0E31D808110005B72CB /* STCScoresPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCScoresPageViewController.m; sourceTree = "<group>"; };
 		02ADCD0B1D7749610088AFFD /* Stitches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stitches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ADCD0F1D7749610088AFFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		02ADCD111D7749610088AFFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 			children = (
 				026600FB1D7870F60022C79D /* STCSummariesTableViewController.h */,
 				026600FC1D7870F60022C79D /* STCSummariesTableViewController.m */,
+				02A9E0E21D808110005B72CB /* STCScoresPageViewController.h */,
+				02A9E0E31D808110005B72CB /* STCScoresPageViewController.m */,
 			);
 			name = "Game Summaries";
 			sourceTree = "<group>";
@@ -727,6 +732,7 @@
 				025957B41D7F2B2E006AB246 /* STCInning.m in Sources */,
 				02F15C971D7DDE5E00F2A978 /* STCPitcher.m in Sources */,
 				02DF27321D7F1AEF0059E200 /* STCFinalizedViewController.m in Sources */,
+				02A9E0E41D808110005B72CB /* STCScoresPageViewController.m in Sources */,
 				0210E7761D78A10B0078DEB2 /* STCPreviewParser.m in Sources */,
 				0210E7791D78B59A0078DEB2 /* STCGlobals.m in Sources */,
 				02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */,

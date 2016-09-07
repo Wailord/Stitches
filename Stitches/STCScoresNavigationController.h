@@ -11,5 +11,9 @@
 
 @interface STCScoresNavigationController : UINavigationController
 
+@property NSDateComponents *scoreboardDate;
+
+- (instancetype)initWithYear:(NSInteger)year andMonth:(NSInteger)month andDate:(NSInteger)date;
+
 @end
 

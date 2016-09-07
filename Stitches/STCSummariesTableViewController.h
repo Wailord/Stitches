@@ -14,5 +14,6 @@
 @property NSMutableArray *gameSummaries;
 
 -(void)parseGames;
+-(instancetype)initWithDateComponents:(NSDateComponents *)components;
 
 @end
