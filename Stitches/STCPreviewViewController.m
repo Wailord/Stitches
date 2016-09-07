@@ -49,13 +49,11 @@
                                    [[[preview awayTeam] probablePitcher] losses]];
     [_awayPreviewTeamView.pitcherRecordLabel setText:awayPitcherRecord];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     // away pitcher picture
     NSData * imageData = [[NSData alloc] initWithContentsOfURL:
                           [NSURL URLWithString:
                            [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/74_%@.png", [[[preview awayTeam] probablePitcher] playerID]]]];
     _awayPreviewTeamView.pitcherImageView.image = [UIImage imageWithData: imageData];
-    });
     
     // home team logo and info
     [_homePreviewTeamView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[[preview homeTeam] teamID]]]];
@@ -77,13 +75,11 @@
     [_homePreviewTeamView.pitcherRecordLabel setText:homePitcherRecord];
     
     // home pitcher picture
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        // away pitcher picture
-        NSData * imageData = [[NSData alloc] initWithContentsOfURL:
+    imageData = [[NSData alloc] initWithContentsOfURL:
                               [NSURL URLWithString:
-                               [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/74_%@.png", [[[preview homeTeam] probablePitcher] playerID]]]];
-        _homePreviewTeamView.pitcherImageView.image = [UIImage imageWithData: imageData];
-    });
+                               [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/74_%@.png",
+                                [[[preview homeTeam] probablePitcher] playerID]]]];
+    _homePreviewTeamView.pitcherImageView.image = [UIImage imageWithData: imageData];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     NSLog(@"PreviewViewController finished responding to parsed game. Done setting up view.");

@@ -66,6 +66,15 @@
                                      attribute:NSLayoutAttributeCenterX
                                     multiplier:1.f constant:0.f]];
         
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pitcherImageView
+                                                  attribute:NSLayoutAttributeHeight
+                                                  relatedBy:NSLayoutRelationEqual
+                                                     toItem:self.pitcherImageView
+                                                  attribute:NSLayoutAttributeWidth
+                                                 multiplier:1.0f
+                                                   constant:0.0f]];
+        
         // stuff above the gray square
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_teamLogoView(40)]-[_teamNameLabel]-[_teamRecordLabel]-(>=8)-|"
                                                                      options:NSLayoutFormatAlignAllBottom | NSLayoutFormatAlignAllTop

@@ -86,8 +86,6 @@
                                             components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                             fromDate:newDateToShow];
     
-    NSLog(@"ADVANCING ONE DAY: Current date: %@, New Date: %@", currentlyDisplayedDate, newDateToShow);
-    
     return [[STCSummariesTableViewController alloc] initWithDateComponents:tomorrowComponents];
 }
 
@@ -108,8 +106,6 @@
     NSDateComponents *yesterdayComponents = [[NSCalendar currentCalendar]
                                             components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                             fromDate:newDateToShow];
-    
-    NSLog(@"GOING BACK ONE DAY: Current date: %@, New Date: %@", currentlyDisplayedDate, newDateToShow);
     
     return [[STCSummariesTableViewController alloc] initWithDateComponents:yesterdayComponents];
 }
