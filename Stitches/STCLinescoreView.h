@@ -21,5 +21,7 @@
 @property STCLinescoreInningLabel *homeScoreLabel;
 @property STCLinescoreInningLabel *awayErrorsLabel;
 @property STCLinescoreInningLabel *homeErrorsLabel;
+@property STCLinescoreInningLabel *awayTeamLabel;
+@property STCLinescoreInningLabel *homeTeamLabel;
 
 @end

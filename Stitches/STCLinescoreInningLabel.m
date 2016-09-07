@@ -23,4 +23,43 @@
     return self;
 }
 
+- (instancetype)initWithBoldText:(NSString *)text {
+    self = [super init];
+    if(self) {
+        self.text = text;
+        self.font = [UIFont boldSystemFontOfSize:18.0f];self.textAlignment = NSTextAlignmentCenter;
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        self.layer.borderWidth = 1.0f;
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithBoldText:(NSString *)text andFontSize:(float)size {
+    self = [super init];
+    if(self) {
+        self.text = text;
+        self.font = [UIFont boldSystemFontOfSize:size];
+        self.textAlignment = NSTextAlignmentCenter;
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        self.layer.borderWidth = 1.0f;
+    }
+
+    return self;
+}
+
+- (instancetype)initWithText:(NSString *)text {
+    self = [super init];
+    if(self) {
+        self.text = text;self.textAlignment = NSTextAlignmentCenter;
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        self.layer.borderWidth = 1.0f;
+    }
+    
+    return self;
+}
+
 @end

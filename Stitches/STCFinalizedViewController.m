@@ -42,6 +42,8 @@
     _linescoreView.homeHitsLabel.text = [NSString stringWithFormat:@"%@", final.homeTeam.hits];
     _linescoreView.awayErrorsLabel.text = [NSString stringWithFormat:@"%@", final.awayTeam.errors];
     _linescoreView.homeErrorsLabel.text = [NSString stringWithFormat:@"%@", final.homeTeam.errors];
+    _linescoreView.awayTeamLabel.text = [NSString stringWithFormat:@"%@", [STCGlobals getAbbreviationForTeamID:final.awayTeam.teamID]];
+    _linescoreView.homeTeamLabel.text = [NSString stringWithFormat:@"%@", [STCGlobals getAbbreviationForTeamID:final.homeTeam.teamID]];
     
     for(int x = 0; x < [final.innings count]; x++) {
         STCInning *inn = [final.innings objectAtIndex:x];

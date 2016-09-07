@@ -11,4 +11,8 @@
 
 @interface STCLinescoreInningLabel : UILabel
 
+- (instancetype)initWithBoldText:(NSString *)text;
+- (instancetype)initWithBoldText:(NSString *)text andFontSize:(float)size;
+- (instancetype)initWithText:(NSString *)text;
+
 @end
