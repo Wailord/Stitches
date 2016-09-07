@@ -90,6 +90,38 @@
         
         [_game.innings addObject:newestInning];
     }
+    else if([elementName isEqualToString:@"winning_pitcher"] || [elementName isEqualToString:@"losing_pitcher"]) {
+        STCPitcher *pitcher = [[STCPitcher alloc] init];
+        pitcher.playerID = [attributeDict objectForKey:@"id"];
+        pitcher.firstName = [attributeDict objectForKey:@"first_name"];
+        pitcher.lastName = [attributeDict objectForKey:@"last_name"];
+        pitcher.number = [attributeDict objectForKey:@"number"];
+        pitcher.throwingHand = [attributeDict objectForKey:@"throwing_hand"];
+        pitcher.wins = [attributeDict objectForKey:@"wins"];
+        pitcher.losses = [attributeDict objectForKey:@"losses"];
+        pitcher.era = [attributeDict objectForKey:@"era"];
+        
+        if([elementName isEqualToString:@"winning_pitcher"]) {
+            _game.winningPitcher = pitcher;
+        }
+        else {
+            _game.losingPitcher = pitcher;
+        }
+    }
+    else if([elementName isEqualToString:@"save_pitcher"]) {
+        STCSavePitcher *pitcher = [[STCSavePitcher alloc] init];
+        pitcher.playerID = [attributeDict objectForKey:@"id"];
+        pitcher.firstName = [attributeDict objectForKey:@"first_name"];
+        pitcher.lastName = [attributeDict objectForKey:@"last_name"];
+        pitcher.number = [attributeDict objectForKey:@"number"];
+        pitcher.throwingHand = [attributeDict objectForKey:@"throwing_hand"];
+        pitcher.wins = [attributeDict objectForKey:@"wins"];
+        pitcher.losses = [attributeDict objectForKey:@"losses"];
+        pitcher.era = [attributeDict objectForKey:@"era"];
+        pitcher.saves = [attributeDict objectForKey:@"saves"];
+    
+        _game.savingPitcher = pitcher;
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {

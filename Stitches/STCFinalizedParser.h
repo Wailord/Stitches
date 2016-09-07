@@ -10,6 +10,8 @@
 #import "STCFinalizedGame.h"
 #import "STCInning.h"
 #import "STCTeamRecord.h"
+#import "STCPitcher.h"
+#import "STCSavePitcher.h"
 
 @protocol STCFinalizedParserDelegate
 @required

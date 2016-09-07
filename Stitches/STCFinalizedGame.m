@@ -33,6 +33,13 @@
     for(STCInning *inn in _innings) {
         [desc appendString:[NSString stringWithFormat:@"\n%@", inn]];
     }
+    
+    [desc appendString:[NSString stringWithFormat:@"\nWP: %@", _winningPitcher]];
+    [desc appendString:[NSString stringWithFormat:@"\nLP: %@", _losingPitcher]];
+    
+    if(_savingPitcher) {
+        [desc appendString:[NSString stringWithFormat:@"\nSV: %@", _savingPitcher]];
+    }
          
     return desc;
 }

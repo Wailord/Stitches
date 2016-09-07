@@ -6,12 +6,12 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STCPreviewPitcher.h"
+#import "STCPitcher.h"
 
-@implementation STCPreviewPitcher
+@implementation STCPitcher
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Pitcher: %@ %@", _firstName, _lastName];
+    return [NSString stringWithFormat:@"%@ %@ (%@-%@, %@ ERA)", _firstName, _lastName, _wins, _losses, _era];
 }
 
 @end

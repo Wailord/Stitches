@@ -13,7 +13,7 @@
 - (instancetype)init {
     self = [super init];
     if(self) {
-        _probablePitcher = [[STCPreviewPitcher alloc] init];
+        _probablePitcher = [[STCPitcher alloc] init];
         _teamRecord = [[STCTeamRecord alloc] init];
     }
     

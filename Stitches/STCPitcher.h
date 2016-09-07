@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface STCPreviewPitcher : NSObject
+@interface STCPitcher : NSObject
 
 @property NSNumber *playerID;
 @property NSString *firstName;

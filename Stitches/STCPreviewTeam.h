@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STCPreviewPitcher.h"
+#import "STCPitcher.h"
 #import "STCTeamRecord.h"
 
 @interface STCPreviewTeam : NSObject
 
 @property NSString *teamID;
-@property STCPreviewPitcher *probablePitcher;
+@property STCPitcher *probablePitcher;
 @property STCTeamRecord *teamRecord;
 
 @end

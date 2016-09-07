@@ -46,7 +46,7 @@
         _preview.homeTeam.teamID = [attributeDict objectForKey:@"home_team_id"];
     }
     else if([elementName isEqualToString:@"home_probable_pitcher"] || [elementName isEqualToString:@"away_probable_pitcher"]) {
-        STCPreviewPitcher *_previewPitcher = [[STCPreviewPitcher alloc] init];
+        STCPitcher *_previewPitcher = [[STCPitcher alloc] init];
         NSString *firstName = [attributeDict objectForKey:@"first_name"];
         NSString *lastName = [attributeDict objectForKey:@"last_name"];
         _previewPitcher.firstName = firstName;

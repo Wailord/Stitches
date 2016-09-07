@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STCPreviewPitcher.h"
+#import "STCPitcher.h"
 #import "STCPreviewTeam.h"
 
 @interface STCPreview : NSObject
