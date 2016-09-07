@@ -12,6 +12,7 @@
 @interface STCSummariesTableViewController : UITableViewController <STCSummaryParserDelegate>
 
 @property NSMutableArray *gameSummaries;
+@property NSDateComponents *scoreboardDate;
 
 -(void)parseGames;
 -(instancetype)initWithDateComponents:(NSDateComponents *)components;

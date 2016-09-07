@@ -16,8 +16,12 @@
     if(self) {
         // AWAY TEAM
         // logo
-        _teamLogoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamID]]];
+        _teamLogoImageView = [[UIImageView alloc] init];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_teamLogoImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamID]]];
+        });
         _teamLogoImageView.translatesAutoresizingMaskIntoConstraints = false;
+        
         [self addSubview:_teamLogoImageView];
         
         // name

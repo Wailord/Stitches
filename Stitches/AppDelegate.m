@@ -26,10 +26,7 @@
     
     _tabController = [[UITabBarController alloc] init];
 
-    _scoreboardPageViewController = [[STCScoresPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-                                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                                                                                         options:nil];
-    
+    _scoresNavigationController = [[STCScoresNavigationController alloc] initWithYear:2016 andMonth:5 andDate:4];
     // the standings view, which will show the current MLB standings
     _standingsViewController = [[UIViewController alloc] init];
     _standingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Standings"
@@ -56,7 +53,7 @@
                                       
     // the collection of viewcontrollers housed within the tabs
     _tabbedViewControllers = [[NSArray alloc] initWithObjects:
-                              _scoreboardPageViewController,
+                              _scoresNavigationController,
                               _standingsViewController,
                               _statisticsViewController,
                               _newsViewController,

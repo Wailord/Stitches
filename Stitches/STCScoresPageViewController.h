@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "STCScoresNavigationController.h"
+#import "STCSummariesTableViewController.h"
 
 @interface STCScoresPageViewController : UIPageViewController<UIPageViewControllerDataSource>
 
-@property STCScoresNavigationController *scoresNavigationController;
+@property STCSummariesTableViewController *scoresTableViewController;
 
 @end

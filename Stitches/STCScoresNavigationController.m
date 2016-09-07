@@ -9,7 +9,7 @@
 #import "STCScoresNavigationController.h"
 
 @implementation STCScoresNavigationController {
-    STCSummariesTableViewController *_gameSummaryTableViewController;
+    STCScoresPageViewController *_scoresPageViewController;
 }
 
 - (instancetype)initWithYear:(NSInteger)year andMonth:(NSInteger)month andDate:(NSInteger)date {
@@ -27,10 +27,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _gameSummaryTableViewController = [[STCSummariesTableViewController alloc]
-                                       initWithDateComponents:_scoreboardDate];
+    _scoresPageViewController = [[STCScoresPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+                                                                       navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                                                                     options:nil];
     
-    [self pushViewController:_gameSummaryTableViewController
+    [self pushViewController:_scoresPageViewController
                     animated:false];
 }
 

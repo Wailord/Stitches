@@ -13,7 +13,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     // tabs
     UITabBarController *_tabController;
-    STCScoresPageViewController *_scoreboardPageViewController;
+    STCScoresNavigationController *_scoresNavigationController;
     UIViewController *_standingsViewController;
     UIViewController *_statisticsViewController;
     UIViewController *_newsViewController;

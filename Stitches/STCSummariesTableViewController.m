@@ -14,19 +14,10 @@
 
 @implementation STCSummariesTableViewController {
     STCSummaryParser *_parser;
-    NSDateComponents *_dateComponents;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"EEEE, MMMM d";
-    
-    NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    NSDate *scoreboardDate = [gregorian dateFromComponents:_dateComponents];
-    
-    self.navigationItem.title = [formatter stringFromDate:scoreboardDate];
     _gameSummaries = [[NSMutableArray alloc] init];
     
     _parser = [[STCSummaryParser alloc] init];
@@ -41,7 +32,7 @@
 - (instancetype)initWithDateComponents:(NSDateComponents *)components {
     self = [super init];
     if(self) {
-        _dateComponents = components;
+        _scoreboardDate = components;
     }
     
     return self;
@@ -54,7 +45,11 @@
 }
 
 - (void)parseGames {
-    [_parser parseGameSummariesForYear:_dateComponents.year andMonth:_dateComponents.month andDay:_dateComponents.day];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_parser parseGameSummariesForYear:_scoreboardDate.year
+                                  andMonth:_scoreboardDate.month
+                                    andDay:_scoreboardDate.day];
+    });
 }
 
 - (void)parsedAllGameSummaries {

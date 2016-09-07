@@ -10,6 +10,10 @@
 
 @interface STCScoresPageViewController () {
     NSArray *_scoreDays;
+    NSDateFormatter *_formatter;
+    NSCalendar *_gregorian;
+    NSDateComponents *_oneDayBefore;
+    NSDateComponents *_oneDayAfter;
 }
 
 @end
@@ -18,48 +22,88 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _formatter = [[NSDateFormatter alloc] init];
+    _formatter.dateFormat = @"EEEE, MMMM d";
+    _gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    
+    _oneDayBefore = [[NSDateComponents alloc] init];
+    [_oneDayBefore setDay:-1];
+    
+    _oneDayAfter = [[NSDateComponents alloc] init];
+    [_oneDayAfter setDay:1];
+    
     self.dataSource = self;
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
                                                     image:[UIImage imageNamed:@"baseball.png"]
                                                       tag:0];
     
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     // the scoreboard nav controller, which will have a tableview
     NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    NSInteger year = [gregorian component:NSCalendarUnitYear fromDate:NSDate.date];
-    NSInteger month = [gregorian component:NSCalendarUnitMonth fromDate:NSDate.date];
-    NSInteger day = [gregorian component:NSCalendarUnitDay fromDate:NSDate.date];
+    NSDateComponents *components = [gregorian components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
+                                                fromDate:[NSDate date]];
     
-    _scoresNavigationController = [[STCScoresNavigationController alloc]
-                                   initWithYear:year andMonth:month andDate:day];
-
-    [self setViewControllers:@[_scoresNavigationController]
-                   direction:UIPageViewControllerNavigationDirectionForward | UIPageViewControllerNavigationDirectionReverse
+    _scoresTableViewController = [[STCSummariesTableViewController alloc] initWithDateComponents:components];
+    
+    [self setViewControllers:@[_scoresTableViewController]
+                   direction:UIPageViewControllerNavigationDirectionForward
                     animated:YES
-                  completion:^(BOOL finished) { NSLog(@"Finished animating."); }];
+                  completion:^(BOOL finished) { }];
 }
 
 #pragma mark - UIPageViewControllerDataSource
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(STCScoresNavigationController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(STCSummariesTableViewController *)viewController {
+    NSDate *currentlyDisplayedDate = nil;
     
-    NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    NSDate *currentlyDisplayedDate = [gregorian dateFromComponents:viewController.scoreboardDate];
-    NSDate *nextDate = [currentlyDisplayedDate dateByAddingTimeInterval:60*60*24];
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:nextDate];
-
-    return [[STCScoresNavigationController alloc] initWithYear:components.year andMonth:components.month andDate:components.day];
+    if(viewController == nil) {
+        currentlyDisplayedDate = [NSDate date];
+    }
+    else {
+        currentlyDisplayedDate = [_gregorian dateFromComponents:viewController.scoreboardDate];
+    }
     
+    NSDate *newDateToShow = [_gregorian dateByAddingComponents:_oneDayAfter
+                                                         toDate:currentlyDisplayedDate
+                                                        options:0];
     
+    NSDateComponents *tomorrowComponents = [[NSCalendar currentCalendar]
+                                            components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                            fromDate:newDateToShow];
+    
+    self.navigationItem.title = [_formatter stringFromDate:newDateToShow];
+    
+    NSLog(@"Current date: %@, New Date: %@", currentlyDisplayedDate, newDateToShow);
+    
+    return [[STCSummariesTableViewController alloc] initWithDateComponents:tomorrowComponents];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(STCScoresNavigationController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(STCSummariesTableViewController *)viewController {
+    NSDate *currentlyDisplayedDate = nil;
     
-    NSCalendar *gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    NSDate *currentlyDisplayedDate = [gregorian dateFromComponents:viewController.scoreboardDate];
-    NSDate *nextDate = [currentlyDisplayedDate dateByAddingTimeInterval:-(60*60*24)];
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:nextDate];
+    if(viewController == nil) {
+        currentlyDisplayedDate = [NSDate date];
+    }
+    else {
+        currentlyDisplayedDate = [_gregorian dateFromComponents:viewController.scoreboardDate];
+    }
     
-    return [[STCScoresNavigationController alloc] initWithYear:components.year andMonth:components.month andDate:components.day];
+    NSDate *newDateToShow = [_gregorian dateByAddingComponents:_oneDayBefore
+                                                         toDate:currentlyDisplayedDate
+                                                        options:0];
+    
+    NSDateComponents *yesterdayComponents = [[NSCalendar currentCalendar]
+                                            components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                            fromDate:newDateToShow];
+    
+    self.navigationItem.title = [_formatter stringFromDate:newDateToShow];
+    
+    NSLog(@"Current date: %@, New Date: %@", currentlyDisplayedDate, newDateToShow);
+    
+    return [[STCSummariesTableViewController alloc] initWithDateComponents:yesterdayComponents];
 }
 
 

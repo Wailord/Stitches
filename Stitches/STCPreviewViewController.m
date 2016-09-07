@@ -133,7 +133,6 @@
                                                                         views:views]];
     
     [_previewParser parsePreviewWithGameID:_gameID];
-    
 }
 
 @end

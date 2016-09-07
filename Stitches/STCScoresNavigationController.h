@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "STCSummariesTableViewController.h"
+#import "STCScoresPageViewController.h"
 
 @interface STCScoresNavigationController : UINavigationController
 
