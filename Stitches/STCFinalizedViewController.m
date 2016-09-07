@@ -36,10 +36,15 @@
 
 - (void)parsedFinalizedGame:(STCFinalizedGame *)final {
     NSLog(@"Parsed finalized game: %@", final);
-    _awayTeamView.teamRecordLabel.text = [STCGlobals getBriefNameForTeamID:final.awayTeam.teamID];
-    _homeTeamView.teamRecordLabel.text = [STCGlobals getBriefNameForTeamID:final.homeTeam.teamID];
+    // team names/records
+    _awayTeamView.teamInfoLabel.text = [STCGlobals getBriefNameForTeamID:final.awayTeam.teamID];
+    _homeTeamView.teamInfoLabel.text = [STCGlobals getBriefNameForTeamID:final.homeTeam.teamID];
+    
+    // runs scored
     _awayTeamView.runsScoredLabel.text = [NSString stringWithFormat:@"%@", final.awayTeam.runsScored];
     _homeTeamView.runsScoredLabel.text = [NSString stringWithFormat:@"%@", final.homeTeam.runsScored];
+    
+    // linescore
     _linescoreView.awayScoreLabel.text = [NSString stringWithFormat:@"%@", final.awayTeam.runsScored];
     _linescoreView.homeScoreLabel.text = [NSString stringWithFormat:@"%@", final.homeTeam.runsScored];
     _linescoreView.awayHitsLabel.text = [NSString stringWithFormat:@"%@", final.awayTeam.hits];
@@ -48,6 +53,10 @@
     _linescoreView.homeErrorsLabel.text = [NSString stringWithFormat:@"%@", final.homeTeam.errors];
     _linescoreView.awayTeamLabel.text = [NSString stringWithFormat:@"%@", [STCGlobals getAbbreviationForTeamID:final.awayTeam.teamID]];
     _linescoreView.homeTeamLabel.text = [NSString stringWithFormat:@"%@", [STCGlobals getAbbreviationForTeamID:final.homeTeam.teamID]];
+    
+    // team logo
+    _awayTeamView.teamLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", final.awayTeam.teamID]];
+    _homeTeamView.teamLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", final.homeTeam.teamID]];
     
     for(int x = 0; x < [final.innings count]; x++) {
         STCInning *inn = [final.innings objectAtIndex:x];
@@ -62,6 +71,7 @@
          setText:(inn.homeTeamScore ? [NSString stringWithFormat:@"%@", inn.homeTeamScore] : @"x")];
     }
     
+    // winning/losing/saving pitchers
     _winningPitcherLabel.text = [NSString stringWithFormat:@"WP: %@", final.winningPitcher];
     _losingPitcherLabel.text = [NSString stringWithFormat:@"LP: %@", final.losingPitcher];
     
@@ -80,12 +90,17 @@
     
     _winningPitcherLabel = [[UILabel alloc] init];
     _winningPitcherLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _winningPitcherLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_winningPitcherLabel];
+    
     _losingPitcherLabel = [[UILabel alloc] init];
     _losingPitcherLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _losingPitcherLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_losingPitcherLabel];
+    
     _savingPitcherLabel = [[UILabel alloc] init];
     _savingPitcherLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _savingPitcherLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_savingPitcherLabel];
     
     // set up the UI elements
@@ -104,18 +119,28 @@
     NSDictionary *views = NSDictionaryOfVariableBindings(_awayTeamView, _homeTeamView,_linescoreView,
                                                          _winningPitcherLabel, _losingPitcherLabel, _savingPitcherLabel);
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayTeamView]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayTeamView]-(>=20)-[_homeTeamView]-|"
+                                                                      options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
+                                                                      metrics:nil
+                                                                        views:views]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_winningPitcherLabel]-|"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:views]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_homeTeamView]-|"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_losingPitcherLabel]-|"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:views]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_awayTeamView]-50-[_winningPitcherLabel]-15-[_losingPitcherLabel]-15-[_savingPitcherLabel]-15-[_linescoreView]"
-                                                                      options:NSLayoutFormatAlignAllLeft
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_savingPitcherLabel]-|"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                        views:views]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_awayTeamView]-10-[_winningPitcherLabel]-15-[_losingPitcherLabel]-15-[_savingPitcherLabel]-15-[_linescoreView]"
+                                                                      options:0
                                                                       metrics:nil
                                                                         views:views]];
     

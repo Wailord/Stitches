@@ -12,6 +12,6 @@
 
 @property UIImageView *teamLogoImageView;
 @property UILabel *runsScoredLabel;
-@property UILabel *teamRecordLabel;
+@property UILabel *teamInfoLabel;
 
 @end
