@@ -66,4 +66,21 @@
     return self;
 }
 
+
+- (void)setTeamNameText:(NSString *)text {
+    _teamNameLabel.text = text;
+}
+
+- (void)setRunsScoredText:(NSString *)text {
+    _runsScoredLabel.text = text;
+}
+
+- (void)setTeamLogoWithID:(NSString *)teamID {
+    _teamLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamID]];
+}
+
+- (void)setTeamInfoText:(NSString *)text {
+    _teamInfoLabel.text = text;
+}
+
 @end
