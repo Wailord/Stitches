@@ -85,7 +85,7 @@
     
     // winning/losing/saving pitchers
     [_view setWinningPitcherText:[NSString stringWithFormat:@"WP: %@", final.winningPitcher]];
-    [_view setLosingPitcherText:[NSString stringWithFormat:@"WP: %@", final.losingPitcher]];
+    [_view setLosingPitcherText:[NSString stringWithFormat:@"LP: %@", final.losingPitcher]];
     
     if(final.savingPitcher) {
         [_view setSavingPitcherText:[NSString stringWithFormat:@"SV: %@", final.savingPitcher]];
