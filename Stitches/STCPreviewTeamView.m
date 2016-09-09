@@ -59,10 +59,10 @@
                                                              _pitcherImageView, _teamNameLabel,
                                                              _pitcherNameLabel, _teamRecordLabel);
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pitcherImageView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:_pitcherImageView
                                                   attribute:NSLayoutAttributeHeight
                                                   relatedBy:NSLayoutRelationEqual
-                                                     toItem:self.pitcherImageView
+                                                     toItem:_pitcherImageView
                                                   attribute:NSLayoutAttributeWidth
                                                  multiplier:1.0f
                                                    constant:0.0f]];

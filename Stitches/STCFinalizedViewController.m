@@ -96,23 +96,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:_contentScrollView
+    NSLayoutConstraint *equalWidth = [NSLayoutConstraint constraintWithItem:_view
                                                                   attribute:NSLayoutAttributeWidth
                                                                   relatedBy:NSLayoutRelationEqual
-                                                                     toItem:_view
+                                                                     toItem:_contentScrollView
                                                                   attribute:NSLayoutAttributeWidth
                                                                  multiplier:1.0
                                                                    constant:0];
-    constraint.active = YES;
+    equalWidth.active = YES;
     
-    constraint = [NSLayoutConstraint constraintWithItem:_contentScrollView
+    NSLayoutConstraint *equalTop = [NSLayoutConstraint constraintWithItem:_view
                                               attribute:NSLayoutAttributeTop
                                               relatedBy:NSLayoutRelationEqual
-                                                 toItem:_view
+                                                 toItem:_contentScrollView
                                               attribute:NSLayoutAttributeTop
                                              multiplier:1.0
                                                constant:0];
-    constraint.active = YES;
+    equalTop.active = YES;
+    
+    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:_view
+                                              attribute:NSLayoutAttributeCenterX
+                                              relatedBy:NSLayoutRelationEqual
+                                                 toItem:_contentScrollView
+                                              attribute:NSLayoutAttributeCenterX
+                                             multiplier:1.0
+                                               constant:0];
+    centerX.active = YES;
     
     _parser = [[STCFinalizedParser alloc] init];
     _parser.delegate = self;

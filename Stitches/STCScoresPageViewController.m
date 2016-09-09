@@ -8,7 +8,7 @@
 
 #import "STCScoresPageViewController.h"
 
-@interface STCScoresPageViewController ()<UIPageViewControllerDataSource> {
+@interface STCScoresPageViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate> {
     NSArray *_scoreDays;
     NSDateFormatter *_formatter;
     NSCalendar *_gregorian;
@@ -50,6 +50,10 @@
     [_oneDayAfter setDay:1];
     
     self.dataSource = self;
+    
+    // matt says this is bad
+    self.delegate = self;
+    
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
                                                     image:[UIImage imageNamed:@"baseball.png"]
                                                       tag:0];
@@ -127,8 +131,15 @@
 
 - (void)setViewControllers:(NSArray<UIViewController *> *)viewControllers direction:(UIPageViewControllerNavigationDirection)direction animated:(BOOL)animated completion:(void (^)(BOOL))completion {
     [super setViewControllers:viewControllers direction:direction animated:animated completion:completion];
-    
-    _currentScoresTableViewController = (STCSummariesTableViewController *)[viewControllers objectAtIndex:0];
+    [self updateCurrentPageViewController:[viewControllers objectAtIndex:0]];
+}
+
+-(void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
+        [self updateCurrentPageViewController:[pendingViewControllers objectAtIndex:0]];
+}
+
+- (void)updateCurrentPageViewController:(UIViewController *)cont {
+    _currentScoresTableViewController = (STCSummariesTableViewController *)cont;
     
     // set date in navbar
     NSDateComponents *currentDateComponents = _currentScoresTableViewController.scoreboardDate;

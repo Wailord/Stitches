@@ -51,6 +51,7 @@
                                                                           metrics:nil
                                                                             views:views]];
         self.view.backgroundColor = [UIColor whiteColor];
+        self.navigationItem.title = @"Game Preview";
     }
     
     return self;
@@ -124,23 +125,33 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
-    NSLayoutConstraint *equalWidth = [NSLayoutConstraint constraintWithItem:_contentScrollView
+    NSLayoutConstraint *equalWidth = [NSLayoutConstraint constraintWithItem:_previewView
                                                                   attribute:NSLayoutAttributeWidth
                                                                   relatedBy:NSLayoutRelationEqual
-                                                                     toItem:_previewView
+                                                                     toItem:_contentScrollView
                                                                   attribute:NSLayoutAttributeWidth
                                                                  multiplier:1.0
                                                                    constant:0];
     equalWidth.active = YES;
     
-    NSLayoutConstraint *equalTop = [NSLayoutConstraint constraintWithItem:_contentScrollView
-                                                          attribute:NSLayoutAttributeTop
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:_previewView
-                                                          attribute:NSLayoutAttributeTop
-                                                         multiplier:1.0
+    NSLayoutConstraint *equalTop = [NSLayoutConstraint constraintWithItem:_previewView
+                                                                attribute:NSLayoutAttributeTop
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:_contentScrollView
+                                                                attribute:NSLayoutAttributeTop
+                                                               multiplier:1.0
                                                                  constant:0];
-    equalTop.active = YES;
+        equalTop.active = YES;
+    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:_previewView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:_contentScrollView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                               multiplier:1.0
+                                                                 constant:0];
+    centerX.active = YES;
+    
+
     
     _previewParser = [[STCPreviewParser alloc] init];
     [_previewParser setDelegate:self];

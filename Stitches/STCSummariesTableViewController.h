@@ -16,5 +16,4 @@
 
 -(void)parseGames;
 -(instancetype)initWithDateComponents:(NSDateComponents *)components;
-
 @end
