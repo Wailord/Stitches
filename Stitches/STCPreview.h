@@ -16,5 +16,6 @@
 @property STCPreviewTeam *awayTeam;
 @property STCPreviewTeam *homeTeam;
 @property STCVenue *venue;
+@property NSDate *startTime;
 
 @end

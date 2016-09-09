@@ -28,6 +28,10 @@
 }
 
 - (void)parsedGamePreview:(STCPreview *)preview {
+    [_previewView setVenueText:[[preview venue] name]];
+    [_previewView setLocationText:[[preview venue] location]];
+    [_previewView setStartTimeTextWithDate:[preview startTime]];
+     
     // away team view setup
     [_previewView setTeamLogoForID:[[preview awayTeam] teamID] forTeamType:STCAwayTeam];
     [_previewView setTeamNameText:[STCGlobals getFullNameForTeamID:[[preview awayTeam] teamID]]

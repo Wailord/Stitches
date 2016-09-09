@@ -19,4 +19,9 @@
 - (void)setProbablePitcherERAText:(NSString *)text forTeamType:(STCTeamType)type;
 - (void)setProbablePitcherRecordText:(NSString *)text forTeamType:(STCTeamType)type;
 - (void)setProbablePitcherImageForID:(NSNumber *)playerID forTeamType:(STCTeamType)type;
+
+- (void)setVenueText:(NSString *)text;
+- (void)setLocationText:(NSString *)text;
+- (void)setStartTimeTextWithDate:(NSDate *)startTime;
+
 @end

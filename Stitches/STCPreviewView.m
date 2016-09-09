@@ -12,12 +12,28 @@
     STCPreviewTeamView *_awayPreviewTeamView;
     STCPreviewTeamView *_homePreviewTeamView;
     UILabel *_versusLabel;
+    UILabel *_venueLabel;
+    UILabel *_locationLabel;
+    UILabel *_startTimeLabel;
 }
 
 - (instancetype)init {
     self = [super init];
     if (self) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        _venueLabel = [[UILabel alloc] init];
+        _venueLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:_venueLabel];
+        
+        _locationLabel = [[UILabel alloc] init];
+        _locationLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:_locationLabel];
+        
+        _startTimeLabel = [[UILabel alloc] init];
+        _startTimeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:_startTimeLabel];
+        
         _versusLabel = [[UILabel alloc] init];
         _versusLabel.text = @"vs.";
         _versusLabel.font = [UIFont boldSystemFontOfSize:24.0f];
@@ -32,9 +48,10 @@
         _homePreviewTeamView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_homePreviewTeamView];
         
-        NSDictionary *views = NSDictionaryOfVariableBindings(_awayPreviewTeamView, _versusLabel, _homePreviewTeamView);
+        NSDictionary *views = NSDictionaryOfVariableBindings(_awayPreviewTeamView, _versusLabel, _homePreviewTeamView,
+                                                             _venueLabel, _locationLabel, _startTimeLabel);
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayPreviewTeamView]-[_versusLabel]-[_homePreviewTeamView]-(>=1)-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayPreviewTeamView]-[_versusLabel]-[_homePreviewTeamView]-[_startTimeLabel]-[_venueLabel]-[_locationLabel]-(>=1)-|"
                                                                      options:NSLayoutFormatAlignAllCenterX
                                                                      metrics:nil
                                                                        views:views]];
@@ -51,6 +68,21 @@
     }
     
     return self;
+}
+
+- (void)setVenueText:(NSString *)text {
+    _venueLabel.text = text;
+}
+
+- (void)setLocationText:(NSString *)text {
+    _locationLabel.text = text;
+}
+
+- (void)setStartTimeTextWithDate:(NSDate *)startTime {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"h:mm a"];
+
+    _startTimeLabel.text = [formatter stringFromDate:startTime];;
 }
 
 - (void)setTeamLogoForID:(NSString *)teamID forTeamType:(STCTeamType)type{

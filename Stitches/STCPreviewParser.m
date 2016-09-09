@@ -57,6 +57,36 @@
         venue.name = [attributeDict objectForKey:@"venue"];
         venue.location = [attributeDict objectForKey:@"location"];
         _preview.venue = venue;
+        
+        if([attributeDict objectForKey:@"time_date"]) {
+            // start setting up time info; we need to check both the time zone and am/pm
+            NSString *timeZone = [attributeDict objectForKey:@"time_zone"];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"YYYY/MM/dd hh:mm"];
+            if([timeZone isEqualToString:@"ET"]) {
+                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EDT"]];
+            }
+            else if([timeZone isEqualToString:@"PT"]) {
+                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
+            }
+            else if([timeZone isEqualToString:@"CT"]) {
+                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"CDT"]];
+            }
+            
+            // with the time zone set up, we can build the date
+            NSDate *dte = [dateFormat dateFromString:[attributeDict objectForKey:@"time_date"]];
+            
+            // if MLB says the time was in PM, we need to add twelve hours to the time
+            if([[attributeDict objectForKey:@"ampm"] isEqualToString:@"PM"]) {
+                // add twelve hours for PM
+                NSTimeInterval twelveHours = 12 * 60 * 60;
+                dte = [dte dateByAddingTimeInterval:twelveHours];
+            }
+            
+            // assign the start time after building the date
+            _preview.startTime = dte;
+        }
+
     }
     else if([elementName isEqualToString:@"home_probable_pitcher"] || [elementName isEqualToString:@"away_probable_pitcher"]) {
         //NSLog(@"Started parsing a probable pitcher.");
