@@ -9,13 +9,12 @@
 #import "STCPreviewViewController.h"
 #import "STCPreviewParser.h"
 #import "STCPreviewTeamView.h"
+#import "STCPreviewView.h"
 
 @implementation STCPreviewViewController {
     STCPreviewParser *_previewParser;
-    STCPreviewTeamView *_awayPreviewTeamView;
-    STCPreviewTeamView *_homePreviewTeamView;
     NSString *_gameID;
-    UILabel *_versusLabel;
+    STCPreviewView *_previewView;
 }
 
 - (instancetype)initWithGameID:(NSString*)gameID {
@@ -29,104 +28,84 @@
 }
 
 - (void)parsedGamePreview:(STCPreview *)preview {
-    NSLog(@"PreviewViewController responding to parsed game. Setting up view.");
-    // away team logo and info
-    [_awayPreviewTeamView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[[preview awayTeam] teamID]]]];
-    [_awayPreviewTeamView.teamNameLabel setText:[STCGlobals getFullNameForTeamID:[[preview awayTeam] teamID]]];
-    _awayPreviewTeamView.teamRecordLabel.text = [NSString stringWithFormat:@"(%@)", preview.awayTeam.teamRecord];
+    // away team view setup
+    [_previewView setTeamLogoForID:[[preview awayTeam] teamID] forTeamType:STCAwayTeam];
+    [_previewView setTeamNameText:[STCGlobals getFullNameForTeamID:[[preview awayTeam] teamID]]
+                      forTeamType:STCAwayTeam];
+    [_previewView setTeamRecordText:[NSString stringWithFormat:@"(%@)", preview.awayTeam.teamRecord]
+                        forTeamType:STCAwayTeam];
     
-    // away pitcher name and ERA
     NSString *awayFullName = [NSString stringWithFormat:@"%@ %@",
                               [[[preview awayTeam] probablePitcher] firstName],
                               [[[preview awayTeam] probablePitcher] lastName]];
-    [_awayPreviewTeamView.pitcherNameLabel setText:awayFullName];
-    [_awayPreviewTeamView.pitcherERALabel setText:[NSString stringWithFormat:@"%@ ERA",
-                                                   [[[preview awayTeam] probablePitcher] era]]];
+    [_previewView setProbablePitcherNameText:awayFullName
+                             forTeamType:STCAwayTeam];
+    [_previewView setProbablePitcherERAText:[NSString stringWithFormat:@"%@ ERA",
+                                             [[[preview awayTeam] probablePitcher] era]]
+                                forTeamType:STCAwayTeam];
     
-    // away pitcher win-loss
     NSString *awayPitcherRecord = [NSString stringWithFormat:@"%@-%@",
                                    [[[preview awayTeam] probablePitcher] wins],
                                    [[[preview awayTeam] probablePitcher] losses]];
-    [_awayPreviewTeamView.pitcherRecordLabel setText:awayPitcherRecord];
+    [_previewView setProbablePitcherRecordText:awayPitcherRecord
+                                   forTeamType:STCAwayTeam];
     
-    // away pitcher picture
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL:
-                          [NSURL URLWithString:
-                           [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/74_%@.png", [[[preview awayTeam] probablePitcher] playerID]]]];
-    _awayPreviewTeamView.pitcherImageView.image = [UIImage imageWithData: imageData];
+    [_previewView setProbablePitcherImageForID:[[[preview awayTeam] probablePitcher] playerID]
+                                   forTeamType:STCAwayTeam];
     
-    // home team logo and info
-    [_homePreviewTeamView.teamLogoView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[[preview homeTeam] teamID]]]];
-    [_homePreviewTeamView.teamNameLabel setText:[STCGlobals getFullNameForTeamID:[[preview homeTeam] teamID]]];
-    _homePreviewTeamView.teamRecordLabel.text = [NSString stringWithFormat:@"(%@)", preview.homeTeam.teamRecord];
     
-    // home team pitcher name and ERA
+    // home team view setup
+    [_previewView setTeamLogoForID:[[preview homeTeam] teamID]
+                       forTeamType:STCHomeTeam];
+    [_previewView setTeamNameText:[STCGlobals getFullNameForTeamID:[[preview homeTeam] teamID]]
+                      forTeamType:STCHomeTeam];
+    [_previewView setTeamRecordText:[NSString stringWithFormat:@"(%@)", preview.homeTeam.teamRecord]
+                        forTeamType:STCHomeTeam];
+    
     NSString *homeFullName = [NSString stringWithFormat:@"%@ %@",
                               [[[preview homeTeam] probablePitcher] firstName],
                               [[[preview homeTeam] probablePitcher] lastName]];
-    [_homePreviewTeamView.pitcherNameLabel setText:homeFullName];
-    [_homePreviewTeamView.pitcherERALabel setText:[NSString stringWithFormat:@"%@ ERA",
-                                                   [[[preview homeTeam] probablePitcher] era]]];
+    [_previewView setProbablePitcherNameText:homeFullName
+                             forTeamType:STCHomeTeam];
+    [_previewView setProbablePitcherERAText:[NSString stringWithFormat:@"%@ ERA",
+                                             [[[preview homeTeam] probablePitcher] era]]
+                                forTeamType:STCHomeTeam];
     
-    // home pitcher win-loss
     NSString *homePitcherRecord = [NSString stringWithFormat:@"%@-%@",
                                    [[[preview homeTeam] probablePitcher] wins],
                                    [[[preview homeTeam] probablePitcher] losses]];
-    [_homePreviewTeamView.pitcherRecordLabel setText:homePitcherRecord];
+    [_previewView setProbablePitcherRecordText:homePitcherRecord
+                                   forTeamType:STCHomeTeam];
     
-    // home pitcher picture
-    imageData = [[NSData alloc] initWithContentsOfURL:
-                              [NSURL URLWithString:
-                               [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/74_%@.png",
-                                [[[preview homeTeam] probablePitcher] playerID]]]];
-    _homePreviewTeamView.pitcherImageView.image = [UIImage imageWithData: imageData];
+    [_previewView setProbablePitcherImageForID:[[[preview homeTeam] probablePitcher] playerID]
+                                   forTeamType:STCHomeTeam];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    NSLog(@"PreviewViewController finished responding to parsed game. Done setting up view.");
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _versusLabel = [[UILabel alloc] init];
-    _versusLabel.text = @"vs.";
-    _versusLabel.font = [UIFont boldSystemFontOfSize:24.0f];
-    _versusLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:_versusLabel];
-    
-    _previewParser = [[STCPreviewParser alloc] init];
-    [_previewParser setDelegate:self];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     // ignore navbar
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
-    _awayPreviewTeamView = [[STCPreviewTeamView alloc] init];
-    _awayPreviewTeamView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:_awayPreviewTeamView];
+    _previewView = [[STCPreviewView alloc] init];
+    [self.view addSubview:_previewView];
+    NSDictionary *views = NSDictionaryOfVariableBindings(_previewView);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_previewView]"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_previewView]"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
     
-    _homePreviewTeamView = [[STCPreviewTeamView alloc] init];
-    _homePreviewTeamView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:_homePreviewTeamView];
-    
-    NSDictionary *views = NSDictionaryOfVariableBindings(_awayPreviewTeamView, _versusLabel, _homePreviewTeamView);
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_awayPreviewTeamView]-[_versusLabel]-[_homePreviewTeamView]-(>=1)-|"
-                                                                      options:NSLayoutFormatAlignAllCenterX
-                                                                      metrics:nil
-                                                                        views:views]];
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_awayPreviewTeamView]-|"
-                                                                      options:0
-                                                                      metrics:nil
-                                                                        views:views]];
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_homePreviewTeamView]-|"
-                                                                      options:0
-                                                                      metrics:nil
-                                                                        views:views]];
+    _previewParser = [[STCPreviewParser alloc] init];
+    [_previewParser setDelegate:self];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     [_previewParser parsePreviewWithGameID:_gameID];
 }

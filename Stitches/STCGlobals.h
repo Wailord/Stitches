@@ -17,6 +17,11 @@ typedef NS_ENUM(NSInteger, STCGameStatus) {
     STCFinalizedStatus
 };
 
+typedef NS_ENUM(NSInteger, STCTeamType) {
+    STCAwayTeam,
+    STCHomeTeam,
+};
+
 @interface STCGlobals : NSObject
 
 +(NSString *)getAbbreviationForTeamID:(NSString *)teamID;
