@@ -15,57 +15,49 @@
     if(self) {
         // team logo
         _teamLogoView = [[UIImageView alloc] init];
-        _teamLogoView.translatesAutoresizingMaskIntoConstraints = false;
+        _teamLogoView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_teamLogoView];
         
         // gray background
         _pitcherCardBackgroundView = [[UIView alloc] init];
         _pitcherCardBackgroundView.layer.borderColor = [UIColor blackColor].CGColor;
         _pitcherCardBackgroundView.layer.borderWidth = 1.0;
-        _pitcherCardBackgroundView.translatesAutoresizingMaskIntoConstraints = false;
+        _pitcherCardBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_pitcherCardBackgroundView];
         
         // team name/record
         _teamNameLabel = [[UILabel alloc] init];
-        _teamNameLabel.translatesAutoresizingMaskIntoConstraints = false;
+        _teamNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_teamNameLabel];
         
         _teamRecordLabel = [[UILabel alloc] init];
-        _teamRecordLabel.translatesAutoresizingMaskIntoConstraints = false;
+        _teamRecordLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_teamRecordLabel];
         
         // pitcher win-loss
         _pitcherRecordLabel = [[UILabel alloc] init];
-        _pitcherRecordLabel.translatesAutoresizingMaskIntoConstraints = false;
+        _pitcherRecordLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [_pitcherCardBackgroundView addSubview:_pitcherRecordLabel];
         
         // pitcher era
         _pitcherERALabel = [[UILabel alloc] init];
-        _pitcherERALabel.translatesAutoresizingMaskIntoConstraints = false;
+        _pitcherERALabel.translatesAutoresizingMaskIntoConstraints = NO;
         [_pitcherCardBackgroundView addSubview:_pitcherERALabel];
         
         // pitcher headshot
-        _pitcherImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stats.png"]];
-        _pitcherImageView.translatesAutoresizingMaskIntoConstraints = false;
+        _pitcherImageView = [[UIImageView alloc] init];
+        _pitcherImageView.translatesAutoresizingMaskIntoConstraints = NO;
         [_pitcherCardBackgroundView addSubview:_pitcherImageView];
         
         // pitcher name
         _pitcherNameLabel = [[UILabel alloc] init];
-        _pitcherNameLabel.translatesAutoresizingMaskIntoConstraints = false;
+        _pitcherNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [_pitcherCardBackgroundView addSubview:_pitcherNameLabel];
         
         NSDictionary *views = NSDictionaryOfVariableBindings(_teamLogoView, _pitcherCardBackgroundView,
                                                              _pitcherRecordLabel, _pitcherERALabel,
                                                              _pitcherImageView, _teamNameLabel,
                                                              _pitcherNameLabel, _teamRecordLabel);
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:_pitcherCardBackgroundView
-                                     attribute:NSLayoutAttributeCenterX
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:self
-                                     attribute:NSLayoutAttributeCenterX
-                                    multiplier:1.f constant:0.f]];
-        
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pitcherImageView
                                                   attribute:NSLayoutAttributeHeight
@@ -81,7 +73,7 @@
                                                                      metrics:nil
                                                                        views:views]];
         
-        // stuff above the gray square
+        // the box holding the pitcher info
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_pitcherCardBackgroundView]|"
                                                                      options:0
                                                                      metrics:nil

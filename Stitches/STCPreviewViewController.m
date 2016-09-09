@@ -11,19 +11,48 @@
 #import "STCPreviewTeamView.h"
 #import "STCPreviewView.h"
 
-@implementation STCPreviewViewController {
+@interface STCPreviewViewController ()<STCPreviewParserDelegate> {
     STCPreviewParser *_previewParser;
     NSString *_gameID;
     STCPreviewView *_previewView;
+    UIScrollView *_contentScrollView;
 }
+
+@end
+
+@implementation STCPreviewViewController
 
 - (instancetype)initWithGameID:(NSString*)gameID {
     self = [super init];
     if (self) {
         _gameID = gameID;
+        
+        _contentScrollView = [[UIScrollView alloc] init];
+        _contentScrollView.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        //_previewView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"baseball.png"]];
+        
+        _previewView = [[STCPreviewView alloc] init];
+        _previewView.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        [_contentScrollView addSubview:_previewView];
+        [self.view addSubview:_contentScrollView];
+        
+        NSDictionary *views = NSDictionaryOfVariableBindings(_contentScrollView);
+        
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_contentScrollView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:views]];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_contentScrollView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:views]];
         self.view.backgroundColor = [UIColor whiteColor];
-        self.navigationItem.title = @"Game Preview";
     }
+    
     return self;
 }
 
@@ -95,23 +124,34 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
-    _previewView = [[STCPreviewView alloc] init];
-    [self.view addSubview:_previewView];
-    NSDictionary *views = NSDictionaryOfVariableBindings(_previewView);
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_previewView]"
-                                                                     options:0
-                                                                     metrics:nil
-                                                                       views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_previewView]"
-                                                                     options:0
-                                                                     metrics:nil
-                                                                       views:views]];
+    NSLayoutConstraint *equalWidth = [NSLayoutConstraint constraintWithItem:_contentScrollView
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:_previewView
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                 multiplier:1.0
+                                                                   constant:0];
+    equalWidth.active = YES;
+    
+    NSLayoutConstraint *equalTop = [NSLayoutConstraint constraintWithItem:_contentScrollView
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:_previewView
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1.0
+                                                                 constant:0];
+    equalTop.active = YES;
     
     _previewParser = [[STCPreviewParser alloc] init];
     [_previewParser setDelegate:self];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     [_previewParser parsePreviewWithGameID:_gameID];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    _contentScrollView.contentSize = _previewView.bounds.size;
+
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "STCPreviewParser.h"
 #import "STCGlobals.h"
 
-@interface STCPreviewViewController : UIViewController <STCPreviewParserDelegate>
+@interface STCPreviewViewController : UIViewController
 
 - (instancetype)initWithGameID:(NSString*)gameID;
 

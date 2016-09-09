@@ -20,23 +20,28 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.translatesAutoresizingMaskIntoConstraints = NO;
-        
         _venueLabel = [[UILabel alloc] init];
         _venueLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _venueLabel.textAlignment = NSTextAlignmentCenter;
+        _venueLabel.text = @"T-Mobile Arena";
         [self addSubview:_venueLabel];
         
         _locationLabel = [[UILabel alloc] init];
         _locationLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _locationLabel.textAlignment = NSTextAlignmentCenter;
+        _locationLabel.text = @"Las Vegas, NV";
         [self addSubview:_locationLabel];
         
         _startTimeLabel = [[UILabel alloc] init];
         _startTimeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _startTimeLabel.textAlignment = NSTextAlignmentCenter;
+        _startTimeLabel.text = @"12:00 PM";
         [self addSubview:_startTimeLabel];
         
         _versusLabel = [[UILabel alloc] init];
         _versusLabel.text = @"vs.";
         _versusLabel.font = [UIFont boldSystemFontOfSize:24.0f];
+        _versusLabel.textAlignment = NSTextAlignmentCenter;
         _versusLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_versusLabel];
         
@@ -65,6 +70,26 @@
                                                                      options:0
                                                                      metrics:nil
                                                                        views:views]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_versusLabel]-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_venueLabel]-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_locationLabel]-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_startTimeLabel]-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
     }
     
     return self;
@@ -82,7 +107,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"h:mm a"];
 
-    _startTimeLabel.text = [formatter stringFromDate:startTime];;
+    _startTimeLabel.text = [formatter stringFromDate:startTime];
 }
 
 - (void)setTeamLogoForID:(NSString *)teamID forTeamType:(STCTeamType)type{

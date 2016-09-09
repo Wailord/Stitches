@@ -312,10 +312,10 @@
 		022C65CC1D7A316400A9C5D5 /* Game Previews */ = {
 			isa = PBXGroup;
 			children = (
-				022C65C21D7A30B600A9C5D5 /* STCPreviewTeamView.h */,
-				022C65C31D7A30B600A9C5D5 /* STCPreviewTeamView.m */,
 				0262EB311D82E7030072C01B /* STCPreviewView.h */,
 				0262EB321D82E7030072C01B /* STCPreviewView.m */,
+				022C65C21D7A30B600A9C5D5 /* STCPreviewTeamView.h */,
+				022C65C31D7A30B600A9C5D5 /* STCPreviewTeamView.m */,
 			);
 			name = "Game Previews";
 			sourceTree = "<group>";
@@ -334,14 +334,14 @@
 		025957BC1D7F3DB4006AB246 /* Game Finals */ = {
 			isa = PBXGroup;
 			children = (
+				02A9E0E51D80F25E005B72CB /* STCFinalizedView.h */,
+				02A9E0E61D80F25E005B72CB /* STCFinalizedView.m */,
 				025957BD1D7F3E0F006AB246 /* STCFinalizedTeamView.h */,
 				025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */,
 				025957C31D7FA96C006AB246 /* STCLinescoreView.h */,
 				025957C41D7FA96C006AB246 /* STCLinescoreView.m */,
 				025957C61D7FBB34006AB246 /* STCLinescoreInningLabel.h */,
 				025957C71D7FBB34006AB246 /* STCLinescoreInningLabel.m */,
-				02A9E0E51D80F25E005B72CB /* STCFinalizedView.h */,
-				02A9E0E61D80F25E005B72CB /* STCFinalizedView.m */,
 			);
 			name = "Game Finals";
 			sourceTree = "<group>";
