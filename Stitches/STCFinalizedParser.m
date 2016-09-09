@@ -69,6 +69,14 @@
         // errors
         _game.awayTeam.errors = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_errors"] integerValue]];
         _game.homeTeam.errors = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_errors"] integerValue]];
+        
+        // venue
+        STCVenue *venue = [[STCVenue alloc] init];
+        venue.venueID = [attributeDict objectForKey:@"venue_id"];
+        venue.name = [attributeDict objectForKey:@"venue"];
+        venue.location = [attributeDict objectForKey:@"location"];
+        _game.venue = venue;
+        
     }
     else if([elementName isEqualToString:@"linescore"]) {
         STCInning *newestInning = [[STCInning alloc] init];

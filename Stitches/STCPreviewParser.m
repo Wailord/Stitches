@@ -50,6 +50,13 @@
         _preview.awayTeam.teamRecord.losses = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_loss"] integerValue]];
         _preview.homeTeam.teamRecord.wins = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_win"] integerValue]];
         _preview.homeTeam.teamRecord.losses = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_loss"] integerValue]];
+        
+        // venue
+        STCVenue *venue = [[STCVenue alloc] init];
+        venue.venueID = [attributeDict objectForKey:@"venue_id"];
+        venue.name = [attributeDict objectForKey:@"venue"];
+        venue.location = [attributeDict objectForKey:@"location"];
+        _preview.venue = venue;
     }
     else if([elementName isEqualToString:@"home_probable_pitcher"] || [elementName isEqualToString:@"away_probable_pitcher"]) {
         //NSLog(@"Started parsing a probable pitcher.");

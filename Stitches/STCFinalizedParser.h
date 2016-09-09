@@ -12,6 +12,7 @@
 #import "STCTeamRecord.h"
 #import "STCPitcher.h"
 #import "STCSavePitcher.h"
+#import "STCVenue.h"
 
 @protocol STCFinalizedParserDelegate
 @required

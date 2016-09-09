@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "STCPitcher.h"
 #import "STCPreviewTeam.h"
+#import "STCVenue.h"
 
 @interface STCPreview : NSObject
 
 @property STCPreviewTeam *awayTeam;
 @property STCPreviewTeam *homeTeam;
+@property STCVenue *venue;
 
 @end

@@ -12,11 +12,13 @@
 #import "STCGlobals.h"
 #import "STCPitcher.h"
 #import "STCSavePitcher.h"
+#import "STCVenue.h"
 
 @interface STCFinalizedGame : NSObject
 
 @property STCFinalizedTeam *awayTeam;
 @property STCFinalizedTeam *homeTeam;
+@property STCVenue *venue;
 @property STCPitcher *winningPitcher;
 @property STCPitcher *losingPitcher;
 @property STCSavePitcher *savingPitcher;
