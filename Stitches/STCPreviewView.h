@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STCPreviewTeamView.h"
 #import "STCGlobals.h"
 
 @interface STCPreviewView : UIView

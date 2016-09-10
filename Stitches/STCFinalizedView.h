@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STCFinalizedTeamView.h"
-#import "STCLinescoreView.h"
-#import "STCInning.h"
 
 @interface STCFinalizedView : UIView
 

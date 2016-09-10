@@ -7,6 +7,9 @@
 //
 
 #import "STCFinalizedView.h"
+#import "STCFinalizedTeamView.h"
+#import "STCLinescoreView.h"
+#import "STCInning.h"
 
 @implementation STCFinalizedView {
     STCFinalizedTeamView *_awayTeamView;

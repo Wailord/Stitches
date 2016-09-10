@@ -7,6 +7,7 @@
 //
 
 #import "STCPreview.h"
+#import "STCPitcher.h"
 
 @implementation STCPreview
 

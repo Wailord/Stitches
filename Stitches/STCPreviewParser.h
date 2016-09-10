@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "STCPreview.h"
-#import "STCPitcher.h"
 
 @protocol STCPreviewParserDelegate
 @required

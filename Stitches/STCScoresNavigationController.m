@@ -6,7 +6,9 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
+#import "STCScoresPageViewController.h"
 #import "STCScoresNavigationController.h"
+#import "STCSummariesTableViewController.h"
 
 @implementation STCScoresNavigationController {
     STCScoresPageViewController *_scoresPageViewController;
@@ -30,7 +32,6 @@
     _scoresPageViewController = [[STCScoresPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                        navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                                      options:nil];
-    
     [self pushViewController:_scoresPageViewController
                     animated:false];
 }

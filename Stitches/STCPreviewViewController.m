@@ -7,9 +7,10 @@
 //
 
 #import "STCPreviewViewController.h"
-#import "STCPreviewParser.h"
 #import "STCPreviewTeamView.h"
 #import "STCPreviewView.h"
+#import "STCPreviewParser.h"
+#import "STCGlobals.h"
 
 @interface STCPreviewViewController ()<STCPreviewParserDelegate> {
     STCPreviewParser *_previewParser;

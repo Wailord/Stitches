@@ -7,6 +7,7 @@
 //
 
 #import "STCScoresPageViewController.h"
+#import "STCScoresNavigationController.h"
 
 @interface STCScoresPageViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate> {
     NSArray *_scoreDays;

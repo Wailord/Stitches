@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STCTeam.h"
 
 // currently supported game statuses
 typedef NS_ENUM(NSInteger, STCGameStatus) {

@@ -8,11 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "STCFinalizedGame.h"
-#import "STCInning.h"
-#import "STCTeamRecord.h"
-#import "STCPitcher.h"
-#import "STCSavePitcher.h"
-#import "STCVenue.h"
 
 @protocol STCFinalizedParserDelegate
 @required

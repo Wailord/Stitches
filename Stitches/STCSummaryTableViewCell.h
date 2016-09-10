@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STCGlobals.h"
 #import "STCSummary.h"
 
 @interface STCSummaryTableViewCell : UITableViewCell;

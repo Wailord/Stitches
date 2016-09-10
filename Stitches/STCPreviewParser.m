@@ -7,6 +7,7 @@
 //
 
 #import "STCPreviewParser.h"
+#import "STCPitcher.h"
 
 @implementation STCPreviewParser {
     NSXMLParser *_previewParser;

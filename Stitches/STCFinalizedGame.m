@@ -7,6 +7,9 @@
 //
 
 #import "STCFinalizedGame.h"
+#import "STCGlobals.h"
+#import "STCInning.h"
+#import "STCPitcher.h"
 
 @implementation STCFinalizedGame
 

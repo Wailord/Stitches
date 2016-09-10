@@ -7,6 +7,7 @@
 //
 
 #import "STCPreviewView.h"
+#import "STCPreviewTeamView.h"
 
 @implementation STCPreviewView {
     STCPreviewTeamView *_awayPreviewTeamView;

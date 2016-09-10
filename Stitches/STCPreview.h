@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STCPitcher.h"
 #import "STCPreviewTeam.h"
 #import "STCVenue.h"
 

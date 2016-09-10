@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "STCFinalizedTeam.h"
-#import "STCInning.h"
-#import "STCGlobals.h"
-#import "STCPitcher.h"
 #import "STCSavePitcher.h"
 #import "STCVenue.h"
 

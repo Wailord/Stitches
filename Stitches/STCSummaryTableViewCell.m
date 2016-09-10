@@ -8,6 +8,7 @@
 
 #import "STCSummaryTableViewCell.h"
 #import "STCSummaryTeamView.h"
+#import "STCGlobals.h"
 
 @implementation STCSummaryTableViewCell {
     STCSummaryTeamView *_awayTeamView;

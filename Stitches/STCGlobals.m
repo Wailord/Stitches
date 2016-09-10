@@ -7,6 +7,7 @@
 //
 
 #import "STCGlobals.h"
+#import "STCTeam.h"
 
 @implementation STCGlobals
 

@@ -7,6 +7,11 @@
 //
 
 #import "STCFinalizedViewController.h"
+#import "STCFinalizedParser.h"
+#import "STCLinescoreView.h"
+#import "STCFinalizedTeamView.h"
+#import "STCFinalizedView.h"
+#import "STCGlobals.h"
 
 @interface STCFinalizedViewController ()<STCFinalizedParserDelegate> {
     NSString *_gameID;
