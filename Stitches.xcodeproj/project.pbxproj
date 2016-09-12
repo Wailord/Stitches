@@ -82,6 +82,8 @@
 		02DF273A1D7F1DED0059E200 /* STCFinalizedGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF27391D7F1DED0059E200 /* STCFinalizedGame.m */; };
 		02F15C971D7DDE5E00F2A978 /* STCPitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F15C961D7DDE5E00F2A978 /* STCPitcher.m */; };
 		02F15C9D1D7EFAB600F2A978 /* StitchesPreviewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F15C9C1D7EFAB600F2A978 /* StitchesPreviewTests.m */; };
+		02FF75CC1D86FB08005F71C3 /* STCInProgressGameParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FF75CB1D86FB08005F71C3 /* STCInProgressGameParser.m */; };
+		02FF75D01D86FB4F005F71C3 /* STCInProgressGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FF75CF1D86FB4F005F71C3 /* STCInProgressGame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +215,10 @@
 		02F15C951D7DDE5E00F2A978 /* STCPitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPitcher.h; sourceTree = "<group>"; };
 		02F15C961D7DDE5E00F2A978 /* STCPitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPitcher.m; sourceTree = "<group>"; };
 		02F15C9C1D7EFAB600F2A978 /* StitchesPreviewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StitchesPreviewTests.m; sourceTree = "<group>"; };
+		02FF75CA1D86FB08005F71C3 /* STCInProgressGameParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCInProgressGameParser.h; sourceTree = "<group>"; };
+		02FF75CB1D86FB08005F71C3 /* STCInProgressGameParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCInProgressGameParser.m; sourceTree = "<group>"; };
+		02FF75CE1D86FB4F005F71C3 /* STCInProgressGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCInProgressGame.h; sourceTree = "<group>"; };
+		02FF75CF1D86FB4F005F71C3 /* STCInProgressGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCInProgressGame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +356,7 @@
 		026600F51D786EAD0022C79D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				02FF75CD1D86FB42005F71C3 /* In Progress Games */,
 				02A9E0E11D805921005B72CB /* Players */,
 				02DF27371D7F1DCE0059E200 /* Game Finals */,
 				02F15C991D7DDF2C00F2A978 /* Game Summaries */,
@@ -439,6 +446,8 @@
 				02DF27331D7F1D1C0059E200 /* Game Finals */,
 				022C65C61D7A30EE00A9C5D5 /* Game Previews */,
 				022C65C51D7A30DF00A9C5D5 /* Game Summaries */,
+				02FF75CA1D86FB08005F71C3 /* STCInProgressGameParser.h */,
+				02FF75CB1D86FB08005F71C3 /* STCInProgressGameParser.m */,
 			);
 			name = StitchParse;
 			sourceTree = "<group>";
@@ -579,6 +588,15 @@
 				029903271D86DB90001EB465 /* STCBaseTeam.m */,
 			);
 			name = "Game Summaries";
+			sourceTree = "<group>";
+		};
+		02FF75CD1D86FB42005F71C3 /* In Progress Games */ = {
+			isa = PBXGroup;
+			children = (
+				02FF75CE1D86FB4F005F71C3 /* STCInProgressGame.h */,
+				02FF75CF1D86FB4F005F71C3 /* STCInProgressGame.m */,
+			);
+			name = "In Progress Games";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -764,8 +782,10 @@
 				02A9E0E41D808110005B72CB /* STCScoresPageViewController.m in Sources */,
 				0210E7761D78A10B0078DEB2 /* STCPreviewParser.m in Sources */,
 				0210E7791D78B59A0078DEB2 /* STCGlobals.m in Sources */,
+				02FF75CC1D86FB08005F71C3 /* STCInProgressGameParser.m in Sources */,
 				02ADCD131D7749610088AFFD /* AppDelegate.m in Sources */,
 				02ADCD101D7749610088AFFD /* main.m in Sources */,
+				02FF75D01D86FB4F005F71C3 /* STCInProgressGame.m in Sources */,
 				02A9E0E01D8056EA005B72CB /* STCSavePitcher.m in Sources */,
 				025957BF1D7F3E0F006AB246 /* STCFinalizedTeamView.m in Sources */,
 				025957B81D7F3A91006AB246 /* STCTeamRecord.m in Sources */,
