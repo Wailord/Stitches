@@ -32,8 +32,7 @@
     _scoresPageViewController = [[STCScoresPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                        navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                                      options:nil];
-    [self pushViewController:_scoresPageViewController
-                    animated:false];
+    [self pushViewController:_scoresPageViewController animated:false];
 }
 
 @end

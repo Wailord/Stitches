@@ -243,9 +243,7 @@
 		0210E7731D78A0F40078DEB2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				02DF27331D7F1D1C0059E200 /* Game Finals */,
-				022C65C61D7A30EE00A9C5D5 /* Game Previews */,
-				022C65C51D7A30DF00A9C5D5 /* Game Summaries */,
+				029903301D86F752001EB465 /* StitchParse */,
 				0210E7771D78B59A0078DEB2 /* STCGlobals.h */,
 				0210E7781D78B59A0078DEB2 /* STCGlobals.m */,
 			);
@@ -433,6 +431,16 @@
 				02838E561D79D8330092A87F /* 160.png */,
 			);
 			name = logos;
+			sourceTree = "<group>";
+		};
+		029903301D86F752001EB465 /* StitchParse */ = {
+			isa = PBXGroup;
+			children = (
+				02DF27331D7F1D1C0059E200 /* Game Finals */,
+				022C65C61D7A30EE00A9C5D5 /* Game Previews */,
+				022C65C51D7A30DF00A9C5D5 /* Game Summaries */,
+			);
+			name = StitchParse;
 			sourceTree = "<group>";
 		};
 		02A9E0E11D805921005B72CB /* Players */ = {
