@@ -12,12 +12,12 @@
 @protocol STCInProgressParserDelegate
 @required
 -(void)parsedInProgressGame:(STCInProgressGame *)preview;
+-(void)updatedInProgressGame:(STCInProgressGame *)updatedGame;
 @end
 
 @interface STCInProgressGameParser : NSObject<NSXMLParserDelegate>
 @property (nonatomic, weak) id<STCInProgressParserDelegate> delegate;
 
 - (void)parseInProgressGameWithID:(NSString *)gameID;
-
 
 @end

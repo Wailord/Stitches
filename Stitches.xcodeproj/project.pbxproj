@@ -84,6 +84,7 @@
 		02F15C9D1D7EFAB600F2A978 /* StitchesPreviewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F15C9C1D7EFAB600F2A978 /* StitchesPreviewTests.m */; };
 		02FF75CC1D86FB08005F71C3 /* STCInProgressGameParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FF75CB1D86FB08005F71C3 /* STCInProgressGameParser.m */; };
 		02FF75D01D86FB4F005F71C3 /* STCInProgressGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FF75CF1D86FB4F005F71C3 /* STCInProgressGame.m */; };
+		02FF75D41D86FBEB005F71C3 /* STCInProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FF75D31D86FBEB005F71C3 /* STCInProgressViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +220,8 @@
 		02FF75CB1D86FB08005F71C3 /* STCInProgressGameParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCInProgressGameParser.m; sourceTree = "<group>"; };
 		02FF75CE1D86FB4F005F71C3 /* STCInProgressGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCInProgressGame.h; sourceTree = "<group>"; };
 		02FF75CF1D86FB4F005F71C3 /* STCInProgressGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCInProgressGame.m; sourceTree = "<group>"; };
+		02FF75D21D86FBEB005F71C3 /* STCInProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCInProgressViewController.h; sourceTree = "<group>"; };
+		02FF75D31D86FBEB005F71C3 /* STCInProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCInProgressViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +282,7 @@
 			children = (
 				02ADCD141D7749610088AFFD /* STCScoresNavigationController.h */,
 				02ADCD151D7749610088AFFD /* STCScoresNavigationController.m */,
+				02FF75D11D86FBB2005F71C3 /* In Progress Games */,
 				02DF272F1D7F1A740059E200 /* Game Finals */,
 				022C65CA1D7A314100A9C5D5 /* Game Summaries */,
 				022C65C91D7A313200A9C5D5 /* Game Previews */,
@@ -599,6 +603,15 @@
 			name = "In Progress Games";
 			sourceTree = "<group>";
 		};
+		02FF75D11D86FBB2005F71C3 /* In Progress Games */ = {
+			isa = PBXGroup;
+			children = (
+				02FF75D21D86FBEB005F71C3 /* STCInProgressViewController.h */,
+				02FF75D31D86FBEB005F71C3 /* STCInProgressViewController.m */,
+			);
+			name = "In Progress Games";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -798,6 +811,7 @@
 				025957C51D7FA96C006AB246 /* STCLinescoreView.m in Sources */,
 				0262EB361D82F59E0072C01B /* STCVenue.m in Sources */,
 				02838E7C1D79FA230092A87F /* STCPreview.m in Sources */,
+				02FF75D41D86FBEB005F71C3 /* STCInProgressViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
