@@ -43,77 +43,7 @@
     }
     else if([elementName isEqualToString:@"game"])
     {
-        // check to see if the game has a status that is currently supported
-        bool validGame = false;
-        enum STCGameStatus status = STCNoStatus;
-        if([attributeDict[@"status"] isEqualToString:@"In Progress"]) {
-            status = STCInProgressStatus;
-            validGame = true;
-        }
-        else if([attributeDict[@"status"] isEqualToString:@"Preview"] || [attributeDict[@"status"] isEqualToString:@"Pre-Game"]) {
-            status = STCPreviewStatus;
-            validGame = true;
-        }
-        else if([attributeDict[@"status"] isEqualToString:@"Final"]) {
-            status = STCFinalizedStatus;
-            validGame = true;
-        }
-        
-        // so long as we support the game status, we can init and start building a new game summary
-        if(validGame) {
-            _summary = [STCBaseGame new];
-            _summary.status = status;
-            
-            // get the game id
-            _summary.gameID = attributeDict[@"id"];
-            
-            //NSLog(@"Game ID: %@", _summary.gameID);
-            
-            // get the current score
-            _summary.awayTeam.runsScored = @([attributeDict[@"away_team_runs"] integerValue]);
-            _summary.homeTeam.runsScored = @([attributeDict[@"home_team_runs"] integerValue]);
-            
-            // get the teams playing
-            _summary.homeTeam.teamID = attributeDict[@"home_team_id"];
-            _summary.awayTeam.teamID = attributeDict[@"away_team_id"];
-            
-            // set the records
-            _summary.awayTeam.teamRecord.wins =@([attributeDict[@"away_win"] integerValue]);
-            _summary.awayTeam.teamRecord.losses =@([attributeDict[@"away_loss"] integerValue]);
-            _summary.homeTeam.teamRecord.wins =@([attributeDict[@"home_win"] integerValue]);
-            _summary.homeTeam.teamRecord.losses =@([attributeDict[@"home_loss"] integerValue]);
-            
-            // get the inning info
-            _summary.inning = @([attributeDict[@"inning"] integerValue]);
-            _summary.topOfInning = [attributeDict[@"top_of_inning"] isEqualToString:@"Y"];
-            
-            // start setting up time info; we need to check both the time zone and am/pm
-            NSString *timeZone = attributeDict[@"time_zone"];
-            NSDateFormatter *dateFormat = [NSDateFormatter new];
-            dateFormat.dateFormat = @"YYYY/MM/dd hh:mm";
-            if([timeZone isEqualToString:@"ET"]) {
-                dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"EDT"];
-            }
-            else if([timeZone isEqualToString:@"PT"]) {
-                dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PDT"];
-            }
-            else if([timeZone isEqualToString:@"CT"]) {
-                dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"CDT"];
-            }
-            
-            // with the time zone set up, we can build the date
-            NSDate *dte = [dateFormat dateFromString:attributeDict[@"time_date"]];
-            
-            // if MLB says the time was in PM, we need to add twelve hours to the time
-            if([attributeDict[@"ampm"] isEqualToString:@"PM"]) {
-                // add twelve hours for PM
-                NSTimeInterval twelveHours = 12 * 60 * 60;
-                dte = [dte dateByAddingTimeInterval:twelveHours];
-            }
-            
-            // assign the start time after building the date
-            _summary.startTime = dte;
-        }
+        _summary = [[STCBaseGame alloc] initWithDictionary:attributeDict];
     }
 }
 

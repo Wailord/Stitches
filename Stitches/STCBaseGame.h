@@ -22,4 +22,6 @@
 @property enum STCGameStatus status;
 @property NSDate *startTime;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
+
 @end
