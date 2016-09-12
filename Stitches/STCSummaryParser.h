@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STCSummary.h"
+#import "STCBaseGame.h"
 
 @protocol STCSummaryParserDelegate
 @required
--(void)parsedGameSummary:(STCSummary *)summary;
+-(void)parsedGameSummary:(STCBaseGame *)summary;
 -(void)parsedAllGameSummaries;
 @end
 

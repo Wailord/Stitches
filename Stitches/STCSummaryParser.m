@@ -11,7 +11,7 @@
 @implementation STCSummaryParser {
     NSXMLParser *_parser;
     NSMutableArray *_summaryList;
-    STCSummary *_summary;
+    STCBaseGame *_summary;
 }
 
 -(void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day{
@@ -57,7 +57,7 @@
         
         // so long as we support the game status, we can init and start building a new game summary
         if(validGame) {
-            _summary = [[STCSummary alloc] init];
+            _summary = [[STCBaseGame alloc] init];
             _summary.status = status;
             
             // get the game id

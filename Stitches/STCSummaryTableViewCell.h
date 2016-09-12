@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STCSummary.h"
+#import "STCBaseGame.h"
 
 @interface STCSummaryTableViewCell : UITableViewCell;
 
@@ -17,6 +17,6 @@
 @property NSString *awayName;
 @property NSNumber *inning;
 
-- (id)initWithGame:(STCSummary *)game;
+- (id)initWithGame:(STCBaseGame *)game;
 
 @end

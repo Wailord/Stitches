@@ -6,9 +6,9 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STCSummaryTeam.h"
+#import "STCBaseTeam.h"
 
-@implementation STCSummaryTeam
+@implementation STCBaseTeam
 
 - (instancetype)init {
     self = [super init];

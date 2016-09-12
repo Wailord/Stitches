@@ -16,7 +16,7 @@
     UILabel *_statusLabel;
 }
 
-- (instancetype)initWithGame:(STCSummary*)game{
+- (instancetype)initWithGame:(STCBaseGame*)game{
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
     
     if(self) {

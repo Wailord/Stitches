@@ -24,7 +24,7 @@
     _allGameSummariesParsed = YES;
 }
 
--(void)parsedGameSummary:(STCSummary *)summary {
+-(void)parsedGameSummary:(STCBaseGame *)summary {
     [_summaryList addObject:summary];
 }
 

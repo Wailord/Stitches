@@ -6,16 +6,16 @@
 //  Copyright © 2016 Ryan Fox. All rights reserved.
 //
 
-#import "STCSummary.h"
+#import "STCBaseGame.h"
 #import "STCGlobals.h"
 
-@implementation STCSummary
+@implementation STCBaseGame
 
 - (instancetype)init {
     self = [super init];
     if(self) {
-        _awayTeam = [[STCSummaryTeam alloc] init];
-        _homeTeam = [[STCSummaryTeam alloc] init];
+        _awayTeam = [[STCBaseTeam alloc] init];
+        _homeTeam = [[STCBaseTeam alloc] init];
     }
     
     return self;

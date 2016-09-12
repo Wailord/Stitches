@@ -7,7 +7,7 @@
 //
 
 #import "STCSummariesTableViewController.h"
-#import "STCSummary.h"
+#import "STCBaseGame.h"
 #import "STCFinalizedViewController.h"
 #import "STCSummaryTableViewCell.h"
 #import "STCPreviewViewController.h"
@@ -40,7 +40,7 @@
     return self;
 }
 
-- (void)parsedGameSummary:(STCSummary *)summary {
+- (void)parsedGameSummary:(STCBaseGame *)summary {
     [self.gameSummaries addObject:summary];
     //NSLog(@"Parsed game summary: %@", summary);
     [self.tableView reloadData];
@@ -95,10 +95,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     STCSummaryTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"summary"];
     
-    STCSummary *game = self.gameSummaries[indexPath.row];
+    STCBaseGame *game = self.gameSummaries[indexPath.row];
     
     if(cell == nil) {
-        cell = [[STCSummaryTableViewCell alloc] initWithGame:(STCSummary *)game];
+        cell = [[STCSummaryTableViewCell alloc] initWithGame:(STCBaseGame *)game];
     }
     else {
         cell.inning = game.inning;
