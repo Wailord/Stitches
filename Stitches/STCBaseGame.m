@@ -14,8 +14,8 @@
 - (instancetype)init {
     self = [super init];
     if(self) {
-        _awayTeam = [[STCBaseTeam alloc] init];
-        _homeTeam = [[STCBaseTeam alloc] init];
+        _awayTeam = [STCBaseTeam new];
+        _homeTeam = [STCBaseTeam new];
     }
     
     return self;

@@ -16,9 +16,9 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
     if(self) {
-        _awayTeam = [[STCFinalizedTeam alloc] init];
-        _homeTeam = [[STCFinalizedTeam alloc] init];
-        _innings = [[NSMutableArray alloc] init];
+        _awayTeam = [STCFinalizedTeam new];
+        _homeTeam = [STCFinalizedTeam new];
+        _innings = [NSMutableArray new];
         
         _awayTeam.teamID = dict[@"away_team_id"];
         _homeTeam.teamID = dict[@"home_team_id"];
@@ -45,7 +45,7 @@
         _homeTeam.errors = [NSNumber numberWithInteger:[dict[@"home_team_errors"] integerValue]];
         
         // venue
-        STCVenue *venue = [[STCVenue alloc] init];
+        STCVenue *venue = [STCVenue new];
         venue.venueID = dict[@"venue_id"];
         venue.name = dict[@"venue"];
         venue.location = dict[@"location"];

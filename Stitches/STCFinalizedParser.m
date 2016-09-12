@@ -22,7 +22,7 @@
 }
 
 -(void)parseFinalizedGameWithID:(NSString *)gameID {
-    _parser = [[NSXMLParser alloc] init];
+    _parser = [NSXMLParser new];
     NSArray *components = [gameID componentsSeparatedByString:@"/"];
     NSString *year = components[0];
     NSString *month = components[1];

@@ -28,12 +28,12 @@
     if (self) {
         _gameID = gameID;
         
-        _contentScrollView = [[UIScrollView alloc] init];
+        _contentScrollView = [UIScrollView new];
         _contentScrollView.translatesAutoresizingMaskIntoConstraints = NO;
         
         //_previewView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"baseball.png"]];
         
-        _previewView = [[STCPreviewView alloc] init];
+        _previewView = [STCPreviewView new];
         _previewView.translatesAutoresizingMaskIntoConstraints = NO;
         
         [_contentScrollView addSubview:_previewView];
@@ -154,7 +154,7 @@
     
 
     
-    _previewParser = [[STCPreviewParser alloc] init];
+    _previewParser = [STCPreviewParser new];
     _previewParser.delegate = self;
     
     [_previewParser parsePreviewWithGameID:_gameID];

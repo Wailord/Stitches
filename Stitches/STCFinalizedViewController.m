@@ -30,10 +30,10 @@
         _gameID = gameID;
         
         // add a scrollview
-        _contentScrollView = [[UIScrollView alloc] init];
+        _contentScrollView = [UIScrollView new];
         _contentScrollView.translatesAutoresizingMaskIntoConstraints = NO;
         
-        _view = [[STCFinalizedView alloc] init];
+        _view = [STCFinalizedView new];
         _view.translatesAutoresizingMaskIntoConstraints = NO;
         
         [_contentScrollView addSubview:_view];
@@ -128,7 +128,7 @@
                                                constant:0];
     centerX.active = YES;
     
-    _parser = [[STCFinalizedParser alloc] init];
+    _parser = [STCFinalizedParser new];
     _parser.delegate = self;
     [_parser parseFinalizedGameWithID:_gameID];
 }

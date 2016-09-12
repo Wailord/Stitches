@@ -20,17 +20,17 @@
     if(self) {
         // AWAY TEAM
         // logo
-        _teamLogoImageView = [[UIImageView alloc] init];
+        _teamLogoImageView = [UIImageView new];
         _teamLogoImageView.translatesAutoresizingMaskIntoConstraints = false;
         [self addSubview:_teamLogoImageView];
         
         // name
-        _teamNameLabel = [[UILabel alloc] init];
+        _teamNameLabel = [UILabel new];
         _teamNameLabel.translatesAutoresizingMaskIntoConstraints = false;
         [self addSubview:_teamNameLabel];
         
         // score
-        _teamScoreLabel = [[UILabel alloc] init];
+        _teamScoreLabel = [UILabel new];
         _teamScoreLabel.translatesAutoresizingMaskIntoConstraints = false;
         [self addSubview:_teamScoreLabel];
         

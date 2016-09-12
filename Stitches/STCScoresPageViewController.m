@@ -64,14 +64,14 @@
     leftArrow.tintColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = leftArrow;
     
-    _formatter = [[NSDateFormatter alloc] init];
+    _formatter = [NSDateFormatter new];
     _formatter.dateFormat = @"EEEE, MMMM d";
     _gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     
-    _oneDayBefore = [[NSDateComponents alloc] init];
+    _oneDayBefore = [NSDateComponents new];
     _oneDayBefore.day = -1;
     
-    _oneDayAfter = [[NSDateComponents alloc] init];
+    _oneDayAfter = [NSDateComponents new];
     _oneDayAfter.day = 1;
     
     

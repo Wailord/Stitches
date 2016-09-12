@@ -30,10 +30,10 @@
 
 - (void)setUp {
     [super setUp];
-    _summaryParser = [[STCSummaryParser alloc] init];
+    _summaryParser = [[STCSummaryParser new];
     _summaryParser.delegate = self;
     
-    _summaryList = [[NSMutableArray alloc] init];
+    _summaryList = [[NSMutableArray new];
 }
 
 -(void)tearDown {

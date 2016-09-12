@@ -19,7 +19,7 @@
     self = [super init];
     if(self) {
         STCLinescoreInningLabel *labelToAdd;
-        NSMutableDictionary *views = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *views = [NSMutableDictionary new];
         
         // create the arrays of views
         _titleInningLabels = [[NSMutableArray<STCLinescoreInningLabel*> alloc] initWithCapacity:9];
@@ -53,7 +53,7 @@
         [self addSubview:_errorsLabel];
 
         // create the variable RHE labels
-        _awayHitsLabel = [[STCLinescoreInningLabel alloc] init];
+        _awayHitsLabel = [STCLinescoreInningLabel new];
         views[@"_awayHitsLabel"] = _awayHitsLabel;
         [self addSubview:_awayHitsLabel];
         
@@ -61,11 +61,11 @@
         views[@"_awayScoreLabel"] = _awayScoreLabel;
         [self addSubview:_awayScoreLabel];
         
-        _awayErrorsLabel = [[STCLinescoreInningLabel alloc] init];
+        _awayErrorsLabel = [STCLinescoreInningLabel new];
         views[@"_awayErrorsLabel"] = _awayErrorsLabel;
         [self addSubview:_awayErrorsLabel];
         
-        _homeHitsLabel = [[STCLinescoreInningLabel alloc] init];
+        _homeHitsLabel = [STCLinescoreInningLabel new];
         views[@"_homeHitsLabel"] = _homeHitsLabel;
         [self addSubview:_homeHitsLabel];
         
@@ -73,23 +73,23 @@
         views[@"_homeScoreLabel"] = _homeScoreLabel;
         [self addSubview:_homeScoreLabel];
         
-        _homeErrorsLabel = [[STCLinescoreInningLabel alloc] init];
+        _homeErrorsLabel = [STCLinescoreInningLabel new];
         views[@"_homeErrorsLabel"] = _homeErrorsLabel;
         [self addSubview:_homeErrorsLabel];
         
         // build nine of the inning views
         for(int x = 0; x < 9; x++) {
-            labelToAdd = [[STCLinescoreInningLabel alloc] init];
+            labelToAdd = [STCLinescoreInningLabel new];
             _titleInningLabels[x] = labelToAdd;
             views[[NSString stringWithFormat:@"titleView%i",x]] = labelToAdd;
             [self addSubview:labelToAdd];
             
-            labelToAdd = [[STCLinescoreInningLabel alloc] init];
+            labelToAdd = [STCLinescoreInningLabel new];
             [_awayInningLabels setObject:labelToAdd atIndexedSubscript:x];
             views[[NSString stringWithFormat:@"awayInningView%i",x]] = labelToAdd;
             [self addSubview:labelToAdd];
             
-            labelToAdd = [[STCLinescoreInningLabel alloc] init];
+            labelToAdd = [STCLinescoreInningLabel new];
             [_homeInningLabels setObject:labelToAdd atIndexedSubscript:x];
             views[[NSString stringWithFormat:@"homeInningView%i",x]] = labelToAdd;
             [self addSubview:labelToAdd];

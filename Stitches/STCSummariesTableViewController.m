@@ -23,9 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _gameSummaries = [[NSMutableArray<STCBaseGame*> alloc] init];
+    _gameSummaries = [NSMutableArray<STCBaseGame*> new];
     
-    _parser = [[STCSummaryParser alloc] init];
+    _parser = [STCSummaryParser new];
     _parser.delegate = self;
     [self parseGames];
     

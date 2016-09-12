@@ -47,7 +47,7 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     if([elementName isEqualToString:@"game"]) {
         //NSLog(@"Started parsing preview game.");
-        _preview = [[STCPreview alloc] init];
+        _preview = [STCPreview new];
         _preview.awayTeam.teamID = attributeDict[@"away_team_id"];
         _preview.homeTeam.teamID = attributeDict[@"home_team_id"];
         _preview.awayTeam.teamRecord.wins = @([attributeDict[@"away_win"] integerValue]);
@@ -56,7 +56,7 @@
         _preview.homeTeam.teamRecord.losses = @([attributeDict[@"home_loss"] integerValue]);
         
         // venue
-        STCVenue *venue = [[STCVenue alloc] init];
+        STCVenue *venue = [STCVenue new];
         venue.venueID = attributeDict[@"venue_id"];
         venue.name = attributeDict[@"venue"];
         venue.location = attributeDict[@"location"];
@@ -65,7 +65,7 @@
         if(attributeDict[@"time_date"]) {
             // start setting up time info; we need to check both the time zone and am/pm
             NSString *timeZone = attributeDict[@"time_zone"];
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            NSDateFormatter *dateFormat = [NSDateFormatter new];
             dateFormat.dateFormat = @"YYYY/MM/dd hh:mm";
             if([timeZone isEqualToString:@"ET"]) {
                 dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"EDT"];
@@ -94,7 +94,7 @@
     }
     else if([elementName isEqualToString:@"home_probable_pitcher"] || [elementName isEqualToString:@"away_probable_pitcher"]) {
         //NSLog(@"Started parsing a probable pitcher.");
-        STCPitcher *_previewPitcher = [[STCPitcher alloc] init];
+        STCPitcher *_previewPitcher = [STCPitcher new];
         NSString *firstName = attributeDict[@"first_name"];
         NSString *lastName = attributeDict[@"last_name"];
         _previewPitcher.firstName = firstName;

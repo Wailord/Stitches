@@ -14,47 +14,47 @@
     self = [super init];
     if(self) {
         // team logo
-        _teamLogoView = [[UIImageView alloc] init];
+        _teamLogoView = [UIImageView new];
         _teamLogoView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_teamLogoView];
         
         // gray background
-        _pitcherCardBackgroundView = [[UIView alloc] init];
+        _pitcherCardBackgroundView = [UIView new];
         _pitcherCardBackgroundView.layer.borderColor = [UIColor blackColor].CGColor;
         _pitcherCardBackgroundView.layer.borderWidth = 1.0;
         _pitcherCardBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_pitcherCardBackgroundView];
         
         // team name/record
-        _teamNameLabel = [[UILabel alloc] init];
+        _teamNameLabel = [UILabel new];
         _teamNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _teamNameLabel.text = @"The Benchwarmers";
         [self addSubview:_teamNameLabel];
         
-        _teamRecordLabel = [[UILabel alloc] init];
+        _teamRecordLabel = [UILabel new];
         _teamRecordLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _teamRecordLabel.text = @"team record";
         [self addSubview:_teamRecordLabel];
         
         // pitcher win-loss
-        _pitcherRecordLabel = [[UILabel alloc] init];
+        _pitcherRecordLabel = [UILabel new];
         _pitcherRecordLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _pitcherRecordLabel.text = @"pitcher record";
         [_pitcherCardBackgroundView addSubview:_pitcherRecordLabel];
         
         // pitcher era
-        _pitcherERALabel = [[UILabel alloc] init];
+        _pitcherERALabel = [UILabel new];
         _pitcherERALabel.translatesAutoresizingMaskIntoConstraints = NO;
         _pitcherERALabel.text = @"pitcher ERA";
         [_pitcherCardBackgroundView addSubview:_pitcherERALabel];
         
         // pitcher headshot
-        _pitcherImageView = [[UIImageView alloc] init];
+        _pitcherImageView = [UIImageView new];
         _pitcherImageView.translatesAutoresizingMaskIntoConstraints = NO;
         [_pitcherCardBackgroundView addSubview:_pitcherImageView];
         
         // pitcher name
-        _pitcherNameLabel = [[UILabel alloc] init];
+        _pitcherNameLabel = [UILabel new];
         _pitcherNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _pitcherNameLabel.text = @"pitcher name";
         [_pitcherCardBackgroundView addSubview:_pitcherNameLabel];

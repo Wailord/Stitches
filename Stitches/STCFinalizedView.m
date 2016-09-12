@@ -26,31 +26,31 @@
     if(self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        _winningPitcherLabel = [[UILabel alloc] init];
+        _winningPitcherLabel = [UILabel new];
         _winningPitcherLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _winningPitcherLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_winningPitcherLabel];
         
-        _losingPitcherLabel = [[UILabel alloc] init];
+        _losingPitcherLabel = [UILabel new];
         _losingPitcherLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _losingPitcherLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_losingPitcherLabel];
         
-        _savingPitcherLabel = [[UILabel alloc] init];
+        _savingPitcherLabel = [UILabel new];
         _savingPitcherLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _savingPitcherLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_savingPitcherLabel];
         
         // set up the UI elements
-        _awayTeamView = [[STCFinalizedTeamView alloc] init];
+        _awayTeamView = [STCFinalizedTeamView new];
         _awayTeamView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_awayTeamView];
         
-        _homeTeamView = [[STCFinalizedTeamView alloc] init];
+        _homeTeamView = [STCFinalizedTeamView new];
         _homeTeamView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_homeTeamView];
         
-        _linescoreView = [[STCLinescoreView alloc] init];
+        _linescoreView = [STCLinescoreView new];
         _linescoreView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_linescoreView];
         

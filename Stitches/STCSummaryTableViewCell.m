@@ -19,11 +19,11 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
     if(self) {
-        _awayTeamView = [[STCSummaryTeamView alloc] init];
+        _awayTeamView = [STCSummaryTeamView new];
         _awayTeamView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_awayTeamView];
         
-        _homeTeamView = [[STCSummaryTeamView alloc] init];
+        _homeTeamView = [STCSummaryTeamView new];
         _homeTeamView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_homeTeamView];
         
@@ -38,7 +38,7 @@
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:teamViews]];
-        _statusLabel = [[UILabel alloc] init];
+        _statusLabel = [UILabel new];
         _statusLabel.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_statusLabel];
         
@@ -91,7 +91,7 @@
     NSMutableString *statusText = [[NSMutableString alloc] initWithCapacity:6];
     switch(game.status) {
         case STCPreviewStatus:
-            formatter = [[NSDateFormatter alloc] init];
+            formatter = [NSDateFormatter new];
             formatter.dateFormat = @"h:mm a";
             [statusText appendString:[formatter stringFromDate:game.startTime]];
             break;

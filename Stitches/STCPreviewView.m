@@ -21,36 +21,36 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _venueLabel = [[UILabel alloc] init];
+        _venueLabel = [UILabel new];
         _venueLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _venueLabel.textAlignment = NSTextAlignmentCenter;
         _venueLabel.text = @"T-Mobile Arena";
         [self addSubview:_venueLabel];
         
-        _locationLabel = [[UILabel alloc] init];
+        _locationLabel = [UILabel new];
         _locationLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _locationLabel.textAlignment = NSTextAlignmentCenter;
         _locationLabel.text = @"Las Vegas, NV";
         [self addSubview:_locationLabel];
         
-        _startTimeLabel = [[UILabel alloc] init];
+        _startTimeLabel = [UILabel new];
         _startTimeLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _startTimeLabel.textAlignment = NSTextAlignmentCenter;
         _startTimeLabel.text = @"12:00 PM";
         [self addSubview:_startTimeLabel];
         
-        _versusLabel = [[UILabel alloc] init];
+        _versusLabel = [UILabel new];
         _versusLabel.text = @"vs.";
         _versusLabel.font = [UIFont boldSystemFontOfSize:24.0f];
         _versusLabel.textAlignment = NSTextAlignmentCenter;
         _versusLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_versusLabel];
         
-        _awayPreviewTeamView = [[STCPreviewTeamView alloc] init];
+        _awayPreviewTeamView = [STCPreviewTeamView new];
         _awayPreviewTeamView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_awayPreviewTeamView];
         
-        _homePreviewTeamView = [[STCPreviewTeamView alloc] init];
+        _homePreviewTeamView = [STCPreviewTeamView new];
         _homePreviewTeamView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_homePreviewTeamView];
         
@@ -105,7 +105,7 @@
 }
 
 - (void)setStartTimeTextWithDate:(NSDate *)startTime {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"h:mm a";
 
     _startTimeLabel.text = [formatter stringFromDate:startTime];

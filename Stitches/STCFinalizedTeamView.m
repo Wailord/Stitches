@@ -18,23 +18,23 @@
 - (instancetype)init {
     self = [super init];
     if(self) {
-        _teamLogoImageView = [[UIImageView alloc] init];
+        _teamLogoImageView = [UIImageView new];
         _teamLogoImageView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_teamLogoImageView];
         
-        _teamNameLabel = [[UILabel alloc] init];
+        _teamNameLabel = [UILabel new];
         _teamNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _teamNameLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_teamNameLabel];
         
-        _runsScoredLabel = [[UILabel alloc] init];
+        _runsScoredLabel = [UILabel new];
         _runsScoredLabel.text = @"0";
         _runsScoredLabel.font = [UIFont boldSystemFontOfSize:32.0f];
         _runsScoredLabel.textAlignment = NSTextAlignmentCenter;
         _runsScoredLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_runsScoredLabel];
         
-        _teamInfoLabel = [[UILabel alloc] init];
+        _teamInfoLabel = [UILabel new];
         _teamInfoLabel.text = @"Team (0-0)";
         _teamInfoLabel.textAlignment = NSTextAlignmentCenter;
         _teamInfoLabel.translatesAutoresizingMaskIntoConstraints = NO;

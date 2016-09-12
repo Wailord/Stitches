@@ -13,8 +13,8 @@
 - (instancetype)init {
     self = [super init];
     if(self) {
-        _probablePitcher = [[STCPitcher alloc] init];
-        _teamRecord = [[STCTeamRecord alloc] init];
+        _probablePitcher = [STCPitcher new];
+        _teamRecord = [STCTeamRecord new];
     }
     
     return self;

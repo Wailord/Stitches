@@ -13,7 +13,7 @@
 - (instancetype)init {
     self = [super init];
     if(self) {
-        _teamRecord = [[STCTeamRecord alloc] init];
+        _teamRecord = [STCTeamRecord new];
     }
     
     return self;

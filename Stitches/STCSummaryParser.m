@@ -19,14 +19,14 @@
 
 -(void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day{
     // if our month or date is less than ten, make sure the string prepends a zero (so each is always two characters)
-    NSString *monthS = (month < 10) ? [NSString stringWithFormat:@"0%ld", (long)month] : [NSString stringWithFormat:@"%ld", (long)month];
-    NSString *dateS = (day < 10) ? [NSString stringWithFormat:@"0%@", @(day)] : @(day).stringValue;
+    NSString *monthString = (month < 10) ? [NSString stringWithFormat:@"0%ld", (long)month] : [NSString stringWithFormat:@"%ld", (long)month];
+    NSString *dateString = (day < 10) ? [NSString stringWithFormat:@"0%@", @(day)] : @(day).stringValue;
     
     // build the URL we're going to use to get current MLB scoreboard info
     NSString *xmlPath = [NSString stringWithFormat:@"http://gd2.mlb.com/components/game/mlb/year_%ld/month_%@/day_%@/miniscoreboard.xml",
                          (long)year,
-                         monthS,
-                         dateS];
+                         monthString,
+                         dateString];
     
     NSURL *url = [[NSURL alloc] initWithString:xmlPath];
     
@@ -39,7 +39,7 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     // once we find some games, initialize our mutable array of games
     if([elementName isEqualToString:@"games"]) {
-        _summaryList = [[NSMutableArray alloc] init];
+        _summaryList = [NSMutableArray new];
     }
     else if([elementName isEqualToString:@"game"])
     {
@@ -61,7 +61,7 @@
         
         // so long as we support the game status, we can init and start building a new game summary
         if(validGame) {
-            _summary = [[STCBaseGame alloc] init];
+            _summary = [STCBaseGame new];
             _summary.status = status;
             
             // get the game id
@@ -89,7 +89,7 @@
             
             // start setting up time info; we need to check both the time zone and am/pm
             NSString *timeZone = attributeDict[@"time_zone"];
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            NSDateFormatter *dateFormat = [NSDateFormatter new];
             dateFormat.dateFormat = @"YYYY/MM/dd hh:mm";
             if([timeZone isEqualToString:@"ET"]) {
                 dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"EDT"];
