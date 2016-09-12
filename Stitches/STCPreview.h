@@ -17,4 +17,6 @@
 @property STCVenue *venue;
 @property NSDate *startTime;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
+
 @end

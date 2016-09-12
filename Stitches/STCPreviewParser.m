@@ -47,71 +47,11 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     if([elementName isEqualToString:@"game"]) {
         //NSLog(@"Started parsing preview game.");
-        _preview = [STCPreview new];
-        _preview.awayTeam.teamID = attributeDict[@"away_team_id"];
-        _preview.homeTeam.teamID = attributeDict[@"home_team_id"];
-        _preview.awayTeam.teamRecord.wins = @([attributeDict[@"away_win"] integerValue]);
-        _preview.awayTeam.teamRecord.losses = @([attributeDict[@"away_loss"] integerValue]);
-        _preview.homeTeam.teamRecord.wins = @([attributeDict[@"home_win"] integerValue]);
-        _preview.homeTeam.teamRecord.losses = @([attributeDict[@"home_loss"] integerValue]);
-        
-        // venue
-        STCVenue *venue = [STCVenue new];
-        venue.venueID = attributeDict[@"venue_id"];
-        venue.name = attributeDict[@"venue"];
-        venue.location = attributeDict[@"location"];
-        _preview.venue = venue;
-        
-        if(attributeDict[@"time_date"]) {
-            // start setting up time info; we need to check both the time zone and am/pm
-            NSString *timeZone = attributeDict[@"time_zone"];
-            NSDateFormatter *dateFormat = [NSDateFormatter new];
-            dateFormat.dateFormat = @"YYYY/MM/dd hh:mm";
-            if([timeZone isEqualToString:@"ET"]) {
-                dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"EDT"];
-            }
-            else if([timeZone isEqualToString:@"PT"]) {
-                dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PDT"];
-            }
-            else if([timeZone isEqualToString:@"CT"]) {
-                dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"CDT"];
-            }
-            
-            // with the time zone set up, we can build the date
-            NSDate *dte = [dateFormat dateFromString:attributeDict[@"time_date"]];
-            
-            // if MLB says the time was in PM, we need to add twelve hours to the time
-            if([attributeDict[@"ampm"] isEqualToString:@"PM"]) {
-                // add twelve hours for PM
-                NSTimeInterval twelveHours = 12 * 60 * 60;
-                dte = [dte dateByAddingTimeInterval:twelveHours];
-            }
-            
-            // assign the start time after building the date
-            _preview.startTime = dte;
-        }
-
+        _preview = [[STCPreview alloc] initWithDictionary:attributeDict];
     }
     else if([elementName isEqualToString:@"home_probable_pitcher"] || [elementName isEqualToString:@"away_probable_pitcher"]) {
         //NSLog(@"Started parsing a probable pitcher.");
-        STCPitcher *_previewPitcher = [STCPitcher new];
-        NSString *firstName = attributeDict[@"first_name"];
-        NSString *lastName = attributeDict[@"last_name"];
-        _previewPitcher.firstName = firstName;
-        _previewPitcher.lastName = lastName;
-        
-        _previewPitcher.playerID = attributeDict[@"id"];
-        
-        NSString *playerNumber = attributeDict[@"number"];
-        NSString *playerERA = attributeDict[@"era"];
-        NSString *wins = attributeDict[@"wins"];
-        NSString *losses = attributeDict[@"losses"];
-        NSString *throwingHand = attributeDict[@"throwinghand"];
-        _previewPitcher.number = playerNumber;
-        _previewPitcher.era = playerERA;
-        _previewPitcher.wins = wins;
-        _previewPitcher.losses = losses;
-        _previewPitcher.throwingHand = throwingHand;
+        STCPitcher *_previewPitcher = [[STCPitcher alloc] initWithDictionary:attributeDict];
         
         if([elementName isEqualToString:@"away_probable_pitcher"]) {
             _preview.awayTeam.probablePitcher = _previewPitcher;
