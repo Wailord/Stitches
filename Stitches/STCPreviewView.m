@@ -143,7 +143,7 @@
             _awayPreviewTeamView.teamRecordLabel.text = recordText;
             break;
         case STCHomeTeam:
-            _homePreviewTeamView.teamNameLabel.text = recordText;
+            _homePreviewTeamView.teamRecordLabel.text = recordText;
             break;
         default:
             NSLog(@"Error: Received an STCTeamType of %ld while trying to set record text to %@.", type, recordText);

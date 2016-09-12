@@ -28,20 +28,24 @@
         // team name/record
         _teamNameLabel = [[UILabel alloc] init];
         _teamNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _teamNameLabel.text = @"The Benchwarmers";
         [self addSubview:_teamNameLabel];
         
         _teamRecordLabel = [[UILabel alloc] init];
         _teamRecordLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _teamRecordLabel.text = @"team record";
         [self addSubview:_teamRecordLabel];
         
         // pitcher win-loss
         _pitcherRecordLabel = [[UILabel alloc] init];
         _pitcherRecordLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _pitcherRecordLabel.text = @"pitcher record";
         [_pitcherCardBackgroundView addSubview:_pitcherRecordLabel];
         
         // pitcher era
         _pitcherERALabel = [[UILabel alloc] init];
         _pitcherERALabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _pitcherERALabel.text = @"pitcher ERA";
         [_pitcherCardBackgroundView addSubview:_pitcherERALabel];
         
         // pitcher headshot
@@ -52,6 +56,7 @@
         // pitcher name
         _pitcherNameLabel = [[UILabel alloc] init];
         _pitcherNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _pitcherNameLabel.text = @"pitcher name";
         [_pitcherCardBackgroundView addSubview:_pitcherNameLabel];
         
         NSDictionary *views = NSDictionaryOfVariableBindings(_teamLogoView, _pitcherCardBackgroundView,
