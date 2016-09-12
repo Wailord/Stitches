@@ -11,6 +11,7 @@
 #import "STCFinalizedViewController.h"
 #import "STCSummaryTableViewCell.h"
 #import "STCPreviewViewController.h"
+#import "STCInProgressViewController.h"
 
 @implementation STCSummariesTableViewController {
     STCSummaryParser *_parser;
@@ -74,22 +75,26 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    STCPreviewViewController *preview = nil;
-    STCFinalizedViewController *final = nil;
+    UIViewController *newView = nil;
     switch([_gameSummaries[indexPath.row] status])
     {
         case STCPreviewStatus:
-            preview = [[STCPreviewViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
-            [self.navigationController pushViewController:preview animated:true];
+            newView = [[STCPreviewViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
+            [self.navigationController pushViewController:newView animated:true];
             break;
         case STCFinalizedStatus:
-            final = [[STCFinalizedViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
-            [self.navigationController pushViewController:final animated:true];
+            newView = [[STCFinalizedViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
+            break;
+        case STCInProgressStatus:
+            newView = [[STCInProgressViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
             break;
         default:
-            NSLog(@"Tapped an unsupported row.");
+            NSLog(@"ERROR: Tapped an unsupported game status. Creating a blank view.");
+            newView = [[UIViewController alloc] init];
             break;
     }
+    
+    [self.navigationController pushViewController:newView animated:true];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
