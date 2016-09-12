@@ -20,7 +20,7 @@
 
 - (void)setUp {
     [super setUp];
-    _parser = [[STCPreviewParser new];
+    _parser = [STCPreviewParser new];
 }
 
 - (void)tearDown {

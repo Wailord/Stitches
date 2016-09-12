@@ -30,10 +30,10 @@
 
 - (void)setUp {
     [super setUp];
-    _summaryParser = [[STCSummaryParser new];
+    _summaryParser = [STCSummaryParser new];
     _summaryParser.delegate = self;
     
-    _summaryList = [[NSMutableArray new];
+    _summaryList = [NSMutableArray new];
 }
 
 -(void)tearDown {
@@ -41,7 +41,7 @@
 }
 
 - (void)testParsingDateInPast {
-    [_summaryParser parseGameSummariesForYear:2016 andMonth:5 andDay:4];
+    [_summaryParser parseGameSummariesForYear:2016 month:5 day:4];
     
     XCTAssertEqual([_summaryList count], 15, @"Failed to parse all game summaries.");
 }
