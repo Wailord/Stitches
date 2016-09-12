@@ -11,16 +11,19 @@
 
 @interface STCLinescoreView : UIView
 
-@property NSMutableArray *titleInningLabels;
-@property NSMutableArray *awayInningLabels;
-@property NSMutableArray *homeInningLabels;
+@property (nonatomic) NSMutableArray<STCLinescoreInningLabel*> *titleInningLabels;
+@property (nonatomic) NSMutableArray<STCLinescoreInningLabel*> *awayInningLabels;
+@property (nonatomic) NSMutableArray<STCLinescoreInningLabel*> *homeInningLabels;
 
 @property STCLinescoreInningLabel *awayHitsLabel;
 @property STCLinescoreInningLabel *homeHitsLabel;
+
 @property STCLinescoreInningLabel *awayScoreLabel;
 @property STCLinescoreInningLabel *homeScoreLabel;
+
 @property STCLinescoreInningLabel *awayErrorsLabel;
 @property STCLinescoreInningLabel *homeErrorsLabel;
+
 @property STCLinescoreInningLabel *awayTeamLabel;
 @property STCLinescoreInningLabel *homeTeamLabel;
 

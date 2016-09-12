@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "STCSummariesTableViewController.h"
 
-@interface STCScoresPageViewController : UIPageViewController
+@interface STCScoresPageViewController : UIViewController
 
-@property STCSummariesTableViewController *currentScoresTableViewController;
+@property (nonatomic) STCSummariesTableViewController *currentScoresTableViewController;
 
 @end

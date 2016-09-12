@@ -13,23 +13,29 @@
 #import "STCPreviewViewController.h"
 #import "STCInProgressViewController.h"
 
+@interface STCSummariesTableViewController ()<STCSummaryParserDelegate>
+@end
+
 @implementation STCSummariesTableViewController {
     STCSummaryParser *_parser;
+    NSMutableArray<STCBaseGame*> *_gameSummaries;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _gameSummaries = [[NSMutableArray alloc] init];
+    _gameSummaries = [[NSMutableArray<STCBaseGame*> alloc] init];
     
     _parser = [[STCSummaryParser alloc] init];
-    [_parser setDelegate:self];
+    _parser.delegate = self;
     [self parseGames];
     
     self.tableView.rowHeight = 84;
-    [self.tableView setDataSource:self];
-    [self.tableView setDelegate:self];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     self.navigationItem.title = _scoreboardDate.description;
+    
+    [self.tableView registerClass:[STCSummaryTableViewCell class] forCellReuseIdentifier:@"GameSummary"];
 }
 
 - (instancetype)initWithDateComponents:(NSDateComponents *)components {
@@ -42,7 +48,7 @@
 }
 
 - (void)parsedGameSummary:(STCBaseGame *)summary {
-    [self.gameSummaries addObject:summary];
+    [_gameSummaries addObject:summary];
     //NSLog(@"Parsed game summary: %@", summary);
     [self.tableView reloadData];
 }
@@ -59,15 +65,7 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:FALSE];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _gameSummaries.count;
@@ -75,44 +73,32 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *newView = nil;
-    switch([_gameSummaries[indexPath.row] status])
-    {
+    STCPreviewViewController *preview;
+    STCFinalizedViewController *final;
+    STCInProgressViewController *inProgress;
+    
+    switch(_gameSummaries[indexPath.row].status) {
         case STCPreviewStatus:
-            newView = [[STCPreviewViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
-            [self.navigationController pushViewController:newView animated:true];
+            preview = [[STCPreviewViewController alloc] initWithGameID:(_gameSummaries[indexPath.row]).gameID];
+            [self.navigationController pushViewController:preview animated:true];
             break;
         case STCFinalizedStatus:
-            newView = [[STCFinalizedViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
-            break;
-        case STCInProgressStatus:
-            newView = [[STCInProgressViewController alloc] initWithGameID:[_gameSummaries[indexPath.row] gameID]];
+            final = [[STCFinalizedViewController alloc] initWithGameID:(_gameSummaries[indexPath.row]).gameID];
+            [self.navigationController pushViewController:final animated:YES];
             break;
         default:
-            NSLog(@"ERROR: Tapped an unsupported game status. Creating a blank view.");
-            newView = [[UIViewController alloc] init];
+            inProgress = [[STCInProgressViewController alloc] initWithGameID:@"test"];
+            [self.navigationController pushViewController:inProgress
+                                                 animated:true];
+            NSLog(@"Tapped an unsupported row.");
             break;
     }
-    
-    [self.navigationController pushViewController:newView animated:true];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    STCSummaryTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"summary"];
+    STCSummaryTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"GameSummary" forIndexPath:indexPath];
+    [cell setGame:_gameSummaries[indexPath.row]];
     
-    STCBaseGame *game = self.gameSummaries[indexPath.row];
-    
-    if(cell == nil) {
-        cell = [[STCSummaryTableViewCell alloc] initWithGame:(STCBaseGame *)game];
-    }
-    else {
-        cell.inning = game.inning;
-        cell.homeName = [STCGlobals getAbbreviationForTeamID:game.homeTeam.teamID];
-        cell.homeScore = game.homeTeam.runsScored;
-        cell.awayName = [STCGlobals getAbbreviationForTeamID:game.awayTeam.teamID];
-        cell.awayScore = game.awayTeam.runsScored;
-    }
-        
     return cell;
 }
 

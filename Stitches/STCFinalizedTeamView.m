@@ -8,7 +8,12 @@
 
 #import "STCFinalizedTeamView.h"
 
-@implementation STCFinalizedTeamView
+@implementation STCFinalizedTeamView {
+    UIImageView *_teamLogoImageView;
+    UILabel *_runsScoredLabel;
+    UILabel *_teamNameLabel;
+    UILabel *_teamInfoLabel;
+}
 
 - (instancetype)init {
     self = [super init];

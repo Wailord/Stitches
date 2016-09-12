@@ -10,10 +10,8 @@
 
 @interface STCSummaryTeamView : UIView
 
-@property UIImageView *teamLogoImageView;
-@property UILabel *teamNameLabel;
-@property UILabel *teamScoreLabel;
-
--(instancetype)initWithTeamID:(NSString *)teamID andScore:(NSNumber *)score andWon:(bool)won;
+- (void)setTeamID:(NSString *)teamID;
+- (void)setScore:(NSNumber *)score;
+- (void)setTeamWon:(BOOL)won;
 
 @end

@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // set up our initial window
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
     // show the window
@@ -26,7 +26,7 @@
     
     _tabController = [[UITabBarController alloc] init];
 
-    _scoresNavigationController = [[STCScoresNavigationController alloc] initWithYear:2016 andMonth:5 andDate:4];
+    _scoresNavigationController = [STCScoresNavigationController new];
     // the standings view, which will show the current MLB standings
     _standingsViewController = [[UIViewController alloc] init];
     _standingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Standings"
@@ -52,13 +52,13 @@
                                                                           tag:0];
                                       
     // the collection of viewcontrollers housed within the tabs
-    _tabbedViewControllers = [[NSArray alloc] initWithObjects:
+    _tabbedViewControllers = @[
                               _scoresNavigationController,
                               _standingsViewController,
                               _statisticsViewController,
                               _newsViewController,
-                              _settingsViewController,
-                              nil];
+                              _settingsViewController
+                              ];
     
     // let the tab controller know what view controllers to house
     _tabController.viewControllers = _tabbedViewControllers;

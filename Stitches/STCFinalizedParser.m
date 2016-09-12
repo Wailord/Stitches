@@ -13,6 +13,9 @@
 #import "STCSavePitcher.h"
 #import "STCVenue.h"
 
+@interface STCFinalizedParser ()<NSXMLParserDelegate>
+@end
+
 @implementation STCFinalizedParser {
     NSXMLParser *_parser;
     STCFinalizedGame *_game;
@@ -47,7 +50,7 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     if([elementName isEqualToString:@"game"]) {
-        NSLog(@"Started parsing a finalized game.");
+        //NSLog(@"Started parsing a finalized game.");
         _game = [[STCFinalizedGame alloc] init];
         
         // team id
@@ -137,10 +140,13 @@
     }
 }
 
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+- (void)parser:(NSXMLParser *)parser
+ didEndElement:(NSString *)elementName
+  namespaceURI:(NSString *)namespaceURI
+ qualifiedName:(NSString *)qName {
     if([elementName isEqualToString:@"game"]) {
         if(_delegate) {
-            NSLog(@"Done parsing finalized game.");
+            //NSLog(@"Done parsing finalized game.");
             [_delegate parsedFinalizedGame:_game];
         }
     }

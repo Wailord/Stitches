@@ -8,6 +8,9 @@
 
 #import "STCSummaryParser.h"
 
+@interface STCSummaryParser ()<NSXMLParserDelegate>
+@end
+
 @implementation STCSummaryParser {
     NSXMLParser *_parser;
     NSMutableArray *_summaryList;
@@ -17,18 +20,19 @@
 -(void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day{
     // if our month or date is less than ten, make sure the string prepends a zero (so each is always two characters)
     NSString *monthS = (month < 10) ? [NSString stringWithFormat:@"0%ld", (long)month] : [NSString stringWithFormat:@"%ld", (long)month];
-    NSString *dateS = (day < 10) ? [NSString stringWithFormat:@"0%ld", (long)day] : [NSString stringWithFormat:@"%ld", (long)day];
+    NSString *dateS = (day < 10) ? [NSString stringWithFormat:@"0%@", @(day)] : @(day).stringValue;
     
     // build the URL we're going to use to get current MLB scoreboard info
     NSString *xmlPath = [NSString stringWithFormat:@"http://gd2.mlb.com/components/game/mlb/year_%ld/month_%@/day_%@/miniscoreboard.xml",
                          (long)year,
                          monthS,
                          dateS];
+    
     NSURL *url = [[NSURL alloc] initWithString:xmlPath];
     
     // set up and start up the XML parser
     _parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    [_parser setDelegate:self];
+    _parser.delegate = self;
     [_parser parse];
 }
 
@@ -42,15 +46,15 @@
         // check to see if the game has a status that is currently supported
         bool validGame = false;
         enum STCGameStatus status = STCNoStatus;
-        if([[attributeDict objectForKey:@"status"] isEqualToString:@"In Progress"]) {
+        if([attributeDict[@"status"] isEqualToString:@"In Progress"]) {
             status = STCInProgressStatus;
             validGame = true;
         }
-        else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Preview"] || [[attributeDict objectForKey:@"status"] isEqualToString:@"Pre-Game"]) {
+        else if([attributeDict[@"status"] isEqualToString:@"Preview"] || [attributeDict[@"status"] isEqualToString:@"Pre-Game"]) {
             status = STCPreviewStatus;
             validGame = true;
         }
-        else if([[attributeDict objectForKey:@"status"] isEqualToString:@"Final"]) {
+        else if([attributeDict[@"status"] isEqualToString:@"Final"]) {
             status = STCFinalizedStatus;
             validGame = true;
         }
@@ -61,47 +65,47 @@
             _summary.status = status;
             
             // get the game id
-            _summary.gameID = [attributeDict objectForKey:@"id"];
+            _summary.gameID = attributeDict[@"id"];
             
             //NSLog(@"Game ID: %@", _summary.gameID);
             
             // get the current score
-            _summary.awayTeam.runsScored = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];
-            _summary.homeTeam.runsScored = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_runs"] integerValue]];
+            _summary.awayTeam.runsScored = @([attributeDict[@"away_team_runs"] integerValue]);
+            _summary.homeTeam.runsScored = @([attributeDict[@"home_team_runs"] integerValue]);
             
             // get the teams playing
-            _summary.homeTeam.teamID = [attributeDict objectForKey:@"home_team_id"];
-            _summary.awayTeam.teamID = [attributeDict objectForKey:@"away_team_id"];
+            _summary.homeTeam.teamID = attributeDict[@"home_team_id"];
+            _summary.awayTeam.teamID = attributeDict[@"away_team_id"];
             
             // set the records
-            _summary.awayTeam.teamRecord.wins =[NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_win"] integerValue]];
-            _summary.awayTeam.teamRecord.losses =[NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_loss"] integerValue]];
-            _summary.homeTeam.teamRecord.wins =[NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_win"] integerValue]];
-            _summary.homeTeam.teamRecord.losses =[NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_loss"] integerValue]];
+            _summary.awayTeam.teamRecord.wins =@([attributeDict[@"away_win"] integerValue]);
+            _summary.awayTeam.teamRecord.losses =@([attributeDict[@"away_loss"] integerValue]);
+            _summary.homeTeam.teamRecord.wins =@([attributeDict[@"home_win"] integerValue]);
+            _summary.homeTeam.teamRecord.losses =@([attributeDict[@"home_loss"] integerValue]);
             
             // get the inning info
-            _summary.inning = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"inning"] integerValue]];
-            _summary.topOfInning = [[attributeDict objectForKey:@"top_of_inning"] isEqualToString:@"Y"];
+            _summary.inning = @([attributeDict[@"inning"] integerValue]);
+            _summary.topOfInning = [attributeDict[@"top_of_inning"] isEqualToString:@"Y"];
             
             // start setting up time info; we need to check both the time zone and am/pm
-            NSString *timeZone = [attributeDict objectForKey:@"time_zone"];
+            NSString *timeZone = attributeDict[@"time_zone"];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"YYYY/MM/dd hh:mm"];
+            dateFormat.dateFormat = @"YYYY/MM/dd hh:mm";
             if([timeZone isEqualToString:@"ET"]) {
-                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EDT"]];
+                dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"EDT"];
             }
             else if([timeZone isEqualToString:@"PT"]) {
-                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PDT"]];
+                dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"PDT"];
             }
             else if([timeZone isEqualToString:@"CT"]) {
-                [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"CDT"]];
+                dateFormat.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"CDT"];
             }
             
             // with the time zone set up, we can build the date
-            NSDate *dte = [dateFormat dateFromString:[attributeDict objectForKey:@"time_date"]];
+            NSDate *dte = [dateFormat dateFromString:attributeDict[@"time_date"]];
             
             // if MLB says the time was in PM, we need to add twelve hours to the time
-            if([[attributeDict objectForKey:@"ampm"] isEqualToString:@"PM"]) {
+            if([attributeDict[@"ampm"] isEqualToString:@"PM"]) {
                 // add twelve hours for PM
                 NSTimeInterval twelveHours = 12 * 60 * 60;
                 dte = [dte dateByAddingTimeInterval:twelveHours];

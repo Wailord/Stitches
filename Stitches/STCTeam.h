@@ -17,6 +17,6 @@
 @property NSString *fullName;
 @property NSString *briefName;
 
-- (instancetype)initWithCode:(NSString *)code andFileCode:(NSString *)fileCode andAbbreviation:(NSString *)abbreviation andName:(NSString *)name andFullName:(NSString *)fullName andBriefName:(NSString *)briefName;
+- (instancetype)initWithCode:(NSString *)code fileCode:(NSString *)fileCode abbreviation:(NSString *)abbreviation name:(NSString *)name fullName:(NSString *)fullName briefName:(NSString *)briefName;
 
 @end

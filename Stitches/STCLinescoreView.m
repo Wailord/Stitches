@@ -18,80 +18,80 @@
 - (instancetype)init {
     self = [super init];
     if(self) {
-        UILabel *labelToAdd;
+        STCLinescoreInningLabel *labelToAdd;
         NSMutableDictionary *views = [[NSMutableDictionary alloc] init];
         
         // create the arrays of views
-        _titleInningLabels = [[NSMutableArray alloc] initWithCapacity:9];
-        _awayInningLabels = [[NSMutableArray alloc] initWithCapacity:9];
-        _homeInningLabels = [[NSMutableArray alloc] initWithCapacity:9];
+        _titleInningLabels = [[NSMutableArray<STCLinescoreInningLabel*> alloc] initWithCapacity:9];
+        _awayInningLabels = [[NSMutableArray<STCLinescoreInningLabel*> alloc] initWithCapacity:9];
+        _homeInningLabels = [[NSMutableArray<STCLinescoreInningLabel*> alloc] initWithCapacity:9];
         
         // create the team labels and the blank dummy label above
         _dummyTeamLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@" "];
-        [views setObject:_dummyTeamLabel forKey:@"_dummyTeamLabel"];
+        views[@"_dummyTeamLabel"] = _dummyTeamLabel;
         [self addSubview:_dummyTeamLabel];
         
         _awayTeamLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"WWW" andFontSize:17.0f];
-        [views setObject:_awayTeamLabel forKey:@"_awayTeamLabel"];
+        views[@"_awayTeamLabel"] = _awayTeamLabel;
         [self addSubview:_awayTeamLabel];
         
         _homeTeamLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"WWW" andFontSize:17.0f];
-        [views setObject:_homeTeamLabel forKey:@"_homeTeamLabel"];
+        views[@"_homeTeamLabel"] = _homeTeamLabel;
         [self addSubview:_homeTeamLabel];
         
         // create the constant RHE labels
         _scoreLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"R"];
-        [views setObject:_scoreLabel forKey:@"_scoreLabel"];
+        views[@"_scoreLabel"] = _scoreLabel;
         [self addSubview:_scoreLabel];
         
         _hitsLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"H"];
-        [views setObject:_hitsLabel forKey:@"_hitsLabel"];
+        views[@"_hitsLabel"] = _hitsLabel;
         [self addSubview:_hitsLabel];
 
         _errorsLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"E"];
-        [views setObject:_errorsLabel forKey:@"_errorsLabel"];
+        views[@"_errorsLabel"] = _errorsLabel;
         [self addSubview:_errorsLabel];
 
         // create the variable RHE labels
         _awayHitsLabel = [[STCLinescoreInningLabel alloc] init];
-        [views setObject:_awayHitsLabel forKey:@"_awayHitsLabel"];
+        views[@"_awayHitsLabel"] = _awayHitsLabel;
         [self addSubview:_awayHitsLabel];
         
         _awayScoreLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"0" andFontSize:17.0f];
-        [views setObject:_awayScoreLabel forKey:@"_awayScoreLabel"];
+        views[@"_awayScoreLabel"] = _awayScoreLabel;
         [self addSubview:_awayScoreLabel];
         
         _awayErrorsLabel = [[STCLinescoreInningLabel alloc] init];
-        [views setObject:_awayErrorsLabel forKey:@"_awayErrorsLabel"];
+        views[@"_awayErrorsLabel"] = _awayErrorsLabel;
         [self addSubview:_awayErrorsLabel];
         
         _homeHitsLabel = [[STCLinescoreInningLabel alloc] init];
-        [views setObject:_homeHitsLabel forKey:@"_homeHitsLabel"];
+        views[@"_homeHitsLabel"] = _homeHitsLabel;
         [self addSubview:_homeHitsLabel];
         
         _homeScoreLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"0" andFontSize:17.0f];
-        [views setObject:_homeScoreLabel forKey:@"_homeScoreLabel"];
+        views[@"_homeScoreLabel"] = _homeScoreLabel;
         [self addSubview:_homeScoreLabel];
         
         _homeErrorsLabel = [[STCLinescoreInningLabel alloc] init];
-        [views setObject:_homeErrorsLabel forKey:@"_homeErrorsLabel"];
+        views[@"_homeErrorsLabel"] = _homeErrorsLabel;
         [self addSubview:_homeErrorsLabel];
         
         // build nine of the inning views
         for(int x = 0; x < 9; x++) {
             labelToAdd = [[STCLinescoreInningLabel alloc] init];
-            [_titleInningLabels setObject:labelToAdd atIndexedSubscript:x];
-            [views setObject:labelToAdd forKey:[NSString stringWithFormat:@"titleView%i",x]];
+            _titleInningLabels[x] = labelToAdd;
+            views[[NSString stringWithFormat:@"titleView%i",x]] = labelToAdd;
             [self addSubview:labelToAdd];
             
             labelToAdd = [[STCLinescoreInningLabel alloc] init];
             [_awayInningLabels setObject:labelToAdd atIndexedSubscript:x];
-            [views setObject:labelToAdd forKey:[NSString stringWithFormat:@"awayInningView%i",x]];
+            views[[NSString stringWithFormat:@"awayInningView%i",x]] = labelToAdd;
             [self addSubview:labelToAdd];
             
             labelToAdd = [[STCLinescoreInningLabel alloc] init];
             [_homeInningLabels setObject:labelToAdd atIndexedSubscript:x];
-            [views setObject:labelToAdd forKey:[NSString stringWithFormat:@"homeInningView%i",x]];
+            views[[NSString stringWithFormat:@"homeInningView%i",x]] = labelToAdd;
             [self addSubview:labelToAdd];
         }
         

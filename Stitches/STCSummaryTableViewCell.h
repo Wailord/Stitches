@@ -8,15 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "STCBaseGame.h"
+#import "STCGlobals.h"
 
-@interface STCSummaryTableViewCell : UITableViewCell;
+@interface STCSummaryTableViewCell : UITableViewCell
 
-@property (nonatomic) NSNumber *homeScore;
-@property NSString *homeName;
-@property NSNumber *awayScore;
-@property NSString *awayName;
-@property NSNumber *inning;
-
-- (id)initWithGame:(STCBaseGame *)game;
+- (void)setGame:(STCBaseGame *)game;
 
 @end

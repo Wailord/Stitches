@@ -106,7 +106,7 @@
 
 - (void)setStartTimeTextWithDate:(NSDate *)startTime {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"h:mm a"];
+    formatter.dateFormat = @"h:mm a";
 
     _startTimeLabel.text = [formatter stringFromDate:startTime];
 }

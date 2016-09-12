@@ -9,37 +9,29 @@
 #import "STCSummaryTeamView.h"
 #import "STCGlobals.h"
 
-@implementation STCSummaryTeamView
+@implementation STCSummaryTeamView {
+    UIImageView *_teamLogoImageView;
+    UILabel *_teamNameLabel;
+    UILabel *_teamScoreLabel;
+}
 
--(instancetype)initWithTeamID:(NSString *)teamID andScore:(NSNumber *)score andWon:(bool)won {
+- (instancetype)init {
     self = [super init];
     if(self) {
         // AWAY TEAM
         // logo
         _teamLogoImageView = [[UIImageView alloc] init];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_teamLogoImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamID]]];
-        });
         _teamLogoImageView.translatesAutoresizingMaskIntoConstraints = false;
-        
         [self addSubview:_teamLogoImageView];
         
         // name
         _teamNameLabel = [[UILabel alloc] init];
         _teamNameLabel.translatesAutoresizingMaskIntoConstraints = false;
-        _teamNameLabel.text = [STCGlobals getBriefNameForTeamID:teamID];
         [self addSubview:_teamNameLabel];
         
         // score
         _teamScoreLabel = [[UILabel alloc] init];
         _teamScoreLabel.translatesAutoresizingMaskIntoConstraints = false;
-        _teamScoreLabel.text = [NSString stringWithFormat:@"%@", score];
-        
-        if(won) {
-            _teamScoreLabel.font = [UIFont boldSystemFontOfSize:16];
-            _teamNameLabel.font = [UIFont boldSystemFontOfSize:16];
-        }
-        
         [self addSubview:_teamScoreLabel];
         
         NSDictionary *views = NSDictionaryOfVariableBindings(_teamLogoImageView, _teamNameLabel, _teamScoreLabel);
@@ -57,6 +49,24 @@
     }
     
     return self;
+}
+
+- (void)setTeamID:(NSString *)teamID {
+    _teamNameLabel.text = [STCGlobals briefNameForTeamID:teamID];
+    _teamLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",teamID]];
+}
+
+-(void)setScore:(NSNumber *)score {
+    _teamScoreLabel.text = [NSString stringWithFormat:@"%@", score];
+}
+
+- (void)setTeamWon:(BOOL)won {
+    if(won) {
+        _teamNameLabel.font = [UIFont boldSystemFontOfSize:16];
+    }
+    else {
+        _teamNameLabel.font = [UIFont systemFontOfSize:16];
+    }
 }
 
 @end

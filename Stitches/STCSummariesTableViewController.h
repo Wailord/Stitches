@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "STCSummaryParser.h"
 
-@interface STCSummariesTableViewController : UITableViewController <STCSummaryParserDelegate>
+@class STCBaseGame;
 
-@property NSMutableArray *gameSummaries;
-@property NSDateComponents *scoreboardDate;
+@interface STCSummariesTableViewController : UITableViewController
+
+@property (nonatomic) NSDateComponents *scoreboardDate;
 
 -(void)parseGames;
 -(instancetype)initWithDateComponents:(NSDateComponents *)components;

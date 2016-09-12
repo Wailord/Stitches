@@ -14,7 +14,7 @@
 -(void)parsedFinalizedGame:(STCFinalizedGame *)final;
 @end
 
-@interface STCFinalizedParser : NSObject<NSXMLParserDelegate>
+@interface STCFinalizedParser : NSObject
 
 @property (nonatomic, weak) id<STCFinalizedParserDelegate> delegate;
 

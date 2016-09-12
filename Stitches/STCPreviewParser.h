@@ -14,7 +14,7 @@
 -(void)parsedGamePreview:(STCPreview *)preview;
 @end
 
-@interface STCPreviewParser : NSObject <NSXMLParserDelegate>
+@interface STCPreviewParser : NSObject
 @property (nonatomic, weak) id<STCPreviewParserDelegate> delegate;
 
 - (void)parsePreviewWithGameID:(NSString *)gameID;

@@ -16,31 +16,14 @@
     UILabel *_statusLabel;
 }
 
-- (instancetype)initWithGame:(STCBaseGame*)game{
-    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"GameSummary"];
-    
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
     if(self) {
-        bool awayTeamWon = (game.status == STCFinalizedStatus) && (game.awayTeam.runsScored > game.homeTeam.runsScored);
-        bool homeTeamWon = (game.status == STCFinalizedStatus) && (game.awayTeam.runsScored < game.homeTeam.runsScored);
-        
-        if(game.status == STCPreviewStatus || game.status == STCFinalizedStatus) {
-            self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            self.selectionStyle = UITableViewCellSelectionStyleBlue;
-        }
-        else {
-            self.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        
-        _awayTeamView = [[STCSummaryTeamView alloc] initWithTeamID:game.awayTeam.teamID
-                                                          andScore:game.awayTeam.runsScored
-                                                            andWon:awayTeamWon];
-        
+        _awayTeamView = [[STCSummaryTeamView alloc] init];
         _awayTeamView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_awayTeamView];
         
-        _homeTeamView = [[STCSummaryTeamView alloc] initWithTeamID:game.homeTeam.teamID
-                                                          andScore:game.homeTeam.runsScored
-                                                            andWon:homeTeamWon];
+        _homeTeamView = [[STCSummaryTeamView alloc] init];
         _homeTeamView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_homeTeamView];
         
@@ -55,63 +38,115 @@
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:teamViews]];
-        // GAME STATUS INFO
-        NSDateFormatter *formatter = nil;
-        NSMutableString *statusText = [[NSMutableString alloc] initWithCapacity:6];
-        switch([game status]) {
-            case STCPreviewStatus:
-                formatter = [[NSDateFormatter alloc] init];
-                [formatter setDateFormat:@"h:mm a"];
-                [statusText appendString:[formatter stringFromDate:[game startTime]]];
-                break;
-            case STCFinalizedStatus:
-                [statusText appendString:@"Final"];
-                if(![[game inning]  isEqual: @(9)]) {
-                    [statusText appendString:[NSString stringWithFormat:@" (%@)", [game inning]]];
-                }
-                break;
-            case STCInProgressStatus:
-                if([game topOfInning]) {
-                    [statusText appendString:@"Top "];
-                    [statusText appendString:[NSString stringWithFormat:@"%@", [game inning]]];
-                }
-                else {
-                    [statusText appendString:@"Bot "];
-                    [statusText appendString:[NSString stringWithFormat:@"%@", [game inning]]];
-                    break;
-                }
-            case STCNoStatus:
-                [statusText appendString:@"Bugged!"];
-                break;
-        }
         _statusLabel = [[UILabel alloc] init];
-        _statusLabel.text = statusText;
         _statusLabel.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_statusLabel];
         
         // align the status label to the left of the tableviewcell (so numbers line up)
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_statusLabel]-30-|"
-                                                                     options:0
-                                                                     metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(_statusLabel)]];
-
+                                                                                 options:0
+                                                                                 metrics:nil
+                                                                                   views:NSDictionaryOfVariableBindings(_statusLabel)]];
+        
         
         // center the status label in the tableviewcell
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_statusLabel
-                                                         attribute:NSLayoutAttributeCenterY
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self.contentView
-                                                         attribute:NSLayoutAttributeCenterY
-                                                        multiplier:1
-                                                          constant:0]];
+                                                                     attribute:NSLayoutAttributeCenterY
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self.contentView
+                                                                     attribute:NSLayoutAttributeCenterY
+                                                                    multiplier:1
+                                                                      constant:0]];
+
     }
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)setGame:(STCBaseGame*)game {
+    bool awayTeamWon = (game.status == STCFinalizedStatus) && (game.awayTeam.runsScored > game.homeTeam.runsScored);
+    bool homeTeamWon = (game.status == STCFinalizedStatus) && (game.awayTeam.runsScored < game.homeTeam.runsScored);
     
-    // Configure the view for the selected state
+    if(awayTeamWon) {
+        [_awayTeamView setTeamWon:YES];
+    }
+    if(homeTeamWon) {
+        [_homeTeamView setTeamWon:YES];
+    }
+    
+    [_awayTeamView setTeamID:game.awayTeam.teamID];
+    [_homeTeamView setTeamID:game.homeTeam.teamID];
+    [_awayTeamView setScore:game.awayTeam.runsScored];
+    [_homeTeamView setScore:game.homeTeam.runsScored];
+    
+    if(game.status == STCPreviewStatus || game.status == STCFinalizedStatus) {
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        self.selectionStyle = UITableViewCellSelectionStyleBlue;
+    }
+    else {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    // game status
+    NSDateFormatter *formatter = nil;
+    NSMutableString *statusText = [[NSMutableString alloc] initWithCapacity:6];
+    switch(game.status) {
+        case STCPreviewStatus:
+            formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = @"h:mm a";
+            [statusText appendString:[formatter stringFromDate:game.startTime]];
+            break;
+        case STCFinalizedStatus:
+            [statusText appendString:@"Final"];
+            if(![game.inning  isEqual: @(9)]) {
+                [statusText appendString:[NSString stringWithFormat:@" (%@)", game.inning]];
+            }
+            break;
+        case STCInProgressStatus:
+            if(game.topOfInning) {
+                [statusText appendString:@"Top "];
+                [statusText appendString:[NSString stringWithFormat:@"%@", game.inning]];
+            }
+            else {
+                [statusText appendString:@"Bot "];
+                [statusText appendString:[NSString stringWithFormat:@"%@", game.inning]];
+                break;
+            }
+        case STCNoStatus:
+            [statusText appendString:@"Bugged!"];
+            break;
+    }
+    
+    _statusLabel.text = statusText;
+}
+
+- (void)setScore:(NSNumber *)score forTeam:(STCTeamType)type {
+    switch(type) {
+        case STCAwayTeam:
+            [_awayTeamView setScore:score];
+            break;
+        case STCHomeTeam:
+            [_homeTeamView setScore:score];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)setTeamID:(NSString *)teamID forTeam:(STCTeamType)type {
+    switch(type) {
+        case STCAwayTeam:
+            [_awayTeamView setTeamID:teamID];
+            break;
+        case STCHomeTeam:
+            [_homeTeamView setTeamID:teamID];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)setGameStatus:(NSString *)text {
+    _statusLabel.text = text;
 }
 
 @end

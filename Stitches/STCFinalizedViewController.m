@@ -60,8 +60,8 @@
 - (void)parsedFinalizedGame:(STCFinalizedGame *)final {
     //NSLog(@"Parsed finalized game: %@", final);
     // team names/records
-    NSString *awayBrief = [STCGlobals getBriefNameForTeamID:final.awayTeam.teamID];
-    NSString *homeBrief = [STCGlobals getBriefNameForTeamID:final.homeTeam.teamID];
+    NSString *awayBrief = [STCGlobals briefNameForTeamID:final.awayTeam.teamID];
+    NSString *homeBrief = [STCGlobals briefNameForTeamID:final.homeTeam.teamID];
     self.navigationItem.title = [NSString stringWithFormat:@"%@ @ %@", awayBrief, homeBrief];
     
     [_view setAwayTeamNameText:awayBrief];
@@ -81,8 +81,8 @@
                          andHomeHits:[NSString stringWithFormat:@"%@", final.homeTeam.hits]
                        andAwayErrors:[NSString stringWithFormat:@"%@", final.awayTeam.errors]
                        andHomeErrors:[NSString stringWithFormat:@"%@", final.homeTeam.errors]
-                    andAwayTeamLabel:[NSString stringWithFormat:@"%@", [STCGlobals getAbbreviationForTeamID:final.awayTeam.teamID]]
-                    andHomeTeamLabel:[NSString stringWithFormat:@"%@", [STCGlobals getAbbreviationForTeamID:final.homeTeam.teamID]]];
+                    andAwayTeamLabel:[NSString stringWithFormat:@"%@", [STCGlobals abbreviationForTeamID:final.awayTeam.teamID]]
+                    andHomeTeamLabel:[NSString stringWithFormat:@"%@", [STCGlobals abbreviationForTeamID:final.homeTeam.teamID]]];
     // team logo
     [_view setAwayTeamLogoWithID:final.awayTeam.teamID];
     [_view setHomeTeamLogoWithID:final.homeTeam.teamID];

@@ -44,17 +44,10 @@
     [_summaryParser parseGameSummariesForYear:2016 andMonth:5 andDay:4];
     
     XCTAssertEqual([_summaryList count], 15, @"Failed to parse all game summaries.");
-    
-    XCTAssertTrue([[[_summaryList objectAtIndex:0] gameID] isEqualToString:@"2016/05/04/chnmlb-pitmlb-1"], @"Failed to correctly parse the game ID for the summary.");
-    XCTAssertTrue([[[_summaryList objectAtIndex:0] awayTeamID] isEqualToString: @"112"], @"Failed to correctly parse the away team's ID for the summary.");
-    XCTAssertTrue([[[_summaryList objectAtIndex:0] homeTeamID] isEqualToString:@"134"], @"Failed to correctly parse the home team's ID for the summary.");
-    XCTAssertEqual([[_summaryList objectAtIndex:0] awayScoreLabel], [NSNumber numberWithInteger:6], @"Failed to correctly parse the away team's score for the summary.");
-    XCTAssertEqual([[_summaryList objectAtIndex:0] homeScoreLabel], [NSNumber numberWithInteger:2], @"Failed to correctly parse the home team's score for the summary.");
-    XCTAssertEqual([[_summaryList objectAtIndex:0] status], STCFinalStatus, @"Failed to correctly parse the game status for the summary.");
 }
 
-// method to deal with timing problems within the unit test
-- (BOOL)waitForCompletion:(NSTimeInterval)timeoutSecs {
+// method to deal with timing problems within the unit
+-(BOOL)testForCompletion:(NSTimeInterval)timeoutSecs {
     NSDate *timeoutDate = [NSDate dateWithTimeIntervalSinceNow:timeoutSecs];
     
     do {

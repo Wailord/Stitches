@@ -92,35 +92,35 @@
 }
 
 - (void)setAwayTeamNameText:(NSString *)text {
-    _awayTeamView.teamNameLabel.text = text;
+    [_awayTeamView setTeamNameText:text];
 }
 
 - (void)setHomeTeamNameText:(NSString *)text {
-    _homeTeamView.teamNameLabel.text = text;
+    [_homeTeamView setTeamNameText:text];
 }
 
 - (void)setAwayTeamInfoText:(NSString *)text {
-    _awayTeamView.teamInfoLabel.text = text;
+    [_awayTeamView setTeamInfoText:text];
 }
 
 - (void)setHomeTeamInfoText:(NSString *)text {
-    _homeTeamView.teamInfoLabel.text = text;
+    [_homeTeamView setTeamInfoText:text];
 }
 
 - (void)setAwayRunsScoredText:(NSString *)text; {
-    _awayTeamView.runsScoredLabel.text = text;
+    [_awayTeamView setRunsScoredText:text];
 }
 
 - (void)setHomeRunsScoredText:(NSString *)text {
-    _homeTeamView.runsScoredLabel.text = text;
+    [_homeTeamView setRunsScoredText:text];
 }
 
 - (void)setAwayTeamLogoWithID:(NSString *)teamID {
-    _awayTeamView.teamLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamID]];
+    [_awayTeamView setTeamLogoWithID:teamID];
 }
 
 - (void)setHomeTeamLogoWithID:(NSString *)teamID {
-    _homeTeamView.teamLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamID]];
+    [_homeTeamView setTeamLogoWithID:teamID];
 }
 
 - (void)setLinescoreWithAwayScore:(NSString *)awayScore andHomeScore:(NSString *)homeScore
@@ -138,16 +138,16 @@
 }
 
 - (void)setLinescoreWithInnings:(NSMutableArray *)innings {
-    for(int x = 0; x < [innings count]; x++) {
-        STCInning *inn = [innings objectAtIndex:x];
-        STCLinescoreInningLabel *innLabel = [[_linescoreView titleInningLabels] objectAtIndex:x];
+    for(int x = 0; x < innings.count; x++) {
+        STCInning *inn = innings[x];
+        STCLinescoreInningLabel *innLabel = _linescoreView.titleInningLabels[x];
         innLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-        [innLabel setText:[NSString stringWithFormat:@"%@", inn.number]];
+        innLabel.text = [NSString stringWithFormat:@"%@", inn.number];
         
-        [[[_linescoreView awayInningLabels] objectAtIndex:x]
+        [_linescoreView.awayInningLabels[x]
          setText:(inn.awayTeamScore ? [NSString stringWithFormat:@"%@", inn.awayTeamScore] : @"x")];
         
-        [[[_linescoreView homeInningLabels] objectAtIndex:x]
+        [_linescoreView.homeInningLabels[x]
          setText:(inn.homeTeamScore ? [NSString stringWithFormat:@"%@", inn.homeTeamScore] : @"x")];
     }
 }

@@ -23,8 +23,8 @@ typedef NS_ENUM(NSInteger, STCTeamType) {
 
 @interface STCGlobals : NSObject
 
-+(NSString *)getAbbreviationForTeamID:(NSString *)teamID;
-+(NSString *)getFullNameForTeamID:(NSString *)teamID;
-+(NSString *)getBriefNameForTeamID:(NSString *)teamID;
++(NSString *)abbreviationForTeamID:(NSString *)teamID;
++(NSString *)fullNameForTeamID:(NSString *)teamID;
++(NSString *)briefNameForTeamID:(NSString *)teamID;
 
 @end

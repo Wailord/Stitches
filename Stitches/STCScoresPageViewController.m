@@ -19,17 +19,41 @@
 
 @end
 
-@implementation STCScoresPageViewController
+@implementation STCScoresPageViewController {
+    UIPageViewController *_pageViewController;
+}
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+-(instancetype)init {
+    self = [super init];
+    if(self) {
+        _pageViewController =[[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+                                      navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                                    options:nil];
+        _pageViewController.dataSource = self;
+        
+        // matt says this is bad
+        _pageViewController.delegate = self;
+    }
+    return self;
+}
+
+- (void)loadView {
+    UIView *view = [UIView new];
+    view.frame = CGRectMake(0, 0, 30, 30);
+
+    [self addChildViewController:_pageViewController];
+    [view addSubview:_pageViewController.view];
+    [_pageViewController didMoveToParentViewController:self];
+    _pageViewController.view.frame = CGRectMake(0, 0, 30, 30);;
+    _pageViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
     
     UIBarButtonItem *rightArrow = [[UIBarButtonItem alloc]
                                    initWithTitle:@"\U000025B6\U0000FE0E"
                                    style:UIBarButtonItemStylePlain
                                    target:self
                                    action:@selector(rightArrowClicked)];
-    [rightArrow setTintColor:[UIColor blackColor]];
+    rightArrow.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = rightArrow;
     
     UIBarButtonItem *leftArrow = [[UIBarButtonItem alloc]
@@ -37,7 +61,7 @@
                                    style:UIBarButtonItemStylePlain
                                    target:self
                                    action:@selector(leftArrowClicked)];
-    [leftArrow setTintColor:[UIColor blackColor]];
+    leftArrow.tintColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = leftArrow;
     
     _formatter = [[NSDateFormatter alloc] init];
@@ -45,15 +69,12 @@
     _gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     
     _oneDayBefore = [[NSDateComponents alloc] init];
-    [_oneDayBefore setDay:-1];
+    _oneDayBefore.day = -1;
     
     _oneDayAfter = [[NSDateComponents alloc] init];
-    [_oneDayAfter setDay:1];
+    _oneDayAfter.day = 1;
     
-    self.dataSource = self;
     
-    // matt says this is bad
-    self.delegate = self;
     
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scores"
                                                     image:[UIImage imageNamed:@"baseball.png"]
@@ -71,21 +92,24 @@
     
     _currentScoresTableViewController = [[STCSummariesTableViewController alloc] initWithDateComponents:components];
     
-    [self setViewControllers:@[_currentScoresTableViewController]
+    [_pageViewController setViewControllers:@[_currentScoresTableViewController]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:YES
                   completion:^(BOOL finished) { }];
+    self.view = view;
 }
 
 #pragma mark - UIPageViewControllerDataSource
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(STCSummariesTableViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(STCSummariesTableViewController *)viewController {
     NSDateComponents *dayAfter = [self getComponentsForDayAfterScoreboard:viewController];
     
     return [[STCSummariesTableViewController alloc] initWithDateComponents:dayAfter];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(STCSummariesTableViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+      viewControllerBeforeViewController:(STCSummariesTableViewController *)viewController {
     NSDateComponents *dayBefore = [self getComponentsForDayBeforeScoreboard:viewController];
     return [[STCSummariesTableViewController alloc] initWithDateComponents:dayBefore];
 }
@@ -130,13 +154,8 @@
     return dayAfterComponents;
 }
 
-- (void)setViewControllers:(NSArray<UIViewController *> *)viewControllers direction:(UIPageViewControllerNavigationDirection)direction animated:(BOOL)animated completion:(void (^)(BOOL))completion {
-    [super setViewControllers:viewControllers direction:direction animated:animated completion:completion];
-    [self updateCurrentPageViewController:[viewControllers objectAtIndex:0]];
-}
-
 -(void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
-        [self updateCurrentPageViewController:[pendingViewControllers objectAtIndex:0]];
+        [self updateCurrentPageViewController:pendingViewControllers[0]];
 }
 
 - (void)updateCurrentPageViewController:(UIViewController *)cont {
@@ -150,21 +169,24 @@
 
 - (void)leftArrowClicked {
     NSDateComponents *dayBefore = [self getComponentsForDayBeforeScoreboard:_currentScoresTableViewController];
-    NSArray *backPage = [NSArray arrayWithObjects:[[STCSummariesTableViewController alloc] initWithDateComponents:dayBefore], nil];
+    NSArray *backPage = @[[[STCSummariesTableViewController alloc] initWithDateComponents:dayBefore]];
     
-    [self setViewControllers:backPage
+    [_pageViewController setViewControllers:backPage
                    direction:UIPageViewControllerNavigationDirectionReverse
                     animated:YES
                   completion:^(BOOL finished) { }];
+    
+    [self updateCurrentPageViewController:backPage[0]];
 }
 
 - (void)rightArrowClicked {
     NSDateComponents *dayAfter = [self getComponentsForDayAfterScoreboard:_currentScoresTableViewController];
-    NSArray *forwardPage = [NSArray arrayWithObjects:[[STCSummariesTableViewController alloc] initWithDateComponents:dayAfter], nil];
+    NSArray *forwardPage = @[[[STCSummariesTableViewController alloc] initWithDateComponents:dayAfter]];
     
-    [self setViewControllers:forwardPage
+    [_pageViewController setViewControllers:forwardPage
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:YES
-                  completion:^(BOOL finished) { }];
+                                 completion:^(BOOL finished) { }];
+    [self updateCurrentPageViewController:forwardPage[0]];
 }
 @end

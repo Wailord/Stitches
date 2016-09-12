@@ -10,11 +10,6 @@
 
 @interface STCFinalizedTeamView : UIView
 
-@property UIImageView *teamLogoImageView;
-@property UILabel *runsScoredLabel;
-@property UILabel *teamNameLabel;
-@property UILabel *teamInfoLabel;
-
 - (void)setTeamNameText:(NSString *)text;
 - (void)setRunsScoredText:(NSString *)text;
 - (void)setTeamLogoWithID:(NSString *)teamID;
