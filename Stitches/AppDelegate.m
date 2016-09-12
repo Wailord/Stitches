@@ -31,25 +31,25 @@
     _standingsViewController = [UIViewController new];
     _standingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Standings"
                                                                         image:[UIImage imageNamed:@"standings.png"]
-                                                                          tag:0];
+                                                                selectedImage:nil];
     
     // the statistics view, which will show various leaderboards
     _statisticsViewController = [UIViewController new];
     _statisticsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Stats"
-                                                                        image:[UIImage imageNamed:@"statistics.png"]
-                                                                          tag:0];
+                                                                         image:[UIImage imageNamed:@"statistics.png"]
+                                                                 selectedImage:nil];
     
     // the news view, which will show news from around the league
     _newsViewController = [UIViewController new];
     _newsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"News"
-                                                                        image:[UIImage imageNamed:@"news.png"]
-                                                                          tag:0];
-                                      
+                                                                   image:[UIImage imageNamed:@"news.png"]
+                                                           selectedImage:nil];
+    
     // the settings view, which will let users modify various TBD app setitngs
     _settingsViewController = [UIViewController new];
     _settingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Settings"
                                                                         image:[UIImage imageNamed:@"settings.png"]
-                                                                          tag:0];
+                                                                selectedImage:nil];
                                       
     // the collection of viewcontrollers housed within the tabs
     _tabbedViewControllers = @[
