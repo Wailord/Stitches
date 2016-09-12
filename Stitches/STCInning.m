@@ -13,7 +13,7 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
     if(self) {
-        _number = [NSNumber numberWithInteger:[[dict objectForKey:@"inning"] integerValue]];
+        _number = [NSNumber numberWithInteger:[dict[@"inning"] integerValue]];
         
         if([dict[@"away_inning_runs"] isEqualToString:@""]) {
             _awayTeamScore = nil;

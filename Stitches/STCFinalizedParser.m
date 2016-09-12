@@ -67,7 +67,7 @@
             _game.losingPitcher = pitcher;
         }
     }
-    else if([elementName isEqualToString:@"save_pitcher"] && ![[attributeDict objectForKey:@"id"] isEqualToString:@""]) {
+    else if([elementName isEqualToString:@"save_pitcher"] && ![attributeDict[@"id"] isEqualToString:@""]) {
         STCSavePitcher *pitcher = [[STCSavePitcher alloc] initWithDictionary:attributeDict];
         _game.savingPitcher = pitcher;
     }
