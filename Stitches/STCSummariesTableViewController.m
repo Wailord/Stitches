@@ -56,8 +56,8 @@
 - (void)parseGames {
     dispatch_async(dispatch_get_main_queue(), ^{
         [_parser parseGameSummariesForYear:_scoreboardDate.year
-                                  andMonth:_scoreboardDate.month
-                                    andDay:_scoreboardDate.day];
+                                  month:_scoreboardDate.month
+                                    day:_scoreboardDate.day];
     });
 }
 
