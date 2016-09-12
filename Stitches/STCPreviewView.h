@@ -8,19 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "STCGlobals.h"
+#import "STCPreviewTeamView.h"
 
 @interface STCPreviewView : UIView
 
-- (void)setTeamLogoForID:(NSString *)teamID forTeamType:(STCTeamType)type;
-- (void)setTeamNameText:(NSString *)teamName forTeamType:(STCTeamType)type;
-- (void)setTeamRecordText:(NSString *)recordText forTeamType:(STCTeamType)type;
-- (void)setProbablePitcherNameText:(NSString *)text forTeamType:(STCTeamType)type;
-- (void)setProbablePitcherERAText:(NSString *)text forTeamType:(STCTeamType)type;
-- (void)setProbablePitcherRecordText:(NSString *)text forTeamType:(STCTeamType)type;
-- (void)setProbablePitcherImageForID:(NSNumber *)playerID forTeamType:(STCTeamType)type;
-
-- (void)setVenueText:(NSString *)text;
-- (void)setLocationText:(NSString *)text;
-- (void)setStartTimeTextWithDate:(NSDate *)startTime;
+@property STCPreviewTeamView *awayPreviewTeamView;
+@property STCPreviewTeamView *homePreviewTeamView;
+@property UILabel *versusLabel;
+@property UILabel *venueLabel;
+@property UILabel *locationLabel;
+@property UILabel *startTimeLabel;
 
 @end

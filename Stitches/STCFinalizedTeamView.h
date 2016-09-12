@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "STCFinalizedTeam.h"
 
 @interface STCFinalizedTeamView : UIView
 
-- (void)setTeamNameText:(NSString *)text;
-- (void)setRunsScoredText:(NSString *)text;
-- (void)setTeamLogoWithID:(NSString *)teamID;
-- (void)setTeamInfoText:(NSString *)text;
+@property UIImageView *teamLogoImageView;
+@property UILabel *runsScoredLabel;
+@property UILabel *teamNameLabel;
+@property UILabel *teamInfoLabel;
+
+- (void)setTeam:(STCFinalizedTeam*)team;
 
 @end

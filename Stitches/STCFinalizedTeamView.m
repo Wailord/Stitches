@@ -7,13 +7,9 @@
 //
 
 #import "STCFinalizedTeamView.h"
+#import "STCGlobals.h"
 
-@implementation STCFinalizedTeamView {
-    UIImageView *_teamLogoImageView;
-    UILabel *_runsScoredLabel;
-    UILabel *_teamNameLabel;
-    UILabel *_teamInfoLabel;
-}
+@implementation STCFinalizedTeamView
 
 - (instancetype)init {
     self = [super init];
@@ -71,21 +67,17 @@
     return self;
 }
 
+- (void)setTeam:(STCFinalizedTeam*)team {
+    _teamNameLabel.text = [STCGlobals briefNameForTeamID:team.teamID];
+    _teamInfoLabel.text = [NSString stringWithFormat:@"(%@-%@)",
+                                        team.teamRecord.wins,
+                                        team.teamRecord.losses];
+    
+    // runs scored
+    _runsScoredLabel.text = [NSString stringWithFormat:@"%@", team.runsScored];
+    
+    _teamLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", team.teamID]];
 
-- (void)setTeamNameText:(NSString *)text {
-    _teamNameLabel.text = text;
-}
-
-- (void)setRunsScoredText:(NSString *)text {
-    _runsScoredLabel.text = text;
-}
-
-- (void)setTeamLogoWithID:(NSString *)teamID {
-    _teamLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamID]];
-}
-
-- (void)setTeamInfoText:(NSString *)text {
-    _teamInfoLabel.text = text;
 }
 
 @end

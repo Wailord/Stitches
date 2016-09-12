@@ -7,24 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STCLinescoreInningLabel.h"
 
 @interface STCLinescoreView : UIView
 
-@property (nonatomic) NSMutableArray<STCLinescoreInningLabel*> *titleInningLabels;
-@property (nonatomic) NSMutableArray<STCLinescoreInningLabel*> *awayInningLabels;
-@property (nonatomic) NSMutableArray<STCLinescoreInningLabel*> *homeInningLabels;
+@property (nonatomic) NSMutableArray<UILabel*> *titleInningLabels;
+@property (nonatomic) NSMutableArray<UILabel*> *awayInningLabels;
+@property (nonatomic) NSMutableArray<UILabel*> *homeInningLabels;
 
-@property STCLinescoreInningLabel *awayHitsLabel;
-@property STCLinescoreInningLabel *homeHitsLabel;
+@property UILabel *awayHitsLabel;
+@property UILabel *homeHitsLabel;
 
-@property STCLinescoreInningLabel *awayScoreLabel;
-@property STCLinescoreInningLabel *homeScoreLabel;
+@property UILabel *awayScoreLabel;
+@property UILabel *homeScoreLabel;
 
-@property STCLinescoreInningLabel *awayErrorsLabel;
-@property STCLinescoreInningLabel *homeErrorsLabel;
+@property UILabel *awayErrorsLabel;
+@property UILabel *homeErrorsLabel;
 
-@property STCLinescoreInningLabel *awayTeamLabel;
-@property STCLinescoreInningLabel *homeTeamLabel;
+@property UILabel *awayTeamLabel;
+@property UILabel *homeTeamLabel;
 
 @end

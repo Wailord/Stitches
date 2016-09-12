@@ -9,87 +9,158 @@
 #import "STCLinescoreView.h"
 
 @implementation STCLinescoreView {
-    STCLinescoreInningLabel *_hitsLabel;
-    STCLinescoreInningLabel *_scoreLabel;
-    STCLinescoreInningLabel *_errorsLabel;
-    STCLinescoreInningLabel *_dummyTeamLabel;
+    UILabel *_hitsLabel;
+    UILabel *_scoreLabel;
+    UILabel *_errorsLabel;
+    UILabel *_dummyTeamLabel;
 }
 
 - (instancetype)init {
     self = [super init];
     if(self) {
-        STCLinescoreInningLabel *labelToAdd;
+        UILabel *labelToAdd;
         NSMutableDictionary *views = [NSMutableDictionary new];
         
         // create the arrays of views
-        _titleInningLabels = [[NSMutableArray<STCLinescoreInningLabel*> alloc] initWithCapacity:9];
-        _awayInningLabels = [[NSMutableArray<STCLinescoreInningLabel*> alloc] initWithCapacity:9];
-        _homeInningLabels = [[NSMutableArray<STCLinescoreInningLabel*> alloc] initWithCapacity:9];
+        _titleInningLabels = [[NSMutableArray<UILabel*> alloc] initWithCapacity:9];
+        _awayInningLabels = [[NSMutableArray<UILabel*> alloc] initWithCapacity:9];
+        _homeInningLabels = [[NSMutableArray<UILabel*> alloc] initWithCapacity:9];
         
         // create the team labels and the blank dummy label above
-        _dummyTeamLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@" "];
+        _dummyTeamLabel = [UILabel new];
+        _dummyTeamLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _dummyTeamLabel.textAlignment = NSTextAlignmentCenter;
+        _dummyTeamLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _dummyTeamLabel.layer.borderWidth = 1.0f;
+        _dummyTeamLabel.font = [UIFont boldSystemFontOfSize:17];
         views[@"_dummyTeamLabel"] = _dummyTeamLabel;
         [self addSubview:_dummyTeamLabel];
         
-        _awayTeamLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"WWW" andFontSize:17.0f];
+        _awayTeamLabel = [UILabel new];
+        _awayTeamLabel.font = [UIFont boldSystemFontOfSize:17];
+        _awayTeamLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _awayTeamLabel.textAlignment = NSTextAlignmentCenter;
+        _awayTeamLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _awayTeamLabel.layer.borderWidth = 1.0f;
         views[@"_awayTeamLabel"] = _awayTeamLabel;
         [self addSubview:_awayTeamLabel];
         
-        _homeTeamLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"WWW" andFontSize:17.0f];
+        _homeTeamLabel = [UILabel new];
+        _homeTeamLabel.font = [UIFont boldSystemFontOfSize:17];
+        _homeTeamLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _homeTeamLabel.textAlignment = NSTextAlignmentCenter;
+        _homeTeamLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _homeTeamLabel.layer.borderWidth = 1.0f;
         views[@"_homeTeamLabel"] = _homeTeamLabel;
         [self addSubview:_homeTeamLabel];
         
         // create the constant RHE labels
-        _scoreLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"R"];
+        _scoreLabel = [UILabel new];
+        _scoreLabel.text = @"R";
+        _scoreLabel.font = [UIFont boldSystemFontOfSize:17];
         views[@"_scoreLabel"] = _scoreLabel;
+        _scoreLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _scoreLabel.textAlignment = NSTextAlignmentCenter;
+        _scoreLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _scoreLabel.layer.borderWidth = 1.0f;
         [self addSubview:_scoreLabel];
         
-        _hitsLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"H"];
+        _hitsLabel = [UILabel new];
+        _hitsLabel.text = @"H";
+        _hitsLabel.font = [UIFont boldSystemFontOfSize:17];
+        _hitsLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _hitsLabel.textAlignment = NSTextAlignmentCenter;
+        _hitsLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _hitsLabel.layer.borderWidth = 1.0f;
         views[@"_hitsLabel"] = _hitsLabel;
         [self addSubview:_hitsLabel];
 
-        _errorsLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"E"];
+        _errorsLabel = [UILabel new];
+        _errorsLabel.text = @"E";
+        _errorsLabel.font = [UIFont boldSystemFontOfSize:17];
+        _errorsLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _errorsLabel.textAlignment = NSTextAlignmentCenter;
+        _errorsLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _errorsLabel.layer.borderWidth = 1.0f;
         views[@"_errorsLabel"] = _errorsLabel;
         [self addSubview:_errorsLabel];
 
         // create the variable RHE labels
-        _awayHitsLabel = [STCLinescoreInningLabel new];
+        _awayHitsLabel = [UILabel new];
         views[@"_awayHitsLabel"] = _awayHitsLabel;
+        _awayHitsLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _awayHitsLabel.textAlignment = NSTextAlignmentCenter;
+        _awayHitsLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _awayHitsLabel.layer.borderWidth = 1.0f;
         [self addSubview:_awayHitsLabel];
         
-        _awayScoreLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"0" andFontSize:17.0f];
+        _awayScoreLabel = [UILabel new];
+        _awayScoreLabel.font = [UIFont boldSystemFontOfSize:17];
+        _awayScoreLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _awayScoreLabel.textAlignment = NSTextAlignmentCenter;
+        _awayScoreLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _awayScoreLabel.layer.borderWidth = 1.0f;
         views[@"_awayScoreLabel"] = _awayScoreLabel;
         [self addSubview:_awayScoreLabel];
         
-        _awayErrorsLabel = [STCLinescoreInningLabel new];
+        _awayErrorsLabel = [UILabel new];
         views[@"_awayErrorsLabel"] = _awayErrorsLabel;
+        _awayErrorsLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _awayErrorsLabel.textAlignment = NSTextAlignmentCenter;
+        _awayErrorsLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _awayErrorsLabel.layer.borderWidth = 1.0f;
         [self addSubview:_awayErrorsLabel];
         
-        _homeHitsLabel = [STCLinescoreInningLabel new];
+        _homeHitsLabel = [UILabel new];
         views[@"_homeHitsLabel"] = _homeHitsLabel;
+        _homeHitsLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _homeHitsLabel.textAlignment = NSTextAlignmentCenter;
+        _homeHitsLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _homeHitsLabel.layer.borderWidth = 1.0f;
         [self addSubview:_homeHitsLabel];
         
-        _homeScoreLabel = [[STCLinescoreInningLabel alloc] initWithBoldText:@"0" andFontSize:17.0f];
+        _homeScoreLabel = [UILabel new];
+        _homeScoreLabel.font = [UIFont boldSystemFontOfSize:17];
+        _homeScoreLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _homeScoreLabel.textAlignment = NSTextAlignmentCenter;
+        _homeScoreLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _homeScoreLabel.layer.borderWidth = 1.0f;
         views[@"_homeScoreLabel"] = _homeScoreLabel;
         [self addSubview:_homeScoreLabel];
         
-        _homeErrorsLabel = [STCLinescoreInningLabel new];
+        _homeErrorsLabel = [UILabel new];
         views[@"_homeErrorsLabel"] = _homeErrorsLabel;
+        _homeErrorsLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _homeErrorsLabel.textAlignment = NSTextAlignmentCenter;
+        _homeErrorsLabel.layer.borderColor = [UIColor blackColor].CGColor;
+        _homeErrorsLabel.layer.borderWidth = 1.0f;
         [self addSubview:_homeErrorsLabel];
         
         // build nine of the inning views
         for(int x = 0; x < 9; x++) {
-            labelToAdd = [STCLinescoreInningLabel new];
+            labelToAdd = [UILabel new];
             _titleInningLabels[x] = labelToAdd;
+            labelToAdd.translatesAutoresizingMaskIntoConstraints = NO;
+            labelToAdd.textAlignment = NSTextAlignmentCenter;
+            labelToAdd.layer.borderColor = [UIColor blackColor].CGColor;
+            labelToAdd.layer.borderWidth = 1.0f;
             views[[NSString stringWithFormat:@"titleView%i",x]] = labelToAdd;
             [self addSubview:labelToAdd];
             
-            labelToAdd = [STCLinescoreInningLabel new];
+            labelToAdd = [UILabel new];
+            labelToAdd.translatesAutoresizingMaskIntoConstraints = NO;
+            labelToAdd.textAlignment = NSTextAlignmentCenter;
+            labelToAdd.layer.borderColor = [UIColor blackColor].CGColor;
+            labelToAdd.layer.borderWidth = 1.0f;
             [_awayInningLabels setObject:labelToAdd atIndexedSubscript:x];
             views[[NSString stringWithFormat:@"awayInningView%i",x]] = labelToAdd;
             [self addSubview:labelToAdd];
             
-            labelToAdd = [STCLinescoreInningLabel new];
+            labelToAdd = [UILabel new];
+            labelToAdd.translatesAutoresizingMaskIntoConstraints = NO;
+            labelToAdd.textAlignment = NSTextAlignmentCenter;
+            labelToAdd.layer.borderColor = [UIColor blackColor].CGColor;
+            labelToAdd.layer.borderWidth = 1.0f;
             [_homeInningLabels setObject:labelToAdd atIndexedSubscript:x];
             views[[NSString stringWithFormat:@"homeInningView%i",x]] = labelToAdd;
             [self addSubview:labelToAdd];

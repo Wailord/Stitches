@@ -7,6 +7,7 @@
 //
 
 #import "STCPreviewTeamView.h"
+#import "STCGlobals.h"
 
 @implementation STCPreviewTeamView
 
@@ -102,6 +103,30 @@
     }
     
     return self;
+}
+
+- (void)setTeam:(STCPreviewTeam *)team {
+    // away team view setup
+    _teamLogoView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",team.teamID]];
+    _teamNameLabel.text = [STCGlobals fullNameForTeamID:team.teamID];
+    _teamRecordLabel.text = [NSString stringWithFormat:@"(%@-%@)",
+                                                             team.teamRecord.wins,
+                                                             team.teamRecord.losses];
+    
+    NSString *awayFullName = [NSString stringWithFormat:@"%@ %@",
+                              team.probablePitcher.firstName,
+                              team.probablePitcher.lastName];
+    NSString *awayPitcherRecord = [NSString stringWithFormat:@"%@-%@",
+                                   team.probablePitcher.wins,
+                                   team.probablePitcher.losses];
+    _pitcherNameLabel.text = awayFullName;
+    _pitcherERALabel.text = [NSString stringWithFormat:@"%@ ERA",team.probablePitcher.era];
+    _pitcherRecordLabel.text = awayPitcherRecord;
+    
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL:
+                          [NSURL URLWithString:
+                           [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/74_%@.png", team.probablePitcher.playerID]]];
+    _pitcherImageView.image = [UIImage imageWithData: imageData];
 }
 
 @end

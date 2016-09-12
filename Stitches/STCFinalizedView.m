@@ -10,15 +10,9 @@
 #import "STCFinalizedTeamView.h"
 #import "STCLinescoreView.h"
 #import "STCInning.h"
+#import "STCGlobals.h"
 
-@implementation STCFinalizedView {
-    STCFinalizedTeamView *_awayTeamView;
-    STCFinalizedTeamView *_homeTeamView;
-    STCLinescoreView *_linescoreView;
-    UILabel *_winningPitcherLabel;
-    UILabel *_losingPitcherLabel;
-    UILabel *_savingPitcherLabel;
-}
+@implementation STCFinalizedView
 
 - (instancetype)init {
     self = [super init];
@@ -91,56 +85,35 @@
     return self;
 }
 
-- (void)setAwayTeamNameText:(NSString *)text {
-    [_awayTeamView setTeamNameText:text];
-}
+- (void)setGame:(STCFinalizedGame*)game {
+    [_homeTeamView setTeam:game.homeTeam];
+    [_awayTeamView setTeam:game.awayTeam];
+    
+    _linescoreView.awayScoreLabel.text = game.awayTeam.runsScored.stringValue;
+    _linescoreView.homeScoreLabel.text = game.homeTeam.runsScored.stringValue;
+    _linescoreView.awayHitsLabel.text = game.awayTeam.hits.stringValue;
+    _linescoreView.homeHitsLabel.text = game.homeTeam.hits.stringValue;
+    _linescoreView.awayErrorsLabel.text = game.awayTeam.errors.stringValue;
+    _linescoreView.homeErrorsLabel.text = game.homeTeam.errors.stringValue;
+    _linescoreView.awayTeamLabel.text = [STCGlobals abbreviationForTeamID:game.awayTeam.teamID];
+    _linescoreView.homeTeamLabel.text = [STCGlobals abbreviationForTeamID:game.homeTeam.teamID];
+    
+    [self setLinescoreWithInnings:game.innings];
+    
+    // winning/losing/saving pitchers
+    _winningPitcherLabel.text = [NSString stringWithFormat:@"WP: %@", game.winningPitcher];
+    _losingPitcherLabel.text = [NSString stringWithFormat:@"LP: %@", game.losingPitcher];
+    
+    if(game.savingPitcher) {
+        _savingPitcherLabel.text = [NSString stringWithFormat:@"SV: %@", game.savingPitcher];
+    }
 
-- (void)setHomeTeamNameText:(NSString *)text {
-    [_homeTeamView setTeamNameText:text];
-}
-
-- (void)setAwayTeamInfoText:(NSString *)text {
-    [_awayTeamView setTeamInfoText:text];
-}
-
-- (void)setHomeTeamInfoText:(NSString *)text {
-    [_homeTeamView setTeamInfoText:text];
-}
-
-- (void)setAwayRunsScoredText:(NSString *)text; {
-    [_awayTeamView setRunsScoredText:text];
-}
-
-- (void)setHomeRunsScoredText:(NSString *)text {
-    [_homeTeamView setRunsScoredText:text];
-}
-
-- (void)setAwayTeamLogoWithID:(NSString *)teamID {
-    [_awayTeamView setTeamLogoWithID:teamID];
-}
-
-- (void)setHomeTeamLogoWithID:(NSString *)teamID {
-    [_homeTeamView setTeamLogoWithID:teamID];
-}
-
-- (void)setLinescoreWithAwayScore:(NSString *)awayScore andHomeScore:(NSString *)homeScore
-                      andAwayHits:(NSString *)awayHits andHomeHits:(NSString *)homeHits
-                    andAwayErrors:(NSString *)awayErrors andHomeErrors:(NSString *)homeErrors
-                 andAwayTeamLabel:(NSString *)awayLabel andHomeTeamLabel:(NSString *)homeLabel {
-    _linescoreView.awayScoreLabel.text = awayScore;
-    _linescoreView.awayHitsLabel.text = awayHits;
-    _linescoreView.awayErrorsLabel.text = awayErrors;
-    _linescoreView.awayTeamLabel.text = awayLabel;
-    _linescoreView.homeScoreLabel.text = homeScore;
-    _linescoreView.homeHitsLabel.text = homeHits;
-    _linescoreView.homeErrorsLabel.text = homeErrors;
-    _linescoreView.homeTeamLabel.text = homeLabel;
 }
 
 - (void)setLinescoreWithInnings:(NSMutableArray *)innings {
     for(int x = 0; x < innings.count; x++) {
         STCInning *inn = innings[x];
-        STCLinescoreInningLabel *innLabel = _linescoreView.titleInningLabels[x];
+        UILabel *innLabel = _linescoreView.titleInningLabels[x];
         innLabel.font = [UIFont boldSystemFontOfSize:18.0f];
         innLabel.text = [NSString stringWithFormat:@"%@", inn.number];
         
@@ -150,18 +123,6 @@
         [_linescoreView.homeInningLabels[x]
          setText:(inn.homeTeamScore ? [NSString stringWithFormat:@"%@", inn.homeTeamScore] : @"x")];
     }
-}
-
-- (void)setWinningPitcherText:(NSString *)text {
-    _winningPitcherLabel.text = text;
-}
-
-- (void)setLosingPitcherText:(NSString *)text {
-    _losingPitcherLabel.text = text;
-}
-
-- (void)setSavingPitcherText:(NSString *)text {
-    _savingPitcherLabel.text = text;
 }
 
 @end

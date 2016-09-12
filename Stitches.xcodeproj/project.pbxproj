@@ -18,7 +18,6 @@
 		025957BF1D7F3E0F006AB246 /* STCFinalizedTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */; };
 		025957C21D7F52B2006AB246 /* STCPreviewTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957C11D7F52B2006AB246 /* STCPreviewTeam.m */; };
 		025957C51D7FA96C006AB246 /* STCLinescoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957C41D7FA96C006AB246 /* STCLinescoreView.m */; };
-		025957C81D7FBB34006AB246 /* STCLinescoreInningLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 025957C71D7FBB34006AB246 /* STCLinescoreInningLabel.m */; };
 		0262EB331D82E7030072C01B /* STCPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0262EB321D82E7030072C01B /* STCPreviewView.m */; };
 		0262EB361D82F59E0072C01B /* STCVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0262EB351D82F59E0072C01B /* STCVenue.m */; };
 		026600FA1D786F7F0022C79D /* STCBaseGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 026600F91D786F7F0022C79D /* STCBaseGame.m */; };
@@ -127,8 +126,6 @@
 		025957C11D7F52B2006AB246 /* STCPreviewTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewTeam.m; sourceTree = "<group>"; };
 		025957C31D7FA96C006AB246 /* STCLinescoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCLinescoreView.h; sourceTree = "<group>"; };
 		025957C41D7FA96C006AB246 /* STCLinescoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCLinescoreView.m; sourceTree = "<group>"; };
-		025957C61D7FBB34006AB246 /* STCLinescoreInningLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCLinescoreInningLabel.h; sourceTree = "<group>"; };
-		025957C71D7FBB34006AB246 /* STCLinescoreInningLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCLinescoreInningLabel.m; sourceTree = "<group>"; };
 		0262EB311D82E7030072C01B /* STCPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCPreviewView.h; sourceTree = "<group>"; };
 		0262EB321D82E7030072C01B /* STCPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCPreviewView.m; sourceTree = "<group>"; };
 		0262EB341D82F59E0072C01B /* STCVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCVenue.h; sourceTree = "<group>"; };
@@ -351,8 +348,6 @@
 				025957BE1D7F3E0F006AB246 /* STCFinalizedTeamView.m */,
 				025957C31D7FA96C006AB246 /* STCLinescoreView.h */,
 				025957C41D7FA96C006AB246 /* STCLinescoreView.m */,
-				025957C61D7FBB34006AB246 /* STCLinescoreInningLabel.h */,
-				025957C71D7FBB34006AB246 /* STCLinescoreInningLabel.m */,
 			);
 			name = "Game Finals";
 			sourceTree = "<group>";
@@ -786,7 +781,6 @@
 				025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */,
 				02DF27361D7F1D720059E200 /* STCFinalizedParser.m in Sources */,
 				02838E7F1D7A1A9D0092A87F /* STCTeam.m in Sources */,
-				025957C81D7FBB34006AB246 /* STCLinescoreInningLabel.m in Sources */,
 				02DF273A1D7F1DED0059E200 /* STCFinalizedGame.m in Sources */,
 				026600FA1D786F7F0022C79D /* STCBaseGame.m in Sources */,
 				025957B41D7F2B2E006AB246 /* STCInning.m in Sources */,

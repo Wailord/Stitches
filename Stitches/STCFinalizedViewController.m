@@ -60,42 +60,10 @@
 - (void)parsedFinalizedGame:(STCFinalizedGame *)final {
     //NSLog(@"Parsed finalized game: %@", final);
     // team names/records
+    [_view setGame:final];
     NSString *awayBrief = [STCGlobals briefNameForTeamID:final.awayTeam.teamID];
     NSString *homeBrief = [STCGlobals briefNameForTeamID:final.homeTeam.teamID];
     self.navigationItem.title = [NSString stringWithFormat:@"%@ @ %@", awayBrief, homeBrief];
-    
-    [_view setAwayTeamNameText:awayBrief];
-    [_view setHomeTeamNameText:homeBrief];
-    
-    [_view setAwayTeamInfoText:[NSString stringWithFormat:@"%@", final.awayTeam.teamRecord]];
-    [_view setHomeTeamInfoText:[NSString stringWithFormat:@"%@", final.homeTeam.teamRecord]];
-    
-    // runs scored
-    [_view setAwayRunsScoredText:[NSString stringWithFormat:@"%@", final.awayTeam.runsScored]];
-    [_view setHomeRunsScoredText:[NSString stringWithFormat:@"%@", final.homeTeam.runsScored]];
-    
-    // linescore
-    [_view setLinescoreWithAwayScore:[NSString stringWithFormat:@"%@", final.awayTeam.runsScored]
-                        andHomeScore:[NSString stringWithFormat:@"%@", final.homeTeam.runsScored]
-                         andAwayHits:[NSString stringWithFormat:@"%@", final.awayTeam.hits]
-                         andHomeHits:[NSString stringWithFormat:@"%@", final.homeTeam.hits]
-                       andAwayErrors:[NSString stringWithFormat:@"%@", final.awayTeam.errors]
-                       andHomeErrors:[NSString stringWithFormat:@"%@", final.homeTeam.errors]
-                    andAwayTeamLabel:[NSString stringWithFormat:@"%@", [STCGlobals abbreviationForTeamID:final.awayTeam.teamID]]
-                    andHomeTeamLabel:[NSString stringWithFormat:@"%@", [STCGlobals abbreviationForTeamID:final.homeTeam.teamID]]];
-    // team logo
-    [_view setAwayTeamLogoWithID:final.awayTeam.teamID];
-    [_view setHomeTeamLogoWithID:final.homeTeam.teamID];
-    
-    [_view setLinescoreWithInnings:final.innings];
-    
-    // winning/losing/saving pitchers
-    [_view setWinningPitcherText:[NSString stringWithFormat:@"WP: %@", final.winningPitcher]];
-    [_view setLosingPitcherText:[NSString stringWithFormat:@"LP: %@", final.losingPitcher]];
-    
-    if(final.savingPitcher) {
-        [_view setSavingPitcherText:[NSString stringWithFormat:@"SV: %@", final.savingPitcher]];
-    }
 }
 
 - (void)viewDidLoad {

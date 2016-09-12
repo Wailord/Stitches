@@ -9,14 +9,7 @@
 #import "STCPreviewView.h"
 #import "STCPreviewTeamView.h"
 
-@implementation STCPreviewView {
-    STCPreviewTeamView *_awayPreviewTeamView;
-    STCPreviewTeamView *_homePreviewTeamView;
-    UILabel *_versusLabel;
-    UILabel *_venueLabel;
-    UILabel *_locationLabel;
-    UILabel *_startTimeLabel;
-}
+@implementation STCPreviewView
 
 - (instancetype)init {
     self = [super init];
@@ -94,117 +87,6 @@
     }
     
     return self;
-}
-
-- (void)setVenueText:(NSString *)text {
-    _venueLabel.text = text;
-}
-
-- (void)setLocationText:(NSString *)text {
-    _locationLabel.text = text;
-}
-
-- (void)setStartTimeTextWithDate:(NSDate *)startTime {
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    formatter.dateFormat = @"h:mm a";
-
-    _startTimeLabel.text = [formatter stringFromDate:startTime];
-}
-
-- (void)setTeamLogoForID:(NSString *)teamID forTeamType:(STCTeamType)type{
-    switch(type) {
-        case STCAwayTeam:
-            _awayPreviewTeamView.teamLogoView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamID]];
-            break;
-        case STCHomeTeam:
-            _homePreviewTeamView.teamLogoView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", teamID]];
-            break;
-        default:
-            NSLog(@"Error: Received an STCTeamType of %ld while trying to set team logo to ID %@.", type, teamID);
-            break;
-    }
-}
-- (void)setTeamNameText:(NSString *)teamName forTeamType:(STCTeamType)type{
-    switch(type) {
-        case STCAwayTeam:
-            _awayPreviewTeamView.teamNameLabel.text = teamName;
-            break;
-        case STCHomeTeam:
-            _homePreviewTeamView.teamNameLabel.text = teamName;
-            break;
-        default:
-            NSLog(@"Error: Received an STCTeamType of %ld while trying to set team name to %@.", type, teamName);
-            break;
-    }
-}
-- (void)setTeamRecordText:(NSString *)recordText forTeamType:(STCTeamType)type{
-    switch(type) {
-        case STCAwayTeam:
-            _awayPreviewTeamView.teamRecordLabel.text = recordText;
-            break;
-        case STCHomeTeam:
-            _homePreviewTeamView.teamRecordLabel.text = recordText;
-            break;
-        default:
-            NSLog(@"Error: Received an STCTeamType of %ld while trying to set record text to %@.", type, recordText);
-            break;
-    }
-}
-- (void)setProbablePitcherNameText:(NSString *)text forTeamType:(STCTeamType)type {
-    switch(type) {
-        case STCAwayTeam:
-            _awayPreviewTeamView.pitcherNameLabel.text = text;
-            break;
-        case STCHomeTeam:
-            _homePreviewTeamView.pitcherNameLabel.text = text;
-            break;
-        default:
-            NSLog(@"Error: Received an STCTeamType of %ld while trying to set probable pitcher name text to %@.", type, text);
-            break;
-    }
-}
-- (void)setProbablePitcherERAText:(NSString *)text forTeamType:(STCTeamType)type {
-    switch(type) {
-        case STCAwayTeam:
-            _awayPreviewTeamView.pitcherERALabel.text = text;
-            break;
-        case STCHomeTeam:
-            _homePreviewTeamView.pitcherERALabel.text = text;
-            break;
-        default:
-            NSLog(@"Error: Received an STCTeamType of %ld while trying to set probable pitcher ERA text to %@.", type, text);
-            break;
-    }
-}
-- (void)setProbablePitcherRecordText:(NSString *)text forTeamType:(STCTeamType)type {
-    switch(type) {
-        case STCAwayTeam:
-            _awayPreviewTeamView.pitcherRecordLabel.text = text;
-            break;
-        case STCHomeTeam:
-            _homePreviewTeamView.pitcherRecordLabel.text = text;
-            break;
-        default:
-            NSLog(@"Error: Received an STCTeamType of %ld while trying to set probable pitcher record text to %@.", type, text);
-            break;
-    }
-}
-- (void)setProbablePitcherImageForID:(NSNumber *)playerID forTeamType:(STCTeamType)type {
-    // away pitcher picture
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL:
-                          [NSURL URLWithString:
-                           [NSString stringWithFormat:@"http://mlb.mlb.com/images/players/assets/74_%@.png", playerID]]];
-    switch(type) {
-        case STCAwayTeam:
-            _awayPreviewTeamView.pitcherImageView.image = [UIImage imageWithData: imageData];
-            break;
-        case STCHomeTeam:
-            _homePreviewTeamView.pitcherImageView.image = [UIImage imageWithData: imageData];
-            break;
-        default:
-            NSLog(@"Error: Received an STCTeamType of %ld while trying to set probable pitcher image for ID %@.", type, playerID);
-            break;
-    }
 }
 
 @end

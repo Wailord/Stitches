@@ -59,61 +59,15 @@
 }
 
 - (void)parsedGamePreview:(STCPreview *)preview {
-    [_previewView setVenueText:preview.venue.name];
-    [_previewView setLocationText:preview.venue.location];
-    [_previewView setStartTimeTextWithDate:preview.startTime];
-     
-    // away team view setup
-    [_previewView setTeamLogoForID:preview.awayTeam.teamID forTeamType:STCAwayTeam];
-    [_previewView setTeamNameText:[STCGlobals fullNameForTeamID:preview.awayTeam.teamID]
-                      forTeamType:STCAwayTeam];
-    [_previewView setTeamRecordText:[NSString stringWithFormat:@"(%@)", preview.awayTeam.teamRecord]
-                        forTeamType:STCAwayTeam];
+    _previewView.venueLabel.text = preview.venue.name;
+    _previewView.locationLabel.text = preview.venue.location;
     
-    NSString *awayFullName = [NSString stringWithFormat:@"%@ %@",
-                              preview.awayTeam.probablePitcher.firstName,
-                              preview.awayTeam.probablePitcher.lastName];
-    [_previewView setProbablePitcherNameText:awayFullName
-                             forTeamType:STCAwayTeam];
-    [_previewView setProbablePitcherERAText:[NSString stringWithFormat:@"%@ ERA",
-                                             preview.awayTeam.probablePitcher.era]
-                                forTeamType:STCAwayTeam];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"h:mm a";
+    _previewView.startTimeLabel.text = [formatter stringFromDate:preview.startTime];
     
-    NSString *awayPitcherRecord = [NSString stringWithFormat:@"%@-%@",
-                                   preview.awayTeam.probablePitcher.wins,
-                                   preview.awayTeam.probablePitcher.losses];
-    [_previewView setProbablePitcherRecordText:awayPitcherRecord
-                                   forTeamType:STCAwayTeam];
-    
-    [_previewView setProbablePitcherImageForID:preview.awayTeam.probablePitcher.playerID
-                                   forTeamType:STCAwayTeam];
-    
-    
-    // home team view setup
-    [_previewView setTeamLogoForID:preview.homeTeam.teamID
-                       forTeamType:STCHomeTeam];
-    [_previewView setTeamNameText:[STCGlobals fullNameForTeamID:preview.homeTeam.teamID]
-                      forTeamType:STCHomeTeam];
-    [_previewView setTeamRecordText:[NSString stringWithFormat:@"(%@)", preview.homeTeam.teamRecord]
-                        forTeamType:STCHomeTeam];
-    
-    NSString *homeFullName = [NSString stringWithFormat:@"%@ %@",
-                              preview.homeTeam.probablePitcher.firstName,
-                              preview.homeTeam.probablePitcher.lastName];
-    [_previewView setProbablePitcherNameText:homeFullName
-                             forTeamType:STCHomeTeam];
-    [_previewView setProbablePitcherERAText:[NSString stringWithFormat:@"%@ ERA",
-                                             preview.homeTeam.probablePitcher.era]
-                                forTeamType:STCHomeTeam];
-    
-    NSString *homePitcherRecord = [NSString stringWithFormat:@"%@-%@",
-                                   preview.homeTeam.probablePitcher.wins,
-                                   preview.homeTeam.probablePitcher.losses];
-    [_previewView setProbablePitcherRecordText:homePitcherRecord
-                                   forTeamType:STCHomeTeam];
-    
-    [_previewView setProbablePitcherImageForID:preview.homeTeam.probablePitcher.playerID
-                                   forTeamType:STCHomeTeam];
+    [_previewView.awayPreviewTeamView setTeam:preview.awayTeam];
+    [_previewView.homePreviewTeamView setTeam:preview.homeTeam];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }

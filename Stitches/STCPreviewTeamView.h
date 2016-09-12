@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
+#import "STCPreviewTeam.h"
 
 @interface STCPreviewTeamView : UIView
 
@@ -19,5 +19,7 @@
 @property UILabel *pitcherNameLabel;
 @property UILabel *pitcherRecordLabel;
 @property UILabel *pitcherERALabel;
+
+- (void)setTeam:(STCPreviewTeam *)team;
 
 @end
