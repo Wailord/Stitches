@@ -10,4 +10,13 @@
 
 @implementation STCSummaryTeam
 
+- (instancetype)init {
+    self = [super init];
+    if(self) {
+        _teamRecord = [[STCTeamRecord alloc] init];
+    }
+    
+    return self;
+}
+
 @end

@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "STCTeamRecord.h"
 
 @interface STCSummaryTeam : NSObject
 
 @property NSString *teamID;
 @property NSNumber *runsScored;
+@property STCTeamRecord *teamRecord;
 
 @end

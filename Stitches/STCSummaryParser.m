@@ -73,6 +73,12 @@
             _summary.homeTeam.teamID = [attributeDict objectForKey:@"home_team_id"];
             _summary.awayTeam.teamID = [attributeDict objectForKey:@"away_team_id"];
             
+            // set the records
+            _summary.awayTeam.teamRecord.wins =[NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_win"] integerValue]];
+            _summary.awayTeam.teamRecord.losses =[NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_loss"] integerValue]];
+            _summary.homeTeam.teamRecord.wins =[NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_win"] integerValue]];
+            _summary.homeTeam.teamRecord.losses =[NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_loss"] integerValue]];
+            
             // get the inning info
             _summary.inning = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"inning"] integerValue]];
             _summary.topOfInning = [[attributeDict objectForKey:@"top_of_inning"] isEqualToString:@"Y"];
