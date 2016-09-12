@@ -22,4 +22,6 @@
 @property NSMutableArray *innings;
 @property bool awayTeamWon;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
+
 @end

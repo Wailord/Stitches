@@ -19,4 +19,6 @@
 @property NSString *wins;
 @property NSString *losses;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
+
 @end

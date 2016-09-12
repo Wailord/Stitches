@@ -14,4 +14,6 @@
 @property NSNumber *awayTeamScore;
 @property NSNumber *homeTeamScore;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
+
 @end

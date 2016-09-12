@@ -51,72 +51,15 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     if([elementName isEqualToString:@"game"]) {
         //NSLog(@"Started parsing a finalized game.");
-        _game = [[STCFinalizedGame alloc] init];
-        
-        // team id
-        _game.awayTeam.teamID = [attributeDict objectForKey:@"away_team_id"];
-        _game.homeTeam.teamID = [attributeDict objectForKey:@"home_team_id"];;
-        
-        // runs scored
-        _game.awayTeam.runsScored = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];
-        _game.homeTeam.runsScored = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_runs"] integerValue]];
-        
-        // winner
-        _game.awayTeamWon = (_game.awayTeam.runsScored > _game.homeTeam.runsScored);
-        
-        // team records
-        _game.awayTeam.teamRecord.wins = [attributeDict objectForKey:@"away_win"];
-        _game.awayTeam.teamRecord.losses = [attributeDict objectForKey:@"away_loss"];
-        _game.homeTeam.teamRecord.wins = [attributeDict objectForKey:@"home_win"];
-        _game.homeTeam.teamRecord.losses = [attributeDict objectForKey:@"home_loss"];
-        
-        // hits
-        _game.awayTeam.hits = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_hits"] integerValue]];
-        _game.homeTeam.hits = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_hits"] integerValue]];
-        
-        // errors
-        _game.awayTeam.errors = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_errors"] integerValue]];
-        _game.homeTeam.errors = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_errors"] integerValue]];
-        
-        // venue
-        STCVenue *venue = [[STCVenue alloc] init];
-        venue.venueID = [attributeDict objectForKey:@"venue_id"];
-        venue.name = [attributeDict objectForKey:@"venue"];
-        venue.location = [attributeDict objectForKey:@"location"];
-        _game.venue = venue;
-        
+        _game = [[STCFinalizedGame alloc] initWithDictionary:attributeDict];
     }
     else if([elementName isEqualToString:@"linescore"]) {
-        STCInning *newestInning = [[STCInning alloc] init];
-        newestInning.number = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"inning"] integerValue]];
-        
-        if([[attributeDict objectForKey:@"away_inning_runs"] isEqualToString:@""]) {
-            newestInning.awayTeamScore = nil;
-        }
-        else {
-            newestInning.awayTeamScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_inning_runs"] integerValue]];
-        }
-        
-        if([[attributeDict objectForKey:@"home_inning_runs"] isEqualToString: @""]) {
-            newestInning.homeTeamScore = nil;
-        }
-        else {
-            newestInning.homeTeamScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_inning_runs"] integerValue]];
-        }
-        
+        STCInning *newestInning = [[STCInning alloc] initWithDictionary:attributeDict];
         [_game.innings addObject:newestInning];
     }
     else if([elementName isEqualToString:@"winning_pitcher"] || [elementName isEqualToString:@"losing_pitcher"]) {
-        STCPitcher *pitcher = [[STCPitcher alloc] init];
-        pitcher.playerID = [attributeDict objectForKey:@"id"];
-        pitcher.firstName = [attributeDict objectForKey:@"first_name"];
-        pitcher.lastName = [attributeDict objectForKey:@"last_name"];
-        pitcher.number = [attributeDict objectForKey:@"number"];
-        pitcher.throwingHand = [attributeDict objectForKey:@"throwing_hand"];
-        pitcher.wins = [attributeDict objectForKey:@"wins"];
-        pitcher.losses = [attributeDict objectForKey:@"losses"];
-        pitcher.era = [attributeDict objectForKey:@"era"];
-        
+        STCPitcher *pitcher = [[STCPitcher alloc] initWithDictionary:attributeDict];
+                
         if([elementName isEqualToString:@"winning_pitcher"]) {
             _game.winningPitcher = pitcher;
         }
@@ -125,17 +68,7 @@
         }
     }
     else if([elementName isEqualToString:@"save_pitcher"] && ![[attributeDict objectForKey:@"id"] isEqualToString:@""]) {
-        STCSavePitcher *pitcher = [[STCSavePitcher alloc] init];
-        pitcher.playerID = [attributeDict objectForKey:@"id"];
-        pitcher.firstName = [attributeDict objectForKey:@"first_name"];
-        pitcher.lastName = [attributeDict objectForKey:@"last_name"];
-        pitcher.number = [attributeDict objectForKey:@"number"];
-        pitcher.throwingHand = [attributeDict objectForKey:@"throwing_hand"];
-        pitcher.wins = [attributeDict objectForKey:@"wins"];
-        pitcher.losses = [attributeDict objectForKey:@"losses"];
-        pitcher.era = [attributeDict objectForKey:@"era"];
-        pitcher.saves = [attributeDict objectForKey:@"saves"];
-    
+        STCSavePitcher *pitcher = [[STCSavePitcher alloc] initWithDictionary:attributeDict];
         _game.savingPitcher = pitcher;
     }
 }

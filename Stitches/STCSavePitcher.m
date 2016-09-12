@@ -10,6 +10,15 @@
 
 @implementation STCSavePitcher
 
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
+    self = [super initWithDictionary:dict];
+    if(self) {
+        _saves = dict[@"saves"];
+    }
+    
+    return self;
+}
+
 - (NSString *)description {
     return [NSString stringWithFormat:@"%@ %@ (%@ SV, %@ ERA)", self.firstName, self.lastName, self.saves, self.era];
 }
