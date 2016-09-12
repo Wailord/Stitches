@@ -17,7 +17,7 @@
     STCBaseGame *_summary;
 }
 
--(void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day{
+-(void)parseGameSummariesForYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day{
     // if our month or date is less than ten, make sure the string prepends a zero (so each is always two characters)
     NSString *monthString = (month < 10) ? [NSString stringWithFormat:@"0%ld", (long)month] : [NSString stringWithFormat:@"%ld", (long)month];
     NSString *dateString = (day < 10) ? [NSString stringWithFormat:@"0%@", @(day)] : @(day).stringValue;

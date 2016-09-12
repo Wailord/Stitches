@@ -18,6 +18,6 @@
 @interface STCSummaryParser : NSObject
 @property (nonatomic, weak) id<STCSummaryParserDelegate> delegate;
 
-- (void)parseGameSummariesForYear:(NSInteger)year andMonth:(NSInteger)month andDay:(NSInteger)day;
+- (void)parseGameSummariesForYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
 
 @end
