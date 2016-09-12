@@ -11,13 +11,23 @@
 
 @implementation STCSummary
 
+- (instancetype)init {
+    self = [super init];
+    if(self) {
+        _awayTeam = [[STCSummaryTeam alloc] init];
+        _homeTeam = [[STCSummaryTeam alloc] init];
+    }
+    
+    return self;
+}
+
 -(NSString *)description
 {
     return [NSString stringWithFormat:@"%@ (%@) @ %@ (%@)",
-            [STCGlobals getAbbreviationForTeamID:_awayTeamID],
-            self.awayScore,
-            [STCGlobals getAbbreviationForTeamID:_homeTeamID],
-            self.homeScore];
+            [STCGlobals getAbbreviationForTeamID:_awayTeam.teamID],
+            self.awayTeam.runsScored,
+            [STCGlobals getAbbreviationForTeamID:_homeTeam.teamID],
+            self.homeTeam.runsScored];
 }
 
 @end

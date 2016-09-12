@@ -8,14 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "STCGlobals.h"
+#import "STCSummaryTeam.h"
 
 @interface STCSummary : NSObject
 
 @property NSString *gameID;
-@property NSString *awayTeamID;
-@property NSNumber *awayScore;
-@property NSString *homeTeamID;
-@property NSNumber *homeScore;
+@property STCSummaryTeam *awayTeam;
+@property STCSummaryTeam *homeTeam;
 
 @property NSNumber *inning;
 @property BOOL topOfInning;

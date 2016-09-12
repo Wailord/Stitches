@@ -102,10 +102,10 @@
     }
     else {
         cell.inning = game.inning;
-        cell.homeName = [STCGlobals getAbbreviationForTeamID:[game homeTeamID]];
-        cell.homeScore = game.homeScore;
-        cell.awayName = [STCGlobals getAbbreviationForTeamID:[game awayTeamID]];
-        cell.awayScore = game.awayScore;
+        cell.homeName = [STCGlobals getAbbreviationForTeamID:game.homeTeam.teamID];
+        cell.homeScore = game.homeTeam.runsScored;
+        cell.awayName = [STCGlobals getAbbreviationForTeamID:game.awayTeam.teamID];
+        cell.awayScore = game.awayTeam.runsScored;
     }
         
     return cell;

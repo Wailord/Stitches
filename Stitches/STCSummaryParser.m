@@ -66,12 +66,12 @@
             //NSLog(@"Game ID: %@", _summary.gameID);
             
             // get the current score
-            _summary.awayScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];
-            _summary.homeScore = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_runs"] integerValue]];
+            _summary.awayTeam.runsScored = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"away_team_runs"] integerValue]];
+            _summary.homeTeam.runsScored = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"home_team_runs"] integerValue]];
             
             // get the teams playing
-            _summary.homeTeamID = [attributeDict objectForKey:@"home_team_id"];
-            _summary.awayTeamID = [attributeDict objectForKey:@"away_team_id"];
+            _summary.homeTeam.teamID = [attributeDict objectForKey:@"home_team_id"];
+            _summary.awayTeam.teamID = [attributeDict objectForKey:@"away_team_id"];
             
             // get the inning info
             _summary.inning = [NSNumber numberWithInteger:[[attributeDict objectForKey:@"inning"] integerValue]];

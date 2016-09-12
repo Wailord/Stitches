@@ -61,6 +61,7 @@
 		02838E7F1D7A1A9D0092A87F /* STCTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 02838E7E1D7A1A9D0092A87F /* STCTeam.m */; };
 		028AEBD81D7F08CA00F5620C /* StitchesInProgressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 028AEBD71D7F08CA00F5620C /* StitchesInProgressTests.m */; };
 		028AEBDA1D7F08D900F5620C /* StitchesFinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 028AEBD91D7F08D900F5620C /* StitchesFinalTests.m */; };
+		029903281D86DB90001EB465 /* STCSummaryTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 029903271D86DB90001EB465 /* STCSummaryTeam.m */; };
 		02A9E0E01D8056EA005B72CB /* STCSavePitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A9E0DF1D8056EA005B72CB /* STCSavePitcher.m */; };
 		02A9E0E41D808110005B72CB /* STCScoresPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A9E0E31D808110005B72CB /* STCScoresPageViewController.m */; };
 		02A9E0E71D80F25E005B72CB /* STCFinalizedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A9E0E61D80F25E005B72CB /* STCFinalizedView.m */; };
@@ -175,6 +176,8 @@
 		02838E7E1D7A1A9D0092A87F /* STCTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCTeam.m; sourceTree = "<group>"; };
 		028AEBD71D7F08CA00F5620C /* StitchesInProgressTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StitchesInProgressTests.m; sourceTree = "<group>"; };
 		028AEBD91D7F08D900F5620C /* StitchesFinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StitchesFinalTests.m; sourceTree = "<group>"; };
+		029903261D86DB90001EB465 /* STCSummaryTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSummaryTeam.h; sourceTree = "<group>"; };
+		029903271D86DB90001EB465 /* STCSummaryTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSummaryTeam.m; sourceTree = "<group>"; };
 		02A9E0DE1D8056EA005B72CB /* STCSavePitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCSavePitcher.h; sourceTree = "<group>"; };
 		02A9E0DF1D8056EA005B72CB /* STCSavePitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCSavePitcher.m; sourceTree = "<group>"; };
 		02A9E0E21D808110005B72CB /* STCScoresPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCScoresPageViewController.h; sourceTree = "<group>"; };
@@ -564,6 +567,8 @@
 			children = (
 				026600F81D786F7F0022C79D /* STCSummary.h */,
 				026600F91D786F7F0022C79D /* STCSummary.m */,
+				029903261D86DB90001EB465 /* STCSummaryTeam.h */,
+				029903271D86DB90001EB465 /* STCSummaryTeam.m */,
 			);
 			name = "Game Summaries";
 			sourceTree = "<group>";
@@ -737,6 +742,7 @@
 				02838E791D79ED620092A87F /* STCPreviewViewController.m in Sources */,
 				02ADCD161D7749610088AFFD /* STCScoresNavigationController.m in Sources */,
 				022C65C41D7A30B600A9C5D5 /* STCPreviewTeamView.m in Sources */,
+				029903281D86DB90001EB465 /* STCSummaryTeam.m in Sources */,
 				025957C21D7F52B2006AB246 /* STCPreviewTeam.m in Sources */,
 				025957BB1D7F3B44006AB246 /* STCFinalizedTeam.m in Sources */,
 				02DF27361D7F1D720059E200 /* STCFinalizedParser.m in Sources */,
