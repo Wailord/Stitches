@@ -32,7 +32,7 @@
     _standingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Standings"
                                                                         image:[UIImage imageNamed:@"standings.png"]
                                                                 selectedImage:nil];
-    
+    /*
     // the statistics view, which will show various leaderboards
     _statisticsViewController = [UIViewController new];
     _statisticsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Stats"
@@ -50,14 +50,14 @@
     _settingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Settings"
                                                                         image:[UIImage imageNamed:@"settings.png"]
                                                                 selectedImage:nil];
-                                      
+            */
     // the collection of viewcontrollers housed within the tabs
     _tabbedViewControllers = @[
                               _scoresNavigationController,
-                              _standingsViewController,
-                              _statisticsViewController,
-                              _newsViewController,
-                              _settingsViewController
+                              //_standingsViewController,
+                              //_statisticsViewController,
+                              //_newsViewController,
+                              //_settingsViewController
                               ];
     
     // let the tab controller know what view controllers to house
